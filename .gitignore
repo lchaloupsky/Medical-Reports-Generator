@@ -1,0 +1,12 @@
+# bytecode compiled python files
+*/__pycache__
+
+# generated files / large data files
+logs/
+translations*/
+data/
+rawReports/
+
+# testing files
+testing/
+
