@@ -17,6 +17,7 @@ parser.add_argument('--translator', default='cubbit', choices=['cubbitt', 'deepl
 parser.add_argument('--dataset', default='mimic', choices=['mimic', 'openi'], type=str, help="Dataset intended for translation.")
 parser.add_argument('--data', default=None, type=str, help="Dataset location path.")
 parser.add_argument('--preprocess', default="pipeline", choices=["lowercase", "pipeline", "none"], type=str, help="Dataset preprocessing mode.")
+parser.add_argument('--anonymous_seq', default=None, type=str, help="A common start of every anonymous character sequence in reports.")
 
 os.makedirs("logs", exist_ok=True)
 logging.basicConfig(filename='logs/output_{}.log'.format(datetime.datetime.now().strftime("%d_%m_%Y__%H_%M_%S")), encoding='utf-8', filemode='w', level=logging.DEBUG, datefmt='%Y-%d-%m %H:%M:%S')
@@ -88,7 +89,13 @@ def _getPreprocessors(args: argparse.Namespace, extractor: Extractor) -> str:
     if args.preprocess == "lowercase":
         PREPROCESSORS.extend([LowercasePreprocessor()])
     elif args.preprocess == "pipeline":
-        PREPROCESSORS.extend([LineStartsPreprocessor(), TrueCasingPreprocessor(extractor, _getDatasetLocation(args), args.dataset), SemicolonParagraphPreprocessor(), WhitespacesSquashPreprocessor()])
+        PREPROCESSORS.extend([
+            LineStartsPreprocessor(), 
+            AnonymousSequencePreprocessor(args.anonymous_seq), 
+            TrueCasingPreprocessor(extractor, _getDatasetLocation(args), args.dataset), 
+            SemicolonParagraphPreprocessor(), 
+            WhitespacesSquashPreprocessor()
+        ])
 
 def main(args: argparse.Namespace):
     # create dir for current translations

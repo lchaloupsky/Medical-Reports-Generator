@@ -3,7 +3,7 @@
 from preprocessors.preprocessor import Preprocessor
 
 class LineStartsPreprocessor(Preprocessor):
-    def preprocess(self, text: str):
+    def preprocess(self, text: str) -> str:
         '''Takes away all whitespaces at the start/end of a line which are common for all lines.'''
 
         # split text

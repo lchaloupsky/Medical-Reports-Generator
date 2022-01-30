@@ -13,7 +13,7 @@ class TrueCasingPreprocessor(Preprocessor):
         if extractor and directory and dataset:
             self._getWordFrequencies(extractor, directory, dataset)
 
-    def preprocess(self, text: str):
+    def preprocess(self, text: str) -> str:
         '''Coverts all words written only with capital letters into form with only one capital letter.'''
 
         # split text

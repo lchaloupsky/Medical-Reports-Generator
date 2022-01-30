@@ -3,7 +3,7 @@
 from preprocessors.preprocessor import Preprocessor
 
 class WhitespacesSquashPreprocessor(Preprocessor):
-    def preprocess(self, text: str):
+    def preprocess(self, text: str) -> str:
         '''Squashes all multiple occurences of whitespace inside(not on the sides) text into one.'''
 
         # split text

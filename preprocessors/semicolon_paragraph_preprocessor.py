@@ -5,7 +5,7 @@ from preprocessors.preprocessor import Preprocessor
 class SemicolonParagraphPreprocessor(Preprocessor):
     SEMICOLON = ":"
 
-    def preprocess(self, text: str):
+    def preprocess(self, text: str) -> str:
         '''Puts paragraps starting after a semicolon on the same line.'''
 
         # split text
