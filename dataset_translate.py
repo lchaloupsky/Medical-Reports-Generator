@@ -16,6 +16,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--translator', default='cubbit', choices=['cubbitt', 'deepl'], type=str, help="Translator used for reports translation.")
 parser.add_argument('--dataset', default='mimic', choices=['mimic', 'openi'], type=str, help="Dataset intended for translation.")
 parser.add_argument('--data', default=None, type=str, help="Dataset location path.")
+parser.add_argument('--preprocess', default="pipeline", choices=["lowercase", "pipeline", "none"], type=str, help="Dataset preprocessing mode.")
 
 os.makedirs("logs", exist_ok=True)
 logging.basicConfig(filename='logs/output_{}.log'.format(datetime.datetime.now().strftime("%d_%m_%Y__%H_%M_%S")), encoding='utf-8', filemode='w', level=logging.DEBUG, datefmt='%Y-%d-%m %H:%M:%S')
@@ -40,7 +41,7 @@ def translateReport(translator: Translator, extractor: Extractor, filename: str,
         print(text)
 
     # preprocess text
-    #text = _preprocess(text)
+    text = _preprocess(text)
 
     repeats = 0
     while True:
@@ -84,7 +85,10 @@ def _getDatasetLocation(args: argparse.Namespace) -> str:
     return "./data/{}".format(DATASET_FOLDERS[args.dataset])
 
 def _getPreprocessors(args: argparse.Namespace, extractor: Extractor) -> str:
-    PREPROCESSORS.extend([LineStartsPreprocessor(), TrueCasingPreprocessor(extractor, _getDatasetLocation(args), args.dataset), SemicolonParagraphPreprocessor(), WhitespacesSquashPreprocessor()])
+    if args.preprocess == "lowercase":
+        PREPROCESSORS.extend([LowercasePreprocessor()])
+    elif args.preprocess == "pipeline":
+        PREPROCESSORS.extend([LineStartsPreprocessor(), TrueCasingPreprocessor(extractor, _getDatasetLocation(args), args.dataset), SemicolonParagraphPreprocessor(), WhitespacesSquashPreprocessor()])
 
 def main(args: argparse.Namespace):
     # create dir for current translations

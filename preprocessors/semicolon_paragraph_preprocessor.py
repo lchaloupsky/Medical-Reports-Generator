@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 
-import re
-
 from preprocessors.preprocessor import Preprocessor
 
 class SemicolonParagraphPreprocessor(Preprocessor):
