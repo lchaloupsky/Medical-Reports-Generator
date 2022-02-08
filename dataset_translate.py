@@ -38,8 +38,8 @@ def _logError(filename: str, response: Response):
 def translateReport(translator: Translator, extractor: Extractor, filename: str, destination: str):
     # extract text from a file
     text = extractor.extractReport(filename)
-    if "1022" in filename:
-        print(text)
+    #if "1022" in filename:
+    #    print(text)
 
     # preprocess text
     text = _preprocess(text)
@@ -54,7 +54,7 @@ def translateReport(translator: Translator, extractor: Extractor, filename: str,
         if response.status_code != 200:
             # wait between repetition
             repeats += 1
-            time.sleep(3 * repeats)
+            time.sleep(repeats) # FOR DEEPL -> modify to 3 * repeats
 
             if repeats == MAX_REPEAT_COUNT:
                 print("Cannot translate report: {}. Reason: {}".format(filename, response.reason))
@@ -87,7 +87,10 @@ def _getDatasetLocation(args: argparse.Namespace) -> str:
 
 def _getPreprocessors(args: argparse.Namespace, extractor: Extractor) -> str:
     if args.preprocess == "lowercase":
-        PREPROCESSORS.extend([LowercasePreprocessor()])
+        PREPROCESSORS.extend([
+            LowercasePreprocessor(), 
+            CapitalizeStartsPreprocessor()
+        ])
     elif args.preprocess == "pipeline":
         PREPROCESSORS.extend([
             LineStartsPreprocessor(), 
@@ -116,14 +119,14 @@ def main(args: argparse.Namespace):
                 finalDestination = os.path.join(destination, os.path.normpath(subdir))
                 finalSum += len(filenames)
                 for filename in filenames:
-                    i += 1
+                    #i += 1
 
-                    translateReport(translator, extractor, os.path.join(subdir, filename), finalDestination)
-                    if i == 100:
-                        break
+                    #translateReport(translator, extractor, os.path.join(subdir, filename), finalDestination)
+                    #if i == 100:
+                    #    break
                     
                     # create new job
-                    #futures.append(pool.submit(translateReport, translator, extractor, os.path.join(subdir, filename), finalDestination))
+                    futures.append(pool.submit(translateReport, translator, extractor, os.path.join(subdir, filename), finalDestination))
         
             dones = 0
             for _ in cf.as_completed(futures):
