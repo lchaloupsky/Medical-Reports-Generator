@@ -24,16 +24,16 @@ class _DeepLClientState():
 		}
 	}
 
-	def getState(self) -> Response:
+	def get_state(self) -> Response:
 		global _proxy
 		while True:
 			try:
-				return requests.post(self._url, data=json.dumps(self._getBody()), headers={'Content-Type': 'application/json', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:94.0) Gecko/20100101 Firefox/94.0'}, proxies={'https': 'http://' + _proxies[_proxy], 'http': 'http://' + _proxies[_proxy]}, timeout=10000)
+				return requests.post(self._url, data=json.dumps(self._get_body()), headers={'Content-Type': 'application/json', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:94.0) Gecko/20100101 Firefox/94.0'}, proxies={'https': 'http://' + _proxies[_proxy], 'http': 'http://' + _proxies[_proxy]}, timeout=10000)
 			except Exception as e:
 				print(e)
 				_proxy = 0 if _proxy == len(_proxies) - 1 else _proxy + 1
 
-	def _getBody(self) -> dict:
+	def _get_body(self) -> dict:
 		body = self._body.copy()
 		body["id"] = 10000 * round(random.random() * 1e4) #random.randrange(100, 10000) * 1000
 
@@ -86,55 +86,55 @@ class DeepLTranslator(Translator):
 
 	def __init__(self) -> None:
 		super().__init__()
-		self._clientState = _DeepLClientState()
-		self._idNumber = json.loads(self._clientState.getState().text)["id"] #80030004
-		self._lastRequestTime = 0
-		self._requestCount = 0
+		self._client_state = _DeepLClientState()
+		self._id_number = json.loads(self._client_state.get_state().text)["id"] #80030004
+		self._last_request_time = 0
+		self._request_count = 0
 
 	def reset(self) -> None:
 		global _proxy
 		_proxy = 0 if _proxy == len(_proxies) - 1 else _proxy + 1 
-		print(_proxy, self._requestCount)
-		self._clientState = _DeepLClientState()
-		self._idNumber = json.loads(self._clientState.getState().text)["id"]
+		print(_proxy, self._request_count)
+		self._client_state = _DeepLClientState()
+		self._id_number = json.loads(self._client_state.get_state().text)["id"]
 
 	def translate(self, text: str) -> Response:
-		self._requestCount += 1
-		if self._requestCount % 10 == 0:
+		self._request_count += 1
+		if self._request_count % 10 == 0:
 			self.reset()
 
 		# maybe do locking to be thread safe?
-		while not self._canSendRequest():
+		while not self._can_send_request():
 			# wait at least self._PAUSE seconds between consecutive requests
-			time.sleep(abs(self._PAUSE + self._lastRequestTime - time.time()))
+			time.sleep(abs(self._PAUSE + self._last_request_time - time.time()))
 		
-		reponse, retryCounter, failedProxies = None, 0, 0
+		reponse, retry_counter, failed_proxies = None, 0, 0
 		while True:
 			try:
 				reponse = requests.post(self._url, data=json.dumps(self._fill_text(text)), headers=self._headers, proxies={'https': 'http://' + _proxies[_proxy], 'http': 'http://' + _proxies[_proxy]}, timeout=10000)
-				failedProxies = 0
+				failed_proxies = 0
 				break
 			except Exception as e:
-				retryCounter += 1
-				if retryCounter == 2:
+				retry_counter += 1
+				if retry_counter == 2:
 					print(f"Proxy: {_proxy} failed. {e}")
-					failedProxies += 1
-					retryCounter = 0
+					failed_proxies += 1
+					retry_counter = 0
 					self.reset()
 
-			if failedProxies == len(_proxies) - 1:
+			if failed_proxies == len(_proxies) - 1:
 				print("All proxies failed.")
 				break
 		
-		self._lastRequestTime = time.time()
+		self._last_request_time = time.time()
 		return reponse
 
-	def getText(self, text:str, response: Response) -> str:
+	def get_text(self, text:str, response: Response) -> str:
 		response = json.loads(response.text)
 		return self._recreate_original_text(text, list(map(lambda x: x['beams'][0]['sentences'][0]['text'], response['result']['translations'])))
 
-	def _canSendRequest(self) -> bool:
-		return time.time() - self._lastRequestTime >= self._PAUSE
+	def _can_send_request(self) -> bool:
+		return time.time() - self._last_request_time >= self._PAUSE
 
 	def _fill_text(self, text: str) -> dict:
 		'''Splits text to translate into suitable DeepL parts and fills request object with them.'''
@@ -142,8 +142,8 @@ class DeepLTranslator(Translator):
 
 		obj = copy.deepcopy(self._body)
 
-		self._idNumber += 1
-		obj["id"] = self._idNumber
+		self._id_number += 1
+		obj["id"] = self._id_number
 
 		# this interesting timestamp construction is reverse engeneered from the site.
 		#timestamp = int(time.time() * 10) * 100 + 1000

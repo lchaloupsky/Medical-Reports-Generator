@@ -31,7 +31,7 @@ class CapitalizeStartsPreprocessor(Preprocessor):
 
     def _capitalize(self, text: str) -> str:
         start = len(text) - len(text.lstrip())
-        return text[0:start] + text[start:].capitalize()
+        return text[0:start] + text[start:start+1].upper() + text[start + 1:]
 
 text2 = "                                 FINAL REPORT\n\
  EXAMINATION:  CHEST (PORTABLE AP)\n\

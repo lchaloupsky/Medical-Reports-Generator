@@ -3,9 +3,9 @@
 from extractors.extractor import Extractor
 
 class MimicReportExtractor(Extractor):
-    def __init__(self, baseDir="."):
-        self.baseDir = "{0}/".format(baseDir)
+    def __init__(self, base_dir="."):
+        super().__init__(base_dir)
 
-    def extractReport(self, fileName: str) -> str:
-        with open(fileName) as file:
+    def extract_report(self, file_name: str) -> str:
+        with open(file_name) as file:
             return "".join(file.readlines())

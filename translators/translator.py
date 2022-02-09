@@ -10,6 +10,6 @@ class Translator(ABC):
 		raise NotImplementedError()
 
 	@abstractmethod
-	def getText(self, text:str, response: Response) -> str:
+	def get_text(self, text: str, response: Response) -> str:
 		'''Recreates translated text from response.'''
 		raise NotImplementedError()

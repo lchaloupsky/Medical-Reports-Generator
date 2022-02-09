@@ -14,12 +14,13 @@ class CubbittTranslator(Translator):
 	}
 
 	def __init__(self, model: str = "doc-en-cs"):
+		super().__init__()
 		self._model = model
 
 	def translate(self, text: str) -> Response:
 		return requests.post(self._create_url(), data=self._fill_text(text))
 
-	def getText(self, _:str, response: Response) -> str:
+	def get_text(self, _:str, response: Response) -> str:
 		return response.text[:-1]
 
 	def _create_url(self):

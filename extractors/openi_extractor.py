@@ -6,11 +6,11 @@ from xml.dom import minidom
 from extractors.extractor import Extractor
 
 class OpenIReportExtractor(Extractor):
-    def __init__(self, baseDir="."):
-        self.baseDir = "{0}/".format(baseDir)
+    def __init__(self, base_dir="."):
+        super().__init__(base_dir)
 
-    def extractReport(self, fileName: str) -> str:
-        report_xml = minidom.parse(os.path.join(self.baseDir, fileName))
+    def extract_report(self, file_name: str) -> str:
+        report_xml = minidom.parse(os.path.join(self.base_dir, file_name))
         abstract_texts_xml = report_xml \
             .getElementsByTagName("MedlineCitation")[0] \
             .getElementsByTagName("Article")[0] \

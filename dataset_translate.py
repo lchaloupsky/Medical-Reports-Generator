@@ -32,12 +32,12 @@ def _preprocess(text: str) -> str:
     
     return text
 
-def _logError(filename: str, response: Response):
+def _log_error(filename: str, response: Response):
     logging.error("Maximum repeat count reached. Cannot translate report: {}\n Reason code: {}\n Reason: {}".format(filename, response.status_code, response.reason))
 
-def translateReport(translator: Translator, extractor: Extractor, filename: str, destination: str):
+def translate_report(translator: Translator, extractor: Extractor, filename: str, destination: str):
     # extract text from a file
-    text = extractor.extractReport(filename)
+    text = extractor.extract_report(filename)
     #if "1022" in filename:
     #    print(text)
 
@@ -58,13 +58,13 @@ def translateReport(translator: Translator, extractor: Extractor, filename: str,
 
             if repeats == MAX_REPEAT_COUNT:
                 print("Cannot translate report: {}. Reason: {}".format(filename, response.reason))
-                _logError(filename, response)
+                _log_error(filename, response)
                 return 0
 
             continue
 
         # get translated text from response
-        translation = translator.getText(text, response)
+        translation = translator.get_text(text, response)
 
         # save into a file
         os.makedirs(destination, exist_ok=True)
@@ -73,19 +73,19 @@ def translateReport(translator: Translator, extractor: Extractor, filename: str,
 
         return 1
 
-def _getTranslator(args: argparse.Namespace) -> Translator:
+def _get_translator(args: argparse.Namespace) -> Translator:
     return DeepLTranslator() if args.translator == "deepl" else CubbittTranslator()
 
-def _getExtractor(args: argparse.Namespace) -> Extractor:
+def _get_extractor(args: argparse.Namespace) -> Extractor:
     return OpenIReportExtractor() if args.dataset == "openi" else MimicReportExtractor()
 
-def _getDatasetLocation(args: argparse.Namespace) -> str:
+def _get_dataset_location(args: argparse.Namespace) -> str:
     if args.data != None:
         return args.data
 
     return "./data/{}".format(DATASET_FOLDERS[args.dataset])
 
-def _getPreprocessors(args: argparse.Namespace, extractor: Extractor) -> str:
+def _get_preprocessors(args: argparse.Namespace, extractor: Extractor) -> str:
     if args.preprocess == "lowercase":
         PREPROCESSORS.extend([
             LowercasePreprocessor(), 
@@ -95,8 +95,10 @@ def _getPreprocessors(args: argparse.Namespace, extractor: Extractor) -> str:
         PREPROCESSORS.extend([
             LineStartsPreprocessor(), 
             AnonymousSequencePreprocessor(args.anonymous_seq), 
-            TrueCasingPreprocessor(extractor, _getDatasetLocation(args), args.dataset), 
-            SemicolonParagraphPreprocessor(), 
+            TrueCasingPreprocessor(extractor, _get_dataset_location(args), args.dataset), 
+            SemicolonParagraphPreprocessor(),
+            CapitalizeStartsPreprocessor(),
+            TimePreprocessor(), 
             WhitespacesSquashPreprocessor()
         ])
 
@@ -107,26 +109,26 @@ def main(args: argparse.Namespace):
 
     # create background jobs and translate
     futures = []
-    translator = _getTranslator(args)
-    extractor = _getExtractor(args)
-    _getPreprocessors(args, extractor)
+    translator = _get_translator(args)
+    extractor = _get_extractor(args)
+    _get_preprocessors(args, extractor)
 
-    finalSum, finalDestination = 0, None
+    final_sum, final_destination = 0, None
     i = 0
     with ThreadPoolExecutor(max_workers=32) as pool:
         try:
-            for subdir, _, filenames in os.walk(_getDatasetLocation(args)):
-                finalDestination = os.path.join(destination, os.path.normpath(subdir))
-                finalSum += len(filenames)
+            for subdir, _, filenames in os.walk(_get_dataset_location(args)):
+                final_destination = os.path.join(destination, os.path.normpath(subdir))
+                final_sum += len(filenames)
                 for filename in filenames:
                     #i += 1
 
-                    #translateReport(translator, extractor, os.path.join(subdir, filename), finalDestination)
+                    #translate_report(translator, extractor, os.path.join(subdir, filename), final_destination)
                     #if i == 100:
                     #    break
                     
                     # create new job
-                    futures.append(pool.submit(translateReport, translator, extractor, os.path.join(subdir, filename), finalDestination))
+                    futures.append(pool.submit(translate_report, translator, extractor, os.path.join(subdir, filename), final_destination))
         
             dones = 0
             for _ in cf.as_completed(futures):
@@ -140,8 +142,8 @@ def main(args: argparse.Namespace):
             raise e
 
     done_sum = sum(map(lambda f: f.result(), futures))
-    if done_sum != finalSum:
-        print("{} report(s) cannot be translated, please check the log file for additional information.".format(finalSum - done_sum))
+    if done_sum != final_sum:
+        print("{} report(s) cannot be translated, please check the log file for additional information.".format(final_sum - done_sum))
 
     logging.shutdown()
 

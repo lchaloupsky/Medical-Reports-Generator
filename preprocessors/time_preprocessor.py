@@ -12,16 +12,16 @@ class TimePreprocessor(Preprocessor):
         '''
         for found in reversed(list(re.finditer(r'(a|A|p|P)\.{,1}(m|M)\.{,1}', text))):
             # skip those where the found part is not preceded with a number
-            if not self._isTime(text, found.start()): 
+            if not self._is_time(text, found.start()): 
                 continue
             
-            digits_start, digits_end = self._getDigitsRange(text, found.start(), found.end())
-            text = text[:digits_start] + self._getCorrectTime(text, found.start(), found.end(), digits_start, digits_end) + text[found.end():]
+            digits_start, digits_end = self._get_digits_range(text, found.start(), found.end())
+            text = text[:digits_start] + self._get_correct_time(text, found.start(), found.end(), digits_start, digits_end) + text[found.end():]
 
         # delete all common whitespaces and return processed text
         return text
 
-    def _getCorrectTime(self, text: str, start: int, end: int, digits_start: int, digits_end: int):
+    def _get_correct_time(self, text: str, start: int, end: int, digits_start: int, digits_end: int):
         corrected = text[digits_start : digits_end + 1]
         # incorrect time format
         if ":" not in text[digits_start : digits_end + 1]:
@@ -36,7 +36,7 @@ class TimePreprocessor(Preprocessor):
         # return final corrected time text
         return f"{corrected} {text[start:end]}"
 
-    def _getDigitsRange(self, text: str, start: int, end: int):
+    def _get_digits_range(self, text: str, start: int, end: int):
         digits_start, digits_end = start, None
         for i in range(start - 1, -1, -1):
             if str.isspace(text[i]) or text[i] == ":": 
@@ -49,7 +49,7 @@ class TimePreprocessor(Preprocessor):
 
         return digits_start, digits_end
 
-    def _isTime(self, text: str, start: int) -> bool:
+    def _is_time(self, text: str, start: int) -> bool:
         for i in range(start - 1, -1, -1):
             if str.isspace(text[i]): 
                 continue
