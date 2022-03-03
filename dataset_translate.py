@@ -95,6 +95,7 @@ def _get_preprocessors(args: argparse.Namespace, extractor: Extractor) -> str:
         PREPROCESSORS.extend([
             LineStartsPreprocessor(), 
             AnonymousSequencePreprocessor(args.anonymous_seq), 
+            UnitsPreprocessor(),
             TrueCasingPreprocessor(extractor, _get_dataset_location(args), args.dataset), 
             SemicolonParagraphPreprocessor(),
             CapitalizeStartsPreprocessor(),
@@ -123,7 +124,9 @@ def main(args: argparse.Namespace):
                 for filename in filenames:
                     #i += 1
 
+                    #if "960" in filename:
                     #translate_report(translator, extractor, os.path.join(subdir, filename), final_destination)
+                    
                     #if i == 100:
                     #    break
                     
@@ -139,6 +142,8 @@ def main(args: argparse.Namespace):
         except KeyboardInterrupt as e:
             # stop all running threads
             pool.shutdown(wait=False, cancel_futures=True)
+            pool._threads.clear()
+            cf.thread._threads_queues.clear()
             raise e
 
     done_sum = sum(map(lambda f: f.result(), futures))

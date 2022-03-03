@@ -4,7 +4,6 @@ import re
 
 from preprocessors.preprocessor import Preprocessor
 
-# TODO: differentiate between 10 10pm and 10 45pm - question
 class TimePreprocessor(Preprocessor):
     def preprocess(self, text: str) -> str:
         '''Finds all incorrectly written english form times(not dates) and corrects them.
@@ -61,5 +60,7 @@ class TimePreprocessor(Preprocessor):
 
         return False
 
+# TODO: 12pmplease/3pmasses examples? - should it be splitted or not?
+
 #t = TimePreprocessor()
-#print(t.preprocess("945AM ds da \n \n 10 10pm 5:06 A.M. 5:06AM \n \n dsad sad as 9AM I am happy"))
+#print(t.preprocess("945AM ds 945 AM da \n \n 10 10pm 5:06 A.M. 5:06AM \n \n dsad 4pmsad as 9AM I am happy"))
