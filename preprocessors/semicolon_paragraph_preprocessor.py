@@ -19,7 +19,10 @@ class SemicolonParagraphPreprocessor(Preprocessor):
             # if there is some headline with no text starting on the same line:
             if line_split and line_split[-1][-1] == self.SEMICOLON:            
                 while True:
-                    next_line = next(line_iter)
+                    # There is an empty heading as the final line of the text
+                    if (next_line := next(line_iter, None)) is None:
+                        break
+
                     next_lines.append(next_line)
                     
                     # skip empty lines
@@ -39,7 +42,7 @@ class SemicolonParagraphPreprocessor(Preprocessor):
         # return processed text
         return '\n'.join(final_lines)
 
-s = SemicolonParagraphPreprocessor()
+#s = SemicolonParagraphPreprocessor()
 text = "                                 Final Report\n\
  Examination:  Chest (PA And Lat)\n\
 \n\
@@ -59,6 +62,8 @@ text = "                                 Final Report\n\
  Impression:\n\
 \n\
  Large left pleural effusion"
+
+#print(s.preprocess(text))
 
 text2 = "                                 FINAL REPORT\n\
  EXAMINATION:  CHEST (PORTABLE AP)\n\
@@ -81,3 +86,10 @@ text2 = "                                 FINAL REPORT\n\
  No acute intrathoracic process."
 
 #print(s.preprocess(text2))
+
+text3 = "Comparison: None.\n\n\
+Indication: SOB WITH XXXX\n\n\
+Findings: The trachea is midline. The cardiomediastinal silhouette is normal. The lungs are clear, without evidence of acute infiltrate or effusion. There is no pneumothorax. The visualized bony structures reveal no acute abnormalities.\n\n\
+Impression: "
+
+#print(s.preprocess(text3))

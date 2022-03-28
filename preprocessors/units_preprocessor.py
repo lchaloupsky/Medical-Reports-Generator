@@ -24,7 +24,6 @@ class UnitsPreprocessor(Preprocessor):
         if not word or word.isspace() or not word[0].isdigit():
             return word
 
-        print(word)
         num_part, text_part = self._split_word(word)
         # the text part contains also some numbers - it is not any unit, but some medical thing e.g. 3N0M0
         if not text_part.isalpha() and text_part.lower() not in UnitsPreprocessor._NUMBER_EXCEPTIONS:

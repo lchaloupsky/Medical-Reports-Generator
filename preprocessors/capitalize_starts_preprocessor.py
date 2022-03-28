@@ -27,13 +27,13 @@ class CapitalizeStartsPreprocessor(Preprocessor):
         return "\n".join(map(self._map_paragraph_lines, title.split("\n")))
 
     def _map_paragraph_lines(self, par: str) -> str:
-        return "".join(map(self._capitalize, re.split(r"([.?!]+)", par)))
+        return "".join(map(self._capitalize, re.split(r"([.?!;]+)", par)))
 
     def _capitalize(self, text: str) -> str:
         start = len(text) - len(text.lstrip())
         return text[0:start] + text[start:start+1].upper() + text[start + 1:]
 
-text2 = "                                 FINAL REPORT\n\
+text = "                                 FINAL REPORT\n\
  EXAMINATION:  CHEST (PORTABLE AP)\n\
  \n\
  INDICATION:  ___F with cough  // acute process?\n\
@@ -52,6 +52,25 @@ text2 = "                                 FINAL REPORT\n\
  IMPRESSION: \n\
  \n\
  No acute intrathoracic process."
+
+#p = CapitalizeStartsPreprocessor()
+#print(p.preprocess(text.lower()))
+
+text2 = "                                 FINAL ADDENDUM\n\
+ ADDENDUM:  Findings were discussed with Dr. ___ ___ the phone by radiology\n\
+ resident, Dr. ___ ___ at 1:45 p.m. on ___.\n\
+ \n\
+ ______________________________________________________________________________\n\
+                                 FINAL REPORT\n\
+ REASON FOR EXAMINATION:  Evaluation of the patient with pneumothorax.\n\
+ \n\
+ Portable AP radiograph of the chest was compared to prior study obtained on\n\
+ ___.\n\
+ \n\
+ There is currently presence of moderate pneumothorax and no evidence of\n\
+ effusion in the upper portion of the pleura demonstrated.  The extensive\n\
+ consolidation over the lungs is redemonstrated.  Overall, no substantial\n\
+ change otherwise since the prior study seen."
 
 #p = CapitalizeStartsPreprocessor()
 #print(p.preprocess(text2.lower()))

@@ -11,12 +11,14 @@ from concurrent.futures import ThreadPoolExecutor
 from preprocessors import *
 from translators import *
 from extractors import *
+from utils import *
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--translator', default='cubbit', choices=['cubbitt', 'deepl'], type=str, help="Translator used for reports translation.")
 parser.add_argument('--dataset', default='mimic', choices=['mimic', 'openi'], type=str, help="Dataset intended for translation.")
 parser.add_argument('--data', default=None, type=str, help="Dataset location path.")
 parser.add_argument('--preprocess', default="pipeline", choices=["lowercase", "pipeline", "none"], type=str, help="Dataset preprocessing mode.")
+parser.add_argument('--preprocess_only', default=False, type=bool, help="Flag indicating whether the data should be only preprocessed without translation.")
 parser.add_argument('--anonymous_seq', default=None, type=str, help="A common start of every anonymous character sequence in reports.")
 
 os.makedirs("logs", exist_ok=True)
@@ -35,7 +37,7 @@ def _preprocess(text: str) -> str:
 def _log_error(filename: str, response: Response):
     logging.error("Maximum repeat count reached. Cannot translate report: {}\n Reason code: {}\n Reason: {}".format(filename, response.status_code, response.reason))
 
-def translate_report(translator: Translator, extractor: Extractor, filename: str, destination: str):
+def translate_report(translator: Translator, extractor: Extractor, filename: str, destination: str, preprocess_only: bool):
     # extract text from a file
     text = extractor.extract_report(filename)
     #if "1022" in filename:
@@ -45,7 +47,7 @@ def translate_report(translator: Translator, extractor: Extractor, filename: str
     text = _preprocess(text)
 
     repeats = 0
-    while True:
+    while not preprocess_only:
         # send request to translate
         response = translator.translate(text)
         response.encoding = 'utf-8'     #response.apparent_encoding
@@ -64,14 +66,15 @@ def translate_report(translator: Translator, extractor: Extractor, filename: str
             continue
 
         # get translated text from response
-        translation = translator.get_text(text, response)
+        text = translator.get_text(text, response)
+        break
 
-        # save into a file
-        os.makedirs(destination, exist_ok=True)
-        with open("{}/{}.txt".format(destination, os.path.splitext(os.path.basename(filename))[0]), "w", encoding="utf-8") as file:
-            file.write(translation)
+    # save into a file
+    os.makedirs(destination, exist_ok=True)
+    with open("{}/{}.txt".format(destination, os.path.splitext(os.path.basename(filename))[0]), "w", encoding="utf-8") as file:
+        file.write(text)
 
-        return 1
+    return 1
 
 def _get_translator(args: argparse.Namespace) -> Translator:
     return DeepLTranslator() if args.translator == "deepl" else CubbittTranslator()
@@ -85,6 +88,9 @@ def _get_dataset_location(args: argparse.Namespace) -> str:
 
     return "./data/{}".format(DATASET_FOLDERS[args.dataset])
 
+def _get_skip_regex(args: argparse.Namespace) -> str:
+    return None if args.dataset == "openi" else r" {3,}FINAL +.*\n"
+
 def _get_preprocessors(args: argparse.Namespace, extractor: Extractor) -> str:
     if args.preprocess == "lowercase":
         PREPROCESSORS.extend([
@@ -96,7 +102,7 @@ def _get_preprocessors(args: argparse.Namespace, extractor: Extractor) -> str:
             LineStartsPreprocessor(), 
             AnonymousSequencePreprocessor(args.anonymous_seq), 
             UnitsPreprocessor(),
-            TrueCasingPreprocessor(extractor, _get_dataset_location(args), args.dataset), 
+            TrueCasingPreprocessor(extractor, _get_dataset_location(args), args.dataset, _get_skip_regex(args)), 
             SemicolonParagraphPreprocessor(),
             CapitalizeStartsPreprocessor(),
             TimePreprocessor(), 
@@ -116,7 +122,8 @@ def main(args: argparse.Namespace):
 
     final_sum, final_destination = 0, None
     i = 0
-    with ThreadPoolExecutor(max_workers=32) as pool:
+    print(f"Translating '{args.dataset}' dataset.")
+    with ThreadPoolExecutor(max_workers=32) as pool, ProgressBar(get_total_dir_size(_get_dataset_location(args)), 1) as progress_bar:
         try:
             for subdir, _, filenames in os.walk(_get_dataset_location(args)):
                 final_destination = os.path.join(destination, os.path.normpath(subdir))
@@ -131,14 +138,12 @@ def main(args: argparse.Namespace):
                     #    break
                     
                     # create new job
-                    futures.append(pool.submit(translate_report, translator, extractor, os.path.join(subdir, filename), final_destination))
+                    futures.append(pool.submit(translate_report, translator, extractor, os.path.join(subdir, filename), final_destination, args.preprocess_only))
         
-            dones = 0
-            for _ in cf.as_completed(futures):
-                dones += 1
-                print("Currently processed: {}".format(dones), end='\r')
+            for f in cf.as_completed(futures):
+                i += f.result()
+                progress_bar.update()
 
-            print("\nTranslation done.")
         except KeyboardInterrupt as e:
             # stop all running threads
             pool.shutdown(wait=False, cancel_futures=True)
@@ -146,7 +151,11 @@ def main(args: argparse.Namespace):
             cf.thread._threads_queues.clear()
             raise e
 
+    print(f"The translation of '{args.dataset}' is done.")
+    #print(list(map(lambda f: f.result(), futures)))
+    print(i)
     done_sum = sum(map(lambda f: f.result(), futures))
+    print(done_sum)
     if done_sum != final_sum:
         print("{} report(s) cannot be translated, please check the log file for additional information.".format(final_sum - done_sum))
 
