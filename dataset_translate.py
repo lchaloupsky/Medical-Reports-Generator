@@ -24,9 +24,10 @@ parser.add_argument('--anonymous_seq', default=None, type=str, help="A common st
 os.makedirs("logs", exist_ok=True)
 logging.basicConfig(filename='logs/output_{}.log'.format(datetime.datetime.now().strftime("%d_%m_%Y__%H_%M_%S")), encoding='utf-8', filemode='w', level=logging.DEBUG, datefmt='%Y-%d-%m %H:%M:%S')
 
-MAX_REPEAT_COUNT = 5
+MAX_REPEAT_COUNT: int = 5
 PREPROCESSORS: list[Preprocessor] = []
-DATASET_FOLDERS = {"openi": "ecgen-radiology", "mimic": "files"}
+DATASET_FOLDERS: dict[str, str] = {"openi": "ecgen-radiology", "mimic": "files"}
+MAX_CONCURRENT_TASK_SUBMITTED_COUNT: int = 64
 
 def _preprocess(text: str) -> str:
     for preprocessor in PREPROCESSORS:
@@ -109,6 +110,13 @@ def _get_preprocessors(args: argparse.Namespace, extractor: Extractor) -> str:
             WhitespacesSquashPreprocessor()
         ])
 
+def _wait_for_completion(futures: list[cf.Future], progress_bar: ProgressBar) -> int:
+    def update(f: cf.Future) -> int:
+        progress_bar.update()
+        return f.result()
+
+    return sum([update(f) for f in cf.as_completed(futures)])
+
 def main(args: argparse.Namespace):
     # create dir for current translations
     destination = "./translations/translations_{}_{}_{}".format(args.dataset, args.translator, datetime.datetime.now().strftime("%d_%m_%Y__%H_%M_%S"))
@@ -120,29 +128,28 @@ def main(args: argparse.Namespace):
     extractor = _get_extractor(args)
     _get_preprocessors(args, extractor)
 
-    final_sum, final_destination = 0, None
-    i = 0
+    total, done_sum, final_destination = 0, 0, None
     print(f"Translating '{args.dataset}' dataset.")
     with ThreadPoolExecutor(max_workers=32) as pool, ProgressBar(get_total_dir_size(_get_dataset_location(args)), 1) as progress_bar:
         try:
             for subdir, _, filenames in os.walk(_get_dataset_location(args)):
                 final_destination = os.path.join(destination, os.path.normpath(subdir))
-                final_sum += len(filenames)
                 for filename in filenames:
-                    #i += 1
-
+                    ### DEBUG ###
                     #if "960" in filename:
                     #translate_report(translator, extractor, os.path.join(subdir, filename), final_destination)
                     
                     #if i == 100:
                     #    break
+                    #############
                     
                     # create new job
                     futures.append(pool.submit(translate_report, translator, extractor, os.path.join(subdir, filename), final_destination, args.preprocess_only))
-        
-            for f in cf.as_completed(futures):
-                i += f.result()
-                progress_bar.update()
+                    if (total := total + 1) % MAX_CONCURRENT_TASK_SUBMITTED_COUNT == 0:
+                        done_sum += _wait_for_completion(futures, progress_bar)
+                        futures = []
+            
+            done_sum += _wait_for_completion(futures, progress_bar)                 
 
         except KeyboardInterrupt as e:
             # stop all running threads
@@ -151,13 +158,9 @@ def main(args: argparse.Namespace):
             cf.thread._threads_queues.clear()
             raise e
 
-    print(f"The translation of '{args.dataset}' is done.")
-    #print(list(map(lambda f: f.result(), futures)))
-    print(i)
-    done_sum = sum(map(lambda f: f.result(), futures))
-    print(done_sum)
-    if done_sum != final_sum:
-        print("{} report(s) cannot be translated, please check the log file for additional information.".format(final_sum - done_sum))
+    print(f"The translation of '{args.dataset}' dataset is done.")
+    if done_sum != total:
+        print(f"{total - done_sum} report(s) cannot be translated, please check the log file for additional information.")
 
     logging.shutdown()
 
