@@ -1,14 +1,11 @@
 import datasets
-import sys
 import itertools
 
 from pathlib import Path
 
 class DatasetsWrapper:
-    def __init__(self, *args, dataset = None, batch_size = 1000, min_text_len = None, max_text_len = None, stream_iter = False, **kwargs):
+    def __init__(self, *args, dataset = None, batch_size = 1000, stream_iter = False, **kwargs):
         self.batch_size = batch_size
-        self.min_text_len = min_text_len if min_text_len is not None else 0
-        self.max_text_len = max_text_len if max_text_len is not None else sys.maxsize
         self.stream_iter = stream_iter
         self.control_chars_filter = ControlCharsFilter()
 
@@ -47,16 +44,11 @@ class DatasetsWrapper:
 
     def _stream_iter(self):
         for text in self._dataset:
-            if self._is_usable(text["text"]):
-                yield text["text"]
+            yield text["text"]
 
     def _batch_iter(self):
         for start in range(0, len(self._dataset), self.batch_size):
-            yield list(filter(self._is_usable, self._dataset[start:start + self.batch_size]["text"]))
-
-    def _is_usable(self, text):
-        txt_len = len(text)
-        return txt_len >= self.min_text_len and txt_len <= self.max_text_len
+            yield self._dataset[start:start + self.batch_size]["text"]
 
     def __getattr__(self, __name: str):
         attr = getattr(self._dataset, __name)
@@ -76,15 +68,11 @@ class DatasetsWrapper:
     def _copy_self(self, dataset):
         return DatasetsWrapper(
             dataset=dataset,
-            batch_size=self.batch_size, 
-            min_text_len=self.min_text_len, 
-            max_text_len=self.max_text_len
+            batch_size=self.batch_size
         )
 
-    def _filter_out_control_chars(self, text):
-        return self.control_chars_filter.filter(text)
-
-    def save_to_file(self, path, text_delim="", filter_control_chars=True):
+    def save_to_file(self, path, text_delim="", control_chars_behaviour="remove"):
+        '''control_chars_behaviour - one of [None, "filter", "remove"].'''
         datasets_to_save = []
         if isinstance(self._dataset, dict):
             datasets_to_save = datasets_to_save.extend(zip(self._dataset.keys(), map(self._copy_self, self._dataset.values())))
@@ -96,8 +84,10 @@ class DatasetsWrapper:
         for k, d in datasets_to_save:
             with open(f"{path/k}.txt", "wt") as f:
                 for text in d:
-                    if filter_control_chars:
-                        text = self._filter_out_control_chars(text)
+                    if control_chars_behaviour == "filter":
+                        text = self.control_chars_filter.filter(text)
+                    elif control_chars_behaviour == "remove" and self.control_chars_filter.contains_control_chars(text):
+                        continue
 
                     f.write(f"{text}\n{text_delim}")
 
@@ -105,6 +95,10 @@ class ControlCharsFilter:
     _CONTROL_CHARS = set(map(chr, itertools.chain(range(0x00, 0x20), range(0x7f, 0xa0))))
     _CONTROL_CHARS_EXCEPTIONS = {"\n", "\r", "\t"}
     _CONTROL_CHARS_MAP = {ord(char):None for char in _CONTROL_CHARS - _CONTROL_CHARS_EXCEPTIONS}
+
+    def contains_control_chars(self, text):
+        text_len = len(text)
+        return text_len != len(self.filter(text))
 
     def filter(self, text):
         return text.translate(self._CONTROL_CHARS_MAP)
