@@ -1,0 +1,54 @@
+This is BibTeX, Version 0.99d (TeX Live 2019/W32TeX)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: thesis.aux
+A level-1 auxiliary file: title.aux
+A level-1 auxiliary file: preface.aux
+A level-1 auxiliary file: chap01.aux
+A level-1 auxiliary file: chap02.aux
+A level-1 auxiliary file: epilog.aux
+A level-1 auxiliary file: bibliography.aux
+The style file: plainnat.bst
+Database file #1: bibliography.bib
+Warning--empty journal in radford2019language
+You've used 2 entries,
+            2773 wiz_defined-function locations,
+            611 strings with 5187 characters,
+and the built_in function-call counts, 916 in all, are:
+= -- 72
+> -- 67
+< -- 1
++ -- 23
+- -- 21
+* -- 72
+:= -- 158
+add.period$ -- 8
+call.type$ -- 2
+change.case$ -- 12
+chr.to.int$ -- 2
+cite$ -- 5
+duplicate$ -- 40
+empty$ -- 64
+format.name$ -- 23
+if$ -- 180
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 3
+newline$ -- 19
+num.names$ -- 8
+pop$ -- 28
+preamble$ -- 1
+purify$ -- 11
+quote$ -- 0
+skip$ -- 31
+stack$ -- 0
+substring$ -- 4
+swap$ -- 1
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 17
+warning$ -- 1
+while$ -- 6
+width$ -- 0
+write$ -- 34
+(There was 1 warning)
