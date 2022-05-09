@@ -2,7 +2,7 @@
 ## Overview
 This repository contains source code and text for a diploma thesis dealing with the problem of automatic text report generation to **X-rays**.
 
-:warning: The final task is not implementedyet . There are many subtasks which have to be solved. They are also included in this repository.
+:warning: The final task is not implemented yet. There are many subtasks which must be solved. They are also included in this repository.
 
 ## Repository layout
 The repository contains 3 main parts
