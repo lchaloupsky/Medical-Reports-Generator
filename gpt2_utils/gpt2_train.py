@@ -28,6 +28,7 @@ parser.add_argument('--batch_size', default=4, type=int, help="Dataset name.")
 parser.add_argument('--train_data_ratio', default=0.8, type=float, help="Portion of data to be used for trainig.")
 parser.add_argument('--sequence_length', default=512, type=int, help="Dataset name.")
 parser.add_argument('--debug', default=True, type=bool, help="Turns on debugging mode.")
+parser.add_argument('--resume_training', default=True, type=bool, help="Resumes interrupted training from the newest checkpoint.")
 parser.add_argument('--find_learning_rates', default=False, type=bool, help="Finds initial learning rates.")
 parser.add_argument('--pretokenize_data', default=True, type=bool, help="Pretokenizes whole dataset in advance.")
 parser.add_argument('--save_checkpoints', default=False, type=bool, help="Saves all checkpoints during training.")
@@ -296,10 +297,22 @@ def prepare_data_with_tokenization(config, df, idxs_train, idxs_val, tokenizer_c
 
 class DropOutput(Callback):
     def after_pred(self):
-        # Tecause GPT2 returns a multiple tensors, we need to keep only the predictions 
+        # Because GPT2 returns a multiple tensors, we need to keep only the predictions 
         # The rest of it are additional activations, which can be used for some regularization
         # Note: self.pred is just a READ ONLY shortcut for self.lear.pred 
         self.learn.pred = self.pred[0]
+
+class StartFromEpoch(Callback):
+    def __init__(self, start_epoch):
+        self.start_epoch = start_epoch
+
+    def before_train(self):
+        if self.epoch < self.start_epoch: 
+            raise CancelEpochException
+
+    def before_validate(self):
+        if self.epoch < self.start_epoch: 
+            raise CancelValidException
 
 def splitter(n=4):
     '''
@@ -345,8 +358,8 @@ def find_learning_rates(training_data_path, learn, exit=True, name="lr_plot"):
 
     if exit: sys.exit()
 
-def finetune_gradual(config, learn, tokenizer_cs, dataset_name, args):
-    final_dest, checkpoints_dest, training_data_dest = prepare_model_dirs(config, args, dataset_name)
+def finetune_gradual(model_dirs, model_name, learn, tokenizer_cs, dataset_name, args):
+    final_dest, _, training_data_dest = model_dirs
 
     # --- FINE-TUNING ---
     # Freeze whole model except 'wte', 'wpe', 'LayerNorm' and final 'Linear' layer
@@ -357,54 +370,65 @@ def finetune_gradual(config, learn, tokenizer_cs, dataset_name, args):
         find_learning_rates(training_data_dest, learn)
 
     learn.fit_one_cycle(1, args.learning_rates[0])
-    save_checkpoint(learn, checkpoints_dest, f'{args.pretrained_weights}_{dataset_name}_1epoch_lr{args.learning_rates[0]}', args)
+    save_checkpoint(learn, f'{args.pretrained_weights}_{dataset_name}_1epoch_lr{args.learning_rates[0]:.2e}', args)
     plot_and_save_loss(learn, training_data_dest, "loss_1epoch")
 
     # Unfreeze last 'n' decoder blocks
     learn.freeze_to(-2)
     print(learn.summary())
     learn.fit_one_cycle(1, slice(args.learning_rates[1]/(2.6**4), args.learning_rates[1]))
-    save_checkpoint(learn, checkpoints_dest, f'{args.pretrained_weights}_{dataset_name}_2epoch_lr{args.learning_rates[1]}', args)
+    save_checkpoint(learn, f'{args.pretrained_weights}_{dataset_name}_2epoch_lr{args.learning_rates[1]:.2e}', args)
     plot_and_save_loss(learn, training_data_dest, "loss_2epoch")
 
     # Unfreeze last '2n' decoder blocks
     learn.freeze_to(-3)
     print(learn.summary())
     learn.fit_one_cycle(1, slice(args.learning_rates[2]/(2.6**4), args.learning_rates[2]))
-    save_checkpoint(learn, checkpoints_dest, f'{args.pretrained_weights}_{dataset_name}_3epoch_lr{args.learning_rates[2]}', args)
+    save_checkpoint(learn, f'{args.pretrained_weights}_{dataset_name}_3epoch_lr{args.learning_rates[2]:.2e}', args)
     plot_and_save_loss(learn, training_data_dest, "loss_3epoch")
 
     # Unfreeze whole model
     learn.unfreeze()
     print(learn.summary())
     learn.fit_one_cycle(2, slice(args.learning_rates[3]/(2.6**4), args.learning_rates[3]))
-    save_checkpoint(learn, checkpoints_dest, f'{args.pretrained_weights}_{dataset_name}_5epoch_lr{args.learning_rates[3]}_len2', args)
+    save_checkpoint(learn, f'{args.pretrained_weights}_{dataset_name}_5epoch_lr{args.learning_rates[3]:.2e}_len2', args)
     plot_and_save_loss(learn, training_data_dest, "loss_4_5epoch")
 
     # --- SAVING THE MODEL ----
     save_models(final_dest, learn, tokenizer_cs)
 
-def finetune_all_at_once(config, learn, tokenizer_cs, dataset_name, args):
-    final_dest, checkpoints_dest, training_data_dest = prepare_model_dirs(config, args, dataset_name)
+def finetune_all_at_once(model_dirs, model_name, learn, tokenizer_cs, dataset_name, args):
+    final_dest, checkpoint_dest, training_data_dest = model_dirs
 
     # --- FINE-TUNING ---
-    # Freeze whole model except 'wte', 'wpe', 'LayerNorm' and final 'Linear' layer
-    learn.freeze()
-    print(learn.summary())
-    # find learning rates
-    if args.find_learning_rates:
-        find_learning_rates(training_data_dest, learn)
+    if not any(checkpoint_dest.iterdir()) or not args.resume_training:
+        # Freeze whole model except 'wte', 'wpe', 'LayerNorm' and final 'Linear' layer
+        learn.freeze()
+        print(learn.summary())
+        # find learning rates
+        if args.find_learning_rates:
+            find_learning_rates(training_data_dest, learn)
 
-    learn.fit_one_cycle(1, args.learning_rates[0])
-    save_checkpoint(learn, checkpoints_dest, f'{args.pretrained_weights}_{dataset_name}_1epoch_lr{args.learning_rates[0]}', args)
-    plot_and_save_loss(learn, training_data_dest, "loss_1epoch")
+        learn.fit_one_cycle(1, args.learning_rates[0])
+        save_checkpoint(learn, f'{args.pretrained_weights}_{dataset_name}_lr{args.learning_rates[0]:.2e}_e_-1', args)
+        plot_and_save_loss(learn, training_data_dest, "loss_1epoch")
+
+    if args.resume_training:
+        learn, epoch = load_checkpoint(learn, checkpoint_dest)
 
     # Unfreeze whole model
     learn.unfreeze()
+    callbacks = [SaveModelCallback(fname=model_name, every_epoch=True, with_opt=True)] + ([StartFromEpoch(start_epoch=epoch + 1)] if args.resume_training else [])
     print(learn.summary())
-    learn.fit_one_cycle(4, slice(args.learning_rates[1]/(2.6**4), args.learning_rates[1]))
-    save_checkpoint(learn, checkpoints_dest, f'{args.pretrained_weights}_{dataset_name}_5epoch_lr{args.learning_rates[1]}_len4', args)
+    learn.fit_one_cycle(4, 
+        slice(args.learning_rates[1]/(2.6**4), args.learning_rates[1]), 
+        cbs=callbacks
+    )
+    save_checkpoint(learn, f'{args.pretrained_weights}_{dataset_name}_lr{args.learning_rates[1]:.2e}_len4_e_5', args)
     plot_and_save_loss(learn, training_data_dest, "loss_2_5epoch")
+
+    learn.recorder.plot_sched()
+    plt.savefig(training_data_dest/f"lrs.png")
 
     # --- SAVING THE MODEL ----
     save_models(final_dest, learn, tokenizer_cs)
@@ -420,6 +444,13 @@ def save_models(final_dest, learn, tokenizer_cs):
     tf_model.save_pretrained(str(final_dest))
     print("Saved 'tensorflow' version.")
 
+def load_checkpoint(learn, checkpoints_dir, name=None):
+    if name is not None:
+        return learn.load(name)
+    
+    latest_ckpt = max(checkpoints_dir.glob(r"*.pth"), key=lambda f: f.stat().st_ctime).name
+    return learn.load(".".join(latest_ckpt.split(".")[:-1])), int(latest_ckpt.split("_")[-1].split(".")[0])
+
 def prepare_model_dirs(config, args, dataset_name):
     # Prepare all dirs for current model
     model_name = args.model if args.model is not None else f"{args.pretrained_weights}_{dataset_name}_{'_'.join(args.learning.rates)}"
@@ -432,11 +463,11 @@ def prepare_model_dirs(config, args, dataset_name):
     checkpoints_dest.mkdir(exist_ok=True)
     training_data_dest.mkdir(exist_ok=True)
 
-    return final_dest, checkpoints_dest, training_data_dest
+    return (final_dest, checkpoints_dest, training_data_dest), model_name
 
-def save_checkpoint(learn, checkpoints_dest, checkpoint_name, args):
+def save_checkpoint(learn, checkpoint_name, args):
     if args.save_checkpoints:
-        learn.save(checkpoints_dest/checkpoint_name)
+        learn.save(checkpoint_name)
 
 def plot_and_save_loss(learn, destination, plot_name):
     learn.recorder.plot_loss()
@@ -478,17 +509,21 @@ def train(args: argparse.Namespace) -> None:
 
     # Final step - finetuning the gpt2
     # note: to_fp16() turns on the half precision evaluation - uses less GPU memory
+    model_dirs, model_name = prepare_model_dirs(config, args, dataset_name)
     learn = Learner(
         dls, model, 
         loss_func=CrossEntropyLossFlat(),
         splitter=splitter(n=len(model.transformer.h) // 3),
         cbs=[DropOutput], 
         metrics=[accuracy, Perplexity()],
-        model_dir="."
+        path=".",
+        model_dir=model_dirs[1]
     ).to_fp16()
 
-    if args.type == "gradual": finetune_gradual(config, learn, tokenizer_cs, dataset_name, args)
-    else: finetune_all_at_once(config, learn, tokenizer_cs, dataset_name, args)
+    if args.type == "gradual": 
+        finetune_gradual(model_dirs, model_name, learn, tokenizer_cs, dataset_name, args)
+    else: 
+        finetune_all_at_once(model_dirs, model_name, learn, tokenizer_cs, dataset_name, args)
 
 if __name__ == "__main__":
     train(parser.parse_args([] if "__file__" not in globals() else None))
