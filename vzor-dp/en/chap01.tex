@@ -1,7 +1,40 @@
-\chapter{Title of the first chapter}
+\chapter{Problem Analysis}
+This chapter deals with the overall analysis of the problem itself. In the very beginning we present the definition of the problem. Every aspect of the problem is further discussed in detail along with a comparison of possible solutions. Moreover, the next section of the chapter describes data we work with and their alternatives. The final part of this chapter presents some of the important related works.
 
-An~example citation: \cite{Andel07}
+\section{Problem definition}
 
-\section{Title of the first subchapter of the first chapter}
+\section{Methods of generation}
 
-\section{Title of the second subchapter of the first chapter}
+\section{Data}
+In previous part we talked about possible methods of generation. Another crucial aspect we need to discuss are data, which are a basic building block of our thesis. This part focuses on the analysis of the data we used in our thesis, but also on their alternatives. \\
+
+In order to solve our task and train neural network we need to get dataset containing the X-rays images along with their textual descriptions and optionally some other attributes of the examined X-rays. Moreover, the fundamental feature we need is that the data must be in the Czech language.
+
+\subsection{Existing datasets}
+Medical environment provides a plenty of diverse potential problems, which can be researched. As already mentioned, in this thesis we focus specifically on the X-ray images. Because it is not so hard to detect fractures on the limbs, this area is not as interesting as others. One area that is rich in its diversity is the chest. As a result, this area is explored the most and therefore there exists multiple datasets with full textual mecidal reports. In the following section we describe some of them.
+
+\subsubsection{OpenI}
+OpenI dataset description
+\subsubsection{MIMIC-CXR}
+MIMIC-CXR dataset description
+
+\subsection{Czech data}
+All freely available datasets presented in the previous part have one common downside, namely they are not in the Czech language. As a part of elaboration of this thesis an intesive communication with real czech hospitals and other possible sources of real data took place. The goal of this communication was to create the very first open czech dataset of this kind. Processing of this kind of data would mean not only preparing the data into suitable format but also it would include proper anonymization of any personal information about the patients within the data. \\
+
+However, inasmuch as the authentic patients data from hospitals are subject to strict privacy rules and we are not employees of any hospital, the institutions decided that they cannot provide the data in any way without the concious permission of patients given before the examination. With this result we need to find a different way how to obtain this much needed czech data.
+
+\subsection{Translators}
+In the previous sections we discovered that there is no dataset in the Czech language for our problem and there is no easy way how to get acces to the real data. The only thing left is to create a new artificial dataset using an automatic translation. We will compare different freely accesible translators and choose the right for our needs.
+
+\subsubsection{DeepL}
+DeepL description
+\subsubsection{Google Translate}
+GT description
+\subsubsection{CUBBITT}
+CUBBITT description
+
+\section{Language models}
+\subsection{GPT2}
+
+\section{Related work}
+The last section of this chapter is dedicated to description and comparison to some of the related works that solves identical or similar problem as we do.

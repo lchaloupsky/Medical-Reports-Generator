@@ -1,15 +1,9 @@
-\begin{thebibliography}{2}
+\begin{thebibliography}{1}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
-
-\bibitem[Anděl(2007)]{Andel07}
-J.~Anděl.
-\newblock \emph{Základy matematické statistiky}.
-\newblock Druhé opravené vydání. Matfyzpress, Praha, 2007.
-\newblock ISBN 80-7378-001-1.
 
 \bibitem[Radford et~al.(2019)Radford, Wu, Child, Luan, Amodei, and
   Sutskever]{radford2019language}

@@ -10,45 +10,45 @@ A level-1 auxiliary file: bibliography.aux
 The style file: plainnat.bst
 Database file #1: bibliography.bib
 Warning--empty journal in radford2019language
-You've used 2 entries,
+You've used 1 entry,
             2773 wiz_defined-function locations,
-            611 strings with 5187 characters,
-and the built_in function-call counts, 916 in all, are:
-= -- 72
-> -- 67
-< -- 1
-+ -- 23
-- -- 21
-* -- 72
-:= -- 158
-add.period$ -- 8
-call.type$ -- 2
-change.case$ -- 12
-chr.to.int$ -- 2
-cite$ -- 5
-duplicate$ -- 40
-empty$ -- 64
-format.name$ -- 23
-if$ -- 180
+            602 strings with 5073 characters,
+and the built_in function-call counts, 595 in all, are:
+= -- 42
+> -- 57
+< -- 0
++ -- 19
+- -- 18
+* -- 54
+:= -- 103
+add.period$ -- 3
+call.type$ -- 1
+change.case$ -- 9
+chr.to.int$ -- 1
+cite$ -- 3
+duplicate$ -- 20
+empty$ -- 32
+format.name$ -- 19
+if$ -- 111
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 3
-newline$ -- 19
-num.names$ -- 8
-pop$ -- 28
+missing$ -- 1
+newline$ -- 13
+num.names$ -- 4
+pop$ -- 20
 preamble$ -- 1
-purify$ -- 11
+purify$ -- 8
 quote$ -- 0
-skip$ -- 31
+skip$ -- 19
 stack$ -- 0
-substring$ -- 4
-swap$ -- 1
+substring$ -- 2
+swap$ -- 0
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 17
+type$ -- 11
 warning$ -- 1
-while$ -- 6
+while$ -- 3
 width$ -- 0
-write$ -- 34
+write$ -- 18
 (There was 1 warning)
