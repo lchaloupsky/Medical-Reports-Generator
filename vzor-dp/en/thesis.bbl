@@ -1,9 +1,33 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{3}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Demner-Fushman et~al.(2015)Demner-Fushman, Kohli, Rosenman, Shooshan,
+  Rodriguez, Antani, Thoma, and McDonald]{10.1093/jamia/ocv080}
+Dina Demner-Fushman, Marc~D. Kohli, Marc~B. Rosenman, Sonya~E. Shooshan,
+  Laritza Rodriguez, Sameer Antani, George~R. Thoma, and Clement~J. McDonald.
+\newblock {Preparing a collection of radiology examinations for distribution
+  and retrieval}.
+\newblock \emph{Journal of the American Medical Informatics Association},
+  23\penalty0 (2):\penalty0 304--310, 07 2015.
+\newblock ISSN 1067-5027.
+\newblock \doi{10.1093/jamia/ocv080}.
+\newblock URL \url{https://doi.org/10.1093/jamia/ocv080}.
+
+\bibitem[Popel et~al.(2020)Popel, Tomkova, Tomek, Kaiser, Uszkoreit, Bojar, and
+  {\v{Z}}abokrtsk{\'{y}}]{biblio:PoToTransformingmachine2020}
+Martin Popel, Marketa Tomkova, Jakub Tomek, {\L}ukasz Kaiser, Jakob Uszkoreit,
+  Ond{\v{r}}ej Bojar, and Zden{\v{e}}k {\v{Z}}abokrtsk{\'{y}}.
+\newblock Transforming machine translation: a deep learning system reaches news
+  translation quality comparable to human professionals.
+\newblock \emph{Nature Communications}, 11\penalty0 (4381):\penalty0 1--15,
+  2020.
+\newblock ISSN 2041-1723.
+\newblock \doi{10.1038/s41467-020-18073-9}.
+\newblock URL \url{https://www.nature.com/articles/s41467-020-18073-9}.
 
 \bibitem[Radford et~al.(2019)Radford, Wu, Child, Luan, Amodei, and
   Sutskever]{radford2019language}
