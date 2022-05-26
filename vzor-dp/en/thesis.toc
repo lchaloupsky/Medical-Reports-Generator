@@ -1,26 +1,25 @@
 \contentsline {chapter}{Introduction}{2}{chapter*.2}%
 \contentsline {chapter}{\numberline {1}Problem Analysis}{4}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Problem definition}{4}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Methods of generation}{4}{section.1.2}%
-\contentsline {section}{\numberline {1.3}Data}{4}{section.1.3}%
-\contentsline {subsection}{\numberline {1.3.1}Existing datasets}{4}{subsection.1.3.1}%
-\contentsline {subsubsection}{\numberline {1.3.1.1}Indiana University chest X-ray dataset}{4}{subsubsection.1.3.1.1}%
-\contentsline {subsubsection}{\numberline {1.3.1.2}MIMIC-CXR}{5}{subsubsection.1.3.1.2}%
-\contentsline {subsection}{\numberline {1.3.2}Czech data}{6}{subsection.1.3.2}%
-\contentsline {subsection}{\numberline {1.3.3}Translators}{7}{subsection.1.3.3}%
-\contentsline {subsubsection}{\numberline {1.3.3.1}DeepL}{7}{subsubsection.1.3.3.1}%
-\contentsline {subsubsection}{\numberline {1.3.3.2}Google Translate}{7}{subsubsection.1.3.3.2}%
-\contentsline {subsubsection}{\numberline {1.3.3.3}CUBBITT}{7}{subsubsection.1.3.3.3}%
-\contentsline {section}{\numberline {1.4}Language models}{8}{section.1.4}%
-\contentsline {subsection}{\numberline {1.4.1}GPT2}{8}{subsection.1.4.1}%
-\contentsline {section}{\numberline {1.5}Related work}{8}{section.1.5}%
-\contentsline {chapter}{\numberline {2}Title of the second chapter}{9}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Title of the first subchapter of the second chapter}{9}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Title of the second subchapter of the second chapter}{9}{section.2.2}%
-\contentsline {chapter}{Conclusion}{10}{chapter*.5}%
-\contentsline {chapter}{Bibliography}{11}{chapter*.6}%
-\contentsline {chapter}{List of Figures}{12}{chapter*.7}%
-\contentsline {chapter}{List of Tables}{13}{chapter*.8}%
-\contentsline {chapter}{List of Abbreviations}{14}{chapter*.9}%
-\contentsline {chapter}{\numberline {A}Attachments}{15}{appendix.A}%
-\contentsline {section}{\numberline {A.1}First Attachment}{15}{section.A.1}%
+\contentsline {section}{\numberline {1.1}Methods of generation}{4}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Data}{4}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Existing datasets}{4}{subsection.1.2.1}%
+\contentsline {subsubsection}{\numberline {1.2.1.1}Indiana University chest X-ray}{4}{subsubsection.1.2.1.1}%
+\contentsline {subsubsection}{\numberline {1.2.1.2}MIMIC-CXR v2.0.0}{5}{subsubsection.1.2.1.2}%
+\contentsline {subsection}{\numberline {1.2.2}Czech data}{7}{subsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.2.3}Translators}{8}{subsection.1.2.3}%
+\contentsline {subsubsection}{\numberline {1.2.3.1}DeepL}{8}{subsubsection.1.2.3.1}%
+\contentsline {subsubsection}{\numberline {1.2.3.2}Google Translate}{8}{subsubsection.1.2.3.2}%
+\contentsline {subsubsection}{\numberline {1.2.3.3}CUBBITT}{8}{subsubsection.1.2.3.3}%
+\contentsline {section}{\numberline {1.3}Language models}{9}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}GPT2}{9}{subsection.1.3.1}%
+\contentsline {section}{\numberline {1.4}Related work}{9}{section.1.4}%
+\contentsline {chapter}{\numberline {2}Title of the second chapter}{10}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Title of the first subchapter of the second chapter}{10}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Title of the second subchapter of the second chapter}{10}{section.2.2}%
+\contentsline {chapter}{Conclusion}{11}{chapter*.5}%
+\contentsline {chapter}{Bibliography}{12}{chapter*.6}%
+\contentsline {chapter}{List of Figures}{14}{chapter*.7}%
+\contentsline {chapter}{List of Tables}{15}{chapter*.8}%
+\contentsline {chapter}{List of Abbreviations}{16}{chapter*.9}%
+\contentsline {chapter}{\numberline {A}Attachments}{17}{appendix.A}%
+\contentsline {section}{\numberline {A.1}First Attachment}{17}{section.A.1}%

@@ -1,9 +1,17 @@
-\begin{thebibliography}{3}
+\begin{thebibliography}{13}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Bustos et~al.(2020)Bustos, Pertusa, Salinas, and de~la
+  Iglesia-Vay{\'a}]{bustos2020padchest}
+Aurelia Bustos, Antonio Pertusa, Jose-Maria Salinas, and Maria de~la
+  Iglesia-Vay{\'a}.
+\newblock Padchest: A large chest x-ray image dataset with multi-label
+  annotated reports.
+\newblock \emph{Medical image analysis}, 66:\penalty0 101797, 2020.
 
 \bibitem[Demner-Fushman et~al.(2015)Demner-Fushman, Kohli, Rosenman, Shooshan,
   Rodriguez, Antani, Thoma, and McDonald]{10.1093/jamia/ocv080}
@@ -16,6 +24,57 @@ Dina Demner-Fushman, Marc~D. Kohli, Marc~B. Rosenman, Sonya~E. Shooshan,
 \newblock ISSN 1067-5027.
 \newblock \doi{10.1093/jamia/ocv080}.
 \newblock URL \url{https://doi.org/10.1093/jamia/ocv080}.
+
+\bibitem[Irvin et~al.(2019)Irvin, Rajpurkar, Ko, Yu, Ciurea-Ilcus, Chute,
+  Marklund, Haghgoo, Ball, Shpanskaya, et~al.]{irvin2019chexpert}
+Jeremy Irvin, Pranav Rajpurkar, Michael Ko, Yifan Yu, Silviana Ciurea-Ilcus,
+  Chris Chute, Henrik Marklund, Behzad Haghgoo, Robyn Ball, Katie Shpanskaya,
+  et~al.
+\newblock Chexpert: A large chest radiograph dataset with uncertainty labels
+  and expert comparison.
+\newblock In \emph{Proceedings of the AAAI conference on artificial
+  intelligence}, volume~33, pages 590--597, 2019.
+
+\bibitem[Jing et~al.(2017)Jing, Xie, and Xing]{jing2017automatic}
+Baoyu Jing, Pengtao Xie, and Eric Xing.
+\newblock On the automatic generation of medical imaging reports.
+\newblock \emph{arXiv preprint arXiv:1711.08195}, 2017.
+
+\bibitem[Johnson et~al.(2019{\natexlab{a}})Johnson, Pollard, Berkowitz,
+  Greenbaum, Lungren, Deng, Mark, and Horng]{cxr:johnson2019mimic}
+Alistair~EW Johnson, Tom~J Pollard, Seth~J Berkowitz, Nathaniel~R Greenbaum,
+  Matthew~P Lungren, Chih-ying Deng, Roger~G Mark, and Steven Horng.
+\newblock Mimic-cxr, a de-identified publicly available database of chest
+  radiographs with free-text reports.
+\newblock \emph{Scientific data}, 6\penalty0 (1):\penalty0 1--8,
+  2019{\natexlab{a}}.
+
+\bibitem[Johnson et~al.(2019{\natexlab{b}})Johnson, Pollard, Greenbaum,
+  Lungren, Deng, Peng, Lu, Mark, Berkowitz, and
+  Horng]{cxr-jpg:johnson2019mimic}
+Alistair~EW Johnson, Tom~J Pollard, Nathaniel~R Greenbaum, Matthew~P Lungren,
+  Chih-ying Deng, Yifan Peng, Zhiyong Lu, Roger~G Mark, Seth~J Berkowitz, and
+  Steven Horng.
+\newblock Mimic-cxr-jpg, a large publicly available database of labeled chest
+  radiographs.
+\newblock \emph{arXiv preprint arXiv:1901.07042}, 2019{\natexlab{b}}.
+
+\bibitem[Nguyen et~al.(2020)Nguyen, Lam, Le, Pham, Tran, Nguyen, Le, Pham,
+  Tong, Dinh, et~al.]{nguyen2020vindr}
+Ha~Q Nguyen, Khanh Lam, Linh~T Le, Hieu~H Pham, Dat~Q Tran, Dung~B Nguyen,
+  Dung~D Le, Chi~M Pham, Hang~TT Tong, Diep~H Dinh, et~al.
+\newblock Vindr-cxr: An open dataset of chest x-rays with radiologist's
+  annotations.
+\newblock \emph{arXiv preprint arXiv:2012.15029}, 2020.
+
+\bibitem[Peng et~al.(2018)Peng, Wang, Lu, Bagheri, Summers, and
+  Lu]{peng2018negbio}
+Yifan Peng, Xiaosong Wang, Le~Lu, Mohammadhadi Bagheri, Ronald Summers, and
+  Zhiyong Lu.
+\newblock Negbio: a high-performance tool for negation and uncertainty
+  detection in radiology reports.
+\newblock \emph{AMIA Summits on Translational Science Proceedings},
+  2018:\penalty0 188, 2018.
 
 \bibitem[Popel et~al.(2020)Popel, Tomkova, Tomek, Kaiser, Uszkoreit, Bojar, and
   {\v{Z}}abokrtsk{\'{y}}]{biblio:PoToTransformingmachine2020}
@@ -35,5 +94,32 @@ Alec Radford, Jeff Wu, Rewon Child, David Luan, Dario Amodei, and Ilya
   Sutskever.
 \newblock Language models are unsupervised multitask learners.
 \newblock 2019.
+
+\bibitem[R\"uckert et~al.(2022)R\"uckert, Ben~Abacha, Garc\'ia Seco~de Herrera,
+  Bloch, Br\"ungel, Idrissi-Yaghir, Sch\"afer, M\"uller, and
+  Friedrich]{ImageCLEFmedicalCaptionOverview2022}
+Johannes R\"uckert, Asma Ben~Abacha, Alba Garc\'ia Seco~de Herrera, Louise
+  Bloch, Raphael Br\"ungel, Ahmad Idrissi-Yaghir, Henning Sch\"afer, Henning
+  M\"uller, and Christoph~M. Friedrich.
+\newblock Overview of {ImageCLEFmedical} 2022 -- caption prediction and concept
+  detection.
+\newblock In \emph{CLEF2022 Working Notes}, {CEUR} Workshop Proceedings,
+  Bologna, Italy, September 5-8 2022. CEUR-WS.org.
+
+\bibitem[Wang et~al.(2017)Wang, Peng, Lu, Lu, Bagheri, and
+  Summers]{wang2017chestx}
+Xiaosong Wang, Yifan Peng, Le~Lu, Zhiyong Lu, Mohammadhadi Bagheri, and
+  Ronald~M Summers.
+\newblock Chestx-ray8: Hospital-scale chest x-ray database and benchmarks on
+  weakly-supervised classification and localization of common thorax diseases.
+\newblock In \emph{Proceedings of the IEEE conference on computer vision and
+  pattern recognition}, pages 2097--2106, 2017.
+
+\bibitem[Zhang et~al.(2017)Zhang, Xie, Xing, McGough, and Yang]{zhang2017mdnet}
+Zizhao Zhang, Yuanpu Xie, Fuyong Xing, Mason McGough, and Lin Yang.
+\newblock Mdnet: A semantically and visually interpretable medical image
+  diagnosis network.
+\newblock In \emph{Proceedings of the IEEE conference on computer vision and
+  pattern recognition}, pages 6428--6436, 2017.
 
 \end{thebibliography}
