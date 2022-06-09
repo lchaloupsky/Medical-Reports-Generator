@@ -1,9 +1,21 @@
-\begin{thebibliography}{13}
+\begin{thebibliography}{29}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Alfarghaly et~al.(2021)Alfarghaly, Khaled, Elkorany, Helal, and
+  Fahmy]{alfarghaly2021automated}
+Omar Alfarghaly, Rana Khaled, Abeer Elkorany, Maha Helal, and Aly Fahmy.
+\newblock Automated radiology report generation using conditioned transformers.
+\newblock \emph{Informatics in Medicine Unlocked}, 24:\penalty0 100557, 2021.
+
+\bibitem[Bahdanau et~al.(2014)Bahdanau, Cho, and Bengio]{bahdanau2014neural}
+Dzmitry Bahdanau, Kyunghyun Cho, and Yoshua Bengio.
+\newblock Neural machine translation by jointly learning to align and
+  translate.
+\newblock \emph{arXiv preprint arXiv:1409.0473}, 2014.
 
 \bibitem[Bustos et~al.(2020)Bustos, Pertusa, Salinas, and de~la
   Iglesia-Vay{\'a}]{bustos2020padchest}
@@ -12,6 +24,19 @@ Aurelia Bustos, Antonio Pertusa, Jose-Maria Salinas, and Maria de~la
 \newblock Padchest: A large chest x-ray image dataset with multi-label
   annotated reports.
 \newblock \emph{Medical image analysis}, 66:\penalty0 101797, 2020.
+
+\bibitem[Chen et~al.(2020)Chen, Song, Chang, and Wan]{chen2020generating}
+Zhihong Chen, Yan Song, Tsung-Hui Chang, and Xiang Wan.
+\newblock Generating radiology reports via memory-driven transformer.
+\newblock \emph{arXiv preprint arXiv:2010.16056}, 2020.
+
+\bibitem[Cho et~al.(2014)Cho, Van~Merri{\"e}nboer, Gulcehre, Bahdanau,
+  Bougares, Schwenk, and Bengio]{cho2014learning}
+Kyunghyun Cho, Bart Van~Merri{\"e}nboer, Caglar Gulcehre, Dzmitry Bahdanau,
+  Fethi Bougares, Holger Schwenk, and Yoshua Bengio.
+\newblock Learning phrase representations using rnn encoder-decoder for
+  statistical machine translation.
+\newblock \emph{arXiv preprint arXiv:1406.1078}, 2014.
 
 \bibitem[Demner-Fushman et~al.(2015)Demner-Fushman, Kohli, Rosenman, Shooshan,
   Rodriguez, Antani, Thoma, and McDonald]{10.1093/jamia/ocv080}
@@ -24,6 +49,40 @@ Dina Demner-Fushman, Marc~D. Kohli, Marc~B. Rosenman, Sonya~E. Shooshan,
 \newblock ISSN 1067-5027.
 \newblock \doi{10.1093/jamia/ocv080}.
 \newblock URL \url{https://doi.org/10.1093/jamia/ocv080}.
+
+\bibitem[Dosovitskiy et~al.(2020)Dosovitskiy, Beyer, Kolesnikov, Weissenborn,
+  Zhai, Unterthiner, Dehghani, Minderer, Heigold, Gelly,
+  et~al.]{dosovitskiy2020image}
+Alexey Dosovitskiy, Lucas Beyer, Alexander Kolesnikov, Dirk Weissenborn,
+  Xiaohua Zhai, Thomas Unterthiner, Mostafa Dehghani, Matthias Minderer, Georg
+  Heigold, Sylvain Gelly, et~al.
+\newblock An image is worth 16x16 words: Transformers for image recognition at
+  scale.
+\newblock \emph{arXiv preprint arXiv:2010.11929}, 2020.
+
+\bibitem[He et~al.(2016)He, Zhang, Ren, and Sun]{he2016deep}
+Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.
+\newblock Deep residual learning for image recognition.
+\newblock In \emph{Proceedings of the IEEE conference on computer vision and
+  pattern recognition}, pages 770--778, 2016.
+
+\bibitem[Hochreiter and Schmidhuber(1997)]{hochreiter1997long}
+Sepp Hochreiter and J{\"u}rgen Schmidhuber.
+\newblock Long short-term memory.
+\newblock \emph{Neural computation}, 9\penalty0 (8):\penalty0 1735--1780, 1997.
+
+\bibitem[Huang et~al.(2017)Huang, Liu, Van Der~Maaten, and
+  Weinberger]{huang2017densely}
+Gao Huang, Zhuang Liu, Laurens Van Der~Maaten, and Kilian~Q Weinberger.
+\newblock Densely connected convolutional networks.
+\newblock In \emph{Proceedings of the IEEE conference on computer vision and
+  pattern recognition}, pages 4700--4708, 2017.
+
+\bibitem[Huang et~al.(2019)Huang, Yan, Xu, and Li]{huang2019multi}
+Xin Huang, Fengqi Yan, Wei Xu, and Maozhen Li.
+\newblock Multi-attention and incorporating background information model for
+  chest x-ray image report generation.
+\newblock \emph{IEEE Access}, 7:\penalty0 154808--154817, 2019.
 
 \bibitem[Irvin et~al.(2019)Irvin, Rajpurkar, Ko, Yu, Ciurea-Ilcus, Chute,
   Marklund, Haghgoo, Ball, Shpanskaya, et~al.]{irvin2019chexpert}
@@ -58,6 +117,13 @@ Alistair~EW Johnson, Tom~J Pollard, Nathaniel~R Greenbaum, Matthew~P Lungren,
 \newblock Mimic-cxr-jpg, a large publicly available database of labeled chest
   radiographs.
 \newblock \emph{arXiv preprint arXiv:1901.07042}, 2019{\natexlab{b}}.
+
+\bibitem[Mikolov et~al.(2013)Mikolov, Sutskever, Chen, Corrado, and
+  Dean]{mikolov2013distributed}
+Tomas Mikolov, Ilya Sutskever, Kai Chen, Greg~S Corrado, and Jeff Dean.
+\newblock Distributed representations of words and phrases and their
+  compositionality.
+\newblock \emph{Advances in neural information processing systems}, 26, 2013.
 
 \bibitem[Nguyen et~al.(2020)Nguyen, Lam, Le, Pham, Tran, Nguyen, Le, Pham,
   Tong, Dinh, et~al.]{nguyen2020vindr}
@@ -95,6 +161,14 @@ Alec Radford, Jeff Wu, Rewon Child, David Luan, Dario Amodei, and Ilya
 \newblock Language models are unsupervised multitask learners.
 \newblock 2019.
 
+\bibitem[Rajpurkar et~al.(2017)Rajpurkar, Irvin, Zhu, Yang, Mehta, Duan, Ding,
+  Bagul, Langlotz, Shpanskaya, et~al.]{rajpurkar2017chexnet}
+Pranav Rajpurkar, Jeremy Irvin, Kaylie Zhu, Brandon Yang, Hershel Mehta, Tony
+  Duan, Daisy Ding, Aarti Bagul, Curtis Langlotz, Katie Shpanskaya, et~al.
+\newblock Chexnet: Radiologist-level pneumonia detection on chest x-rays with
+  deep learning.
+\newblock \emph{arXiv preprint arXiv:1711.05225}, 2017.
+
 \bibitem[R\"uckert et~al.(2022)R\"uckert, Ben~Abacha, Garc\'ia Seco~de Herrera,
   Bloch, Br\"ungel, Idrissi-Yaghir, Sch\"afer, M\"uller, and
   Friedrich]{ImageCLEFmedicalCaptionOverview2022}
@@ -106,6 +180,25 @@ Johannes R\"uckert, Asma Ben~Abacha, Alba Garc\'ia Seco~de Herrera, Louise
 \newblock In \emph{CLEF2022 Working Notes}, {CEUR} Workshop Proceedings,
   Bologna, Italy, September 5-8 2022. CEUR-WS.org.
 
+\bibitem[Simonyan and Zisserman(2014)]{simonyan2014very}
+Karen Simonyan and Andrew Zisserman.
+\newblock Very deep convolutional networks for large-scale image recognition.
+\newblock \emph{arXiv preprint arXiv:1409.1556}, 2014.
+
+\bibitem[Tan and Le(2019)]{tan2019efficientnet}
+Mingxing Tan and Quoc Le.
+\newblock Efficientnet: Rethinking model scaling for convolutional neural
+  networks.
+\newblock In \emph{International conference on machine learning}, pages
+  6105--6114. PMLR, 2019.
+
+\bibitem[Vaswani et~al.(2017)Vaswani, Shazeer, Parmar, Uszkoreit, Jones, Gomez,
+  Kaiser, and Polosukhin]{vaswani2017attention}
+Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones,
+  Aidan~N Gomez, {\L}ukasz Kaiser, and Illia Polosukhin.
+\newblock Attention is all you need.
+\newblock \emph{Advances in neural information processing systems}, 30, 2017.
+
 \bibitem[Wang et~al.(2017)Wang, Peng, Lu, Lu, Bagheri, and
   Summers]{wang2017chestx}
 Xiaosong Wang, Yifan Peng, Le~Lu, Zhiyong Lu, Mohammadhadi Bagheri, and
@@ -114,6 +207,22 @@ Xiaosong Wang, Yifan Peng, Le~Lu, Zhiyong Lu, Mohammadhadi Bagheri, and
   weakly-supervised classification and localization of common thorax diseases.
 \newblock In \emph{Proceedings of the IEEE conference on computer vision and
   pattern recognition}, pages 2097--2106, 2017.
+
+\bibitem[Xu et~al.(2015)Xu, Ba, Kiros, Cho, Courville, Salakhudinov, Zemel, and
+  Bengio]{xu2015show}
+Kelvin Xu, Jimmy Ba, Ryan Kiros, Kyunghyun Cho, Aaron Courville, Ruslan
+  Salakhudinov, Rich Zemel, and Yoshua Bengio.
+\newblock Show, attend and tell: Neural image caption generation with visual
+  attention.
+\newblock In \emph{International conference on machine learning}, pages
+  2048--2057. PMLR, 2015.
+
+\bibitem[Yuan et~al.(2019)Yuan, Liao, Luo, and Luo]{yuan2019automatic}
+Jianbo Yuan, Haofu Liao, Rui Luo, and Jiebo Luo.
+\newblock Automatic radiology report generation based on multi-view image
+  fusion and medical concept enrichment.
+\newblock In \emph{International Conference on Medical Image Computing and
+  Computer-Assisted Intervention}, pages 721--729. Springer, 2019.
 
 \bibitem[Zhang et~al.(2017)Zhang, Xie, Xing, McGough, and Yang]{zhang2017mdnet}
 Zizhao Zhang, Yuanpu Xie, Fuyong Xing, Mason McGough, and Lin Yang.

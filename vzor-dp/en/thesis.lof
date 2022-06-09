@@ -1,5 +1,9 @@
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1.1}{\ignorespaces Sample from the Indiana University Chest X-ray dataset.}}{5}{figure.1.1}%
-\contentsline {figure}{\numberline {1.2}{\ignorespaces Sample from the MIMIC-CXR dataset.}}{7}{figure.1.2}%
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Visual Transformer architecture from \citet {dosovitskiy2020image}.}}{6}{figure.1.1}%
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Sample from the Indiana University Chest X-ray dataset.}}{8}{figure.1.2}%
+\contentsline {figure}{\numberline {1.3}{\ignorespaces Sample from the MIMIC-CXR dataset.}}{10}{figure.1.3}%
+\contentsline {figure}{\numberline {1.4}{\ignorespaces Examples of generated medical reports from \citet {alfarghaly2021automated}.}}{13}{figure.1.4}%
+\contentsline {figure}{\numberline {1.5}{\ignorespaces Examples of generated medical reports from \citet {chen2020generating}.}}{14}{figure.1.5}%
+\contentsline {figure}{\numberline {1.6}{\ignorespaces Hierarchical architecture from \citet {yuan2019automatic}.}}{14}{figure.1.6}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }

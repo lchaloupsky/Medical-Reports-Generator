@@ -11,45 +11,45 @@ The style file: plainnat.bst
 Database file #1: bibliography.bib
 Warning--can't use both volume and number fields in irvin2019chexpert
 Warning--empty journal in radford2019language
-You've used 13 entries,
+You've used 29 entries,
             2773 wiz_defined-function locations,
-            684 strings with 8920 characters,
-and the built_in function-call counts, 9298 in all, are:
-= -- 749
-> -- 883
-< -- 4
-+ -- 296
-- -- 282
-* -- 887
-:= -- 1488
-add.period$ -- 46
-call.type$ -- 13
-change.case$ -- 131
-chr.to.int$ -- 12
-cite$ -- 28
-duplicate$ -- 312
-empty$ -- 523
-format.name$ -- 295
-if$ -- 1879
+            767 strings with 12305 characters,
+and the built_in function-call counts, 19214 in all, are:
+= -- 1593
+> -- 1685
+< -- 12
++ -- 564
+- -- 534
+* -- 1741
+:= -- 3020
+add.period$ -- 97
+call.type$ -- 29
+change.case$ -- 261
+chr.to.int$ -- 28
+cite$ -- 60
+duplicate$ -- 703
+empty$ -- 1175
+format.name$ -- 569
+if$ -- 3948
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 13
-newline$ -- 79
-num.names$ -- 52
-pop$ -- 256
+missing$ -- 29
+newline$ -- 159
+num.names$ -- 116
+pop$ -- 521
 preamble$ -- 1
-purify$ -- 118
+purify$ -- 232
 quote$ -- 0
-skip$ -- 291
+skip$ -- 643
 stack$ -- 0
-substring$ -- 215
-swap$ -- 52
-text.length$ -- 4
+substring$ -- 523
+swap$ -- 124
+text.length$ -- 9
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 143
+type$ -- 319
 warning$ -- 2
-while$ -- 55
+while$ -- 123
 width$ -- 0
-write$ -- 186
+write$ -- 391
 (There were 2 warnings)
