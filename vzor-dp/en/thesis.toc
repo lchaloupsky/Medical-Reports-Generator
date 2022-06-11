@@ -9,7 +9,7 @@
 \contentsline {subsubsection}{\numberline {1.1.2.2}GPT2}{6}{subsubsection.1.1.2.2}%
 \contentsline {section}{\numberline {1.2}Data}{7}{section.1.2}%
 \contentsline {subsection}{\numberline {1.2.1}Existing datasets}{7}{subsection.1.2.1}%
-\contentsline {subsubsection}{\numberline {1.2.1.1}Indiana University chest X-ray}{7}{subsubsection.1.2.1.1}%
+\contentsline {subsubsection}{\numberline {1.2.1.1}Indiana University chest X-ray}{8}{subsubsection.1.2.1.1}%
 \contentsline {subsubsection}{\numberline {1.2.1.2}MIMIC-CXR v2.0.0}{8}{subsubsection.1.2.1.2}%
 \contentsline {subsection}{\numberline {1.2.2}Czech data}{10}{subsection.1.2.2}%
 \contentsline {subsection}{\numberline {1.2.3}Translators}{11}{subsection.1.2.3}%

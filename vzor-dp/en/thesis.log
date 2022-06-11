@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.2.24)  9 JUN 2022 18:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.2.24)  11 JUN 2022 16:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -767,7 +767,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 68--69
 pdfTeX warning: pdflatex.exe (file ../img/IUChestXRaySample_CXR1728_IM-0479-100
 1.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allow
 ed
-<../img/IUChestXRaySample_CXR1728_IM-0479-1001.pdf, id=316, 848.80376pt x 309.7
+<../img/IUChestXRaySample_CXR1728_IM-0479-1001.pdf, id=313, 848.80376pt x 309.7
 2859pt>
 File: ../img/IUChestXRaySample_CXR1728_IM-0479-1001.pdf Graphic file (type pdf)
 
@@ -780,18 +780,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 79--80
 
  []
 
-
+[8 <../img/IUChestXRaySample_CXR1728_IM-0479-1001.pdf>]
 Underfull \hbox (badness 10000) in paragraph at lines 81--82
 
  []
 
-[8 <../img/IUChestXRaySample_CXR1728_IM-0479-1001.pdf>]
-<../img/mimic_s57861150.pdf, id=349, 342.10764pt x 414.38393pt>
+<../img/mimic_s57861150.pdf, id=347, 342.10764pt x 414.38393pt>
 File: ../img/mimic_s57861150.pdf Graphic file (type pdf)
 <use ../img/mimic_s57861150.pdf>
 Package pdftex.def Info: ../img/mimic_s57861150.pdf  used on input line 86.
 (pdftex.def)             Requested size: 384.12366pt x 463.78435pt.
-
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -824,7 +822,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 117--118
 
 pdfTeX warning: pdflatex.exe (file ../img/OmarExample.pdf): PDF inclusion: foun
 d PDF version <1.7>, but at most version <1.5> allowed
-<../img/OmarExample.pdf, id=399, 832.47229pt x 596.91115pt>
+<../img/OmarExample.pdf, id=398, 832.47229pt x 596.91115pt>
 File: ../img/OmarExample.pdf Graphic file (type pdf)
 <use ../img/OmarExample.pdf>
 Package pdftex.def Info: ../img/OmarExample.pdf  used on input line 120.
@@ -841,7 +839,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 125--126
 
 pdfTeX warning: pdflatex.exe (file ../img/ZhihongExample.pdf): PDF inclusion: f
 ound PDF version <1.7>, but at most version <1.5> allowed
-<../img/ZhihongExample.pdf, id=408, 846.51137pt x 331.65768pt>
+<../img/ZhihongExample.pdf, id=407, 846.51137pt x 331.65768pt>
 File: ../img/ZhihongExample.pdf Graphic file (type pdf)
 <use ../img/ZhihongExample.pdf>
 Package pdftex.def Info: ../img/ZhihongExample.pdf  used on input line 128.
@@ -858,7 +856,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 133--134
 
 pdfTeX warning: pdflatex.exe (file ../img/YuanExample.pdf): PDF inclusion: foun
 d PDF version <1.7>, but at most version <1.5> allowed
-<../img/YuanExample.pdf, id=431, 843.91476pt x 188.13142pt>
+<../img/YuanExample.pdf, id=429, 843.91476pt x 188.13142pt>
 File: ../img/YuanExample.pdf Graphic file (type pdf)
 <use ../img/YuanExample.pdf>
 Package pdftex.def Info: ../img/YuanExample.pdf  used on input line 136.
@@ -934,7 +932,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 157.
 Here is how much of TeX's memory you used:
  14918 strings out of 481228
  209985 string characters out of 5921397
- 448336 words of memory out of 5000000
+ 447336 words of memory out of 5000000
  29737 multiletter control sequences out of 15000+600000
  607393 words of font info for 86 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -954,10 +952,10 @@ fonts/type1/public/lm/lmr8.pfb><d:/texlive/2019/texmf-dist/fonts/type1/public/l
 m/lmri12.pfb><d:/texlive/2019/texmf-dist/fonts/type1/public/lm/lmsy8.pfb><d:/te
 xlive/2019/texmf-dist/fonts/type1/public/lm/lmtt10.pfb><d:/texlive/2019/texmf-d
 ist/fonts/type1/public/lm/lmtt12.pfb>
-Output written on thesis.pdf (27 pages, 2225468 bytes).
+Output written on thesis.pdf (27 pages, 2225833 bytes).
 PDF statistics:
- 604 PDF objects out of 1000 (max. 8388607)
- 519 compressed objects within 6 object streams
+ 603 PDF objects out of 1000 (max. 8388607)
+ 518 compressed objects within 6 object streams
  115 named destinations out of 1000 (max. 500000)
  280 words of extra memory for PDF output out of 10000 (max. 10000000)
 
