@@ -1,7 +1,7 @@
 import os
 import csv
 
-def create_aggregates_from_texts(folder: str, text_delim: str, regenerate: bool = False, line_split: int = None) -> tuple(str, str):
+def create_aggregates_from_texts(folder: str, text_delim: str, regenerate: bool = False, line_split: int = None, suffixes: list[str] = []) -> tuple([str, str]):
     '''
     Goes through specified 'folder' and reads every *txt* file which it can find anywhere in the 'folder' and generates an aggregation of all found files into one csv and one txt files. 
     Each file will be splitted with 'text_delim' into paragraphs. 
@@ -13,6 +13,7 @@ def create_aggregates_from_texts(folder: str, text_delim: str, regenerate: bool 
         text_delim: str - the text delimiter to separate independent texts within one file
         regenerate: bool - the flag indicating if the final files should be generated even if they already exists.
         line_split: int - the number of lines after which the text should split.
+        suffixes: list[str] - other suffixes that should be taken into account
 
     Returns:
         (str, str) - paths to aggregated *csv* and *txt* files
@@ -22,9 +23,6 @@ def create_aggregates_from_texts(folder: str, text_delim: str, regenerate: bool 
 
     if not os.path.isdir(folder):
         raise ValueError("Specified folder does not exist!")
-
-    if text_delim is None:
-        raise ValueError("You have to specify a text delimiter!")
 
     if line_split is not None and line_split < 1:
         raise ValueError("Incorrect line_split value! The value has to be at least 1!")
@@ -39,6 +37,7 @@ def create_aggregates_from_texts(folder: str, text_delim: str, regenerate: bool 
         print("Final csv or txt file already exists. Returning.")
         return
 
+    suffixes = [".txt"] + suffixes
     with open(csv_file_path, mode="wt", newline='', encoding="utf-8") as csv_file, \
          open(txt_file_path, mode="wt", newline='', encoding="utf-8") as txt_file:
         writer = csv.writer(csv_file)
@@ -49,7 +48,10 @@ def create_aggregates_from_texts(folder: str, text_delim: str, regenerate: bool 
         # csv/txt body
         for dir, _, filenames in os.walk(folder):
             for filename in filenames:
-                if not filename.endswith(".txt"):
+                if filename == csv_file_name or filename == txt_file_name:
+                    continue
+
+                if not any(filename.endswith(suff) for suff in suffixes):
                     continue
 
                 text = ""

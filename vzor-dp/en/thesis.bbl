@@ -1,4 +1,4 @@
-\begin{thebibliography}{29}
+\begin{thebibliography}{31}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -118,6 +118,21 @@ Alistair~EW Johnson, Tom~J Pollard, Nathaniel~R Greenbaum, Matthew~P Lungren,
   radiographs.
 \newblock \emph{arXiv preprint arXiv:1901.07042}, 2019{\natexlab{b}}.
 
+\bibitem[K{\v r}en et~al.(2021)K{\v r}en, Cvr{\v c}ek, Heny{\v s},
+  Hn{\'a}tkov{\'a}, Jel{\'{\i}}nek, Kocek, Kov{\'a}{\v r}{\'{\i}}kov{\'a}, K{\v
+  r}ivan, Mili{\v c}ka, Petkevi{\v c}, Proch{\'a}zka, Skoumalov{\'a}, {\v
+  S}indlerov{\'a}, and {\v S}krabal]{11234/1-4635}
+Michal K{\v r}en, V{\'a}clav Cvr{\v c}ek, Jan Heny{\v s}, Milena
+  Hn{\'a}tkov{\'a}, Tom{\'a}{\v s} Jel{\'{\i}}nek, Jan Kocek, Dominika
+  Kov{\'a}{\v r}{\'{\i}}kov{\'a}, Jan K{\v r}ivan, Ji{\v r}{\'{\i}} Mili{\v
+  c}ka, Vladim{\'{\i}}r Petkevi{\v c}, Pavel Proch{\'a}zka, Hana
+  Skoumalov{\'a}, Jana {\v S}indlerov{\'a}, and Michal {\v S}krabal.
+\newblock {SYN} v9: large corpus of written czech, 2021.
+\newblock URL \url{http://hdl.handle.net/11234/1-4635}.
+\newblock {LINDAT}/{CLARIAH}-{CZ} digital library at the Institute of Formal
+  and Applied Linguistics ({{\'U}FAL}), Faculty of Mathematics and Physics,
+  Charles University.
+
 \bibitem[Mikolov et~al.(2013)Mikolov, Sutskever, Chen, Corrado, and
   Dean]{mikolov2013distributed}
 Tomas Mikolov, Ilya Sutskever, Kai Chen, Greg~S Corrado, and Jeff Dean.
@@ -132,6 +147,16 @@ Ha~Q Nguyen, Khanh Lam, Linh~T Le, Hieu~H Pham, Dat~Q Tran, Dung~B Nguyen,
 \newblock Vindr-cxr: An open dataset of chest x-rays with radiologist's
   annotations.
 \newblock \emph{arXiv preprint arXiv:2012.15029}, 2020.
+
+\bibitem[Ortiz~Su{'a}rez et~al.(2020)Ortiz~Su{'a}rez, Romary, and
+  Sagot]{ortiz-suarez-etal-2020-monolingual}
+Pedro~Javier Ortiz~Su{'a}rez, Laurent Romary, and Benoit Sagot.
+\newblock A monolingual approach to contextualized word embeddings for
+  mid-resource languages.
+\newblock In \emph{Proceedings of the 58th Annual Meeting of the Association
+  for Computational Linguistics}, pages 1703--1714, Online, July 2020.
+  Association for Computational Linguistics.
+\newblock URL \url{https://www.aclweb.org/anthology/2020.acl-main.156}.
 
 \bibitem[Peng et~al.(2018)Peng, Wang, Lu, Bagheri, Summers, and
   Lu]{peng2018negbio}
