@@ -15,4 +15,5 @@ class AnonymousSequencePreprocessor(Preprocessor):
 
     def preprocess(self, text: str) -> str:
         '''Identifies all sequences anonymizing sensitive data and turns them into separate words.'''
+        # TODO: fix "/", "-years-old", "'s", "XXXXyo", ".", "," ...
         return " ".join(re.split(f" *({self._seq}+) *", text))

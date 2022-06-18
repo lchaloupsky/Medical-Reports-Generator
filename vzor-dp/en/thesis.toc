@@ -27,24 +27,24 @@
 \contentsline {section}{\numberline {2.3}Medical dataset translation}{19}{section.2.3}%
 \contentsline {subsection}{\numberline {2.3.1}Translator choice}{19}{subsection.2.3.1}%
 \contentsline {subsection}{\numberline {2.3.2}Preprocessing}{19}{subsection.2.3.2}%
-\contentsline {chapter}{\numberline {3}Experiments}{20}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Environment}{20}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Czech GPT-2}{20}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Dataset translation}{20}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Medical report generation model}{20}{section.3.4}%
-\contentsline {chapter}{\numberline {4}Evaluation}{21}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Experiments}{21}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Automatic evaluation}{21}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Metrics}{21}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Results}{21}{subsection.4.2.2}%
-\contentsline {section}{\numberline {4.3}Manual evaluation}{21}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Method}{21}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Results}{21}{subsection.4.3.2}%
-\contentsline {section}{\numberline {4.4}Examples}{21}{section.4.4}%
-\contentsline {chapter}{Conclusion}{22}{chapter*.9}%
-\contentsline {chapter}{Bibliography}{23}{chapter*.10}%
-\contentsline {chapter}{List of Figures}{26}{chapter*.11}%
-\contentsline {chapter}{List of Tables}{27}{chapter*.12}%
-\contentsline {chapter}{List of Abbreviations}{28}{chapter*.13}%
-\contentsline {chapter}{\numberline {A}Attachments}{29}{appendix.A}%
-\contentsline {section}{\numberline {A.1}First Attachment}{29}{section.A.1}%
+\contentsline {chapter}{\numberline {3}Experiments}{22}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Environment}{22}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Czech GPT-2}{22}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Dataset translation}{22}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Medical report generation model}{22}{section.3.4}%
+\contentsline {chapter}{\numberline {4}Evaluation}{23}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Experiments}{23}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Automatic evaluation}{23}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Metrics}{23}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Results}{23}{subsection.4.2.2}%
+\contentsline {section}{\numberline {4.3}Manual evaluation}{23}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Method}{23}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Results}{23}{subsection.4.3.2}%
+\contentsline {section}{\numberline {4.4}Examples}{23}{section.4.4}%
+\contentsline {chapter}{Conclusion}{24}{chapter*.18}%
+\contentsline {chapter}{Bibliography}{25}{chapter*.19}%
+\contentsline {chapter}{List of Figures}{28}{chapter*.20}%
+\contentsline {chapter}{List of Tables}{29}{chapter*.21}%
+\contentsline {chapter}{List of Abbreviations}{30}{chapter*.22}%
+\contentsline {chapter}{\numberline {A}Attachments}{31}{appendix.A}%
+\contentsline {section}{\numberline {A.1}First Attachment}{31}{section.A.1}%

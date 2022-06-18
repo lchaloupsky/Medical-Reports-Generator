@@ -67,7 +67,7 @@ Indiana University chest X-Ray dataset has become a standard in the field of med
 
 Figure \hyperref[fig01:IUChestXRaySample]{1.1} shows an example from the Indiana University chest X-ray dataset. Each dataset pair is carefully de-identified in order to remove any personal information. The text of the report is semi-structured in up to 5 sections. The most important sections are \textit{impression}, where the overall diagnosis is stated, \textit{findings} section describing the details of examination and \textit{tags} which are of two types - manual and automatic. Manual tags were annotated manually using MeSH\footnote[6]{\url{https://www.nlm.nih.gov/mesh/meshhome.html}} and RadLex\footnote[7]{\url{http://radlex.org/}} codes, automatic were encoded from the reports using the MTI indexer. The rest of the sections are \textit{indication} and \textit{comparison}.\\
 
-The disadvantage of this dataset is that it is relatively small. On the other hand, it is a clean and manually checked dataset containing also additional information about images in a form of tags described above.
+The disadvantage of this dataset is that it is relatively small. On the other hand, it is a quite clean and manually checked dataset containing also additional information about images in a form of tags described above.
 
 \begin{figure}[h]\centering
 \includegraphics[width=145mm, height=53mm]{../img/IUChestXRaySample_CXR1728_IM-0479-1001}
@@ -80,7 +80,7 @@ MIMIC-CXR v2.0.0 is another dataset consisting of full semi-structured medical t
 
 The dataset consists of 377,110 X-ray images in the DICOM\footnote[10]{\url{https://www.dicomstandard.org/}} format connected to a total of 227,835 radiology reports for 65,379 patients. Each report is structured into multiple different sections. In order to satisfy legal requirements, entire dataset is automatically de-identified to remove any protected~health~information\footnote[11]{\url{https://en.wikipedia.org/wiki/Protected\_health\_information}}. Similalry to the previous dataset the essential two sections of each report are \textit{impression} and \textit{findings}. There also exists older MIMIC-CXR-JPG\footnote[12]{\url{https://physionet.org/content/mimic-cxr-jpg/2.0.0/}} dataset, presented in the \citet{cxr-jpg:johnson2019mimic} paper. This is an older version of MIMIC-CXR v2.0.0 dataset consisting of the exactly same images, only in JPG format, but each image is assigned 14 labels indicating the presence of the category in the report instead of its textual form. Each category has assigned either a \textit{1}, \textit{0} or \textit{-1} label with the meaning \textit{positively mentioned}, \textit{negatively mentioned} or \textit{uncertain}. The labels were determined from the reports utilizing the CheXpert\citep{irvin2019chexpert} and the NegBio\citep{peng2018negbio} open-source labelers.\\
 
-The advantage of this dataset is its vast number of samples. Moreover, as described above, we can get additional information in a form of categories to every image. Nevertherless the textual reports carry some noise in them in the form of grammatical mistakes and incorrect formatting. We face these issues in the Chapter X. 
+The advantage of this dataset is its vast number of samples. Moreover, as described above, we can get additional information in a form of categories to every image. Nevertherless the textual reports carry some noise in them in the form of grammatical mistakes and incorrect formatting. We face these issues in the Chapter \ref{sec:DataPreprocessing}. 
 
 \begin{figure}[h]\centering
 \includegraphics[width=135mm, height=163mm]{../img/mimic_s57861150}
@@ -91,11 +91,13 @@ The advantage of this dataset is its vast number of samples. Moreover, as descri
 \newpage
 
 \subsection{Czech data}
+\label{sec:CzechData}
 All freely available datasets presented in the previous part have one common downside, namely they are not in the Czech language. As a part of elaboration of this thesis an intesive communication with real czech hospitals and other possible sources of real data took place. The goal of this communication was to create the very first open czech dataset of this kind. Processing of this kind of data would mean not only preparing the data into suitable format but also it would include proper anonymization of any personal information about the patients within the data. \\
 
 However, inasmuch as the authentic patients data from hospitals are subject to strict privacy rules and we are not employees of any hospital, the institutions decided that they cannot provide the data in any way without the concious permission of patients given before the examination. With this result we need to find a different way how to obtain this much needed czech data.
 
 \subsection{Translators}
+\label{sec:Translators}
 In the previous sections we discovered that there is no dataset in the Czech language for our problem and there is no easy way how to get acces to the real data in order to build one. The only thing left is to create a new artificial dataset using an automatic translation. We will compare different freely accesible translators and choose the right one for our needs.
 
 \subsubsection{DeepL}
@@ -105,11 +107,12 @@ At the moment, DeepL\footnote[13]{\url{https://www.deepl.com/translator}} transl
 Google~Translate\footnote[15]{\url{https://translate.google.com/}} has become already de facto standard in the world of machine translation and it is the most used freely accessible language translation service in the world. In terms of quality, the translations are still great although little bit worse than those from DeepL. The web application is free of any charge and anybody can use it as much as he needs. Nevertheless, just as in the case of DeepL, their REST API services are limited and translation of anything above that limit is expensively charged. For these reasons, as in the previous case, we must find another way.
 
 \subsubsection{CUBBITT}
+\label{sec:Cubbitt}
 Machine~Translation\footnote[16]{\url{https://en.wikipedia.org/wiki/Machine\_translation}} is an extensive area of research, as a result of which there exist many other projects and academic papers nowadays. One of them is CUBBITT\footnote[17]{\url{https://lindat.mff.cuni.cz/services/translation/}} translator, which was developed at our faculty. The whole system is presented and described in detail in the \citet{biblio:PoToTransformingmachine2020} paper. \\
 
 CUBBITT translator provides translations which are comparable to the ones from DeepL and Google Translate services. As other mentioned translators it provides an openly available web application for machine translation. Moreover and most importantly it provides REST API that is completely unlimited in text volume and free to use without any additional charges. These are the reasons why we will utilize CUBBITT in our thesis as a translator to create our artificial dataset.\\
 
-On the other hand, CUBBITT has not support for auto-correcting input text compared to above mentioned services. Moreover, there are some patterns in the text which CUBBITT cannot translate at all or translates them incorrectly. These problems complicates our situation as the data from hospitals carry some natural noise in them. We face these complications in Chapter X.
+On the other hand, CUBBITT has not support for auto-correcting input text compared to above mentioned services. Moreover, there are some patterns in the text which CUBBITT cannot translate at all or translates them incorrectly. These problems complicates our situation as the data from hospitals carry some natural noise in them. We face these complications in Chapter \ref{sec:DataPreprocessing}.
 
 \section{Related work}
 \label{sec:RelatedWork}
