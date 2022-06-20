@@ -10,3 +10,4 @@ rawReports/
 # testing files
 testing/
 
+gpt2_utils/model_testing/*

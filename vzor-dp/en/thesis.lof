@@ -6,7 +6,9 @@
 \contentsline {figure}{\numberline {1.5}{\ignorespaces Examples of generated medical reports from \citet {chen2020generating}.}}{15}{figure.1.5}%
 \contentsline {figure}{\numberline {1.6}{\ignorespaces Hierarchical architecture from \citet {yuan2019automatic}.}}{15}{figure.1.6}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Overall architecture used in our solution proposed in \citet {alfarghaly2021automated}.}}{16}{figure.2.1}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Overall architecture used in our solution proposed in \citet {alfarghaly2021automated}.}}{17}{figure.2.1}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Learning finder output.}}{21}{figure.2.2}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Learning rate schedule for 1cycle policy training.}}{22}{figure.2.3}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

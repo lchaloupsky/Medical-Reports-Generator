@@ -4,13 +4,19 @@ This chapter summarizes the overall design of our approach to generating textual
 \section{Our approach}
 As we already mentioned in the Chapter \ref{sec:RelatedWork}, the overall solution for the final medical report generation model is based on the \citet{alfarghaly2021automated}. We have chosen this approach for multiple reasons. The main reasons to use this work as the backbone for our thesis are following:
 \begin{enumerate}
-	\item In the work the state-of-the-art GPT-2 model is utilized as the language model. This gave us a great opportunity as there was none Czech GPT-2 model available at time this thesis began.
+	\item In the work the state-of-the-art GPT-2 model is utilized as the language model. This gave us a great opportunity as there was none Czech GPT-2 model available at the time this thesis began.
 	\item The encoder is already fine-tuned to extract visual features for specific dataset.
 	\item All solution source code is freely accessible on the github\footnote[1]{\url{https://github.com/omar-mohamed/GPT2-Chest-X-Ray-Report-Generation}}.
 \end{enumerate}
 
-As in most works for image captioning, the architecture is encoder-decoder based with an attention mechanism. The high-level solution architecture is depicted in Figure \hyperref[fig01:OmarArchitecutre]{2.1}.
+As in most works for image captioning, the architecture is encoder-decoder based with an attention mechanism. The high-level solution architecture is depicted in Figure \hyperref[fig01:OmarArchitecutre]{2.1}.\\
 
+The encoder part utilizes fine-tuned Chexnet\citep{rajpurkar2017chexnet} as its visual backbone. The Chexnet is a CNN Densenet121 model trained specifically for medical enviroment on the ChestX-ray14\citep{wang2017chestx} dataset predicting 14 distinct disease classes from the input chest X-ray images. Input images are resized to the $224 \times 224$ resolution as in the case of the original Chexnet model. Moreover, the encoder is further fine-tuned to predict 105 of the most common manual tags from the Indiana University chest X-ray dataset(see Chapter \ref{sec:IUDataset}) for the purpose of wider range of possible semantic features. The model thus produces two types of outputs - visual features from the base CNN model and class scores from the multi-label tag prediction.\\
+
+In order to obtain semantic features from the predicted classes, each predicted class score is multiplied by its corresponding word2vec\citep{mikolov2013distributed} embedding, trained specifically on the biomedical texts, from the \citet{mcdonald2018deep} and resulting in the weighted embedding matrix. Both the embedding matrix and visual features are further passed to the language model as the context vectors for the self-attention mechanism.\\
+
+Instead of the original English GPT-2 the original soluton used its smaller version distilGPT-2\footnote[2]{\url{https://huggingface.co/distilgpt2}}. The distilled version differs in the number of layers as it contains only a half of the layers compared to the original model and predicts only 512 tokens instead of 1024. Nevertheless, distilled versions of GPT-2 do not usually work well for languages other than English due to their reduced capacity. For these reasons, we use the original architecture of the GPT-2 for further fine-tuning. But, our fine-tuned model will predict 512 tokens as well as the distilGPT-2. During the medical report generation training, the maximal sequnce length is set to 200.\\
+ 
 \begin{figure}[h]\centering
 \includegraphics[width=145mm, height=57mm]{../img/OmarArchitecture}
 \caption{Overall architecture used in our solution proposed in \citet{alfarghaly2021automated}.}
@@ -21,6 +27,7 @@ As in most works for image captioning, the architecture is encoder-decoder based
 The aim of this work is to generate medical reports in the Czech language. In the previous parts, we decided to use the GPT-2 as the language model. However at the time of the beginning of this work, no Czech GPT-2 model was freely available and thus it was essentially necessary to create one. This section describes all the steps needed for fine-tuning the small English GPT-2 to the Czech language. Respectively, we train two versions of the Czech GPT-2 model. One trained on the general Czech textual data and one specialized specifically on Czech medical texts.
 
 \subsection{Data}
+\label{sec:gptData}
 In this section we will describe the possible data applicable for training of both the general and medical Czech GPT-2 model together with the decision made about the final data selection and data cleaning.
 
 \subsubsection{General}
@@ -47,7 +54,50 @@ Several different datasets were investigated and tested for the training of the 
 Since we have a trained general Czech GPT-2 model from the previous section that already understands a Czech language, the final fine-tuning for medical environment does not require that much data. We need to specialize the model to understand the mecial environment inherently. For this purpose, we use a subset of the UFAL~Medical~Corpus~v. 1.0\footnote[5]{\url{https://ufal.mff.cuni.cz/ufal\_medical\_corpus}}. These data are further filtered to remove any inappropriate characters, lines and redundant structures. As a result, the data contain a total of 100 MB of raw medical texts. The texts comprise of general medical descriptions, articles and package leaflets for medicines.
 
 \subsection{Training}
-TODO - Popsat postup tréninku podle příspěvku(popis - obecně, trénování tokenizeru, postupné trénování) + learning rate finder(popis, obrázek) + diff lear. rates(popis - 4 skupiny) + ta trénovací křivka(popis - rozdíl oproti klasickýmu, obrázek), popsat ještě rozdíl mezi originállním přístupem a novým(gradual vs full)
+In this part, we will describe the fine-tuning process of our Czech GPT-2 models. Both the general and the medical GPT-2 models will be trained using the same process. The solution is based on the \citet{guillou2020faster} article using specific fastai\footnote[6]{\url{https://www.fast.ai/}} library providing with powerfull tools using best practices aiming for training and fine-tuning neural network models. The reason why we used this article is that it has shown great results for transfer learning the English GPT-2 to another language in a short time againts traditional fine-tuning. The whole process comprises of several important parts, that we will describe in the subsequnet part of the text. Detailed information about the insides and experiments done are described in the following Chapters TODO.
+
+\subsubsection*{Training tokenizer}
+First thing that needs to be done in the whole training process is to train a tokenizer specifically for the Czech language. As in the case of original GPT-2 model, we use the same byte-level~byte-pair-encoding\footnote[7]{\url{https://huggingface.co/course/chapter6/5?fw=pt}} tokenizer dividing input text into tokens (a word or its part). Original size of the vocabulary is kept and set to 50257, as well as the original special token $<|$endoftext$|>$ as indication of the beginning/end of the sequence token and the pad token. The entire prepared datasets from Chapter \ref{sec:gptData} are used for the tokenizers training.
+
+\subsubsection*{Initialization}
+As we have indicated several times, for the GPT-2 model weights initialization we will use the weights from the original English GPT-2. However, we will do a modification of the initial word token embeddings.\\
+
+For the word token embedding, we will compare what tokens have the English model tokenizer and our tokenizer in common. The embeddings of these tokens will remain unchanged, as they have been already trained on a large text corpus and they already carry information, even though they come from a completely different language. The rest of the tokens will be initialized using the mean value of the English word token embeddings.
+
+\subsubsection*{Data preparation}
+Another step in the process is to prepare the dataset into suitable structure for the training. Entire dataset is loaded and pre-tokenized in advance in order to reduce the data transfer time between CPU and GPU needed. After the pre-tokenization process, all texts are further passed passed to a specific language modeling data object, that is responsible for preparation and handling of training and validation data. All texts are concatenated, split by the defined sequnce length and formed into the batches. We use bach size of 16 as it is the maximum size we were able to fit into the GPU and sequence length of 512, because we need to have model correponding to the one used in \citet{alfarghaly2021automated} - distilGPT2 - as our main goal is to generate medical reports.\\
+
+The batch size is one of the important hyper-parameters. In the following section we will discuss, how learning rates are determined and also that we will use higher learning rates. Nevertheless, in the \citet{smith2018disciplined} they recommend to use batch size as large as possible, because higher learning rates are regularization themself and therefore other regularizations can be reduced.
+
+\subsubsection*{Finding optimal learning rate}
+Fine-tuning is a very fragile process in terms of learning rates. Right choice of the learning rate is essential, if we choose a very small learning rate, the model will train slowly and will tend to overfitting. On the other hand, if we choose too high learning rate, the whole process can diverge and all the progress will be lost.\\
+
+\citet{smith2017cyclical} came with a solution to this problem. Before the training itself, we do a pre-training run in which we are trying a wide range of learnings rates for which we monitor their behaviour. Starting from a very low learning rates up to the very high learning rates, for every mini-batch we try a current learning rate, collect the resulting loss and move to the next iteration with a little higher learning rate. In the end, we plot collected losses against the corresponding learning rates.\\
+
+An illustration of the result of this process can be seen in the Figure \hyperref[fig02:lrFinder]{2.2}. The graph gives us an overview for which learning rates the model is still learning. General recommendation is to use a learning rate that is an order of magnitude less than the minimum as the minimum is very close to the moment of divergence. We can also see in the graph that the current implementation gives us several other significant points usable for training.
+
+\begin{figure}[h]\centering
+\includegraphics[width=130mm, height=101mm]{../img/lrFinder}
+\caption{Learning finder output.}
+\label{fig02:lrFinder}
+The \textit{Learning rate} axis is in logarithmic scale.
+\end{figure}
+
+\subsubsection*{Training process}
+We have prepared everything we need in the previous parts. However, we still have to describe the essence of our fine-tuning process. We will first describe the learning rate schedule. Fine-tuning or transfer learning is usually done using small learning rates with decay, so the general information in the already pre-trained weights are kept while the model is specialized to a selected task. The disadvantage of this method is the long training time. Instead, we use a different approach from \citet{smith2018disciplined} called "1cycle" policy that is parametrized by \textit{minimal} and \textit{maximal} learning rates. In the beginning we start with a \textit{minimal} learning rate and linearly increase it up to the \textit{maximum}. The second phase is then the opposite direction going down with cosine annealing, but instead of stopping at the \textit{minimum} the decrease continues down by several order of magnitudes lower as we can see in the Figure \hyperref[fig03:lrSchedule]{2.3}. \\
+
+The intuition behind this policy is quite natural. In the beginning we start with a lower learning rates to find an optimal direction. As we are increasing the learning rate we are taking bigger steps this direction, skipping sharp local minima and preferring wide flat local minima area as shown in the \citet{smith2019super}. The rest of the training is intented for improvement inside this area. This allows us to use higher learninng rates and thus overall accelerate the entire training process. The \textit{maximal} learning rate should be chosen according to the previous section and the \textit{minimal} is defined as $ min = max / 25$ by default.\\
+
+Another major part of the training are discriminative learning rates. This method has been proposed in the \citet{howard2018universal}. Instead of training all layers at once, we assign a different learning rates for each layer or a group of layers as each of them. This arises from the reasoning about what the different parts of the network are focusing on. Therefore, we split our model into 4 distict groups of layers and train each of them with different learning rate.\\
+
+The fine-tuning process itself is divided into two parts: training the new head for the Czech language only and training the whole model at once. In the original article, they suggest gradual unfreezing approach, where they unfreeze one more layer each time and train for one epoch. However after numerous experiments, we observed that unfreezing of the whole model and running multiple epochs at once gives better results.
+
+\begin{figure}[h]\centering
+\includegraphics[width=130mm, height=91mm]{../img/lrSchedule}
+\caption{Learning rate schedule for 1cycle policy training.}
+\label{fig03:lrSchedule}
+The graph depicts the learning rate throughout the entire training process.
+\end{figure}
 
 \section{Medical dataset translation}
 For machine learning in general and NLP tasks especially, the data quality is the alpha and omega of the performance of the final model. Since, as we have already mentioned in the Chapter \ref{sec:CzechData}, we do not have any Czech data directly for the medical examinations of X-rays, to obtain Czech data we must arrange ourselves in a different way. One potential way is to create a new artificial dataset using machine translation of existing datasets. This section discusses the required steps to build a quality dataset using translation.

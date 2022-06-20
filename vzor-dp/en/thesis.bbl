@@ -1,4 +1,4 @@
-\begin{thebibliography}{31}
+\begin{thebibliography}{38}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -60,6 +60,12 @@ Alexey Dosovitskiy, Lucas Beyer, Alexander Kolesnikov, Dirk Weissenborn,
   scale.
 \newblock \emph{arXiv preprint arXiv:2010.11929}, 2020.
 
+\bibitem[Guillou(2020)]{guillou2020faster}
+P~Guillou.
+\newblock Faster than training from scratch—fine-tuning the english gpt-2 in
+  any language with hugging face and fastai v2 (practical case with
+  portuguese), 2020.
+
 \bibitem[He et~al.(2016)He, Zhang, Ren, and Sun]{he2016deep}
 Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.
 \newblock Deep residual learning for image recognition.
@@ -70,6 +76,11 @@ Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.
 Sepp Hochreiter and J{\"u}rgen Schmidhuber.
 \newblock Long short-term memory.
 \newblock \emph{Neural computation}, 9\penalty0 (8):\penalty0 1735--1780, 1997.
+
+\bibitem[Howard and Ruder(2018)]{howard2018universal}
+Jeremy Howard and Sebastian Ruder.
+\newblock Universal language model fine-tuning for text classification.
+\newblock \emph{arXiv preprint arXiv:1801.06146}, 2018.
 
 \bibitem[Huang et~al.(2017)Huang, Liu, Van Der~Maaten, and
   Weinberger]{huang2017densely}
@@ -132,6 +143,12 @@ Michal K{\v r}en, V{\'a}clav Cvr{\v c}ek, Jan Heny{\v s}, Milena
 \newblock {LINDAT}/{CLARIAH}-{CZ} digital library at the Institute of Formal
   and Applied Linguistics ({{\'U}FAL}), Faculty of Mathematics and Physics,
   Charles University.
+
+\bibitem[McDonald et~al.(2018)McDonald, Brokos, and
+  Androutsopoulos]{mcdonald2018deep}
+Ryan McDonald, Georgios-Ioannis Brokos, and Ion Androutsopoulos.
+\newblock Deep relevance ranking using enhanced document-query interactions.
+\newblock \emph{arXiv preprint arXiv:1809.01682}, 2018.
 
 \bibitem[Mikolov et~al.(2013)Mikolov, Sutskever, Chen, Corrado, and
   Dean]{mikolov2013distributed}
@@ -205,10 +222,36 @@ Johannes R\"uckert, Asma Ben~Abacha, Alba Garc\'ia Seco~de Herrera, Louise
 \newblock In \emph{CLEF2022 Working Notes}, {CEUR} Workshop Proceedings,
   Bologna, Italy, September 5-8 2022. CEUR-WS.org.
 
+\bibitem[Sanh et~al.(2019)Sanh, Debut, Chaumond, and Wolf]{sanh2019distilbert}
+Victor Sanh, Lysandre Debut, Julien Chaumond, and Thomas Wolf.
+\newblock Distilbert, a distilled version of bert: smaller, faster, cheaper and
+  lighter.
+\newblock \emph{arXiv preprint arXiv:1910.01108}, 2019.
+
 \bibitem[Simonyan and Zisserman(2014)]{simonyan2014very}
 Karen Simonyan and Andrew Zisserman.
 \newblock Very deep convolutional networks for large-scale image recognition.
 \newblock \emph{arXiv preprint arXiv:1409.1556}, 2014.
+
+\bibitem[Smith(2017)]{smith2017cyclical}
+Leslie~N Smith.
+\newblock Cyclical learning rates for training neural networks.
+\newblock In \emph{2017 IEEE winter conference on applications of computer
+  vision (WACV)}, pages 464--472. IEEE, 2017.
+
+\bibitem[Smith(2018)]{smith2018disciplined}
+Leslie~N Smith.
+\newblock A disciplined approach to neural network hyper-parameters: Part
+  1--learning rate, batch size, momentum, and weight decay.
+\newblock \emph{arXiv preprint arXiv:1803.09820}, 2018.
+
+\bibitem[Smith and Topin(2019)]{smith2019super}
+Leslie~N Smith and Nicholay Topin.
+\newblock Super-convergence: Very fast training of neural networks using large
+  learning rates.
+\newblock In \emph{Artificial intelligence and machine learning for
+  multi-domain operations applications}, volume 11006, pages 369--386. SPIE,
+  2019.
 
 \bibitem[Tan and Le(2019)]{tan2019efficientnet}
 Mingxing Tan and Quoc Le.
