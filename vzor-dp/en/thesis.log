@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.2.24)  20 JUN 2022 18:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.2.24)  26 JUN 2022 01:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -568,7 +568,7 @@ LaTeX Info: Redefining \nameref on input line 112.
 
  (./title.tex
 Package hyperref Info: Option `pageanchor' set `false' on input line 6.
-<../img/logo-en.pdf, id=208, 506.4591pt x 156.49065pt>
+<../img/logo-en.pdf, id=216, 506.4591pt x 156.49065pt>
 File: ../img/logo-en.pdf Graphic file (type pdf)
 <use ../img/logo-en.pdf>
 Package pdftex.def Info: ../img/logo-en.pdf  used on input line 9.
@@ -665,27 +665,32 @@ Underfull \hbox (badness 10000) in paragraph at lines 15--16
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 17--18
+Underfull \hbox (badness 10000) in paragraph at lines 18--19
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 21--22
+Underfull \hbox (badness 10000) in paragraph at lines 20--21
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 23--24
+Underfull \hbox (badness 10000) in paragraph at lines 24--25
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 25--26
+Underfull \hbox (badness 10000) in paragraph at lines 26--27
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 27--28
+Underfull \hbox (badness 10000) in paragraph at lines 28--29
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--31
 
  []
 
@@ -695,12 +700,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 27--28
  (./chap01.tex
 Chapter 1.
 
-Underfull \hbox (badness 10000) in paragraph at lines 6--7
+
+pdfTeX warning: pdflatex.exe (file ../img/ProblemExample.pdf): PDF inclusion: f
+ound PDF version <1.7>, but at most version <1.5> allowed
+<../img/ProblemExample.pdf, id=327, 586.44093pt x 177.66376pt>
+File: ../img/ProblemExample.pdf Graphic file (type pdf)
+<use ../img/ProblemExample.pdf>
+Package pdftex.def Info: ../img/ProblemExample.pdf  used on input line 8.
+(pdftex.def)             Requested size: 341.43347pt x 102.43237pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 15--16
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 8--9
+Underfull \hbox (badness 10000) in paragraph at lines 17--18
 
  []
 
@@ -708,57 +722,54 @@ Underfull \hbox (badness 10000) in paragraph at lines 8--9
 
 
 
-]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 29.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 29.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 29.
-LaTeX Font Info:    Trying to load font information for OT1+lmtt on input line 
-29.
- (d:/texlive/2019/texmf-dist/tex/latex/lm/ot1lmtt.fd
-File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-Underfull \hbox (badness 10000) in paragraph at lines 29--30
+ <../img/ProblemExample.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 38--39
 
  []
 
-
+[6]
 
 pdfTeX warning: pdflatex.exe (file ../img/VisualTransformerArchitecture.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<../img/VisualTransformerArchitecture.pdf, id=348, 710.655pt x 369.63094pt>
+<../img/VisualTransformerArchitecture.pdf, id=379, 710.655pt x 369.63094pt>
 File: ../img/VisualTransformerArchitecture.pdf Graphic file (type pdf)
 <use ../img/VisualTransformerArchitecture.pdf>
 Package pdftex.def Info: ../img/VisualTransformerArchitecture.pdf  used on inpu
-t line 38.
+t line 47.
 (pdftex.def)             Requested size: 412.57056pt x 216.24167pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[6]
-Underfull \hbox (badness 10000) in paragraph at lines 49--50
-
- []
-
 [7 <../img/VisualTransformerArchitecture.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 54--55
+Underfull \hbox (badness 10000) in paragraph at lines 58--59
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 60--61
+Underfull \hbox (badness 10000) in paragraph at lines 63--64
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 66--67
+Underfull \hbox (badness 10000) in paragraph at lines 69--70
 
  []
 
 [8]
-Underfull \hbox (badness 10000) in paragraph at lines 68--69
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 73.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 73.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 73.
+LaTeX Font Info:    Trying to load font information for OT1+lmtt on input line 
+73.
+ (d:/texlive/2019/texmf-dist/tex/latex/lm/ot1lmtt.fd
+File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+Underfull \hbox (badness 10000) in paragraph at lines 73--74
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 75--76
 
  []
 
@@ -767,68 +778,54 @@ Underfull \hbox (badness 10000) in paragraph at lines 68--69
 pdfTeX warning: pdflatex.exe (file ../img/IUChestXRaySample_CXR1728_IM-0479-100
 1.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allow
 ed
-<../img/IUChestXRaySample_CXR1728_IM-0479-1001.pdf, id=424, 848.80376pt x 309.7
+<../img/IUChestXRaySample_CXR1728_IM-0479-1001.pdf, id=423, 848.80376pt x 309.7
 2859pt>
 File: ../img/IUChestXRaySample_CXR1728_IM-0479-1001.pdf Graphic file (type pdf)
 
 <use ../img/IUChestXRaySample_CXR1728_IM-0479-1001.pdf>
 Package pdftex.def Info: ../img/IUChestXRaySample_CXR1728_IM-0479-1001.pdf  use
-d on input line 73.
+d on input line 80.
 (pdftex.def)             Requested size: 412.563pt x 150.79948pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 79--80
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 86--87
 
  []
 
-[9 <../img/IUChestXRaySample_CXR1728_IM-0479-1001.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 81--82
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 88--89
 
  []
 
-<../img/mimic_s57861150.pdf, id=460, 342.10764pt x 414.38393pt>
+<../img/mimic_s57861150.pdf, id=461, 342.10764pt x 414.38393pt>
 File: ../img/mimic_s57861150.pdf Graphic file (type pdf)
 <use ../img/mimic_s57861150.pdf>
-Package pdftex.def Info: ../img/mimic_s57861150.pdf  used on input line 86.
+Package pdftex.def Info: ../img/mimic_s57861150.pdf  used on input line 93.
 (pdftex.def)             Requested size: 384.12366pt x 463.78435pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[10]
-Underfull \hbox (badness 10000) in paragraph at lines 95--96
+[10 <../img/IUChestXRaySample_CXR1728_IM-0479-1001.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 103--104
 
  []
 
 [11 <../img/mimic_s57861150.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 111--112
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 113--114
-
- []
-
-[12]
 Underfull \hbox (badness 10000) in paragraph at lines 119--120
 
  []
 
-
+[12]
 Underfull \hbox (badness 10000) in paragraph at lines 121--122
 
  []
 
 
+Underfull \hbox (badness 10000) in paragraph at lines 127--128
 
-pdfTeX warning: pdflatex.exe (file ../img/OmarExample.pdf): PDF inclusion: foun
-d PDF version <1.7>, but at most version <1.5> allowed
-<../img/OmarExample.pdf, id=515, 832.47229pt x 596.91115pt>
-File: ../img/OmarExample.pdf Graphic file (type pdf)
-<use ../img/OmarExample.pdf>
-Package pdftex.def Info: ../img/OmarExample.pdf  used on input line 124.
-(pdftex.def)             Requested size: 412.5641pt x 295.90456pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
+ []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 129--130
@@ -837,13 +834,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 129--130
 
 
 
-pdfTeX warning: pdflatex.exe (file ../img/ZhihongExample.pdf): PDF inclusion: f
-ound PDF version <1.7>, but at most version <1.5> allowed
-<../img/ZhihongExample.pdf, id=524, 846.51137pt x 331.65768pt>
-File: ../img/ZhihongExample.pdf Graphic file (type pdf)
-<use ../img/ZhihongExample.pdf>
-Package pdftex.def Info: ../img/ZhihongExample.pdf  used on input line 132.
-(pdftex.def)             Requested size: 412.5596pt x 162.17967pt.
+pdfTeX warning: pdflatex.exe (file ../img/OmarExample.pdf): PDF inclusion: foun
+d PDF version <1.7>, but at most version <1.5> allowed
+<../img/OmarExample.pdf, id=533, 832.47229pt x 596.91115pt>
+File: ../img/OmarExample.pdf Graphic file (type pdf)
+<use ../img/OmarExample.pdf>
+Package pdftex.def Info: ../img/OmarExample.pdf  used on input line 132.
+(pdftex.def)             Requested size: 412.5641pt x 295.90456pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -852,17 +849,34 @@ Underfull \hbox (badness 10000) in paragraph at lines 137--138
 
  []
 
+
+
+pdfTeX warning: pdflatex.exe (file ../img/ZhihongExample.pdf): PDF inclusion: f
+ound PDF version <1.7>, but at most version <1.5> allowed
+<../img/ZhihongExample.pdf, id=542, 846.51137pt x 331.65768pt>
+File: ../img/ZhihongExample.pdf Graphic file (type pdf)
+<use ../img/ZhihongExample.pdf>
+Package pdftex.def Info: ../img/ZhihongExample.pdf  used on input line 140.
+(pdftex.def)             Requested size: 412.5596pt x 162.17967pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 145--146
+
+ []
+
 [13]
 
 pdfTeX warning: pdflatex.exe (file ../img/YuanExample.pdf): PDF inclusion: foun
 d PDF version <1.7>, but at most version <1.5> allowed
-<../img/YuanExample.pdf, id=548, 843.91476pt x 188.13142pt>
+<../img/YuanExample.pdf, id=566, 843.91476pt x 188.13142pt>
 File: ../img/YuanExample.pdf Graphic file (type pdf)
 <use ../img/YuanExample.pdf>
-Package pdftex.def Info: ../img/YuanExample.pdf  used on input line 140.
+Package pdftex.def Info: ../img/YuanExample.pdf  used on input line 148.
 (pdftex.def)             Requested size: 412.55608pt x 91.05128pt.
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
-44.
+52.
 (d:/texlive/2019/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
@@ -876,22 +890,22 @@ mple.pdf>]
  (./chap02.tex
 Chapter 2.
 
-Underfull \hbox (badness 10000) in paragraph at lines 12--13
+Underfull \hbox (badness 10000) in paragraph at lines 13--14
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--15
+Underfull \hbox (badness 10000) in paragraph at lines 15--16
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 16--17
+Underfull \hbox (badness 10000) in paragraph at lines 17--18
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 18--19
+Underfull \hbox (badness 10000) in paragraph at lines 19--20
 
  []
 
@@ -903,34 +917,29 @@ Underfull \hbox (badness 10000) in paragraph at lines 18--19
 
 pdfTeX warning: pdflatex.exe (file ../img/OmarArchitecture.pdf): PDF inclusion:
  found PDF version <1.7>, but at most version <1.5> allowed
-<../img/OmarArchitecture.pdf, id=603, 845.38057pt x 332.35278pt>
+<../img/OmarArchitecture.pdf, id=630, 845.38057pt x 332.35278pt>
 File: ../img/OmarArchitecture.pdf Graphic file (type pdf)
 <use ../img/OmarArchitecture.pdf>
-Package pdftex.def Info: ../img/OmarArchitecture.pdf  used on input line 21.
+Package pdftex.def Info: ../img/OmarArchitecture.pdf  used on input line 22.
 (pdftex.def)             Requested size: 412.56317pt x 162.1798pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 34--35
+[17 <../img/OmarArchitecture.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 36--37
 
  []
 
-[17 <../img/OmarArchitecture.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 38--38
+
+Underfull \hbox (badness 10000) in paragraph at lines 40--40
 [][][][]$\OT1/lmtt/m/n/10 https : / / dumps . wikimedia . org / cswiki / latest
  / cswiki-[]latest-[]pages-[]articles .
  []
 
 [18] [19]
-Underfull \hbox (badness 10000) in paragraph at lines 63--64
+Underfull \hbox (badness 10000) in paragraph at lines 65--66
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 68--69
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 73--74
+Underfull \hbox (badness 10000) in paragraph at lines 70--71
 
  []
 
@@ -940,26 +949,31 @@ Underfull \hbox (badness 10000) in paragraph at lines 75--76
  []
 
 [20]
-
-pdfTeX warning: pdflatex.exe (file ../img/lrFinder.pdf): PDF inclusion: found P
-DF version <1.7>, but at most version <1.5> allowed
-<../img/lrFinder.pdf, id=674, 421.575pt x 326.72063pt>
-File: ../img/lrFinder.pdf Graphic file (type pdf)
-<use ../img/lrFinder.pdf>
-Package pdftex.def Info: ../img/lrFinder.pdf  used on input line 80.
-(pdftex.def)             Requested size: 369.89357pt x 287.37045pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 87--88
+Underfull \hbox (badness 10000) in paragraph at lines 77--78
 
  []
 
-[21 <../img/lrFinder.pdf>]
+
+
+pdfTeX warning: pdflatex.exe (file ../img/lrFinder.pdf): PDF inclusion: found P
+DF version <1.7>, but at most version <1.5> allowed
+<../img/lrFinder.pdf, id=706, 421.575pt x 326.72063pt>
+File: ../img/lrFinder.pdf Graphic file (type pdf)
+<use ../img/lrFinder.pdf>
+Package pdftex.def Info: ../img/lrFinder.pdf  used on input line 82.
+(pdftex.def)             Requested size: 369.89357pt x 287.37045pt.
+
 Underfull \hbox (badness 10000) in paragraph at lines 89--90
 
  []
 
-
+[21 <../img/lrFinder.pdf>]
 Underfull \hbox (badness 10000) in paragraph at lines 91--92
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 93--94
 
  []
 
@@ -967,32 +981,35 @@ Underfull \hbox (badness 10000) in paragraph at lines 91--92
 
 pdfTeX warning: pdflatex.exe (file ../img/lrSchedule.pdf): PDF inclusion: found
  PDF version <1.7>, but at most version <1.5> allowed
-<../img/lrSchedule.pdf, id=690, 393.72093pt x 276.28218pt>
+<../img/lrSchedule.pdf, id=723, 393.72093pt x 276.28218pt>
 File: ../img/lrSchedule.pdf Graphic file (type pdf)
 <use ../img/lrSchedule.pdf>
-Package pdftex.def Info: ../img/lrSchedule.pdf  used on input line 96.
+Package pdftex.def Info: ../img/lrSchedule.pdf  used on input line 98.
 (pdftex.def)             Requested size: 369.88145pt x 258.91693pt.
-[22 <../img/lrSchedule.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 110--111
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 113--114
 
  []
 
-[23]
-Underfull \hbox (badness 10000) in paragraph at lines 124--125
+[22] [23 <../img/lrSchedule.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 137--138
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 126--127
+Underfull \hbox (badness 10000) in paragraph at lines 139--140
 
  []
 
-[24]) [25]
+[24] [25]) [26]
 \openout2 = `chap03.aux'.
 
  (./chap03.tex
 Chapter 3.
-) [26
+) [27
 
 
 
@@ -1001,14 +1018,14 @@ Chapter 3.
 
  (./chap04.tex
 Chapter 4.
-) [27
+) [28
 
 
 
 ]
 \openout2 = `epilog.aux'.
 
- (./epilog.tex) [28
+ (./epilog.tex) [29
 
 
 
@@ -1016,33 +1033,33 @@ Chapter 4.
 \openout2 = `bibliography.aux'.
 
  (./bibliography.tex (./thesis.bbl
-Underfull \hbox (badness 1275) in paragraph at lines 15--19
+Underfull \hbox (badness 1275) in paragraph at lines 25--29
 \OT1/lmr/m/n/12 trans-la-tion by jointly learn-ing to align and trans-late.  \O
 T1/lmr/m/it/12 arXiv preprint
  []
 
-[29
+[30
 
 
 
-] [30] [31])) [32] (./thesis.lof)
+] [31] [32])) [33] (./thesis.lof)
 \tf@lof=\write7
 \openout7 = `thesis.lof'.
 
- [33
+ [34
 
 
 ] (./thesis.lot)
 \tf@lot=\write8
 \openout8 = `thesis.lot'.
 
- [34
+ [35
 
-] [35
+] [36
 
 ]
 Appendix A.
-[36
+[37
 
 ]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 170.
@@ -1052,17 +1069,17 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 170.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 170.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 170.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: DF32A2C08DE28E4F4567FF444AF94FC6;6253.
+(rerunfilecheck)             Checksum: 635AC65E0B6196D0AC6CEA7B2E7021F0;6546.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 170.
  ) 
 Here is how much of TeX's memory you used:
- 15107 strings out of 481228
- 213028 string characters out of 5921397
- 451227 words of memory out of 5000000
- 29829 multiletter control sequences out of 15000+600000
+ 15148 strings out of 481228
+ 214037 string characters out of 5921397
+ 451939 words of memory out of 5000000
+ 29863 multiletter control sequences out of 15000+600000
  607768 words of font info for 87 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 44i,8n,41p,1374b,2341s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 44i,8n,41p,1388b,2341s stack positions out of 5000i,500n,10000p,200000b,80000s
 {d:/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-rmtt.enc}{d:/texlive/2019/t
 exmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{d:/texlive/2019/texmf-dist/fonts/enc/d
 vips/lm/lm-mathsy.enc}{d:/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}
@@ -1079,10 +1096,10 @@ m/lmri12.pfb><d:/texlive/2019/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><d:/t
 exlive/2019/texmf-dist/fonts/type1/public/lm/lmsy8.pfb><d:/texlive/2019/texmf-d
 ist/fonts/type1/public/lm/lmtt10.pfb><d:/texlive/2019/texmf-dist/fonts/type1/pu
 blic/lm/lmtt12.pfb>
-Output written on thesis.pdf (40 pages, 2421034 bytes).
+Output written on thesis.pdf (41 pages, 2567864 bytes).
 PDF statistics:
- 920 PDF objects out of 1000 (max. 8388607)
- 808 compressed objects within 9 object streams
- 194 named destinations out of 1000 (max. 500000)
- 463 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 962 PDF objects out of 1000 (max. 8388607)
+ 845 compressed objects within 9 object streams
+ 200 named destinations out of 1000 (max. 500000)
+ 484 words of extra memory for PDF output out of 10000 (max. 10000000)
 
