@@ -1,22 +1,212 @@
 \chapter{Experiments}
-Úvod
+This chapter describes all the experiments we conducted during the elaboration of our thesis and which will be further evaluated in the following chapter. Moreover, we will some describe technical details, scripts and environments we used for our experiments. The entire code is written in Python 3 with the use of tensorflow\footnote[1]{\url{https://www.tensorflow.org/}}, pyTorch\footnote[2]{\url{https://pytorch.org/}}, huggingface\footnote[3]{\url{https://huggingface.co/}} and fastai\footnote[4]{\url{https://www.fast.ai/}} libraries as they are the standard for working with neural networks. To install all the required dependencies, run the following command in the appropriate part of the project:
+
+ \begin{code}
+> pip3 install -r requirements.txt
+\end{code}
 
 \section{Environment}
-Popsat prostředí na kterém jsme trénovali - it4i cluster a aic cluster
+For training our neural networks, we used two different computational clusters, namely - AIC cluster\footnote[5]{\url{https://aic.ufal.mff.cuni.cz/index.php/Main\_Page}} and IT4I cluster.\footnote[6]{\url{https://www.it4i.cz/}} Both of them provide a support fo CPU and GPU computational tasks. However, since our models are large, we only train on GPUs.  For less time-consuming tasks, especially in the earlier phases of our thesis, we employed the AIC cluster. The IT4I cluster was used for the final training of all our models and all values reported in the subsequent parts of the text refer to the IT4I cluster hardware. Table \ref{tab01:clusterHW} lists the hardware available in both clusters.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{l@{\hspace{0.75cm}}D{.}{,}{0}D{.}{,}{5.0}D{.}{,}{1.2}}
+\toprule
+ & \mc{} & \mc{} \\
+\pulrad{\textbf{Cluster}} & \mc{\pulrad{\textbf{GPU}}} & \mc{\pulrad{\textbf{Memory}}}\\
+\midrule
+AIC                  & \mc{NVIDIA GeForce GTX 1080 Ti}  & \mc{11 GB}\\
+IT4I                 & \mc{NVIDIA A100 SXM4 40GB} & \mc{40 GB}\\
+\bottomrule
+\multicolumn{3}{l}{\footnotesize \textit{Note:} Clusters provide multiple types of GPUs. Only the types used are listed.}
+\end{tabular}
+
+\caption{Available GPU hardware on clusters.}\label{tab01:clusterHW}
+\end{table}
 
 \section{Czech GPT-2}
-Popis toho tréninku - odkaz na předchozí kapitolu.
-Výsledky z trénování
-* Normal Czech GPT-2
-* Medical Czech GPT-2
-Ukázky výsledků z obou
-Popis scriptů
+\label{sec:gpt2Experiments}
+This section summarizes all experiments, results and scripts related to the training of Czech GPT-2 models. All training experiments were performed according to the mind description in Chapter \ref{sec:czechGpt2}. Scripts related to the GPT-2 training and subsequent work are prefixed with \textit{gpt2}.\\
+
+During the elaboration of this thesis, we trained a several GTP-2 models on different datasets and with different approaches. However, we present only the most important results as we are interested only in the best possible GPT-2 models.\\
+
+The learning rates for both models were determined using the approach described in Chapter \ref{sec:gpt2Training}. For the general Czech GPT-2 model, the learning rates of $4e^{-3}$ for the first phase of learning only the new head and $2e^{-3}$ for the training of the entire unfrozen model were used. Subsequent fine-tuning of the medical model was performed using the learning rates of $8e^{-4}$ and $4e^{-4}$. Both of the models use batch size of 16 as it is the maximum that could fit into the GPU and sequence length of 512 for the reasons discussed in the mentioned chapter. Entire training of each of the models took a total of 5 epochs.
+
+\subsection{Implementation}
+The implementation of the GPT-2 related part comprises of several scripts. This section describes all of them with the necessary level of detail.
+
+\subsubsection*{Training}
+The most important script is \textit{gpt2\_train.py} that takes care of the entire training process. The script is parametrized with a numerous arguments such as base GPT-2 model, required sequence length, path to data etc. The data are expected to be inside the \textit{storage/data} directory. In the beginning, the script creates all directories necessary for the training and its results - this includes the directories for the final model, checkpoints, intermediate training data and tokenizers. After the initialization, the script runs according to the description of the process in Chapter \ref{sec:gpt2Training}. Further, the script also allows to resume the training from the last saved checkpoint. Final trained model is saved in both tensorflow and pyTorch version at the end along with its corresponding tokenizer in the \textit{storage/models} directory. Description of all arguments, that can be entered at the input, is directly inside the script. The script can be run as follows:
+\begin{code}
+> python3 gpt2_train.py [-h] [--type {gradual,full}] 
+                [--model MODEL] [--max_len MAX_LEN] 
+                [--pretrained_weights PRETRAINED_WEIGHTS] 
+                [--dataset DATASET] [--data_path DATA_PATH] 
+                [--batch_size BATCH_SIZE]
+                [--train_data_ratio TRAIN_DATA_RATIO] 
+                [--sequence_length SEQUENCE_LENGTH] [--debug DEBUG] 
+                [--resume_training RESUME_TRAINING] 
+                [--find_learning_rates FIND_LEARNING_RATES]
+                [--pretokenize_data PRETOKENIZE_DATA] 
+                [--save_checkpoints SAVE_CHECKPOINTS] 
+                [--learning_rates LEARNING_RATES [LEARNING_RATES ...]]
+\end{code}
+\newpage
+
+\subsubsection*{Testing}
+The \textit{gpt2\_generate.py} script serves for the text generation purposes. It is applicable to any huggingface GPT-2 model whose model name or path is taken as an argument. Moreover, all parameters that can be passed to the general huggingface GPT-2 \textit{generate} method can be also passed as arguments of the script such as \textit{top\_p}, \textit{top\_k} etc. The ouput of the script is the texts generated by the given GPT-2 model. The script can be run as follows:
+\begin{code}
+> python3 gpt2_generate.py [-h] [--max_len MAX_LEN] 
+                          [--model MODEL] 
+                          [--top_k TOP_K] 
+                          [--top_p TOP_P] 
+                          [--repetition_penalty REPETITION_PENALTY] 
+                          [--temperature TEMPERATURE] 
+                          [--do_sample DO_SAMPLE]
+                          [--num_return_sequences NUM_RETURN_SEQUENCES]
+\end{code}
+
+\subsubsection*{Data preparation}
+The last important script is \textit{gpt2\_data\_utils.py}. As the \textit{gpt2\_train.py} script needs the data to be in a specific format, this script provides tools for their preparation. For the specified data location, it goes through all files with \textit{.txt} or other user specified extensions. Each of the files can be further split after each number of lines or by a given delimiter. Finally, two files are created- one \textit{.txt} file with all texts merged inside the file for the tokenizer training and one \textit{.csv} file, where each split part corresponds to one row, for the GPT-2 fine-tuning itself. The script can be run as follows:\\
+\begin{code}
+> python3 gpt2_data_utils.py [-h] [--folder FOLDER] 
+                             [--text_delim TEXT_DELIM] 
+                             [--regenerate REGENERATE] 
+                             [--line_split LINE_SPLIT] 
+                             [--extensions EXTENSIONS]
+\end{code}
+
+For the OSCAR dataset (and generally any other dataset from huggingface), we implemented the \textit{DatasetsWrapper} class encapsulating the huggingface datasets classes, that provides us with better data handling, direct text iteration, control character filtering and offers us the ability to save data directly to a specified file while preserving all the original functionality. The class is implemented in the \textit{datasets\_wrapper.py} file.
+
+\subsection{Results}
+In this section, we present the training results for our fine-tuned Czech GPT-2 models. The trainig results can be seen in Table \ref{tab02:GeneralCzGpt2Results} and Table \ref{tab03:MedicalCzGpt2Results}. During training, we measured accuracy and perplexity\footnote[7]{\url{https://en.wikipedia.org/wiki/Perplexity}} metrics.
+
+We can see that the general model achieved an accuracy of 40.02 and a perplexity of 30.35. These values are comparable to the original article, where they trained a model for Portuguese. However, there are two major differences between ours and theirs setup. First, our training was conducted on a total of a 21 GB of raw data, compared to the original 1.6 GB. Further, we train our model on sequences of length 512 compared to original 1024. Both of these factors decrease our measured values and thus the results cannot be compared directly. Nevertheless, even if we trained the model with an identical sequence length, our results would be worse than in the original paper even though we trained on an order of magnitude larger data. This is due to the fact that Portuguese and English are more similar languages and because the original article used only more homogenous data from Wikipedia.\\
+
+As for the specialized medical GPT-2 model, the results are almost identical to the general Czech GPT-2 model. The fine-tuning was really fast as each epoch took  a maximum of 10 minutes. Nevertheless, we could get even better results, if we had better and more extensive Czech medical data to train the model for a longer period of time.
+
+\begin{table}[h!]
+
+\centering
+\begin{tabular}{l@{\hspace{0cm}}D{.}{,}{0}D{.}{,}{1.2}D{.}{,}{1.2}D{.}{,}{2.2}D{.}{,}{2.2}D{.}{,}{1.2}D{.}{,}{2.2}}
+\toprule
+ & \mc{} & \mc{} & \mc{} & \mc{} & \mc{} & \mc{} & \mc{} \\
+\pulrad{\textbf{Epoch}} & \mc{\pulrad{\textbf{Loss\textsubscript{train}}}} & \mc{\pulrad{\textbf{Loss\textsubscript{val}}}} & \mc{\pulrad{\textbf{Accuracy (\%)}}} & \mc{\pulrad{\textbf{Perplexity}}} & \mc{\pulrad{\textbf{Time (h)}}} \\
+\midrule
+\mc{1}                & \mc{4.42}          & \mc{4.28}  & \mc{30.40} & \mc{72.10} & \mc{26:56} \\
+\mc{2}                & \mc{3.75}          & \mc{3.76}  & \mc{35.99} & \mc{42.85} & \mc{29:07} \\
+\mc{3}             	  & \mc{3.74}          & \mc{3.65}  & \mc{37.20} & \mc{38.32} & \mc{29:07} \\
+\mc{4}                & \mc{3.61}          & \mc{3.54}  & \mc{38.48} & \mc{34.38} & \mc{28:58} \\
+\mc{5}                & \mc{3.52}          & \mc{3.41}  & \mc{40.02} & \mc{30.35} & \mc{28:57} \\
+\bottomrule
+\multicolumn{7}{l}{\footnotesize \textit{Note:} All values are rounded to 2 decimal places.}
+\end{tabular}
+
+\caption{General Czech GPT-2 model training results.}\label{tab02:GeneralCzGpt2Results}
+During the first epoch, only the new head is trained.
+\end{table}
+
+\begin{table}[h!]
+
+\centering
+\begin{tabular}{l@{\hspace{0cm}}D{.}{,}{0}D{.}{,}{1.2}D{.}{,}{1.2}D{.}{,}{2.2}D{.}{,}{2.2}D{.}{,}{1.2}D{.}{,}{1.2}}
+\toprule
+ & \mc{} & \mc{} & \mc{} & \mc{} & \mc{} & \mc{} & \mc{} \\
+\pulrad{\textbf{Epoch}} & \mc{\pulrad{\textbf{Loss\textsubscript{train}}}} & \mc{\pulrad{\textbf{Loss\textsubscript{val}}}} & \mc{\pulrad{\textbf{Accuracy (\%)}}} & \mc{\pulrad{\textbf{Perplexity}}} & \mc{\pulrad{\textbf{Time (m)}}} \\
+\midrule
+\mc{1}                & \mc{3.85}          & \mc{3.75}  & \mc{35.90} & \mc{42.42} & \mc{9:01} \\
+\mc{2}                & \mc{3.74}          & \mc{3.66}  & \mc{36.76} & \mc{38.90} & \mc{9:50} \\
+\mc{3}             	  & \mc{3.63}          & \mc{3.52}  & \mc{38.58} & \mc{33.62} & \mc{9:49} \\
+\mc{4}                & \mc{3.41}          & \mc{3.43}  & \mc{39.94} & \mc{30.75} & \mc{9:48} \\
+\mc{5}                & \mc{3.14}          & \mc{3.41}  & \mc{40.29} & \mc{30.36} & \mc{9:48} \\
+\bottomrule
+\multicolumn{7}{l}{\footnotesize \textit{Note:} All values are rounded to 2 decimal places.}
+\end{tabular}
+
+\caption{Medical Czech GPT-2 model training results.}\label{tab03:MedicalCzGpt2Results}
+During the first epoch, only the new head is trained.
+\end{table}
+
+\subsection{Examples}
+In the last part of the GPT-2 experiments section, examples of texts generated by both of the trained models are shown and further discussed.
+
+\subsubsection*{General Czech GPT-2}
+TODO
+\subsubsection*{Medical Czech GPT-2}
+TODO
 
 \section{Dataset translation}
-Popsat, jak vypadá ten script, jak funguje a že jsme nakonec překládali jen open-i
-+ Výsledky
+Medical dataset translation is a large part of the thesis. This section describes all necessary details of the data translation. As our final data source we chose the Indiana University chest X-ray dataset and we utilized CUBBITT as the translation service. Implementation details for all related source code are described below. Processing of the whole dataset (3955 files) took a total of 32 minutes.
+
+\subsection{Implementation}
+To translate medical reports from English into Czech, the \textit{dataset\_translate.py} script was utilized. It is designed to be versatile and extensible for use on any dataset and any translation service. One can define its own \textit{Translator} or \textit{Extractor} class, described in the following parts of text, and run the script with different data or translator. Moreover, the preprocessing pipeline can also be customized to specific requirements. The script can be run as follows: \\
+\begin{code}
+> python3 dataset_translate.py [-h] [--translator {cubbitt,deepl}] 
+                               [--dataset {mimic,openi}] 
+                               [--data DATA]
+                               [--preprocess {lowercase,pipeline,none}] 
+                               [--preprocess_only PREPROCESS_ONLY]
+                               [--anonymous_seq ANONYMOUS_SEQ]
+\end{code}
+
+It takes several arguments, such as the data path, and runs the translation. The script runs in multiple threads, so it can make efficient use of system resources and therefore speed up the overall translation. The final report translations are stored in the \textit{translations} directory, where each run is uniquely identified by its start date, dataset name etc., while preserving the original dataset structure. If the user do not want to translate the dataset and only preprocess, the behaviour of the script can be changed with the \textit{--preprocess\_only} argument.\\
+
+For each file, the script first loads the report text using the specified \textit{Extractor}. Next, the text goes through each of the \textit{Preprocessors} to process the text. After the preprocessing finishes, the report is passed to the selected \textit{Translator} to get the translated text. Finally, the translated report is saved under the original file name. Throughout the entire translation process, the progress indication of how much data has been already translated is displayed.\\
+
+All implemented preprocessors, described in Chapter\ref{sec:DataPreprocessing}, are located in the \textit{preprocessors} directory. Each of them implements the  \textit{Preprocessor} interface with only one method \textit{preprocess}, which makes it extensible for possible additional user defined preprocessors.\\
+
+In our thesis we utilize CUBBITT as our translator. However, the user can implement its own translator class as the main script for dataset translation works with \textit{Translator} interface. This interface defines two methods - \textit{translate} that should return the response object from the translation service, and \textit{get\_text} that should get or create the translated text from the response. During the elaboration of this thesis we also implemented a translator for the DeepL, but it is unusable in practice due to its strict limits.
+
+The last extensible part of the translation process is text extraction from the dataset files. Since not all datasets are just simple \textit{.txt} files, we created the \textit{Extractor} interface for this purpose. It defines only one method \textit{extract\_report} intended for full report text extraction. We implemented two extractors - for the Indiana University chest X-ray and MIMIC-CXR v2.0.0 datasets.
 
 \section{Medical report generation model}
 Popsat, že jsme použili data z Open-I jako v původním článku, jelikož nám jde hlavně o proof-of-concept + Mimic nemá stejné tagy -> muselo by se přetrénovat celý CNN backbone.
-+ Výsledky
 + Popis toho, jak jsme upravili data do stejného formátu jako v článku, popis těch skriptů je na githubu toho článku
+
+Tha last section of this chapter describes all the experiments conducted for the medical report generation. Furthermore, all the necessary technical information about running models and data preparation is summarized.
+
+\subsection{Setup}
+As we already mentioned in the previous parts of text, we use the solution from \citet{alfarghaly2021automated} paper that is freely available on the github.\footnote[8]{\url{https://github.com/omar-mohamed/GPT2-Chest-X-Ray-Report-Generation}} The code uses older tensorflow 2.3.0 with some deprecated features, thus some minor adjustments had to be done in order to run on a newer 2.5.0 version. This version wss chosen because of the available support for the corresponding CUDA and cuDNN version on the IT4I cluster. \\
+
+For the training, the Inidiana Univesity chest X-ray dataset was utilized as in the original paper. The key reason is that the solution uses a pre-trained CNN backbone, which is directly fine-tuned for the Inidiana Univesity chest X-ray dataset tags. The MIMIC-CXR v2.0.0 does not provide these tags, but only 14 labels. Thus the original Chexnet model would have to be fine-tuned again for this huge dataset. Morevoer, the whole training time would be considerably prolonged and the code would have to be modified more extensively\\.
+ 
+As we need to have the Czech translated reports in the same format as in the original case, we implemented a script to do so. The reports contain several sections, however for the final report training and prediction, only the \textit{Impression} and \textit{Findings} sections are taken as they contain key information. The script for the modification of the original \textit{csv} files can be run as follows:
+\begin{code}
+> python3 modify_csv_to_translations.py [-h] 
+                                [--original_csv_dir ORIGINAL_CSV_DIR] 
+                                [--translations_dir TRANSLATIONS_DIR]
+                                [--output_dir OUTPUT_DIR]
+\end{code}
+
+First, follow the setup steps described in the project \textit{README}. Next, in order to run a training for our GPT-2 models and Czech data, several steps need to be carried out:
+\begin{itemize}
+	\item In the \textit{IU-XRay} directory, the English report files must be swapped with their Czech translations - \textit{all\_data.csv}, \textit{testing\_set.csv}, \textit{training\_set.csv}.
+	\item The desired trained GPT-2 model should be placed inside the top level of the directory.
+	\item Inside the \textit{train.py}, \textit{test.py}, \textit{tokenizer\_wrapper.py} files, the original distilgpt2 and gpt2 model and tokenizer string identifier should be changed to the name of our trained GPT-2 model.
+	\item Change hyperparameters in \textit{configs.py} to adjust training parameters as needed.
+\end{itemize}
+
+\subsection{Experiments}
+Final thing that needs to be perfomed is to run experiments for the medical report generation. We conducted our experiments with multiple different setups of the neural network. All of them were performed on the IT4I cluster with the batch size of 8 as it was the maximum size we were able to fit into the GPU. In the original article, they trained the model with the constant learning rate of $1e^{-3}$ and Adam optimizer. Nevertheless, we trained our models with a smaller learning rate of $1e^{-4}$, because we find it better to train already pre-trained models with a lower value. The max sequence length is set to be 200 tokens, as the reports are generally shorter nature.\\
+
+We run the final training on both of our trained Czech GPT-2 models - general Czech model and specialized Czech medical model. On top of the original paper where they trained only the decoder part of the network with the frozen CNN backbone, we also train with setups in which we have left the entire network unfrozen. In the end, we have a total of 4 different setups listed in Table \ref{tab04:MedGenReportSetups} for training. For each of them, the best and the last model will be evaluted.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{l@{\hspace{0.75cm}}D{.}{,}{7.0}D{.}{,}{4.0}}
+\toprule
+ & \mc{} & \mc{} \\
+\pulrad{\textbf{Model}} & \mc{\pulrad{\textbf{Training scope}}} & \mc{\pulrad{\textbf{Identifier}}} \\
+\midrule
+General Czech GPT-2               & \mc{Decoder only}          & \mc{GEN-dec}  \\
+General Czech GPT-2               & \mc{Entire network}        & \mc{GEN-all}  \\
+Medical Czech GPT-2               & \mc{Decoder only}          & \mc{MED-dec}  \\
+Medical Czech GPT-2               & \mc{Entire network}        & \mc{MED-all}  \\
+\bottomrule
+\multicolumn{3}{l}{\footnotesize \textit{Note:} Tags' embeddings are frozen during all setups.}
+\end{tabular}
+
+\caption{Medical report generation experiments' setups.}\label{tab04:MedGenReportSetups}
+\end{table}
+
+

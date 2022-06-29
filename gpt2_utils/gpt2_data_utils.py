@@ -1,7 +1,16 @@
 import os
 import csv
+import argparse
 
-def create_aggregates_from_texts(folder: str, text_delim: str, regenerate: bool = False, line_split: int = None, suffixes: list[str] = []) -> tuple([str, str]):
+parser = argparse.ArgumentParser()
+# arguments used during generation of text
+parser.add_argument('--folder', default=".", type=str, help="Folder containing all data, that should be aggregated.", required=True)
+parser.add_argument('--text_delim', default="<###|---text_delimiter---|###>", type=str, help="Text delimiter sequence indcating the end of the text within a file.")
+parser.add_argument('--regenerate', default=False, type=bool, help="Flag indicating whether the aggregates should be regenerated even if already exist or not.")
+parser.add_argument('--line_split', default=None, type=int, help="Number of lines after which a new entry should be created.")
+parser.add_argument('--extensions', default=[], type=str, nargs="*", help="Additional file extensions that should be taken into account.")
+
+def create_aggregates_from_texts(folder: str, text_delim: str, regenerate: bool = False, line_split: int = None, extensions: list[str] = []) -> tuple([str, str]):
     '''
     Goes through specified 'folder' and reads every *txt* file which it can find anywhere in the 'folder' and generates an aggregation of all found files into one csv and one txt files. 
     Each file will be splitted with 'text_delim' into paragraphs. 
@@ -13,7 +22,7 @@ def create_aggregates_from_texts(folder: str, text_delim: str, regenerate: bool 
         text_delim: str - the text delimiter to separate independent texts within one file
         regenerate: bool - the flag indicating if the final files should be generated even if they already exists.
         line_split: int - the number of lines after which the text should split.
-        suffixes: list[str] - other suffixes that should be taken into account
+        extensions: list[str] - other extensions that should be taken into account
 
     Returns:
         (str, str) - paths to aggregated *csv* and *txt* files
@@ -37,7 +46,7 @@ def create_aggregates_from_texts(folder: str, text_delim: str, regenerate: bool 
         print("Final csv or txt file already exists. Returning.")
         return
 
-    suffixes = [".txt"] + suffixes
+    extensions = [".txt"] + extensions
     with open(csv_file_path, mode="wt", newline='', encoding="utf-8") as csv_file, \
          open(txt_file_path, mode="wt", newline='', encoding="utf-8") as txt_file:
         writer = csv.writer(csv_file)
@@ -51,7 +60,7 @@ def create_aggregates_from_texts(folder: str, text_delim: str, regenerate: bool 
                 if filename == csv_file_name or filename == txt_file_name:
                     continue
 
-                if not any(filename.endswith(suff) for suff in suffixes):
+                if not any(filename.endswith(extension) for extension in extensions):
                     continue
 
                 text = ""
@@ -75,3 +84,7 @@ def create_aggregates_from_texts(folder: str, text_delim: str, regenerate: bool 
 
 
     return (csv_file_path, txt_file_path)
+
+if __name__ == "__main__":
+    args = parser.parse_args([] if "__file__" not in globals() else None)
+    create_aggregates_from_texts(args.folder, args.text_delim, args.regenare, args.line_split, args.extensions)
