@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.2.24)  29 JUN 2022 17:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.2.24)  29 JUN 2022 18:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1054,12 +1054,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 156--157
  []
 
 [31]
-Underfull \hbox (badness 10000) in paragraph at lines 169--170
+Underfull \hbox (badness 10000) in paragraph at lines 166--167
 
  []
 
 [32]
-Underfull \hbox (badness 10000) in paragraph at lines 190--191
+Underfull \hbox (badness 10000) in paragraph at lines 193--194
 
  []
 
@@ -1126,10 +1126,10 @@ Package rerunfilecheck Info: File `thesis.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 170.
  ) 
 Here is how much of TeX's memory you used:
- 15195 strings out of 481228
- 214692 string characters out of 5921397
+ 15194 strings out of 481228
+ 214684 string characters out of 5921397
  453288 words of memory out of 5000000
- 29879 multiletter control sequences out of 15000+600000
+ 29878 multiletter control sequences out of 15000+600000
  615240 words of font info for 90 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  44i,13n,41p,1388b,2341s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1150,7 +1150,7 @@ xlive/2019/texmf-dist/fonts/type1/public/lm/lmri12.pfb><d:/texlive/2019/texmf-d
 ist/fonts/type1/public/lm/lmsy10.pfb><d:/texlive/2019/texmf-dist/fonts/type1/pu
 blic/lm/lmsy8.pfb><d:/texlive/2019/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
 <d:/texlive/2019/texmf-dist/fonts/type1/public/lm/lmtt12.pfb>
-Output written on thesis.pdf (48 pages, 2630702 bytes).
+Output written on thesis.pdf (48 pages, 2630062 bytes).
 PDF statistics:
  1088 PDF objects out of 1200 (max. 8388607)
  959 compressed objects within 10 object streams

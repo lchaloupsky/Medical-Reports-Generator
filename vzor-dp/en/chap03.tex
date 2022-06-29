@@ -160,9 +160,6 @@ In our thesis we utilize CUBBITT as our translator. However, the user can implem
 The last extensible part of the translation process is text extraction from the dataset files. Since not all datasets are just simple \textit{.txt} files, we created the \textit{Extractor} interface for this purpose. It defines only one method \textit{extract\_report} intended for full report text extraction. We implemented two extractors - for the Indiana University chest X-ray and MIMIC-CXR v2.0.0 datasets.
 
 \section{Medical report generation model}
-Popsat, že jsme použili data z Open-I jako v původním článku, jelikož nám jde hlavně o proof-of-concept + Mimic nemá stejné tagy -> muselo by se přetrénovat celý CNN backbone.
-+ Popis toho, jak jsme upravili data do stejného formátu jako v článku, popis těch skriptů je na githubu toho článku
-
 Tha last section of this chapter describes all the experiments conducted for the medical report generation. Furthermore, all the necessary technical information about running models and data preparation is summarized.
 
 \subsection{Setup}
@@ -185,6 +182,12 @@ First, follow the setup steps described in the project \textit{README}. Next, in
 	\item Inside the \textit{train.py}, \textit{test.py}, \textit{tokenizer\_wrapper.py} files, the original distilgpt2 and gpt2 model and tokenizer string identifier should be changed to the name of our trained GPT-2 model.
 	\item Change hyperparameters in \textit{configs.py} to adjust training parameters as needed.
 \end{itemize}
+
+After all the mentioned steps, we can run the training or testing procedure using the following commands:
+\begin{code}
+> python3 train.py
+> python3 test.py
+\end{code}
 
 \subsection{Experiments}
 Final thing that needs to be perfomed is to run experiments for the medical report generation. We conducted our experiments with multiple different setups of the neural network. All of them were performed on the IT4I cluster with the batch size of 8 as it was the maximum size we were able to fit into the GPU. In the original article, they trained the model with the constant learning rate of $1e^{-3}$ and Adam optimizer. Nevertheless, we trained our models with a smaller learning rate of $1e^{-4}$, because we find it better to train already pre-trained models with a lower value. The max sequence length is set to be 200 tokens, as the reports are generally shorter nature.\\
