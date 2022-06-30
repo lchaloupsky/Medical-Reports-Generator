@@ -14,45 +14,45 @@ Database file #1: bibliography.bib
 Warning--can't use both volume and number fields in irvin2019chexpert
 Warning--empty journal in kvak2021carebot
 Warning--empty journal in radford2019language
-You've used 45 entries,
+You've used 46 entries,
             2773 wiz_defined-function locations,
-            843 strings with 16255 characters,
-and the built_in function-call counts, 27020 in all, are:
-= -- 2272
-> -- 2239
+            849 strings with 16495 characters,
+and the built_in function-call counts, 27501 in all, are:
+= -- 2313
+> -- 2278
 < -- 25
-+ -- 751
-- -- 705
-* -- 2346
-:= -- 4238
-add.period$ -- 149
-call.type$ -- 45
-change.case$ -- 366
-chr.to.int$ -- 44
-cite$ -- 93
-duplicate$ -- 1047
-empty$ -- 1737
-format.name$ -- 766
-if$ -- 5585
++ -- 764
+- -- 717
+* -- 2389
+:= -- 4318
+add.period$ -- 153
+call.type$ -- 46
+change.case$ -- 373
+chr.to.int$ -- 45
+cite$ -- 95
+duplicate$ -- 1067
+empty$ -- 1768
+format.name$ -- 779
+if$ -- 5682
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 41
-newline$ -- 240
-num.names$ -- 180
-pop$ -- 742
+missing$ -- 42
+newline$ -- 246
+num.names$ -- 184
+pop$ -- 753
 preamble$ -- 1
-purify$ -- 320
+purify$ -- 326
 quote$ -- 0
-skip$ -- 941
+skip$ -- 958
 stack$ -- 0
-substring$ -- 678
-swap$ -- 177
+substring$ -- 680
+swap$ -- 178
 text.length$ -- 14
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 495
+type$ -- 506
 warning$ -- 3
-while$ -- 183
+while$ -- 186
 width$ -- 0
-write$ -- 594
+write$ -- 609
 (There were 3 warnings)

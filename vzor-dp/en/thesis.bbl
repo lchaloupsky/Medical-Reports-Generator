@@ -1,4 +1,4 @@
-\begin{thebibliography}{45}
+\begin{thebibliography}{46}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -274,6 +274,14 @@ Victor Sanh, Lysandre Debut, Julien Chaumond, and Thomas Wolf.
 Rico Sennrich, Barry Haddow, and Alexandra Birch.
 \newblock Neural machine translation of rare words with subword units.
 \newblock \emph{arXiv preprint arXiv:1508.07909}, 2015.
+
+\bibitem[Sharma et~al.(2017)Sharma, El~Asri, Schulz, and
+  Zumer]{sharma2017nlgeval}
+Shikhar Sharma, Layla El~Asri, Hannes Schulz, and Jeremie Zumer.
+\newblock Relevance of unsupervised metrics in task-oriented dialogue for
+  evaluating natural language generation.
+\newblock \emph{CoRR}, abs/1706.09799, 2017.
+\newblock URL \url{http://arxiv.org/abs/1706.09799}.
 
 \bibitem[Simonyan and Zisserman(2014)]{simonyan2014very}
 Karen Simonyan and Andrew Zisserman.
