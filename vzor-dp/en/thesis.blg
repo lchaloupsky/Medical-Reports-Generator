@@ -7,6 +7,7 @@ A level-1 auxiliary file: chap01.aux
 A level-1 auxiliary file: chap02.aux
 A level-1 auxiliary file: chap03.aux
 A level-1 auxiliary file: chap04.aux
+A level-1 auxiliary file: chap05.aux
 A level-1 auxiliary file: epilog.aux
 A level-1 auxiliary file: bibliography.aux
 The style file: plainnat.bst
@@ -14,45 +15,45 @@ Database file #1: bibliography.bib
 Warning--can't use both volume and number fields in irvin2019chexpert
 Warning--empty journal in kvak2021carebot
 Warning--empty journal in radford2019language
-You've used 46 entries,
+You've used 54 entries,
             2773 wiz_defined-function locations,
-            849 strings with 16495 characters,
-and the built_in function-call counts, 27501 in all, are:
-= -- 2313
-> -- 2278
-< -- 25
-+ -- 764
-- -- 717
-* -- 2389
-:= -- 4318
-add.period$ -- 153
-call.type$ -- 46
-change.case$ -- 373
-chr.to.int$ -- 45
-cite$ -- 95
-duplicate$ -- 1067
-empty$ -- 1768
-format.name$ -- 779
-if$ -- 5682
+            891 strings with 18295 characters,
+and the built_in function-call counts, 32352 in all, are:
+= -- 2739
+> -- 2587
+< -- 35
++ -- 868
+- -- 813
+* -- 2757
+:= -- 5013
+add.period$ -- 178
+call.type$ -- 54
+change.case$ -- 428
+chr.to.int$ -- 53
+cite$ -- 111
+duplicate$ -- 1302
+empty$ -- 2149
+format.name$ -- 887
+if$ -- 6748
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 42
-newline$ -- 246
-num.names$ -- 184
-pop$ -- 753
+missing$ -- 50
+newline$ -- 286
+num.names$ -- 216
+pop$ -- 886
 preamble$ -- 1
-purify$ -- 326
+purify$ -- 373
 quote$ -- 0
-skip$ -- 958
+skip$ -- 1160
 stack$ -- 0
-substring$ -- 680
-swap$ -- 178
-text.length$ -- 14
+substring$ -- 854
+swap$ -- 244
+text.length$ -- 21
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 506
+type$ -- 594
 warning$ -- 3
-while$ -- 186
+while$ -- 226
 width$ -- 0
-write$ -- 609
+write$ -- 713
 (There were 3 warnings)

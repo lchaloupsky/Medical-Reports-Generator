@@ -1,34 +1,146 @@
-\chapter{Evaluation}
-The last chapter of our thesis presents an evaluation of all conducted experiments, described in detail in Chapter \ref{sec:medGenReportExperiments}, for medical reports generation task. Each performed experiment is evaluated automatically with the common machine translation metrics. Furthermore, the outputs of the best model were manually evaluated by an experienced radiologist. The evaluation outputs of all models are included in Attachement TODO.
+\chapter{Experiments}
+This chapter describes all the experiments we conducted during the elaboration of our thesis and which will be further evaluated in the following chapter. Moreover, we will describe some technical details and environments we used for our experiments.\\
 
-\section{Automatic evaluation}
-First part of this chapter shows the results of the automatic evaluation of our trained models. Important thing to mention is that these metrics give us only an indication of which models could be theoretically perfoming good and not their true performance. This fact is further intensified by the nature of our area, where we need to capture all findings appearing in the image and the overall diagnosis. \\
+In the beginning we want to emphasize the fact that during the elaboration of this thesis we performed a lot of experiments with different setups, methods and data. Nertheless, we present only the experiments and setups we used for the final experiments and evaluation.
 
-The evaluation was performed on a subset of 500 X-ray images. We subjected all models to standard automatic evaluation metrics used in image captioning and machine translation areas using NLG evaluation from \citet{sharma2017nlgeval}.
+\section{Environment}
+For training our neural networks, we used two different computational clusters, namely - AIC cluster\footnote[5]{\url{https://aic.ufal.mff.cuni.cz/index.php/Main\_Page}} and IT4I cluster.\footnote[6]{\url{https://www.it4i.cz/}}. Both of them provide a support for CPU and GPU computational tasks. However, since our models are large, we perform the trainings only on GPUs.  For less time-consuming tasks, especially in the earlier phases of our thesis, we employed the AIC cluster. The IT4I cluster was used for the final training of all our models and all values reported in the subsequent parts of the text refer to the IT4I cluster hardware. Table \ref{tab01:clusterHW} lists the hardware available in both clusters. This work was supported by the Ministry of Education, Youth and Sports of the Czech Republic through the e-INFRA CZ (ID:90140)
 
-\subsection{Metrics}
-This section outlines all measured metrics from NLG evaluation.
-\subsubsection*{BLEU}
-\subsubsection*{GLEU}
-\subsubsection*{METEOR}
-\subsubsection*{ROUGE}
-\subsubsection*{CIDEr}
-\subsubsection*{SkipThought cosine similarity}
-\subsubsection*{Embedding Average cosine similarity}
-\subsubsection*{Vector Extrema cosine similarity}
-\subsubsection*{Greedy Matching score}
+\begin{table}[h]
+\centering
+\begin{tabular}{l@{\hspace{0.75cm}}D{.}{,}{0}D{.}{,}{5.0}D{.}{,}{1.2}}
+\toprule
+ & \mc{} & \mc{} \\
+\pulrad{\textbf{Cluster}} & \mc{\pulrad{\textbf{GPU}}} & \mc{\pulrad{\textbf{Memory}}}\\
+\midrule
+AIC                  & \mc{NVIDIA GeForce GTX 1080 Ti}  & \mc{11 GB}\\
+IT4I                 & \mc{NVIDIA A100 SXM4 40GB} & \mc{40 GB}\\
+\bottomrule
+\multicolumn{3}{l}{\footnotesize \textit{Note:} Clusters provide multiple types of GPUs. Only the types used are listed.}
+\end{tabular}
+
+\caption{Available GPU hardware on clusters.}\label{tab01:clusterHW}
+\end{table}
+
+\section{Czech GPT-2}
+\label{sec:gpt2Experiments}
+This section summarizes all experiments and results related to the training of Czech GPT-2 models. All experiments were performed according to the training procedure description in Chapter \ref{sec:gpt2Training}.\\
+
+During the elaboration of this thesis, we trained several GTP-2 models on different datasets and with different approaches. However, we present only the most important results as we are interested only in the best possible GPT-2 models.\\
+
+The learning rates for both models were determined using the approach described in Chapter \ref{sec:gpt2Training}. For the general Czech GPT-2 model, the learning rates of $4e^{-3}$ for the first phase of learning only the new head and $2e^{-3}$ for the training of the entire unfrozen model were used. Subsequent fine-tuning of the medical model was performed using the learning rates of $8e^{-4}$ and $4e^{-4}$ respectively. Both of the models use batch size of 16 as it is the maximum that could fit into the GPU and sequence length of 512 for the reasons discussed in the referenced chapter. Entire training of each of the models took a total of 5 epochs. After some experimenting with the number of training epochs, we concluded that additional epochs do not bring any significant improvement. Overview of parameters used for each model training are listed in Table \ref{tab00:Gpt2TrainingParams}.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{l@{\hspace{0cm}}D{.}{,}{0}D{.}{,}{1.3}D{.}{,}{1.3}D{.}{,}{2.0}D{.}{,}{3.0}D{.}{,}{1.0}}
+\toprule
+ & \mc{} & \mc{} & \mc{} & \mc{} & \mc{} & \mc{} \\
+\pulrad{\textbf{Model}} & \mc{\pulrad{\textbf{LR\textsubscript{Head}}}} & \mc{\pulrad{\textbf{LR\textsubscript{All}}}} & \mc{\pulrad{\textbf{Batch size}}} & \mc{\pulrad{\textbf{Seq length}}} & \mc{\pulrad{\textbf{Epochs}}} \\
+\midrule
+General GPT-2     & \mc{$4e^{-3}$}  & \mc{$2e^{-3}$}  & \mc{16} & \mc{512} & \mc{5} \\
+Medical GPT-2     & \mc{$8e^{-4}$}  & \mc{$4e^{-4}$}  & \mc{16} & \mc{512} & \mc{5} \\
+\bottomrule
+\multicolumn{6}{l}{\footnotesize \textit{Note:} The rationale for the parameters is given above.}
+\end{tabular}
+
+\caption{General Czech GPT-2 model training results.}\label{tab00:Gpt2TrainingParams}
+LR - Learning rate, \textit{Head} - Learning rate used during the first epoch where only the new head is trained, \textit{All} - Learning rate used during the rest of the epochs where the whole model is trained
+\end{table}
 
 \subsection{Results}
-Tabulky a diskuze nad nimi
+In this section, we present the training results for our fine-tuned Czech GPT-2 models. The training results can be seen in Table \ref{tab02:GeneralCzGpt2Results} and Table \ref{tab03:MedicalCzGpt2Results}. During training, we measured accuracy and perplexity\footnote[7]{\url{https://en.wikipedia.org/wiki/Perplexity}} metrics.\\
 
-\section{Manual evaluation}
-\subsection{Method}
-Popis vyhodnocení
-\subsection{Results}
-Tabulka a diskuze
+We can see that the general model achieved an accuracy of 40.02 and a perplexity of 30.35. These values are comparable to the original article\citep{guillou2020faster}, where they trained a model for Portuguese on Wikipedia articles. However, there are two major differences between ours and theirs setup. First, our training was conducted on a total of a 21 GB of raw data, compared to the original 1.6 GB. Further, we train our model on sequences of length 512 compared to original 1024. The factors of sequence length and the heterogeneity of our data increase our measured perplexity values and thus the results cannot be compared directly. Nevertheless, even if we trained the model with an identical sequence length, our results would be worse than in the original paper even though we trained on an order of magnitude larger data. This is due to the fact that Portuguese and English are more similar languages than Czech and English and because the original article used only more homogenous data from Wikipedia.\\
 
-\section{Examples}
-Příklady výstupů a jejich okomentování
+As for the specialized medical GPT-2 model, the results are almost identical to the general Czech GPT-2 model. The fine-tuning was really fast as each epoch took  a maximum of 10 minutes. Nevertheless, we could get even better results, if we had better and more extensive Czech medical data to train the model for a longer period of time.
 
-\section{Conclusion}
-Celkový zhodnocení
+\begin{table}[h!]
+
+\centering
+\begin{tabular}{l@{\hspace{0cm}}D{.}{,}{0}D{.}{,}{1.2}D{.}{,}{1.2}D{.}{,}{2.2}D{.}{,}{2.2}D{.}{,}{1.2}D{.}{,}{2.2}}
+\toprule
+ & \mc{} & \mc{} & \mc{} & \mc{} & \mc{} & \mc{} & \mc{} \\
+\pulrad{\textbf{Epoch}} & \mc{\pulrad{\textbf{Loss\textsubscript{train}}}} & \mc{\pulrad{\textbf{Loss\textsubscript{val}}}} & \mc{\pulrad{\textbf{Accuracy (\%)}}} & \mc{\pulrad{\textbf{Perplexity}}} & \mc{\pulrad{\textbf{Time (h)}}} \\
+\midrule
+\mc{1}                & \mc{4.42}          & \mc{4.28}  & \mc{30.40} & \mc{72.10} & \mc{26:56} \\
+\mc{2}                & \mc{3.75}          & \mc{3.76}  & \mc{35.99} & \mc{42.85} & \mc{29:07} \\
+\mc{3}             	  & \mc{3.74}          & \mc{3.65}  & \mc{37.20} & \mc{38.32} & \mc{29:07} \\
+\mc{4}                & \mc{3.61}          & \mc{3.54}  & \mc{38.48} & \mc{34.38} & \mc{28:58} \\
+\mc{5}                & \mc{3.52}          & \mc{3.41}  & \mc{40.02} & \mc{30.35} & \mc{28:57} \\
+\bottomrule
+\multicolumn{7}{l}{\footnotesize \textit{Note:} All values are rounded to 2 decimal places.}
+\end{tabular}
+
+\caption{General Czech GPT-2 model training results.}\label{tab02:GeneralCzGpt2Results}
+During the first epoch, only the new head is trained.
+\end{table}
+
+\begin{table}[h!]
+
+\centering
+\begin{tabular}{l@{\hspace{0cm}}D{.}{,}{0}D{.}{,}{1.2}D{.}{,}{1.2}D{.}{,}{2.2}D{.}{,}{2.2}D{.}{,}{1.2}D{.}{,}{1.2}}
+\toprule
+ & \mc{} & \mc{} & \mc{} & \mc{} & \mc{} & \mc{} & \mc{} \\
+\pulrad{\textbf{Epoch}} & \mc{\pulrad{\textbf{Loss\textsubscript{train}}}} & \mc{\pulrad{\textbf{Loss\textsubscript{val}}}} & \mc{\pulrad{\textbf{Accuracy (\%)}}} & \mc{\pulrad{\textbf{Perplexity}}} & \mc{\pulrad{\textbf{Time (m)}}} \\
+\midrule
+\mc{1}                & \mc{3.85}          & \mc{3.75}  & \mc{35.90} & \mc{42.42} & \mc{9:01} \\
+\mc{2}                & \mc{3.74}          & \mc{3.66}  & \mc{36.76} & \mc{38.90} & \mc{9:50} \\
+\mc{3}             	  & \mc{3.63}          & \mc{3.52}  & \mc{38.58} & \mc{33.62} & \mc{9:49} \\
+\mc{4}                & \mc{3.41}          & \mc{3.43}  & \mc{39.94} & \mc{30.75} & \mc{9:48} \\
+\mc{5}                & \mc{3.14}          & \mc{3.41}  & \mc{40.29} & \mc{30.36} & \mc{9:48} \\
+\bottomrule
+\multicolumn{7}{l}{\footnotesize \textit{Note:} All values are rounded to 2 decimal places.}
+\end{tabular}
+
+\caption{Medical Czech GPT-2 model training results.}\label{tab03:MedicalCzGpt2Results}
+During the first epoch, only the new head is trained.
+\end{table}
+
+\subsection{Examples}
+In the last part of the GPT-2 experiments section, examples of texts generated by both of the trained models are shown and further discussed.
+
+\subsubsection*{General Czech GPT-2}
+TODO
+\subsubsection*{Medical Czech GPT-2}
+TODO
+
+\section{Dataset translation}
+Medical dataset translation is a large part of the thesis. This section describes all necessary details of the data translation. As our final data source we chose the Indiana University chest X-ray dataset and we utilized CUBBITT as the translation service. All texts were preprocessed according to Chapter \ref{sec:DataPreprocessing}. The maximum number of concurrently running threads is set to 64 to avoid overloading the CUBBITT service. Translation of the whole dataset (3955 files) took a total of 32 minutes. The translations can be found in Attachment TODO.\\
+
+Examples??
+
+\section{Medical report generation model}
+Tha last section of this chapter describes all the experiments conducted for the medical report generation. Furthermore, all the necessary technical information about running models and data preparation is summarized.
+
+\subsection{Setup}
+As we already mentioned in the previous parts of text, we use the solution from \citet{alfarghaly2021automated} paper that is freely available on the github.\footnote[8]{\url{https://github.com/omar-mohamed/GPT2-Chest-X-Ray-Report-Generation}} The code uses older tensorflow 2.3.0 with some deprecated features, thus some minor adjustments had to be done in order to run on a newer 2.5.0 version. This version was chosen because of the available support for the corresponding CUDA and cuDNN version on the IT4I cluster. \\
+
+For the training, the Inidiana Univesity chest X-ray dataset was utilized as in the original paper. The key reason is that the solution uses a pre-trained CNN backbone, which is directly fine-tuned for the Inidiana Univesity chest X-ray dataset tags. The MIMIC-CXR v2.0.0 does not provide these tags, but only 14 labels which are different from the original ones. Thus the original Chexnet model would have to be fine-tuned again for this huge dataset. Moreover, the whole training time would be considerably prolonged and the code would have to be modified more extensively.\\
+ 
+As we need to have the Czech translated reports in the same format as in the original case, we implemented a script to do so - described in Chapter \ref{sec:MedRepGenImpl}. The reports contain several sections, however for the final report training and prediction, only the \textit{Impression} and \textit{Findings} sections are taken as they contain key diagnostic information. 
+
+\subsection{Experiments}
+\label{sec:medGenReportExperiments}
+Final thing that needs to be perfomed is to run experiments for the medical report generation. We conducted our experiments with multiple different setups of the neural network. All of them were performed on the IT4I cluster with the batch size of 8 as it was the maximum size we were able to fit into the GPU. In the original article, they trained the model with the constant learning rate of $1e^{-3}$ and Adam optimizer. Nevertheless, we trained our models with a smaller learning rate of $1e^{-4}$, because we find it better to train already pre-trained models with a lower value. The max sequence length is set to be 200 tokens, as the reports are generally of a shorter nature. The entire training took place in a total of 100 epochs and the model is evaluated every third epoch on the test set.\\
+
+We run the final training on both of our trained Czech GPT-2 models - general Czech model and specialized Czech medical model. On top of the original paper where they trained only the decoder part of the network with the frozen CNN backbone, we also train with setups in which we have left the entire network unfrozen. In the end, we have a total of 4 different setups listed in Table \ref{tab04:MedGenReportSetups} for training. For each of them, the best and the last model will be evaluted.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{l@{\hspace{0.75cm}}D{.}{,}{7.0}D{.}{,}{4.0}}
+\toprule
+ & \mc{} & \mc{} \\
+\pulrad{\textbf{Model}} & \mc{\pulrad{\textbf{Training scope}}} & \mc{\pulrad{\textbf{Identifier}}} \\
+\midrule
+General Czech GPT-2               & \mc{Decoder only}          & \mc{GEN-dec}  \\
+General Czech GPT-2               & \mc{Entire network}        & \mc{GEN-all}  \\
+Medical Czech GPT-2               & \mc{Decoder only}          & \mc{MED-dec}  \\
+Medical Czech GPT-2               & \mc{Entire network}        & \mc{MED-all}  \\
+\bottomrule
+\multicolumn{3}{l}{\footnotesize \textit{Note:} Tags' embeddings are frozen during all setups.}
+\end{tabular}
+
+\caption{Medical report generation experiments' setups.}\label{tab04:MedGenReportSetups}
+\end{table}
+
+

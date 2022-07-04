@@ -1,4 +1,4 @@
-\begin{thebibliography}{46}
+\begin{thebibliography}{54}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -26,6 +26,14 @@ Dzmitry Bahdanau, Kyunghyun Cho, and Yoshua Bengio.
 \newblock Neural machine translation by jointly learning to align and
   translate.
 \newblock \emph{arXiv preprint arXiv:1409.0473}, 2014.
+
+\bibitem[Banerjee and Lavie(2005)]{banerjee2005meteor}
+Satanjeev Banerjee and Alon Lavie.
+\newblock Meteor: An automatic metric for mt evaluation with improved
+  correlation with human judgments.
+\newblock In \emph{Proceedings of the acl workshop on intrinsic and extrinsic
+  evaluation measures for machine translation and/or summarization}, pages
+  65--72, 2005.
 
 \bibitem[Bustos et~al.(2020)Bustos, Pertusa, Salinas, and de~la
   Iglesia-Vay{\'a}]{bustos2020padchest}
@@ -69,6 +77,22 @@ Alexey Dosovitskiy, Lucas Beyer, Alexander Kolesnikov, Dirk Weissenborn,
 \newblock An image is worth 16x16 words: Transformers for image recognition at
   scale.
 \newblock \emph{arXiv preprint arXiv:2010.11929}, 2020.
+
+\bibitem[Forgues et~al.(2014)Forgues, Pineau, Larchev{\^e}que, and
+  Tremblay]{forgues2014bootstrapping}
+Gabriel Forgues, Joelle Pineau, Jean-Marie Larchev{\^e}que, and R{\'e}al
+  Tremblay.
+\newblock Bootstrapping dialog systems with word embeddings.
+\newblock In \emph{Nips, modern machine learning and natural language
+  processing workshop}, volume~2, page 168, 2014.
+
+\bibitem[Grave et~al.(2018)Grave, Bojanowski, Gupta, Joulin, and
+  Mikolov]{grave2018learning}
+Edouard Grave, Piotr Bojanowski, Prakhar Gupta, Armand Joulin, and Tomas
+  Mikolov.
+\newblock Learning word vectors for 157 languages.
+\newblock In \emph{Proceedings of the International Conference on Language
+  Resources and Evaluation (LREC 2018)}, 2018.
 
 \bibitem[Guillou(2020)]{guillou2020faster}
 P~Guillou.
@@ -174,6 +198,11 @@ Daniel Kvak, Marian Bendik, and Anna Chromcova.
   from chest x-ray images.
 \newblock \emph{arXiv preprint arXiv:2203.10596}, 2022.
 
+\bibitem[Lin(2004)]{lin2004rouge}
+Chin-Yew Lin.
+\newblock Rouge: A package for automatic evaluation of summaries.
+\newblock In \emph{Text summarization branches out}, pages 74--81, 2004.
+
 \bibitem[McDonald et~al.(2018)McDonald, Brokos, and
   Androutsopoulos]{mcdonald2018deep}
 Ryan McDonald, Georgios-Ioannis Brokos, and Ion Androutsopoulos.
@@ -209,6 +238,13 @@ Pedro~Javier Ortiz~Su{'a}rez, Laurent Romary, and Benoit Sagot.
 Keiron O'Shea and Ryan Nash.
 \newblock An introduction to convolutional neural networks.
 \newblock \emph{arXiv preprint arXiv:1511.08458}, 2015.
+
+\bibitem[Papineni et~al.(2002)Papineni, Roukos, Ward, and
+  Zhu]{papineni2002bleu}
+Kishore Papineni, Salim Roukos, Todd Ward, and Wei-Jing Zhu.
+\newblock Bleu: a method for automatic evaluation of machine translation.
+\newblock In \emph{Proceedings of the 40th annual meeting of the Association
+  for Computational Linguistics}, pages 311--318, 2002.
 
 \bibitem[Peng et~al.(2018)Peng, Wang, Lu, Bagheri, Summers, and
   Lu]{peng2018negbio}
@@ -263,6 +299,13 @@ David~E Rumelhart, Geoffrey~E Hinton, and Ronald~J Williams.
 \newblock Learning internal representations by error propagation.
 \newblock Technical report, California Univ San Diego La Jolla Inst for
   Cognitive Science, 1985.
+
+\bibitem[Rus and Lintean(2012)]{rus2012optimal}
+Vasile Rus and Mihai Lintean.
+\newblock An optimal assessment of natural language student input using
+  word-to-word similarity metrics.
+\newblock In \emph{International Conference on Intelligent Tutoring Systems},
+  pages 675--676. Springer, 2012.
 
 \bibitem[Sanh et~al.(2019)Sanh, Debut, Chaumond, and Wolf]{sanh2019distilbert}
 Victor Sanh, Lysandre Debut, Julien Chaumond, and Thomas Wolf.
@@ -322,6 +365,13 @@ Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones,
 \newblock Attention is all you need.
 \newblock \emph{Advances in neural information processing systems}, 30, 2017.
 
+\bibitem[Vedantam et~al.(2015)Vedantam, Lawrence~Zitnick, and
+  Parikh]{vedantam2015cider}
+Ramakrishna Vedantam, C~Lawrence~Zitnick, and Devi Parikh.
+\newblock Cider: Consensus-based image description evaluation.
+\newblock In \emph{Proceedings of the IEEE conference on computer vision and
+  pattern recognition}, pages 4566--4575, 2015.
+
 \bibitem[Wang et~al.(2017)Wang, Peng, Lu, Lu, Bagheri, and
   Summers]{wang2017chestx}
 Xiaosong Wang, Yifan Peng, Le~Lu, Zhiyong Lu, Mohammadhadi Bagheri, and
@@ -330,6 +380,14 @@ Xiaosong Wang, Yifan Peng, Le~Lu, Zhiyong Lu, Mohammadhadi Bagheri, and
   weakly-supervised classification and localization of common thorax diseases.
 \newblock In \emph{Proceedings of the IEEE conference on computer vision and
   pattern recognition}, pages 2097--2106, 2017.
+
+\bibitem[Wu et~al.(2016)Wu, Schuster, Chen, Le, Norouzi, Macherey, Krikun, Cao,
+  Gao, Macherey, et~al.]{wu2016google}
+Yonghui Wu, Mike Schuster, Zhifeng Chen, Quoc~V Le, Mohammad Norouzi, Wolfgang
+  Macherey, Maxim Krikun, Yuan Cao, Qin Gao, Klaus Macherey, et~al.
+\newblock Google's neural machine translation system: Bridging the gap between
+  human and machine translation.
+\newblock \emph{arXiv preprint arXiv:1609.08144}, 2016.
 
 \bibitem[Xu et~al.(2015)Xu, Ba, Kiros, Cho, Courville, Salakhudinov, Zemel, and
   Bengio]{xu2015show}
