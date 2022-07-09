@@ -1,7 +1,7 @@
 \chapter{Implementation}
 Entire implementation part of our thesis is divided into three independent parts. Each of them deals with different task desribed in the previous chapter.\\
 
-The entire code is written in Python 3 with the use of tensorflow\footnote[1]{\url{https://www.tensorflow.org/}}, pyTorch\footnote[2]{\url{https://pytorch.org/}}, huggingface\footnote[3]{\url{https://huggingface.co/}} and fastai\footnote[4]{\url{https://www.fast.ai/}} libraries as they are the standard for working with neural networks. To install all the required dependencies, run the following command in the appropriate part of the project:
+The entire code is written in Python 3 with the use of tensorflow\footnote[1]{\url{https://www.tensorflow.org/}}, pyTorch\footnote[2]{\url{https://pytorch.org/}}, huggingface\footnote[3]{\url{https://huggingface.co/}} and fastai\footnote[4]{\url{https://www.fast.ai/}} libraries as they are the standard for working with neural networks. We want to emphasize that different parts of the project may require different dependencies. In order to solve this, virtual environments can be used. To install all the required dependencies, run the following command in the appropriate part of the project.
 
 \begin{code}
 > pip3 install -r requirements.txt
@@ -105,3 +105,6 @@ After all the mentioned steps, we can run the training or testing procedure usin
 \end{code}
 
 The checkpoints are gradually stored during the training process in the \textit{checkpoints/CDGPT2} directory. After each epoch, the latest model checkpoint is stored. Moreover, the best training checkpoint is stored in the \textit{best\_ckpt} subdirectory. The testing process uses the model checkpoint stored in the \textit{checkpoints/CDGPT2} directory.
+
+\section{Evaluation}
+For the evaluation purposes, the NLG evaluation from \citet{sharma2017nlgeval} was utilized. Nevertheless, as some metrics are language specific, we needed to modify both the source code and data in order to use them. For METEOR metric, we had to change the source code and download the Czech paraphrases\footnote[5]{\url{https://github.com/cmu-mtlab/meteor/blob/master/data/paraphrase-cz.gz}} file to the appropriate part of the package in order to use it on the Czech language. For embedding-based metrics, the original English GloVe vectors were replaced by the Czech word2vec vectors from \citet{grave2018learning}. The word2vec file had to be further changed to the format used by the package. All neccessary information on how to modify the package is describeb within the corresponding  \textit{README} file.

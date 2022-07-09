@@ -1,16 +1,19 @@
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1.1}{\ignorespaces Example of an X-ray image along with its ground truth and predicted report. \citet {jing2017automatic}.}}{5}{figure.1.1}%
-\contentsline {figure}{\numberline {1.2}{\ignorespaces Visual Transformer architecture from \citet {dosovitskiy2020image}.}}{7}{figure.1.2}%
-\contentsline {figure}{\numberline {1.3}{\ignorespaces Sample from the Indiana University Chest X-ray dataset.}}{10}{figure.1.3}%
-\contentsline {figure}{\numberline {1.4}{\ignorespaces Sample from the MIMIC-CXR dataset.}}{11}{figure.1.4}%
-\contentsline {figure}{\numberline {1.5}{\ignorespaces Examples of generated medical reports from \citet {alfarghaly2021automated}.}}{14}{figure.1.5}%
-\contentsline {figure}{\numberline {1.6}{\ignorespaces Examples of generated medical reports from \citet {chen2020generating}.}}{15}{figure.1.6}%
-\contentsline {figure}{\numberline {1.7}{\ignorespaces Hierarchical architecture from \citet {yuan2019automatic}.}}{15}{figure.1.7}%
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Example of an X-ray image along with its ground truth and predicted report. \citet {jing2017automatic}.\relax }}{5}{figure.caption.5}%
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Visual Transformer architecture from \citet {dosovitskiy2020image}.\relax }}{7}{figure.caption.6}%
+\contentsline {figure}{\numberline {1.3}{\ignorespaces Sample from the Indiana University Chest X-ray dataset.\relax }}{10}{figure.caption.7}%
+\contentsline {figure}{\numberline {1.4}{\ignorespaces Sample from the MIMIC-CXR dataset.\relax }}{11}{figure.caption.8}%
+\contentsline {figure}{\numberline {1.5}{\ignorespaces Examples of generated medical reports from \citet {alfarghaly2021automated}.\relax }}{14}{figure.caption.9}%
+\contentsline {figure}{\numberline {1.6}{\ignorespaces Examples of generated medical reports from \citet {chen2020generating}.\relax }}{15}{figure.caption.10}%
+\contentsline {figure}{\numberline {1.7}{\ignorespaces Hierarchical architecture from \citet {yuan2019automatic}.\relax }}{15}{figure.caption.11}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Overall architecture used in our solution proposed in \citet {alfarghaly2021automated}.}}{17}{figure.2.1}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Learning finder output.}}{21}{figure.2.2}%
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Learning rate schedule for 1cycle policy training.}}{23}{figure.2.3}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Overall architecture used in our solution proposed in \citet {alfarghaly2021automated}.\relax }}{17}{figure.caption.12}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Learning finder output.\relax }}{21}{figure.caption.21}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Learning rate schedule for 1cycle policy training.\relax }}{23}{figure.caption.23}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Sample output of the general Czech GPT-2 model.\relax }}{38}{figure.caption.41}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Sample output of the medical Czech GPT-2 model.\relax }}{39}{figure.caption.43}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Example of original and corresponding translated report.\relax }}{40}{figure.caption.44}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }

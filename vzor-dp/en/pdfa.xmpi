@@ -62,13 +62,14 @@
   </rdf:Description> 
   <rdf:Description rdf:about="" xmlns:dc="http://purl.org/dc/elements/1.1/"> 
    <dc:format>application/pdf</dc:format> 
-   <dc:title><rdf:Alt><rdf:li xml:lang="x-default">Thesis title</rdf:li></rdf:Alt></dc:title>
-   <dc:creator><rdf:Seq><rdf:li>Name Surname</rdf:li></rdf:Seq></dc:creator>
+   <dc:title><rdf:Alt><rdf:li xml:lang="x-default">Automatic generation of medical reports from chest X-rays</rdf:li></rdf:Alt></dc:title>
+   <dc:creator><rdf:Seq><rdf:li>Bc. Lukáš Chaloupský</rdf:li></rdf:Seq></dc:creator>
    <dc:publisher><rdf:Bag><rdf:li>Charles University</rdf:li></rdf:Bag></dc:publisher>
-   <dc:description><rdf:Alt><rdf:li xml:lang="x-default">Abstract of thesis</rdf:li></rdf:Alt></dc:description>
-   <dc:subject><rdf:Bag><rdf:li>keywords</rdf:li>
-     <rdf:li>more such</rdf:li>
-     <rdf:li>yet another</rdf:li></rdf:Bag></dc:subject>
+   <dc:description><rdf:Alt><rdf:li xml:lang="x-default">This thesis deals with the problem of automatic generation of medical reports in the Czech langugage based on the input chest X-ray images using deep neural networks. The first part deals with the analysis of problem itself including comparison of existing solutions from several common points of view. In order to interpret medical images in the Czech language we present a fine-tuned a Czech GPT2 model specialized on medical texts based on the original pre-trained English GPT2 model along with its evaluation. In the second part the created Czech GPT2 is used for training neural network model for generating medical reports. The training was conducted on freely available data along with data pre-processing and their adjustment for the Czech language. Furthermore the model results are discussed and evaluated using standard metrics for natural language processing to determine the performance.</rdf:li></rdf:Alt></dc:description>
+   <dc:subject><rdf:Bag><rdf:li>natural language processing</rdf:li>
+     <rdf:li>image captioning</rdf:li>
+     <rdf:li>x-ray</rdf:li>
+     <rdf:li>medical report generation</rdf:li></rdf:Bag></dc:subject>
   </rdf:Description> 
   <rdf:Description rdf:about="" xmlns:prism="http://prismstandard.org/namespaces/basic/2.2/"> 
   </rdf:Description> 
@@ -80,15 +81,15 @@
   </rdf:Description> 
   <rdf:Description rdf:about="" xmlns:xmp="http://ns.adobe.com/xap/1.0/"> 
    <xmp:CreatorTool>LaTeX with hyperref</xmp:CreatorTool> 
-   <xmp:ModifyDate>2022-07-04T19:01:58+02:00</xmp:ModifyDate> 
-   <xmp:CreateDate>2022-07-04T19:01:58+02:00</xmp:CreateDate> 
-   <xmp:MetadataDate>2022-07-04T19:01:58+02:00</xmp:MetadataDate> 
+   <xmp:ModifyDate>2022-07-10T00:01:44+02:00</xmp:ModifyDate> 
+   <xmp:CreateDate>2022-07-10T00:01:44+02:00</xmp:CreateDate> 
+   <xmp:MetadataDate>2022-07-10T00:01:44+02:00</xmp:MetadataDate> 
   </rdf:Description> 
   <rdf:Description rdf:about="" xmlns:xmpRights = "http://ns.adobe.com/xap/1.0/rights/"> 
   </rdf:Description> 
   <rdf:Description rdf:about="" xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/"> 
    <xmpMM:DocumentID>uuid:C8CFC28F-88E1-7995-E9AD-F6D12EAD346B</xmpMM:DocumentID> 
-   <xmpMM:InstanceID>uuid:A13D9B54-3CDB-C58B-900B-2188026A6046</xmpMM:InstanceID> 
+   <xmpMM:InstanceID>uuid:6F66FD8B-A022-205F-AF1A-A9E8320CBDB6</xmpMM:InstanceID> 
   </rdf:Description> 
  </rdf:RDF> 
 </x:xmpmeta> 

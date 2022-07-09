@@ -7,11 +7,11 @@ import torch
 parser = argparse.ArgumentParser()
 # arguments used during generation of text
 parser.add_argument('--max_len', default=512, type=int, help="Maximum length of generated text.")
-parser.add_argument('--model', default="gpt2_cz_cnk_debug", type=str, help="Model name.")
+parser.add_argument('--model', default="model_testing/gpt2_cz_med_smaller_full_16bs", type=str, help="Model name.")
 parser.add_argument('--top_k', default=40, type=int, help="Take only top_k most probable tokens into account when generating.")
 parser.add_argument('--top_p', default=0.95, type=float, help="Take only most probable tokens whose sum of probabilities is at most top_p when generating.")
-parser.add_argument('--repetition_penalty', default=1.0, type=float, help="Repetition penalty.")
-parser.add_argument('--temperature', default=1.0, type=float, help="Temperature for generating.")
+parser.add_argument('--repetition_penalty', default=1.2, type=float, help="Repetition penalty.")
+parser.add_argument('--temperature', default=0.7, type=float, help="Temperature for generating.")
 parser.add_argument('--do_sample', default=True, type=bool, help="Do sample tokens when generating.")
 parser.add_argument('--num_return_sequences', default=1, type=int, help="Number of sequences to be returned.")
 
@@ -29,7 +29,7 @@ def generate(args: argparse.Namespace) -> None:
 
     while True:
         # read user prompt
-        start = input()
+        start = ""
 
         # if user entered empty prompt use special <|endoftext|> token
         if not start.strip():

@@ -1,7 +1,16 @@
 \chapter*{Conclusion}
 \addcontentsline{toc}{chapter}{Conclusion}
 
-Popsat závěr
+In this thesis, we have been dealing with a problem of automatic generation of medical reports from chest X-rays in the Czech language. Many studies have been conducted for English, but none for Czech, to the best of our knowledge. The first part has presented a detailed analysis of the overall problem. We have introduced neural network architectures and data alternatives alongs with their properties that are commonly used for this problem and a survey of related works.\\
+
+We have designed our approach based on the \citet{alfarghaly2021automated} paper. Nevertheless, as the original solution is intended for English, we have gradually solved all associated problems. Firstly, we have described a fine-tuning process for the two Czech GPT-2 models on general Czech and medical data with reasoning about different possibilities of data. Furhermore, since there are no Czech medical datasets comprising of X-ray images and their corresponding reports, we proposed a solution for an automatic translation of English datasets. \\
+
+We have then described the implementation details and all important source codes of our solution separately for each independent part.\\
+
+In the next part, the final experiments took their place. We have performed two GPT-2 model trainings according to our design along and presented their results. Next, we have translated the Indianta University chest X-ray dataset into the Czech language for our final task. Afterwards, we have conducted experiments for the medical report generation in multiple different setups of the neural network. Individual setups differed in the used language model or the extent to which the network has been trained.\\
+
+Finally, all ran experiments have been evaluated both automatically and manually. The automatic evaluation consisted of numerous stadard NLP metrics and it have given us an indication of which models could be performing good. These assumptions have been further verified by manual evaluation by a trained psysician. We found out that the medical report generation for the Czech language is (not)possible and has (not) great future potential.
+\newpage
 
 \section*{Future work}
-Popsat co by se s tím dalo dělat do budoucna - přímo česká data (jak pro finální generování - navíc větší velikosti, tak pro GPT-2 modely jako takové). Taky by se dalo  natrénovat CZ GPT-2 od základu a ne fine-tunovat, ale na čistých datech. Taky by se dal vylepšit CNN backbone model pro generování více objectives - třeba i bounding boxes(pokud by byly k dispozici)
+There are several aspects that could be further worked on in the future. The Czech GPT-2 models could be improved by training on cleaner and more extensive data with data preparation so that within one sequence there is always only one source of text. Moreover, instead of fine-tuning from the original English model to Czech, we could train the general Czech GPT-2 directly in order to get better results and more coherent texts. For the final chest X-ray report generation, we could modify the model or even create our own with newer architecture in order to train on a larger dataset. Another major improvement would be to obtain real Czech hospital data without translation noise on which we could train. Based on the data we would have, we might even train additional objectives, such as bounding boxes to focus on the right parts of the X-ray.

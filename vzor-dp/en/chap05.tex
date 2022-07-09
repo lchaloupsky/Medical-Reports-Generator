@@ -2,18 +2,18 @@
 The last chapter of our thesis presents an evaluation results, included in Attachement TODO, of all conducted experiments, described in detail in Chapter \ref{sec:medGenReportExperiments}, for medical reports generation task. Each performed experiment was evaluated automatically with the common machine translation metrics. Furthermore, the outputs of the best model were manually evaluated by an experienced radiologist.
 
 \section{Automatic evaluation}
-First part of this chapter reports the results of the automatic evaluation of our trained models. Important thing to mention is that these metrics give us only an indication of which models could be theoretically perfoming good and not their true performance. This fact is further intensified by the nature of our area, where we need to capture all findings appearing in the image and the overall diagnosis. \\
+First part of this chapter reports the results of the automatic evaluation of our trained models. Important thing to mention is that these metrics give us only an indication of which models could be theoretically perfoming good and not their true performance. Each image can be described in multiple different ways. The metrics only compare words between generated and reference texts with minimal logic to capture meaning. Therefore they measure whether the texts are similar rather than having the same meaning. This fact is further intensified by the nature of our area, where we need to capture all findings appearing in the image and the overall diagnosis. \\
 
 The evaluation was performed on a subset of 500 X-ray images. We subjected all models to standard automatic evaluation metrics used in image captioning and machine translation areas using NLG evaluation from \citet{sharma2017nlgeval}.
 
 \subsection{Metrics}
-This section outlines all NLG evaluation measured metrics applicable for the Czech language. For the embedding NLG evaluation metrics, the NLG package had to be modified in order to use Czech word2vec trained vectors from \citet{grave2018learning}.
+This section outlines all NLG evaluation measured metrics applicable for the Czech language supplemented with GLEU metric. For the embedding NLG evaluation metrics, the NLG package had to be modified in order to use Czech word2vec trained vectors from \citet{grave2018learning}.
 
 \subsubsection*{BLEU}
-BLEU metric has become a standard metric in the field of image captioning. It was first introduced in the \citet{papineni2002bleu} paper. This metric computes the number of common unigrams up to n-grams between the reference text and the generated one. Commonly used are unigrams up to tetragrams as they capture the similarities between texts the best. The final BLEU score is the mean of the BLEU scores of all evaluated texts.
+BLEU metric has become a standard metric in the field of image captioning. It was first introduced in the \citet{papineni2002bleu} paper. This metric computes the number of common unigrams up to n-grams between the reference text and the generated one. Commonly used are unigrams up to tetragrams as they capture the similarities between texts the best. BLEU-4 thus uses unigrams up to tetragrams. The final BLEU score is the mean of the BLEU scores of all evaluated texts.
 
 \subsubsection*{GLEU}
-GLEU (Google BLEU) metric, presented in \citet{wu2016google}, is Google's alternative instead of BLEU for machine translation evaluation. The difference is that it does not have the downsides of BLEU for single sentences. For the GLEU score, the n-gram precision and recall are calulated and the minimum of these values are taken as the results. As in the case of BLEU, the final GLEU score is computed as the mean of the GLEU scores across all evaluated texts.
+GLEU (Google BLEU) metric, presented in \citet{wu2016google}, is Google's alternative instead of BLEU for machine translation evaluation. The difference is that it does not have the downsides of BLEU for single sentences. For sentence GLEU score, the n-gram precision and recall are calulated and the minimum of these values are taken as the results. All unigrams up to n-grams are taken for the calculation. The final corpus-level GLEU score is computed as the ratio of the sum of all matching n-grams and the sum of all n-grams used for precision or recall in the sentence-level case for all texts, instead of the mean of the sentence-level GLEU scores.
 
 \subsubsection*{METEOR}
 METEOR is a unigram based F-score metric first defined in \citet{banerjee2005meteor}. In the beginning, it tries to match all unigrams from the generated text to zero or one unigram from the reference text. This could also include matching paraphrases, synonyms, stems or others. The mapping with the minimum number of chunks is taken for subsequent calculation of precision and recall. The final score is the harmonic mean, where the recall is many times more significant than the precision, multiplied by a fragmentation penalty. In order to calculate this metric for Czech data, we had to modify the original NLG code and download the paraphrases for the Czech language.\footnote[1]{\url{https://github.com/cmu-mtlab/meteor/blob/master/data/paraphrase-cz.gz}}
@@ -31,11 +31,19 @@ For both of the texts - generated and the reference, the embeddings of all words
 This metric was presented in \citet{forgues2014bootstrapping}. As in the previous case it computes the cosine similarity between the generated and reference text. However, instead of the mean embeddings, the most extreme values (the largest in terms of absolute value) in each dimension are taken.
 
 \subsubsection*{Greedy Matching score}
-The final used metric is Greedy Matching score from \citet{rus2012optimal}. For each word in the generated text, the maximum cosine similarity is calculated against the words of the reference text. These score are then averaged by the total number of words in the generated text. The identical procedure is then used the other way around with the reference text. As the final score, the mean of these scores is taken.
+The final used metric is Greedy Matching score from \citet{rus2012optimal}. For each word embedding in the generated text, the maximum cosine similarity is calculated against the words' embeddngs of the reference text. These score are then averaged by the total number of words in the generated text. The identical procedure is then used the other way around with the reference text. As the final score, the mean of these scores is taken.
 
 \subsection{Results}
-4 tabulky - BLEU, GLEU, M+R+C, S+E+V+G\\
-Tabulky a diskuze nad nimi
+The results of the automatic evaluation are reported in Table \ref{tab01:AutoEvalBleu}, Table \ref{tab02:AutoEvalGleu} and Table \ref{tab03:AutoEvalWordRest} for the standard NLP metrics and in Table \ref{tab04:AutoEvalEmbedding} for the embedding-based metrics. For metrics that are evaluated for different n-gram bases (BLEU and GLEU), we further refer to those working with up to tetragrams if not specified otherwise. Since there are no works solving our problem in the Czech language, we do not have a direct baseline to compare our results with and thus we will only compare them to each other.\\
+
+For the BLEU and GLEU metrics, we can see in Tables \ref{tab01:AutoEvalBleu} and \ref{tab02:AutoEvalGleu} that the best results have the models, where the entire network was unfrozen during the training. This is naturally expected as the network has more space and freedom for the learning. Moreover, the \textit{GEN-all-best}, with 0.0751 and 0.0928 for BLEU and GLEU respectively, surpassed the \textit{MED-all-best}, which utilized the medical GPT-2 model as the language model, by 0.3 on both BLEU and GLEU. The other \textit{best} models also show nice results and they are good candidates for further comparison. In general, the \textit{last} models are worse. The only exception is \textit{MED-dec-last}, where BLEU was higher than for the corresponding \textit{best} model. However, BLEU\textsubscript{1} - BLEU\textsubscript{3} are better for the \textit{MED-dec-best} model.\\ 
+
+The same trend continues in the rest of the word-overlap metrics, presented in Table \ref{tab03:AutoEvalWordRest}. However, the \textit{MED-all-best} is worse than other \textit{best} models on most metrics. We can also notice that the \textit{MED-dec-last} surprisingly outperformed all models on CIDEr metric with 0.2978, whilst underperforming in others. The oppsosite phenomenon occured for the \textit{MED-dec-best} model, which was the worst on CIDEr with 0.1798, but comparable to other \textit{best} models on the rest.\\
+
+Regarding the embedding metrics evaluation listed in Table \ref{tab03:AutoEvalWordRest}, the \textit{GEN-dec-best} model beat the rest of the models, but the otherwise best \textit{GEN-all-best} model's results are very close to it. Suprisingly, the \textit{MED-dec-best} has better results on all of these metrics than the \textit{MED-all-best} model, where the whole model was trainable.\\
+\newpage
+
+We can see that \textit{GEN-all-best}, which was trained on a entirely unfrozen network, model outperformed the other models in almost all metrics. Nevertheless, the model comes from the earlier phases of the training. All other \textit{best} models were performing well and outdid each other in different examined metrics. As we mentioned earlier, the automatic evaluation only suggests which models could be performing well, and their final performance will be determined by manual evalutation in the next section.
 
 \begin{table}[h!]
 \centering
@@ -44,19 +52,20 @@ Tabulky a diskuze nad nimi
  & \mc{} & \mc{} & \mc{} & \mc{} & \mc{} & \mc{} \\
 \pulrad{\textbf{Model}} & \mc{\pulrad{\textbf{Epoch}}} & \mc{\pulrad{\textbf{BLEU\textsubscript{1}}}} & \mc{\pulrad{\textbf{BLEU\textsubscript{2}}}} & \mc{\pulrad{\textbf{BLEU\textsubscript{3}}}} & \mc{\pulrad{\textbf{BLEU\textsubscript{4}}}} \\
 \midrule
-GEN-dec-best                & \mc{---}            & \mc{---}  & \mc{---} & \mc{---} & \mc{---} \\
-GEN-dec-last                 & \mc{---}            & \mc{---}  & \mc{---} & \mc{---} & \mc{---} \\
-GEN-all-best                  & \mc{---}            & \mc{---}  & \mc{---} & \mc{---} & \mc{---} \\
-GEN-all-last                   & \mc{---}            & \mc{---}  & \mc{---} & \mc{---} & \mc{---} \\
-MED-dec-best                & \mc{---}            & \mc{---}  & \mc{---} & \mc{---} & \mc{---} \\
-MED-dec-last                 & \mc{---}            & \mc{---}  & \mc{---} & \mc{---} & \mc{---} \\
-MED-all-best                  & \mc{---}            & \mc{---}  & \mc{---} & \mc{---} & \mc{---} \\
-MED-all-last                   & \mc{---}            & \mc{---}  & \mc{---} & \mc{---} & \mc{---} \\
+GEN-dec-best                & \mc{\phantom{0}28}            & \mc{0.2451}  & \mc{0.1489} & \mc{0.0951} & \mc{0.0655} \\
+GEN-dec-last                 & \mc{100}            		 & \mc{0.2080}  & \mc{0.1207} & \mc{0.0764} & \mc{0.0519} \\
+GEN-all-best                  & \mc{\phantom{0}13}            & \mc{0.2487}  & \mc{\textbf{0.1550}} & \mc{\textbf{0.1044}} & \mc{\textbf{0.0751}} \\
+GEN-all-last                   & \mc{100}            		 & \mc{0.2161}  & \mc{0.1281} & \mc{0.0809} & \mc{0.0551} \\
+MED-dec-best                & \mc{\phantom{0}13}            & \mc{\textbf{0.2526}}  & \mc{0.1511} & \mc{0.0951} & \mc{0.0617} \\
+MED-dec-last                 & \mc{100}            		  & \mc{0.2207}  & \mc{0.1358} & \mc{0.0918} & \mc{0.0683} \\
+MED-all-best                  & \mc{\phantom{0}76}            & \mc{0.2336}  & \mc{0.1447} & \mc{0.0987} & \mc{0.0726} \\
+MED-all-last                   & \mc{100}            		  & \mc{0.2145}  & \mc{0.1322} & \mc{0.0877} & \mc{0.0630} \\
 \bottomrule
-\multicolumn{6}{l}{\footnotesize \textit{Note:} Models are described in Chapter \ref{sec:medGenReportExperiments}.}
+\multicolumn{6}{l}{\footnotesize \textit{Note:} All values are rounded to 4 decimal places.}
 \end{tabular}
 
 \caption{BLEU evaluation results comparison.}\label{tab01:AutoEvalBleu}
+Models are described in Chapter \ref{sec:medGenReportExperiments},
 \textit{best} suffix denotes the best trained models, \textit{last} denotes the last trained models, BLEU\textsubscript{n} index states the number of n-grams used
 \end{table}
 
@@ -67,19 +76,20 @@ MED-all-last                   & \mc{---}            & \mc{---}  & \mc{---} & \m
  & \mc{} & \mc{} & \mc{} & \mc{} & \mc{} & \mc{} \\
 \pulrad{\textbf{Model}} & \mc{\pulrad{\textbf{Epoch}}} & \mc{\pulrad{\textbf{GLEU\textsubscript{1}}}} & \mc{\pulrad{\textbf{GLEU\textsubscript{2}}}} & \mc{\pulrad{\textbf{GLEU\textsubscript{3}}}} & \mc{\pulrad{\textbf{GLEU\textsubscript{4}}}} \\
 \midrule
-GEN-dec-best                & \mc{---}            & \mc{---}  & \mc{---} & \mc{---} & \mc{---} \\
-GEN-dec-last                 & \mc{---}            & \mc{---}  & \mc{---} & \mc{---} & \mc{---} \\
-GEN-all-best                  & \mc{---}            & \mc{---}  & \mc{---} & \mc{---} & \mc{---} \\
-GEN-all-last                   & \mc{---}            & \mc{---}  & \mc{---} & \mc{---} & \mc{---} \\
-MED-dec-best                & \mc{---}            & \mc{---}  & \mc{---} & \mc{---} & \mc{---} \\
-MED-dec-last                 & \mc{---}            & \mc{---}  & \mc{---} & \mc{---} & \mc{---} \\
-MED-all-best                  & \mc{---}            & \mc{---}  & \mc{---} & \mc{---} & \mc{---} \\
-MED-all-last                   & \mc{---}            & \mc{---}  & \mc{---} & \mc{---} & \mc{---} \\
+GEN-dec-best                & \mc{\phantom{0}28}            & \mc{0.2122}  & \mc{0.1460} & \mc{0.1094} & \mc{0.0875} \\
+GEN-dec-last                 & \mc{100}            		 & \mc{0.1900}  & \mc{0.1275} & \mc{0.0951} & \mc{0.0758} \\
+GEN-all-best                  & \mc{\phantom{0}13}            & \mc{0.2154}  & \mc{\textbf{0.1502}} & \mc{\textbf{0.1146}} & \mc{\textbf{0.0928}} \\
+GEN-all-last                   & \mc{100}            		 & \mc{0.1902}  & \mc{0.1290} & \mc{0.0962} & \mc{0.0767} \\
+MED-dec-best                & \mc{\phantom{0}13}            & \mc{\textbf{0.2170}}  & \mc{0.1480} & \mc{0.1104} & \mc{0.0873} \\
+MED-dec-last                 & \mc{100}            		 & \mc{0.1966}  & \mc{0.1360} & \mc{0.1038} & \mc{0.0848} \\
+MED-all-best                  & \mc{\phantom{0}76}           & \mc{0.2083}  & \mc{0.1447} & \mc{0.1108} & \mc{0.0903} \\
+MED-all-last                   & \mc{100}            		 & \mc{0.1968}  & \mc{0.1362} & \mc{0.1033} & \mc{0.0835} \\
 \bottomrule
-\multicolumn{6}{l}{\footnotesize \textit{Note:} Models are described in Chapter \ref{sec:medGenReportExperiments}.}
+\multicolumn{5}{l}{\footnotesize \textit{Note:} All values are rounded to 4 decimal places.}
 \end{tabular}
 
 \caption{GLEU evaluation results comparison.}\label{tab02:AutoEvalGleu}
+Models are described in Chapter \ref{sec:medGenReportExperiments},
 \textit{best} suffix denotes the best trained models, \textit{last} denotes the last trained models, GLEU\textsubscript{n} index states the number of n-grams used
 \end{table}
 
@@ -90,19 +100,20 @@ MED-all-last                   & \mc{---}            & \mc{---}  & \mc{---} & \m
  & \mc{} & \mc{} & \mc{} & \mc{} & \mc{} & \mc{} \\
 \pulrad{\textbf{Model}} & \mc{\pulrad{\textbf{Epoch}}} & \mc{\pulrad{\textbf{METEOR}}} & \mc{\pulrad{\textbf{ROUGE-L}}} & \mc{\pulrad{\textbf{CIDEr}}} \\
 \midrule
-GEN-dec-best                & \mc{---}            & \mc{---}  & \mc{---} & \mc{---} \\
-GEN-dec-last                 & \mc{---}            & \mc{---}  & \mc{---} & \mc{---} \\
-GEN-all-best                  & \mc{---}            & \mc{---}  & \mc{---} & \mc{---} \\
-GEN-all-last                   & \mc{---}            & \mc{---}  & \mc{---} & \mc{---} \\
-MED-dec-best                & \mc{---}            & \mc{---}  & \mc{---} & \mc{---} \\
-MED-dec-last                 & \mc{---}            & \mc{---}  & \mc{---} & \mc{---} \\
-MED-all-best                  & \mc{---}            & \mc{---}  & \mc{---} & \mc{---} \\
-MED-all-last                   & \mc{---}            & \mc{---}  & \mc{---} & \mc{---} \\
+GEN-dec-best                & \mc{\phantom{0}28}            & \mc{0.1103}  & \mc{0.2087} & \mc{0.2290} \\
+GEN-dec-last                 & \mc{100}           			 & \mc{0.0952}  & \mc{0.1878} & \mc{0.2038} \\
+GEN-all-best                  & \mc{\phantom{0}13}            & \mc{\textbf{0.1138}}  & \mc{\textbf{0.2125}} & \mc{0.2964} \\
+GEN-all-last                   & \mc{100}            		 & \mc{0.0988}  & \mc{0.1958} & \mc{0.2240} \\
+MED-dec-best                & \mc{\phantom{0}13}            & \mc{0.1133}  & \mc{0.2074} & \mc{0.1798} \\
+MED-dec-last                 & \mc{100}            		  & \mc{0.1013}  & \mc{0.1953} & \mc{\textbf{0.2978}} \\
+MED-all-best                  & \mc{\phantom{0}76}            & \mc{0.1072}  & \mc{0.2027} & \mc{0.2658} \\
+MED-all-last                   & \mc{100}            		  & \mc{0.1003}  & \mc{0.1988} & \mc{0.2598} \\
 \bottomrule
-\multicolumn{5}{l}{\footnotesize \textit{Note:} Models are described in Chapter \ref{sec:medGenReportExperiments}.}
+\multicolumn{5}{l}{\footnotesize \textit{Note:} All values are rounded to 4 decimal places.}
 \end{tabular}
 
 \caption{Word-overlap metrics evaluation results.}\label{tab03:AutoEvalWordRest}
+Models are described in Chapter \ref{sec:medGenReportExperiments},
 \textit{best} suffix denotes the best trained models, \textit{last} denotes the last trained models
 \end{table}
 
@@ -111,53 +122,59 @@ MED-all-last                   & \mc{---}            & \mc{---}  & \mc{---} & \m
 \centering
 \begin{tabular}{l@{\hspace{0cm}}D{.}{,}{0}D{.}{,}{1.2}D{.}{,}{2.3}D{.}{,}{2.3}D{.}{,}{2.3}D{.}{,}{2.3}}
 \toprule
- & \mc{} & \mc{} & \mc{} & \mc{} & \mc{} & \mc{} \\
-\pulrad{\textbf{Model}} & \mc{\pulrad{\textbf{Epoch}}} & \mc{\pulrad{\textbf{\parbox{1.775cm}{\centering Skip \\ Thought}}}} & \mc{\pulrad{\textbf{\parbox{2.35cm}{\centering Embedding \\ Average}}}} & \mc{\pulrad{\textbf{\parbox{1.775cm}{\centering Vector \\ Extrema}}}} & \mc{\pulrad{\textbf{\parbox{1.95cm}{\centering Greedy \\ Matching}}}} \\
+ & \mc{} & \mc{} & \mc{} & \mc{} & \mc{} \\
+\pulrad{\textbf{Model}} & \mc{\pulrad{\textbf{Epoch}}} & \mc{\pulrad{\textbf{\parbox{2.35cm}{\centering Embedding \\ Average}}}} & \mc{\pulrad{\textbf{\parbox{1.775cm}{\centering Vector \\ Extrema}}}} & \mc{\pulrad{\textbf{\parbox{1.95cm}{\centering Greedy \\ Matching}}}} \\
 \midrule
-GEN-dec-best                & \mc{---}            & \mc{---}  & \mc{---} & \mc{---} & \mc{---} \\
-GEN-dec-last                 & \mc{---}            & \mc{---}  & \mc{---} & \mc{---} & \mc{---} \\
-GEN-all-best                  & \mc{---}            & \mc{---}  & \mc{---} & \mc{---} & \mc{---} \\
-GEN-all-last                   & \mc{---}            & \mc{---}  & \mc{---} & \mc{---} & \mc{---} \\
-MED-dec-best                & \mc{---}            & \mc{---}  & \mc{---} & \mc{---} & \mc{---} \\
-MED-dec-last                 & \mc{---}            & \mc{---}  & \mc{---} & \mc{---} & \mc{---} \\
-MED-all-best                  & \mc{---}            & \mc{---}  & \mc{---} & \mc{---} & \mc{---} \\
-MED-all-last                   & \mc{---}            & \mc{---}  & \mc{---} & \mc{---} & \mc{---} \\
+GEN-dec-best                & \mc{\phantom{0}28}             & \mc{\textbf{0.8023}} & \mc{\textbf{0.4092}} & \mc{\textbf{0.6340}} \\
+GEN-dec-last                 & \mc{100}           			  & \mc{0.7778} & \mc{0.3765} & \mc{0.6169} \\
+GEN-all-best                  & \mc{\phantom{0}13}             & \mc{0.7974} & \mc{0.4050} & \mc{0.6327} \\
+GEN-all-last                   & \mc{100}           			  & \mc{0.7854} & \mc{0.3950} & \mc{0.6192} \\
+MED-dec-best                & \mc{\phantom{0}13}             & \mc{0.7998} & \mc{0.4089} & \mc{0.6265} \\
+MED-dec-last                 & \mc{100}          			  & \mc{0.7758} & \mc{0.3738} & \mc{0.6160} \\
+MED-all-best                  & \mc{\phantom{0}76}            & \mc{0.7902} & \mc{0.4019} & \mc{0.6241} \\
+MED-all-last                   & \mc{100}          			  & \mc{0.7754} & \mc{0.3796} & \mc{0.6175} \\
 \bottomrule
-\multicolumn{6}{l}{\footnotesize \textit{Note:} Models are described in Chapter \ref{sec:medGenReportExperiments}.}
+\multicolumn{6}{l}{\footnotesize \textit{Note:} All values are rounded to 4 decimal places.}
 \end{tabular}
 
-\caption{Embediing metrics evaluation results.}\label{tab04:AutoEvalEmbedding}
+\caption{Embeding metrics evaluation results.}\label{tab04:AutoEvalEmbedding}
+Models are described in Chapter \ref{sec:medGenReportExperiments},
 \textit{best} suffix denotes the best trained models, \textit{last} denotes the last trained models
 \end{table}
 
+\newpage
 \section{Manual evaluation}
-This section presents the results of the manual evaluation. We would like to thank to MUDr.\ Martin Hyršl from the University Hospital Hradec Králové for the execution of manual evaluation on our generated reports. The manual evaluation was performed on a total of 100 X-ray images and their corresponding reports.
+This section presents the results of the manual evaluation. We would like to express our gratitude to MUDr.\ Martin Hyršl from the University Hospital Hradec Králové for the execution of manual evaluation on our generated reports. The manual evaluation was performed on a total of 100 X-ray images and their corresponding reports for all four \textit{best} models from the previous section.
 
 \subsection{Method}
-All images were evaluated using the following method. For each report is assessed into the one of three categories. First category expresses case when the report contains all corresponding findings and overall diagnosis without any false information. The next category decribes the cases in which the report is missing some important points without any false information. To the last category fall reports which contain untrue facts.
+All images were evaluated using the following method. Each report is classified into one of three categories. First category reflects the case where the report contains all corresponding findings and overall diagnosis without any false information. The next category decribes cases in which the report is missing some important points without any false information. To the last category fall reports that contain untrue facts.
 
 \subsection{Results}
+TODO po obdržení výsledků
+
 \begin{table}[h!]
 \centering
 \begin{tabular}{l@{\hspace{0.75cm}}D{.}{,}{3.0}D{.}{,}{2.3}D{.}{,}{2.3}D{.}{,}{2.3}D{.}{,}{2.3}}
 \toprule
- & \mc{} & \mc{} & \mc{} & \mc{} & \mc{} \\
-\pulrad{\textbf{Group}} & \mc{\pulrad{\textbf{Total}}} & \mc{\pulrad{\textbf{Accurate}}} & \mc{\pulrad{\textbf{Incomplete}}} & \mc{\pulrad{\textbf{Incorrect}}} \\
+ & \mc{} & \mc{} & \mc{} & \mc{} \\
+\pulrad{\textbf{Group}} & \mc{\pulrad{\textbf{Accurate}}} & \mc{\pulrad{\textbf{Incomplete}}} & \mc{\pulrad{\textbf{Incorrect}}} \\
 \midrule
-All               & \mc{500}  & \mc{---}  & \mc{---}  & \mc{---} \\
-Normal        & \mc{201}  & \mc{---}  & \mc{---}  & \mc{---} \\
-Anomaly      & \mc{299}  & \mc{---}  & \mc{---}  & \mc{---} \\
+GEN-dec-best      & \mc{---}  & \mc{---}  & \mc{---} \\
+GEN-all-best        & \mc{---}  & \mc{---}  & \mc{---} \\
+MED-dec-best	 & \mc{---}  & \mc{---}  & \mc{---} \\
+MED-all-best       & \mc{---}  & \mc{---}  & \mc{---} \\
 \bottomrule
-\multicolumn{4}{l}{\footnotesize \textit{Note:} Evaluation categories are described above.}
+\multicolumn{4}{l}{\footnotesize \textit{Note:} All values are rounded to 4 decimal places.}
 \end{tabular}
 
 \caption{Manual evaluation results.}\label{tab05:ManualEval}
+Evaluation categories are described above
 \end{table}
 
 \section{Examples}
-Demostration examples of generated reports by our best model are depicted in Figures TODO, TODO? and compared to the ground truth reports in mutiple different situtations.
+TODO Demostration examples of generated reports by our best model are depicted in Figures TODO, TODO? and compared to the ground truth reports in mutiple different situtations.
 
 \section{Conclusion}
-Celkový zhodnocení, až po tom co budeme mít metriky a výstupy
+TODO Celkový zhodnocení, až po tom co budeme mít metriky a výstupy
 
 
