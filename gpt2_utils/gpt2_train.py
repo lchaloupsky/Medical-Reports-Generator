@@ -30,6 +30,7 @@ parser.add_argument('--sequence_length', default=512, type=int, help="Dataset na
 parser.add_argument('--debug', default=False, type=bool, help="Turns on debugging mode.")
 parser.add_argument('--resume_training', default=True, type=bool, help="Resumes interrupted training from the newest checkpoint.")
 parser.add_argument('--find_learning_rates', default=False, type=bool, help="Finds initial learning rates.")
+parser.add_argument('--find_learning_rates_epoch', default=None, type=int, help="Epoch to find initial learning rates from.")
 parser.add_argument('--pretokenize_data', default=True, type=bool, help="Pretokenizes whole dataset in advance.")
 parser.add_argument('--save_checkpoints', default=True, type=bool, help="Saves all checkpoints during training.")
 parser.add_argument('--learning_rates', default=[4e-3, 2e-3, 5e-4, 1e-4], nargs="+", type=float, help="Learning rates to use.")
@@ -42,38 +43,42 @@ TRAINING_DATA_PATH = "training_data"
 CHECKPOINTS_PATH = "checkpoints"
 
 def train_tokenizer(config, dataset_name, args):
+    # tokenizer name and path declarations
+    ByteLevelBPE_tokenizer_cs_rep = 'ByteLevelBPE_tokenizer_cs'
+    path_to_ByteLevelBPE_tokenizer_cs_rep = config["tokenizers_path"]/ByteLevelBPE_tokenizer_cs_rep
+
     # load existing pretrained english gpt2 tokenizer 
     tokenizer_en = GPT2Tokenizer.from_pretrained(args.pretrained_weights)
     tokenizer_en.pad_token = tokenizer_en.eos_token
+    if not args.resume_training or not any(config["tokenizers_path"].iterdir()):
+        # train a Byte Level BPE (BBPE) tokenizer on the 'given data' by using the Tokenizers library (Hugging Face)
+        # get GPT2 tokenizer_en vocab size
+        ByteLevelBPE_tokenizer_cs_vocab_size = tokenizer_en.vocab_size
 
-    # train a Byte Level BPE (BBPE) tokenizer on the 'given data' by using the Tokenizers library (Hugging Face)
-    # get GPT2 tokenizer_en vocab size
-    ByteLevelBPE_tokenizer_cs_vocab_size = tokenizer_en.vocab_size
+        # ByteLevelBPETokenizer Represents a Byte-level BPE
+        ByteLevelBPE_tokenizer_cs = ByteLevelBPETokenizer()
 
-    # ByteLevelBPETokenizer Represents a Byte-level BPE
-    ByteLevelBPE_tokenizer_cs = ByteLevelBPETokenizer()
+        # get list of paths to corpus files and customize training with <|endoftext|> special GPT-2 token
+        paths = [str(config["data_path"]/f'{dataset_name}_agg.txt')]
+        ByteLevelBPE_tokenizer_cs.train(
+            files=paths,
+            vocab_size=ByteLevelBPE_tokenizer_cs_vocab_size, 
+            min_frequency=2, 
+            special_tokens=["<|endoftext|>"])
 
-    # get list of paths to corpus files and customize training with <|endoftext|> special GPT-2 token
-    paths = [str(config["data_path"]/f'{dataset_name}_agg.txt')]
-    ByteLevelBPE_tokenizer_cs.train(
-        files=paths,
-        vocab_size=ByteLevelBPE_tokenizer_cs_vocab_size, 
-        min_frequency=2, 
-        special_tokens=["<|endoftext|>"])
+        # get sequence length max of 1024
+        ByteLevelBPE_tokenizer_cs.enable_truncation(max_length=args.sequence_length)
+        
+        # save tokenizer
+        if not (path_to_ByteLevelBPE_tokenizer_cs_rep).exists():
+            path_to_ByteLevelBPE_tokenizer_cs_rep.mkdir(exist_ok=True, parents=True)
 
-    # get sequence length max of 1024
-    ByteLevelBPE_tokenizer_cs.enable_truncation(max_length=args.sequence_length)
-    
-    # save tokenizer
-    ByteLevelBPE_tokenizer_cs_rep = 'ByteLevelBPE_tokenizer_cs'
-    path_to_ByteLevelBPE_tokenizer_cs_rep = config["tokenizers_path"]/ByteLevelBPE_tokenizer_cs_rep
-    if not (path_to_ByteLevelBPE_tokenizer_cs_rep).exists():
-        path_to_ByteLevelBPE_tokenizer_cs_rep.mkdir(exist_ok=True, parents=True)
-
-    # !!! older versions
-    ByteLevelBPE_tokenizer_cs.save(str(path_to_ByteLevelBPE_tokenizer_cs_rep), ByteLevelBPE_tokenizer_cs_rep)
-    os.replace(path_to_ByteLevelBPE_tokenizer_cs_rep/f"{ByteLevelBPE_tokenizer_cs_rep}-vocab.json", path_to_ByteLevelBPE_tokenizer_cs_rep/"vocab.json")
-    os.replace(path_to_ByteLevelBPE_tokenizer_cs_rep/f"{ByteLevelBPE_tokenizer_cs_rep}-merges.txt", path_to_ByteLevelBPE_tokenizer_cs_rep/"merges.txt")
+        # !!! older versions
+        ByteLevelBPE_tokenizer_cs.save(str(path_to_ByteLevelBPE_tokenizer_cs_rep), ByteLevelBPE_tokenizer_cs_rep)
+        os.replace(path_to_ByteLevelBPE_tokenizer_cs_rep/f"{ByteLevelBPE_tokenizer_cs_rep}-vocab.json", path_to_ByteLevelBPE_tokenizer_cs_rep/"vocab.json")
+        os.replace(path_to_ByteLevelBPE_tokenizer_cs_rep/f"{ByteLevelBPE_tokenizer_cs_rep}-merges.txt", path_to_ByteLevelBPE_tokenizer_cs_rep/"merges.txt")
+    else:
+        print(f"Tokenizer for '{dataset_name}' has been already trained. Using existing version.")
 
     # import the tokenizer config files in Portuguese into the pre-trained GPT2 Tokenizer
     tokenizer_cs = GPT2Tokenizer.from_pretrained(str(path_to_ByteLevelBPE_tokenizer_cs_rep), pad_token='<|endoftext|>')
@@ -348,50 +353,62 @@ def splitter(n=4):
 
     return inner_splitter
 
-def find_learning_rates(training_data_path, learn, exit=True, name="lr_plot"):
+def find_learning_rates(training_data_path, learn, exit=True, name="lr_plot", epoch=None):
     # Find all possible good learning rates
     lrs = learn.lr_find(show_plot=True, suggest_funcs=(minimum, steep, valley, slide))
 
     # Print them and save the loss plot
     print(lrs.minimum, lrs.steep, lrs.valley, lrs.slide)
-    plt.savefig(f"{str(training_data_path/name)}.png")
+    plt.savefig(f"{str(training_data_path/name)}{'' if epoch is None else f'_e{str(epoch)}'}.png")
 
     if exit: sys.exit()
 
 def finetune_gradual(model_dirs, model_name, learn, tokenizer_cs, dataset_name, args):
-    final_dest, _, training_data_dest = model_dirs
+    final_dest, checkpoint_dest, training_data_dest = model_dirs
 
     # --- FINE-TUNING ---
-    # Freeze whole model except 'wte', 'wpe', 'LayerNorm' and final 'Linear' layer
-    learn.freeze()
-    print(learn.summary())
-    # find learning rates
-    if args.find_learning_rates:
-        find_learning_rates(training_data_dest, learn)
+    if not any(checkpoint_dest.iterdir()) or not args.resume_training:
+        # Freeze whole model except 'wte', 'wpe', 'LayerNorm' and final 'Linear' layer
+        learn.freeze()
+        print(learn.summary())
+        # find learning rates
+        if args.find_learning_rates and args.find_learning_rates_epoch is None or args.find_learning_rates_epoch == 0:
+            find_learning_rates(training_data_dest, learn, epoch=-1)
 
-    learn.fit_one_cycle(1, args.learning_rates[0])
-    save_checkpoint(learn, f'{args.pretrained_weights}_{dataset_name}_1epoch_lr{args.learning_rates[0]:.2e}', args)
-    plot_and_save_loss(learn, training_data_dest, "loss_1epoch")
+        learn.fit_one_cycle(1, args.learning_rates[0])
+        save_checkpoint(learn, f'{model_name}_{dataset_name}_lr{args.learning_rates[0]:.2e}_e_-1', args)
+        plot_and_save_loss(learn, training_data_dest, "loss_1epoch")
 
-    # Unfreeze last 'n' decoder blocks
-    learn.freeze_to(-2)
-    print(learn.summary())
-    learn.fit_one_cycle(1, slice(args.learning_rates[1]/(2.6**4), args.learning_rates[1]))
-    save_checkpoint(learn, f'{args.pretrained_weights}_{dataset_name}_2epoch_lr{args.learning_rates[1]:.2e}', args)
-    plot_and_save_loss(learn, training_data_dest, "loss_2epoch")
+    # load last checkpoint
+    if args.resume_training:
+        learn, epoch = load_checkpoint(learn, checkpoint_dest)
 
-    # Unfreeze last '2n' decoder blocks
-    learn.freeze_to(-3)
-    print(learn.summary())
-    learn.fit_one_cycle(1, slice(args.learning_rates[2]/(2.6**4), args.learning_rates[2]))
-    save_checkpoint(learn, f'{args.pretrained_weights}_{dataset_name}_3epoch_lr{args.learning_rates[2]:.2e}', args)
-    plot_and_save_loss(learn, training_data_dest, "loss_3epoch")
+    # check it is not the very last checkpoint
+    if epoch >= 3:
+        return
+
+    for i in range(1, 3):
+        if epoch + 1 >= i:
+            continue
+
+        # Unfreeze last '(i+1)*n' decoder blocks
+        learn.freeze_to(-(i + 1))
+        print(learn.summary())
+        if args.find_learning_rates and args.find_learning_rates_epoch == i:
+            find_learning_rates(training_data_dest, learn, epoch=i-1)
+
+        learn.fit_one_cycle(1, slice(args.learning_rates[i]/(2.6**4), args.learning_rates[i]))
+        save_checkpoint(learn, f'{model_name}_{dataset_name}_lr{args.learning_rates[i]:.2e}_e_{i-1}', args)
+        plot_and_save_loss(learn, training_data_dest, f"loss_{i+1}epoch")
 
     # Unfreeze whole model
     learn.unfreeze()
     print(learn.summary())
+    if args.find_learning_rates and args.find_learning_rates_epoch >= 3:
+        find_learning_rates(training_data_dest, learn, epoch="2_3")
+
     learn.fit_one_cycle(2, slice(args.learning_rates[3]/(2.6**4), args.learning_rates[3]))
-    save_checkpoint(learn, f'{args.pretrained_weights}_{dataset_name}_5epoch_lr{args.learning_rates[3]:.2e}_len2', args)
+    save_checkpoint(learn, f'{model_name}_{dataset_name}_lr{args.learning_rates[3]:.2e}_len2_e_3', args)
     plot_and_save_loss(learn, training_data_dest, "loss_4_5epoch")
 
     # --- SAVING THE MODEL ----
@@ -406,8 +423,8 @@ def finetune_all_at_once(model_dirs, model_name, learn, tokenizer_cs, dataset_na
         learn.freeze()
         print(learn.summary())
         # find learning rates
-        if args.find_learning_rates:
-            find_learning_rates(training_data_dest, learn)
+        if args.find_learning_rates and args.find_learning_rates_epoch is None or args.find_learning_rates_epoch == 0:
+            find_learning_rates(training_data_dest, learn, epoch=-1)
 
         learn.fit_one_cycle(1, args.learning_rates[0])
         save_checkpoint(learn, f'{model_name}_{dataset_name}_lr{args.learning_rates[0]:.2e}_e_-1', args)
@@ -418,13 +435,16 @@ def finetune_all_at_once(model_dirs, model_name, learn, tokenizer_cs, dataset_na
 
     # Unfreeze whole model
     learn.unfreeze()
-    callbacks = [SaveModelCallback(fname=model_name, every_epoch=True, with_opt=True)] + ([StartFromEpoch(start_epoch=epoch + 1)] if args.resume_training else [])
     print(learn.summary())
+    if args.find_learning_rates and args.find_learning_rates_epoch >= 1:
+        find_learning_rates(training_data_dest, learn, epoch="0_3")
+
+    callbacks = [SaveModelCallback(fname=model_name, every_epoch=True, with_opt=True)] + ([StartFromEpoch(start_epoch=epoch + 1)] if args.resume_training else [])
     learn.fit_one_cycle(4, 
         slice(args.learning_rates[1]/(2.6**4), args.learning_rates[1]), 
         cbs=callbacks
     )
-    save_checkpoint(learn, f'{model_name}_{dataset_name}_lr{args.learning_rates[1]:.2e}_len4_e_5', args)
+    save_checkpoint(learn, f'{model_name}_{dataset_name}_lr{args.learning_rates[1]:.2e}_len4_e_3', args)
     plot_and_save_loss(learn, training_data_dest, "loss_2_5epoch")
 
     learn.recorder.plot_sched()
