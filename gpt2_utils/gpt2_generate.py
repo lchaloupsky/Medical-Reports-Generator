@@ -14,6 +14,11 @@ parser.add_argument('--repetition_penalty', default=1.2, type=float, help="Repet
 parser.add_argument('--temperature', default=0.7, type=float, help="Temperature for generating.")
 parser.add_argument('--do_sample', default=True, type=bool, help="Do sample tokens when generating.")
 parser.add_argument('--num_return_sequences', default=1, type=int, help="Number of sequences to be returned.")
+parser.add_argument('--num_beams', default=None, type=int, help="Number of beams for search.")
+parser.add_argument('--length_penalty', default=None, type=float, help="Exponential penalty for the text length.")
+parser.add_argument('--bos_token_id', default=None, type=int, help="Beginning token id.")
+parser.add_argument('--eos_token_id', default=None, type=int, help="End token id.")
+parser.add_argument('--pad_token_id', default=50256, type=int, help="Pad token id.")
 
 def generate(args: argparse.Namespace) -> None:
     if args.model == None:
@@ -29,7 +34,7 @@ def generate(args: argparse.Namespace) -> None:
 
     while True:
         # read user prompt
-        start = ""
+        start = input()
 
         # if user entered empty prompt use special <|endoftext|> token
         if not start.strip():
@@ -39,18 +44,22 @@ def generate(args: argparse.Namespace) -> None:
         input_ids = tokenizer_cs.encode(start, return_tensors='pt').to(device)
         sample_outputs = model.generate(
             input_ids, 
-            pad_token_id=50256,
+            pad_token_id=args.pad_token_id,
+            eos_token_id=args.eos_token_id,
+            bos_token_id=args.bos_token_id,
             do_sample=args.do_sample, 
             max_length=args.max_len,
             repetition_penalty=args.repetition_penalty,
             temperature=args.temperature, 
             top_k=args.top_k,
             top_p=args.top_p,
-            num_return_sequences=args.num_return_sequences)
+            num_return_sequences=args.num_return_sequences,
+            num_beams=args.num_beams,
+            length_penalty=args.length_penalty)
 
         # older versions !!!
         for i, text in enumerate(sample_outputs if args.num_return_sequences == 1 else sample_outputs[0]):
-            print(f"Generated text for input '{start}' {i+1}:\n\n{tokenizer_cs.decode(text)}")
+            print(f"Generated text for input '{start}' {i+1}:\n\n{tokenizer_cs.decode(text, skip_special_tokens=True)}")
 
 if __name__ == "__main__":
     generate(parser.parse_args([] if "__file__" not in globals() else None))

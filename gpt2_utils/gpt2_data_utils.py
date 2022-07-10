@@ -2,6 +2,8 @@ import os
 import csv
 import argparse
 
+from typing import List, Tuple
+
 parser = argparse.ArgumentParser()
 # arguments used during generation of text
 parser.add_argument('--folder', default=".", type=str, help="Folder containing all data, that should be aggregated.", required=True)
@@ -10,7 +12,7 @@ parser.add_argument('--regenerate', default=False, type=bool, help="Flag indicat
 parser.add_argument('--line_split', default=None, type=int, help="Number of lines after which a new entry should be created.")
 parser.add_argument('--extensions', default=[], type=str, nargs="*", help="Additional file extensions that should be taken into account.")
 
-def create_aggregates_from_texts(folder: str, text_delim: str, regenerate: bool = False, line_split: int = None, extensions: list[str] = []) -> tuple([str, str]):
+def create_aggregates_from_texts(folder: str, text_delim: str, regenerate: bool = False, line_split: int = None, extensions: List[str] = []) -> Tuple([str, str]):
     '''
     Goes through specified 'folder' and reads every *txt* file which it can find anywhere in the 'folder' and generates an aggregation of all found files into one csv and one txt files. 
     Each file will be splitted with 'text_delim' into paragraphs. 

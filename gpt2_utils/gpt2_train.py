@@ -17,22 +17,22 @@ import os
 
 parser = argparse.ArgumentParser()
 # general arguments
-parser.add_argument('--type', default='gradual', choices=['gradual', 'full'], type=str, help="Type of finetuning method.")
-parser.add_argument('--model', default="gpt2_cz_cnk_debug", type=str, help="Model name.")
-parser.add_argument('--max_len', default=512, type=int, help="Maximum length of generated text.")
+parser.add_argument('--type', default='full', choices=['gradual', 'full'], type=str, help="Type of the finetuning method.")
+parser.add_argument('--model', default="your_new_model_name", type=str, help="New model name.")
+parser.add_argument('--max_len', default=512, type=int, help="Maximum length of the generated text.")
 # training arguments
-parser.add_argument('--pretrained_weights', default="gpt2", type=str, help="Model name.")
-parser.add_argument('--dataset', default="cnk", type=str, help="Dataset name. Optional.")
-parser.add_argument('--data_path', default="cnk", type=str, help="Data path. The data should be inside the 'storage/data' folder.")
-parser.add_argument('--batch_size', default=4, type=int, help="Dataset name.")
+parser.add_argument('--pretrained_weights', default="gpt2", type=str, help="Pretrained model name.")
+parser.add_argument('--dataset', default="oscar", type=str, help="Dataset name. Optional.")
+parser.add_argument('--data_path', default="oscar", type=str, help="Data path. The data should be inside the 'storage/data' folder.")
+parser.add_argument('--batch_size', default=16, type=int, help="Dataset name.")
 parser.add_argument('--train_data_ratio', default=0.8, type=float, help="Portion of data to be used for trainig.")
 parser.add_argument('--sequence_length', default=512, type=int, help="Dataset name.")
-parser.add_argument('--debug', default=True, type=bool, help="Turns on debugging mode.")
+parser.add_argument('--debug', default=False, type=bool, help="Turns on debugging mode.")
 parser.add_argument('--resume_training', default=True, type=bool, help="Resumes interrupted training from the newest checkpoint.")
 parser.add_argument('--find_learning_rates', default=False, type=bool, help="Finds initial learning rates.")
 parser.add_argument('--pretokenize_data', default=True, type=bool, help="Pretokenizes whole dataset in advance.")
-parser.add_argument('--save_checkpoints', default=False, type=bool, help="Saves all checkpoints during training.")
-parser.add_argument('--learning_rates', default=[1e-3, 9e-4, 5e-4, 1e-4], nargs="+", type=float, help="Learning rates to use.")
+parser.add_argument('--save_checkpoints', default=True, type=bool, help="Saves all checkpoints during training.")
+parser.add_argument('--learning_rates', default=[4e-3, 2e-3, 5e-4, 1e-4], nargs="+", type=float, help="Learning rates to use.")
 
 BASE_PATH = "storage"
 DATA_PATH = "data"
@@ -410,7 +410,7 @@ def finetune_all_at_once(model_dirs, model_name, learn, tokenizer_cs, dataset_na
             find_learning_rates(training_data_dest, learn)
 
         learn.fit_one_cycle(1, args.learning_rates[0])
-        save_checkpoint(learn, f'{args.pretrained_weights}_{dataset_name}_lr{args.learning_rates[0]:.2e}_e_-1', args)
+        save_checkpoint(learn, f'{model_name}_{dataset_name}_lr{args.learning_rates[0]:.2e}_e_-1', args)
         plot_and_save_loss(learn, training_data_dest, "loss_1epoch")
 
     if args.resume_training:
@@ -424,7 +424,7 @@ def finetune_all_at_once(model_dirs, model_name, learn, tokenizer_cs, dataset_na
         slice(args.learning_rates[1]/(2.6**4), args.learning_rates[1]), 
         cbs=callbacks
     )
-    save_checkpoint(learn, f'{args.pretrained_weights}_{dataset_name}_lr{args.learning_rates[1]:.2e}_len4_e_5', args)
+    save_checkpoint(learn, f'{model_name}_{dataset_name}_lr{args.learning_rates[1]:.2e}_len4_e_5', args)
     plot_and_save_loss(learn, training_data_dest, "loss_2_5epoch")
 
     learn.recorder.plot_sched()
