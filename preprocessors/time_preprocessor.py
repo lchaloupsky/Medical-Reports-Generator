@@ -59,8 +59,3 @@ class TimePreprocessor(Preprocessor):
                 return False 
 
         return False
-
-# TODO: 12pmplease/3pmasses examples? - should it be splitted or not?
-
-#t = TimePreprocessor()
-#print(t.preprocess("945AM ds 945 AM da \n \n 10 10pm 5:06 A.M. 5:06AM \n \n dsad 4pmsad as 9AM I am happy"))

@@ -24,7 +24,7 @@ parser.add_argument('--anonymous_seq', default=None, type=str, help="A common st
 os.makedirs("logs", exist_ok=True)
 logging.basicConfig(filename='logs/output_{}.log'.format(datetime.datetime.now().strftime("%d_%m_%Y__%H_%M_%S")), encoding='utf-8', filemode='w', level=logging.DEBUG, datefmt='%Y-%d-%m %H:%M:%S')
 
-MAX_REPEAT_COUNT: int = 5
+MAX_REPEAT_COUNT: int = 10
 PREPROCESSORS: list[Preprocessor] = []
 DATASET_FOLDERS: dict[str, str] = {"openi": "ecgen-radiology", "mimic": "files"}
 MAX_CONCURRENT_TASK_SUBMITTED_COUNT: int = 64
@@ -41,8 +41,6 @@ def _log_error(filename: str, response: Response):
 def translate_report(translator: Translator, extractor: Extractor, filename: str, destination: str, preprocess_only: bool):
     # extract text from a file
     text = extractor.extract_report(filename)
-    #if "1022" in filename:
-    #    print(text)
 
     # preprocess text
     text = _preprocess(text)
@@ -57,7 +55,7 @@ def translate_report(translator: Translator, extractor: Extractor, filename: str
         if response.status_code != 200:
             # wait between repetition
             repeats += 1
-            time.sleep(repeats) # FOR DEEPL -> modify to 3 * repeats
+            time.sleep(repeats) # For DEEPL -> modify to 3 * repeats
 
             if repeats == MAX_REPEAT_COUNT:
                 print("Cannot translate report: {}. Reason: {}".format(filename, response.reason))
@@ -134,15 +132,7 @@ def main(args: argparse.Namespace):
         try:
             for subdir, _, filenames in os.walk(_get_dataset_location(args)):
                 final_destination = os.path.join(destination, os.path.normpath(subdir))
-                for filename in filenames:
-                    ### DEBUG ###
-                    #if "960" in filename:
-                    #translate_report(translator, extractor, os.path.join(subdir, filename), final_destination)
-                    
-                    #if i == 100:
-                    #    break
-                    #############
-                    
+                for filename in filenames:                    
                     # create new job
                     futures.append(pool.submit(translate_report, translator, extractor, os.path.join(subdir, filename), final_destination, args.preprocess_only))
                     if (total := total + 1) % MAX_CONCURRENT_TASK_SUBMITTED_COUNT == 0:

@@ -10,7 +10,7 @@ import copy
 from requests.models import Response
 from translators.translator import Translator
 
-_proxies = ["5.189.184.6:80", "173.249.57.9:443", "138.201.120.214:1080"] #eval(open("filtered_p.txt", "r").readlines()[0])#
+_proxies = ["5.189.184.6:80", "173.249.57.9:443", "138.201.120.214:1080"]
 _proxy = 0
 
 class _DeepLClientState():

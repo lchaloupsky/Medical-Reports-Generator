@@ -44,27 +44,3 @@ class UnitsPreprocessor(Preprocessor):
 
     def _get_splitted_form(self, num_part: str, text_part: str) -> str:
         return f"{num_part} {text_part}"
-        
-
-text2 = "                                 FINAL REPORT\n\
- EXAMINATION:  CHEST (PORTABLE AP)\n\
- \n\
- INDICATION:  ___F with cough  // acute process?\n\
- \n\
- COMPARISON:  Chest radiograph ___\n\
- \n\
- FINDINGS: \n\
- \n\
- Single frontal view of the chest provided.\n\
- \n\
- 10cm, There is no focal consolidation, effusion, or pneumothorax. The\n\
- cardiomediastinal silhouette is normal.  10cm, 20pps, 3VD, 4x12, 3HISTORY, 3N0M0. Again seen are multiple clips\n\
- projecting over the left breast and remote left-sided rib fractures.  No free\n\
- air below the right hemidiaphragm is seen. 13Pro\n\
- \n\
- IMPRESSION: \n\
- \n\
- No acute intrathoracic process."
-
-#p = UnitsPreprocessor()
-#print(p.preprocess(text2))

@@ -7,6 +7,7 @@ import pickle
 from string import digits
 from extractors.extractor import Extractor
 from preprocessors.preprocessor import Preprocessor
+from pathlib import Path
 from utils import *
 
 class TrueCasingPreprocessor(Preprocessor):
@@ -69,9 +70,11 @@ class TrueCasingPreprocessor(Preprocessor):
         return not stripped.isalpha() and stripped.isalnum()
 
     def _get_word_frequencies(self, extractor: Extractor, directory: str, dataset: str) -> dict[str, str]:
+        base = Path(__file__).parent
+
         # check if for given dataset wordFrequencies exists
-        if os.path.exists('{}.pkl'.format(dataset)):
-            with open('{}.pkl'.format(dataset), 'rb') as f:
+        if os.path.exists(base/'{}.pkl'.format(dataset)):
+            with open(base/'{}.pkl'.format(dataset), 'rb') as f:
                 self._word_frequencies = pickle.load(f)
 
             return
@@ -95,11 +98,11 @@ class TrueCasingPreprocessor(Preprocessor):
             self._word_frequencies[key] = max(value, key=value.get)
 
         # save for further usage
-        with open('{}.pkl'.format(dataset), 'wb') as f:
+        with open(base/'{}.pkl'.format(dataset), 'wb') as f:
             pickle.dump(self._word_frequencies, f)
 
         # save for debugging
-        with open('all_{}.pkl'.format(dataset), 'wb') as f:
+        with open(base/'all_{}.pkl'.format(dataset), 'wb') as f:
             pickle.dump(all_frequencies, f)
 
         print(f"Successfully created true casing dictionaries for '{dataset}' dataset.", flush=True)
@@ -132,45 +135,3 @@ class TrueCasingPreprocessor(Preprocessor):
                             all_frequencies[lower][word] = 0
 
                         all_frequencies[lower][word] += 1
-
-
-'''
-text = "                                 FINAL REPORT\n\
- EXAMINATION:  CHEST (PORTABLE AP)\n\
- \n\
- INDICATION:  ___F with cough  // acute process?\n\
- \n\
- COMPARISON:  Chest radiograph ___\n\
- \n\
- FINDINGS: \n\
- \n\
- Single frontal view of the chest provided.\n\
- \n\
- There is no focal consolidation, effusion, or pneumothorax. The\n\
- cardiomediastinal silhouette is normal.  Again seen are multiple clips\n\
- projecting over the left breast and remote left-sided rib fractures.  No free\n\
- air below the right hemidiaphragm is seen.\n\
- \n\
- IMPRESSION: \n\
- \n\
- No acute intrathoracic process."
-
-text2 = "                                 FINAL ADDENDUM\n\
- ADDENDUM:  Findings were discussed with Dr. ___ ___ the phone by radiology\n\
- resident, Dr. ___ ___ at 1:45 p.m. on ___.\n\
- \n\
- ______________________________________________________________________________\n\
-                                 FINAL REPORT\n\
- REASON FOR EXAMINATION:  Evaluation of the patient with pneumothorax.\n\
- \n\
- Portable AP radiograph of the chest was compared to prior study obtained on\n\
- ___.\n\
- \n\
- There is currently presence of moderate pneumothorax and no evidence of\n\
- effusion in the upper portion of the pleura demonstrated.  The extensive\n\
- consolidation over the lungs is redemonstrated.  Overall, no substantial\n\
- change otherwise since the prior study seen.\n\
-"
-'''
-#print("".join(re.sub(r" {3,}FINAL +.*\n", TrueCasingPreprocessor._SEP, text).split(TrueCasingPreprocessor._SEP)), end="\n\n")
-#print("".join(re.sub(r" {3,}FINAL +.*\n", TrueCasingPreprocessor._SEP, text2).split(TrueCasingPreprocessor._SEP)))

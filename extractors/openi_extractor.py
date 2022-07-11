@@ -10,7 +10,7 @@ class OpenIReportExtractor(Extractor):
         super().__init__(base_dir)
 
     def extract_report(self, file_name: str) -> str:
-        report_xml = minidom.parse(os.path.join(self.base_dir, file_name))
+        report_xml = minidom.parse(os.path.normpath(os.path.join(self.base_dir, file_name)))
         abstract_texts_xml = report_xml \
             .getElementsByTagName("MedlineCitation")[0] \
             .getElementsByTagName("Article")[0] \
