@@ -1,7 +1,7 @@
 \chapter{Implementation}
 Entire implementation part of our thesis is divided into three independent parts. Each of them deals with different task desribed in the previous chapter.\\
 
-The entire code is written in Python 3 with the use of tensorflow\footnote[1]{\url{https://www.tensorflow.org/}}, pyTorch\footnote[2]{\url{https://pytorch.org/}}, huggingface\footnote[3]{\url{https://huggingface.co/}} and fastai\footnote[4]{\url{https://www.fast.ai/}} libraries as they are the standard for working with neural networks. We want to emphasize that different parts of the project may require different dependencies. In order to solve this, virtual environments can be used. To install all the required dependencies, run the following command in the appropriate part of the project.
+The entire code is written in Python~3\footnote[1]{Different parts may require different versions of Python} with the use of tensorflow\footnote[2]{\url{https://www.tensorflow.org/}}, pyTorch\footnote[3]{\url{https://pytorch.org/}}, huggingface\footnote[4]{\url{https://huggingface.co/}} and fastai\footnote[5]{\url{https://www.fast.ai/}} libraries as they are the standard for working with neural networks. We want to emphasize that different parts of the project may require different dependencies. In order to solve this, virtual environments can be used. To install all the required dependencies, run the following command in the appropriate part of the project.
 
 \begin{code}
 > pip3 install -r requirements.txt
@@ -15,17 +15,18 @@ The most important script is \textit{gpt2\_train.py} that takes care of the enti
 \newpage
 \begin{code}
 > python3 gpt2_train.py [-h] [--type {gradual,full}] 
-                [--model MODEL] [--max_len MAX_LEN] 
-                [--pretrained_weights PRETRAINED_WEIGHTS] 
-                [--dataset DATASET] [--data_path DATA_PATH] 
-                [--batch_size BATCH_SIZE]
-                [--train_data_ratio TRAIN_DATA_RATIO] 
-                [--sequence_length SEQUENCE_LENGTH] [--debug DEBUG] 
-                [--resume_training RESUME_TRAINING] 
-                [--find_learning_rates FIND_LEARNING_RATES]
-                [--pretokenize_data PRETOKENIZE_DATA] 
-                [--save_checkpoints SAVE_CHECKPOINTS] 
-                [--learning_rates LEARNING_RATES [LEARNING_RATES ...]]
+              [--model MODEL] [--max_len MAX_LEN] 
+              [--pretrained_weights PRETRAINED_WEIGHTS] 
+              [--dataset DATASET] [--data_path DATA_PATH] 
+              [--batch_size BATCH_SIZE]
+              [--train_data_ratio TRAIN_DATA_RATIO] 
+              [--sequence_length SEQUENCE_LENGTH] [--debug DEBUG] 
+              [--resume_training RESUME_TRAINING] 
+              [--find_learning_rates FIND_LEARNING_RATES]
+              [--find_learning_rates_epoch FIND_LEARNING_RATES_EPOCH]
+              [--pretokenize_data PRETOKENIZE_DATA] 
+              [--save_checkpoints SAVE_CHECKPOINTS] 
+              [--learning_rates LEARNING_RATES [LEARNING_RATES ...]]
 \end{code}
 
 \subsection*{Testing}
@@ -39,6 +40,11 @@ The \textit{gpt2\_generate.py} script serves for the text generation purposes. I
                           [--temperature TEMPERATURE] 
                           [--do_sample DO_SAMPLE]
                           [--num_return_sequences NUM_RETURN_SEQUENCES]
+                          [--num_beams NUM_BEAMS]
+                          [--length_penalty LENGTH_PENALTY] 
+                          [--bos_token_id BOS_TOKEN_ID] 
+                          [--eos_token_id EOS_TOKEN_ID]
+                          [--pad_token_id PAD_TOKEN_ID]
 \end{code}
 
 \subsection*{Data preparation}
@@ -71,11 +77,15 @@ It takes several arguments, such as the data path, and runs the translation. The
 For each file, the script first loads the report text using the specified \textit{Extractor}. Next, the text goes through each of the \textit{Preprocessors} to process the text. After the preprocessing finishes, the report is passed to the selected \textit{Translator} to get the translated text. Finally, the translated report is saved under the original file name. Throughout the entire translation process, the progress indication of how much data has been already translated is displayed.\\
 
 All implemented preprocessors, described in Chapter \ref{sec:DataPreprocessing}, are located in the \textit{preprocessors} directory. Each of them implements the  \textit{Preprocessor} interface with only one method \textit{preprocess}, which makes it extensible for possible additional user defined preprocessors. This method takes the text as its only argument and returns the preprocessed text.\\
-\newpage
 
 In our thesis we utilize CUBBITT as our translator. However, the user can implement its own translator class as the main script for dataset translation works with \textit{Translator} interface. This interface defines two methods - \textit{translate} that should return the response object from the translation service, and \textit{get\_text} that should get or create the translated text from the response. During the elaboration of this thesis we also implemented a translator for the DeepL, but it is unusable in practice due to its strict limits. All imlemented translators are located in the \textit{translators} directory.\\
 
-The last extensible part of the translation process is text extraction from the dataset files. Since not all datasets are just simple \textit{.txt} files, we created the \textit{Extractor} interface for this purpose. It defines only one method \textit{extract\_report} intended for full report text extraction. We implemented two extractors inside the \textit{extractors} directory - for the Indiana University chest X-ray and MIMIC-CXR v2.0.0 datasets.
+The last extensible part of the translation process is text extraction from the dataset files. Since not all datasets are just simple \textit{.txt} files, we created the \textit{Extractor} interface for this purpose. It defines only one method \textit{extract\_report} intended for full report text extraction. We implemented two extractors inside the \textit{extractors} directory - for the Indiana University chest X-ray and MIMIC-CXR v2.0.0 datasets.\\
+
+We also covered the important parts with the \textit{pytest} test suites in the \textit{tests} subdirectory. The tests can be invoked by:
+\begin{code}
+> pytest tests/
+\end{code}
 
 \section{Medical report generation}
 \label{sec:MedRepGenImpl}
@@ -93,10 +103,9 @@ First, follow the setup steps described in the project \textit{README}. Next, in
 \begin{itemize}
 	\item In the \textit{IU-XRay} directory, the English report files must be swapped with their Czech translations - \textit{all\_data.csv}, \textit{testing\_set.csv}, \textit{training\_set.csv}.
 	\item The desired trained GPT-2 model should be placed inside the top level of the directory.
-	\item Inside the \textit{train.py}, \textit{test.py}, \textit{tokenizer\_wrapper.py} files, the original distilgpt2 and gpt2 model and tokenizer string identifier should be changed to the name of our trained GPT-2 model.
+	\item Inside the \textit{train.py}, \textit{test.py}, \textit{tokenizer\_wrapper.py} files, the original \qq{distilgpt2} and \qq{gpt2} model and tokenizer string identifiers should be changed to the name of our trained GPT-2 model.
 	\item Change hyperparameters in \textit{configs.py} to adjust training parameters as needed.
 \end{itemize}
-\newpage
 
 After all the mentioned steps, we can run the training or testing procedure using the following commands:
 \begin{code}
@@ -104,7 +113,12 @@ After all the mentioned steps, we can run the training or testing procedure usin
 > python3 test.py
 \end{code}
 
-The checkpoints are gradually stored during the training process in the \textit{checkpoints/CDGPT2} directory. After each epoch, the latest model checkpoint is stored. Moreover, the best training checkpoint is stored in the \textit{best\_ckpt} subdirectory. The testing process uses the model checkpoint stored in the \textit{checkpoints/CDGPT2} directory.
+The checkpoints are gradually stored during the training process in the \textit{checkpoints/CDGPT2} directory. After each epoch, the latest model checkpoint is stored. Moreover, the best training checkpoint is stored in the \textit{best\_ckpt} subdirectory. The testing process uses the model checkpoint stored in the \textit{checkpoints/CDGPT2} directory.\\
+
+For direct prediction on individual images, we implemented an additional script \textit{predict\_for\_img.py}, which loads the checkpoint in the same way as in the testing process and the user is then prompted to enter the location of the chest X-ray image for which the prediction should be made. The corresponing medical report is then printed to the standard output. The script can be run in the following way:
+\begin{code}
+> python3 predict_for_img.py
+\end{code}
 
 \section{Evaluation}
-For the evaluation purposes, the NLG evaluation from \citet{sharma2017nlgeval} was utilized. Nevertheless, as some metrics are language specific, we needed to modify both the source code and data in order to use them. For METEOR metric, we had to change the source code and download the Czech paraphrases\footnote[5]{\url{https://github.com/cmu-mtlab/meteor/blob/master/data/paraphrase-cz.gz}} file to the appropriate part of the package in order to use it on the Czech language. For embedding-based metrics, the original English GloVe vectors were replaced by the Czech word2vec vectors from \citet{grave2018learning}. The word2vec file had to be further changed to the format used by the package. All neccessary information on how to modify the package is describeb within the corresponding  \textit{README} file.
+For the evaluation purposes, the NLG evaluation from \citet{sharma2017nlgeval} was utilized. Nevertheless, as some metrics are language specific, we needed to modify both the source code and data in order to use them. For METEOR metric, we had to change the source code and download the Czech paraphrases\footnote[6]{\url{https://github.com/cmu-mtlab/meteor/blob/master/data/paraphrase-cz.gz}} file to the appropriate part of the package in order to use it on the Czech language. For embedding-based metrics, the original English GloVe vectors were replaced by the Czech word2vec vectors from \citet{grave2018learning}. The word2vec file had to be further changed to the format used by the package. All neccessary information on how to modify the package is describeb within the corresponding \textit{README} file.

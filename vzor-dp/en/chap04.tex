@@ -26,9 +26,9 @@ IT4I                 & \mc{NVIDIA A100 SXM4 40GB} & \mc{40 GB}\\
 \label{sec:gpt2Experiments}
 This section summarizes all experiments and results related to the training of Czech GPT-2 models. All experiments were performed according to the training procedure description in Chapter \ref{sec:gpt2Training}.\\
 
-During the elaboration of this thesis, we trained several GTP-2 models on different datasets and with different approaches. Specifically, in addition to experiments described below, we performed training on many different learning rates given by the learning rate finding procedure. Experiments were done for all datasets described in Chapter \ref{sec:gptData}. Furthermore, the original gradual unfreezing training procedure was another part that was experimented with. However, we present only the most important results as we are interested only in the best possible GPT-2 models.\\
+During the elaboration of this thesis, we trained several GPT-2 models on different datasets and with different approaches. Specifically, in addition to experiments described below, we performed training on many different learning rates given by the learning rate finding procedure. Experiments were done for all datasets described in Chapter \ref{sec:gptData}. Furthermore, the original gradual unfreezing training procedure was another part that was experimented with. However, we present only the most important results as we are interested only in the best possible GPT-2 models.\\
 
-The learning rates for both models were determined using the approach described in Chapter \ref{sec:gpt2Training}. For the general Czech GPT-2 model, the learning rates of $4e^{-3}$ for the first phase of learning only the new head and $2e^{-3}$ for the training of the entire unfrozen model were used on the OSCAR dataset. Subsequent fine-tuning of the medical model was performed using the learning rates of $8e^{-4}$ and $4e^{-4}$ respectively. Both of the models use batch size of 16 as it is the maximum that could fit into the GPU and sequence length of 512 for the reasons discussed in the referenced chapter. Entire training of each of the models took a total of 5 epochs. After some experimenting with the number of training epochs, we concluded that additional epochs do not bring any significant improvement. Overview of parameters used for each model training are listed in Table \ref{tab00:Gpt2TrainingParams}.
+The learning rates for both models were determined using the approach described in Chapter \ref{sec:gpt2Training}. For the general Czech GPT-2 model, the learning rates of $4e^{-3}$ for the first phase of learning only the new head and $2e^{-3}$ for the training of the entire unfrozen model were used on the OSCAR dataset. Subsequent fine-tuning of the medical model was performed using the learning rates of $8e^{-4}$ and $4e^{-4}$ respectively. Both of the models use batch size of 16 as it is the maximum that could fit into the GPU and sequence length of 512 for the reasons discussed in the referenced chapter. Entire training of each of the models took a total of 5 epochs. After some experimenting with the number of training epochs, we concluded that additional epochs do not bring any significant improvement. Overview of hyperparameters used for each model training are listed in Table \ref{tab00:Gpt2TrainingParams}.
 
 \begin{table}[h!]
 \centering
@@ -40,10 +40,10 @@ The learning rates for both models were determined using the approach described 
 General GPT-2     & \mc{$4e^{-3}$}  & \mc{$2e^{-3}$}  & \mc{16} & \mc{512} & \mc{5} \\
 Medical GPT-2     & \mc{$8e^{-4}$}  & \mc{$4e^{-4}$}  & \mc{16} & \mc{512} & \mc{5} \\
 \bottomrule
-\multicolumn{6}{l}{\footnotesize \textit{Note:} The rationale for the parameters is given above.}
+\multicolumn{6}{l}{\footnotesize \textit{Note:} The rationale for the hyperparameters is given above.}
 \end{tabular}
 
-\caption{General Czech GPT-2 model training results.}\label{tab00:Gpt2TrainingParams}
+\caption{Training hyperparameters of the Czech GPT-2 models.}\label{tab00:Gpt2TrainingParams}
 LR - Learning rate, \textit{Head} - Learning rate used during the first epoch where only the new head is trained, \textit{All} - Learning rate used during the rest of the epochs where the whole model is trained
 \end{table}
 

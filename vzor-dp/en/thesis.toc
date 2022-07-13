@@ -7,7 +7,7 @@
 \contentsline {subsubsection}{\numberline {1.2.1.2}Transformers}{7}{subsubsection.1.2.1.2}%
 \contentsline {subsection}{\numberline {1.2.2}Decoder}{7}{subsection.1.2.2}%
 \contentsline {subsubsection}{\numberline {1.2.2.1}Recurrent neural networks}{7}{subsubsection.1.2.2.1}%
-\contentsline {subsubsection}{\numberline {1.2.2.2}GPT2}{8}{subsubsection.1.2.2.2}%
+\contentsline {subsubsection}{\numberline {1.2.2.2}GPT-2}{8}{subsubsection.1.2.2.2}%
 \contentsline {section}{\numberline {1.3}Data}{8}{section.1.3}%
 \contentsline {subsection}{\numberline {1.3.1}Existing datasets}{9}{subsection.1.3.1}%
 \contentsline {subsubsection}{\numberline {1.3.1.1}Indiana University chest X-ray}{9}{subsubsection.1.3.1.1}%
@@ -52,10 +52,10 @@
 \contentsline {subsection}{\numberline {5.2.2}Results}{46}{subsection.5.2.2}%
 \contentsline {section}{\numberline {5.3}Examples}{46}{section.5.3}%
 \contentsline {section}{\numberline {5.4}Conclusion}{46}{section.5.4}%
-\contentsline {chapter}{Conclusion}{47}{chapter*.59}%
-\contentsline {chapter}{Bibliography}{49}{chapter*.61}%
-\contentsline {chapter}{List of Figures}{54}{chapter*.62}%
-\contentsline {chapter}{List of Tables}{55}{chapter*.63}%
-\contentsline {chapter}{List of Abbreviations}{56}{chapter*.64}%
+\contentsline {chapter}{Conclusion}{47}{chapter*.60}%
+\contentsline {chapter}{Bibliography}{49}{chapter*.62}%
+\contentsline {chapter}{List of Figures}{54}{chapter*.63}%
+\contentsline {chapter}{List of Tables}{55}{chapter*.64}%
+\contentsline {chapter}{List of Abbreviations}{56}{chapter*.65}%
 \contentsline {chapter}{\numberline {A}Attachments}{57}{appendix.A}%
 \contentsline {section}{\numberline {A.1}First Attachment}{57}{section.A.1}%

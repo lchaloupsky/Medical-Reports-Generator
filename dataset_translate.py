@@ -14,7 +14,7 @@ from extractors import *
 from utils import *
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--translator', default='cubbit', choices=['cubbitt', 'deepl'], type=str, help="Translator used for reports translation.")
+parser.add_argument('--translator', default='cubbitt', choices=['cubbitt', 'deepl'], type=str, help="Translator used for reports translation.")
 parser.add_argument('--dataset', default='mimic', choices=['mimic', 'openi'], type=str, help="Dataset intended for translation.")
 parser.add_argument('--data', default=None, type=str, help="Dataset location path.")
 parser.add_argument('--preprocess', default="pipeline", choices=["lowercase", "pipeline", "none"], type=str, help="Dataset preprocessing mode.")

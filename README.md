@@ -13,11 +13,23 @@ The repository contains 3 main parts
   * [**DeepL**](https://www.deepl.com/translator) - There is a way how to translate using reverse engeneering of the REST API used on their web page, but it has limitations for circa 25 consecutive calls in an hour.
 
 ## Instalation
-### Requirements
+### Python Requirements
 *Note:* Each part of the repository has different requirements, please take a look inside them for more info.
 
-* ### Automatic translation
+* ### **Automatic translation**
   The automatic translation requires **Python 3.9** and higher.
+* ### **GPT2**
+  The GPT2 part requires **Python 3.8**.
+* ### **Medical report generation**
+  The Medical report generation requires **Python 3.8**.
+
+Python dependencies in each part can be installed by running: 
+```bash
+pip3 install -r requirements.txt
+```
+
+### GPU requirements
+To run the training or testing procedures on the GPU, the GPU must support appropriate CUDA and cuDNN versions. Both **GPT2** and **Medical report generation** parts were trained on **CUDA 11** and **cuDNN 8** versions.
 
 ### Download
 ```git

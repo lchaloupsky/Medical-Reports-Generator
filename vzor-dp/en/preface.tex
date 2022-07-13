@@ -15,7 +15,7 @@ First of all, we will take a closer look at the problem itself. This includes br
 The main target of our thesis is to train a neural network for the purpose of generating textual medical reports for X-ray images. An example of our problem can be seen in Figure \hyperref[fig01:ProblemExample]{1.1} for illustration.\\
 \newpage
 
-Our first goal is to fine-tune a language model directly for the Czech language. The language model will be specialized directly to medical texts in order to capture the essence of the problem. However, ahead of the medical specialization, we want to fine-tune a general Czech language model. Fine-tuning will be based on the original English GPT2 model presented in \citet{radford2019language}.\\
+Our first goal is to fine-tune a language model directly for the Czech language. The language model will be specialized directly to medical texts in order to capture the essence of the problem. However, ahead of the medical specialization, we want to fine-tune a general Czech language model. Fine-tuning will be based on the original English GPT-2 model presented in \citet{radford2019language}.\\
 
 Finally, we want to utilize our fine-tuned language model for training a neural network model interpreting chest X-rays images and generating corresponding medical textual reports to them in the Czech language. This section also involves the overall data preparation directly for the Czech language. In addition, the training will be done in multiple setups. All possibilities will be evaluated with the purpose of determination of their final performance.\\
 

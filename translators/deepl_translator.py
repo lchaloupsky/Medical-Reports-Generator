@@ -27,10 +27,11 @@ class _DeepLClientState():
 	def get_state(self) -> Response:
 		global _proxy
 		while True:
+			proxies = {'https': 'http://' + _proxies[_proxy], 'http': 'http://' + _proxies[_proxy]} if len(_proxies) > 0 else None
 			try:
-				return requests.post(self._url, data=json.dumps(self._get_body()), headers={'Content-Type': 'application/json', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:94.0) Gecko/20100101 Firefox/94.0'}, proxies={'https': 'http://' + _proxies[_proxy], 'http': 'http://' + _proxies[_proxy]}, timeout=10000)
+				return requests.post(self._url, data=json.dumps(self._get_body()), headers={'Content-Type': 'application/json', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:94.0) Gecko/20100101 Firefox/94.0'}, proxies=proxies, timeout=10000)
 			except Exception as e:
-				print(e)
+				
 				_proxy = 0 if _proxy == len(_proxies) - 1 else _proxy + 1
 
 	def _get_body(self) -> dict:
@@ -94,7 +95,6 @@ class DeepLTranslator(Translator):
 	def reset(self) -> None:
 		global _proxy
 		_proxy = 0 if _proxy == len(_proxies) - 1 else _proxy + 1 
-		print(_proxy, self._request_count)
 		self._client_state = _DeepLClientState()
 		self._id_number = json.loads(self._client_state.get_state().text)["id"]
 
@@ -110,20 +110,19 @@ class DeepLTranslator(Translator):
 		
 		reponse, retry_counter, failed_proxies = None, 0, 0
 		while True:
+			proxies = {'https': 'http://' + _proxies[_proxy], 'http': 'http://' + _proxies[_proxy]} if len(_proxies) > 0 else None
 			try:
-				reponse = requests.post(self._url, data=json.dumps(self._fill_text(text)), headers=self._headers, proxies={'https': 'http://' + _proxies[_proxy], 'http': 'http://' + _proxies[_proxy]}, timeout=10000)
+				reponse = requests.post(self._url, data=json.dumps(self._fill_text(text)), headers=self._headers, proxies=proxies, timeout=10000)
 				failed_proxies = 0
 				break
 			except Exception as e:
 				retry_counter += 1
 				if retry_counter == 2:
-					print(f"Proxy: {_proxy} failed. {e}")
 					failed_proxies += 1
 					retry_counter = 0
 					self.reset()
 
-			if failed_proxies == len(_proxies) - 1:
-				print("All proxies failed.")
+			if failed_proxies == len(_proxies) - 1 or len(_proxies) == 0:
 				break
 		
 		self._last_request_time = time.time()

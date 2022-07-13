@@ -144,7 +144,7 @@ Models are described in Chapter \ref{sec:medGenReportExperiments},
 
 \newpage
 \section{Manual evaluation}
-This section presents the results of the manual evaluation. We would like to express our gratitude to MUDr.\ Martin Hyršl from the University Hospital Hradec Králové for the execution of manual evaluation on our generated reports. The manual evaluation was performed on a total of 100 X-ray images and their corresponding reports for all four \textit{best} models from the previous section.
+This section presents the results of the manual evaluation. We would like to express our gratitude to MUDr.\ Martin Hyršl from the University Hospital Hradec Králové for the execution of manual evaluation on our generated reports. The manual evaluation was performed on a total of 40 X-ray images and their corresponding reports for all four \textit{best} models from the previous section. The X-rays are divided into two equally sized groups for evaluation - with and without the presence of any findings.
 
 \subsection{Method}
 All images were evaluated using the following method. Each report is classified into one of three categories. First category reflects the case where the report contains all corresponding findings and overall diagnosis without any false information. The next category decribes cases in which the report is missing some important points without any false information. To the last category fall reports that contain untrue facts.
@@ -167,7 +167,27 @@ MED-all-best       & \mc{---}  & \mc{---}  & \mc{---} \\
 \multicolumn{4}{l}{\footnotesize \textit{Note:} All values are rounded to 4 decimal places.}
 \end{tabular}
 
-\caption{Manual evaluation results.}\label{tab05:ManualEval}
+\caption{Manual evaluation results - without findings.}\label{tab05:ManualEvalNormal}
+Evaluation categories are described above
+\end{table}
+
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{l@{\hspace{0.75cm}}D{.}{,}{3.0}D{.}{,}{2.3}D{.}{,}{2.3}D{.}{,}{2.3}D{.}{,}{2.3}}
+\toprule
+ & \mc{} & \mc{} & \mc{} & \mc{} \\
+\pulrad{\textbf{Group}} & \mc{\pulrad{\textbf{Accurate}}} & \mc{\pulrad{\textbf{Incomplete}}} & \mc{\pulrad{\textbf{Incorrect}}} \\
+\midrule
+GEN-dec-best      & \mc{---}  & \mc{---}  & \mc{---} \\
+GEN-all-best        & \mc{---}  & \mc{---}  & \mc{---} \\
+MED-dec-best	 & \mc{---}  & \mc{---}  & \mc{---} \\
+MED-all-best       & \mc{---}  & \mc{---}  & \mc{---} \\
+\bottomrule
+\multicolumn{4}{l}{\footnotesize \textit{Note:} All values are rounded to 4 decimal places.}
+\end{tabular}
+
+\caption{Manual evaluation results - with findings.}\label{tab06:ManualEvalFinding}
 Evaluation categories are described above
 \end{table}
 

@@ -92,7 +92,7 @@ First of all, I would like to thank my supervisor Mgr. Rudolf Rosa, Ph.D. for al
 
 % Abstract (recommended length around 80-200 words; this is not a copy of your thesis assignment!)
 \def\Abstract{%
-This thesis deals with the problem of automatic generation of medical reports in the Czech langugage based on the input chest X-ray images using deep neural networks. The first part deals with the analysis of problem itself including comparison of existing solutions from several common points of view. In order to interpret medical images in the Czech language we present a fine-tuned a Czech GPT2 model specialized on medical texts based on the original pre-trained English GPT2 model along with its evaluation. In the second part the created Czech GPT2 is used for training neural network model for generating medical reports. The training was conducted on freely available data along with data pre-processing and their adjustment for the Czech language. Furthermore the model results are discussed and evaluated using standard metrics for natural language processing to determine the performance.
+This thesis deals with the problem of automatic generation of medical reports in the Czech langugage based on the input chest X-ray images using deep neural networks. The first part deals with the analysis of problem itself including comparison of existing solutions from several common points of view. In order to interpret medical images in the Czech language we present a fine-tuned a Czech GPT-2 model specialized on medical texts based on the original pre-trained English GPT-2 model along with its evaluation. In the second part the created Czech GPT-2 is used for training neural network model for generating medical reports. The training was conducted on freely available data along with data pre-processing and their adjustment for the Czech language. Furthermore the model results are discussed and evaluated using standard metrics for natural language processing to determine the performance.
 }
 
 % 3 to 5 keywords (recommended), each enclosed in curly braces
@@ -141,6 +141,8 @@ This thesis deals with the problem of automatic generation of medical reports in
 %%% In mathematical theses, it could be better to move the list of abbreviations to the beginning of the thesis.
 \chapwithtoc{List of Abbreviations}
 \noindent GPT-2 -- Generative Pre-trained Transformer 2\\
+CITI -- Collaborative Institutional Training Initiative\\
+REST API -- Representational State Transfer Application Programming Interface\\
 CNN -- Convolutional Neural Network\\
 RNN -- Recurrent Neural Network\\
 LSTM -- Long Short-Term Memory\\
@@ -148,18 +150,35 @@ GRU -- Gated Recurrent Unit\\
 ViT -- Vision Transformer\\
 NLP -- Natural Language Processing\\
 PA -- Posterior-Anterior\\
+AP -- Anterior-Posterior\\
 DICOM -- Digital Imaging and Communications in Medicine\\
+MTI -- Medical Text Indexer\\
+RadLex -- Radiology Lexicon\\
+MeSH -- Medical Subject Headings\\
 MIMIC -- Medical Information Mart for Intensive Care\\
+MIMIC-CXR -- MIMIC Chest X-Ray\\
+CLEF -- Cross Language Evaluation Forum\\
+PadChest -- PAthology Detection in Chest radiographs\\
+BCIDR -- Bladder Cancer Image and Diagnostic Report\\
+PEIR -- Pathology Education Informational Resource\\
 CUBBITT -- Charles University Block-Backtranslation-Improved Transformer Translation\\
-NLG - Natural Language Generation\\
-BLEU - Bilingual Evaluation Understudy\\
-GLEU - Google BLEU\\
-METEOR - Metric for Evaluation of Translation with Explicit ORdering\\
-ROUGE-L - Recall-Oriented Understudy for Gisting Evaluation LCS\\
-CIDEr - Consensus-based Image Description Evaluation\\
-LCS - Longest Common Subsequence\\
-TF-IDF - Term Frequency - Inversed Document Frequency\\
-GloVe - Global Vectors for Word Representation
+OSCAR -- Open Super-large Crawled Aggregated coRpus\\
+UFAL -- Institute of Formal and Applied Linguistics\\
+distilGPT2 - Distilled-GPT2\\
+AIC -- Artificial Intelligence Cluster\\
+IT4I -- IT4Innovations\\
+LR -- Learning Rate\\
+CUDA -- Compute Unified Device Architecture\\
+cuDNN -- CUDA Deep Neural Network library\\
+NLG -- Natural Language Generation\\
+BLEU -- Bilingual Evaluation Understudy\\
+GLEU -- Google BLEU\\
+METEOR -- Metric for Evaluation of Translation with Explicit ORdering\\
+ROUGE-L -- Recall-Oriented Understudy for Gisting Evaluation LCS\\
+CIDEr -- Consensus-based Image Description Evaluation\\
+LCS -- Longest Common Subsequence\\
+TF-IDF -- Term Frequency - Inversed Document Frequency\\
+GloVe -- Global Vectors for Word Representation
 
 %%% Attachments to the master thesis, if any. Each attachment must be
 %%% referred to at least once from the text of the thesis. Attachments
