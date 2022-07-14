@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: nlg-eval
+Version: 2.3
+Summary: Wrapper for multiple NLG evaluation methods and metrics.
+Home-page: https://github.com/Maluuba/nlg-eval
+Author: Shikhar Sharma, Hannes Schulz, Justin Harris
+Author-email: shikhar.sharma@microsoft.com, hannes.schulz@microsoft.com, justin.harris@microsoft.com
+License: UNKNOWN
+Platform: UNKNOWN
+License-File: LICENSE.md
+Requires-Dist: nltk (>=3.4.5)
+Requires-Dist: numpy (>=1.11.0)
+Requires-Dist: psutil (>=5.6.2)
+Requires-Dist: requests (>=2.19)
+Requires-Dist: six (>=1.11)
+Requires-Dist: Cython (>=0.28.5)
+Requires-Dist: scipy (>=0.17.0)
+Requires-Dist: scikit-learn (>=0.17)
+Requires-Dist: gensim (~=3.8.3)
+Requires-Dist: Theano (>=0.8.1)
+Requires-Dist: tqdm (>=4.24)
+Requires-Dist: xdg
+
+UNKNOWN
+

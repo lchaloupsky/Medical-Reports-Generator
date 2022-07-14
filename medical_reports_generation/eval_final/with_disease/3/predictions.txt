@@ -1,0 +1,20 @@
+---- Original Translated Czech:
+1. stabilní kardiomegalie bez akutního onemocnění.
+srdce je opět zvětšené. aorta je tortuózní. plíce jsou hypoinflatní, ale čiré. není vidět pleurální výpotek ani pneumotorax.
+
+---- Model: 1-med-trained-all:
+žádný akutní radiografický kardiopulmonální proces.
+žádná akutní kostní abnormalita. rozptýlené degenerativní změny hrudní páteře. chirurgické klipy překrývající pravý horní kvadrant.
+
+---- Model: 2-gen-trained-all:
+žádné akutní kardiopulmonální abnormality..
+žádné ohniskové oblasti konsolidace. velikost srdce v normálních mezích. žádné pohrudniční výpotky. žádné známky pneumotoraxu. osseózní struktury se zdají být neporušené.
+
+---- Model: 3-med-trained-dec:
+žádné akutní kardiopulmonální onemocnění.
+srdce, plicní  a mediastinum jsou v normálních mezích. není zde pleurální výpotek ani pneumotorax. není zde ohnisková neprůhlednost vzdušného prostoru, která by naznačovala zápal plic. jsou zde mírné degenerativní změny páteře.
+
+---- Model: 4-gen-trained-dec:
+1. žádné známky aktivního onemocnění.
+velikost srdce a plicní vaskularita se pohybují v normálních mezích. plíce jsou prosté fokálního onemocnění vzdušného prostoru. není pozorován pleurální výpotek ani pneumotorax. je zaznamenána cévní kalcifikace.
+

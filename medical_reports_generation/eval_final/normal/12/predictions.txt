@@ -1,0 +1,20 @@
+---- Original Translated Czech:
+1. žádný akutní radiografický kardiopulmonální proces.
+kardiomediastinální silueta je v normálních mezích pro velikost a konturu. plíce jsou normálně nafouknuté bez průkazu ohniskového onemocnění vzdušného prostoru, pleurálního výpotku nebo pneumotoraxu. osseózní struktury jsou v normálních mezích pro věk pacienta.
+
+---- Model: 1-med-trained-all:
+žádné akutní kardiopulmonální nálezy.
+velikost srdce a kontury mediastina jsou v normě. žádné fokální konsolidace vzdušného prostoru. žádný velký pleurální výpotek nebo pneumotorax.
+
+---- Model: 2-gen-trained-all:
+žádné akutní kardiopulmonální nálezy..
+kardiomediastinální silueta a plicní vaskulatura jsou ve velikosti v normálních mezích. plíce jsou bez fokálního onemocnění vzdušného prostoru, pneumotoraxu nebo pleurálního výpotku. nejsou zde žádné akutní kostní nálezy.
+
+---- Model: 3-med-trained-dec:
+žádné akutní kardiopulmonální abnormality..
+žádný pneumotorax, pleurální výpotek nebo konsolidace vzdušného prostoru. velikost srdce a plicní cévy se pohybují v normálních mezích.   jsou neporušené.
+
+---- Model: 4-gen-trained-dec:
+žádné akutní kardiopulmonální abnormality.
+srdce má normální velikost. plicní vaskularita má normální vzhled. žádné ohniskové neprůhlednosti vzdušného prostoru. žádné pohrudniční výpotky nebo pneumotorax. žádné akutní kostní abnormality.
+

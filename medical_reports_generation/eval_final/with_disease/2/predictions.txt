@@ -1,0 +1,20 @@
+---- Original Translated Czech:
+akutní šikmo orientovaná lucence skrz pravé 12. zadní žebro, týkající se akutní zlomeniny. doporučujeme korelaci se stranou  citlivosti. žádné další zlomeniny nejsou  identifikovány. pokud je tam vysoká klinická obava, doporučujeme další vyšetření se specializovaným pohledem na pravá žebra.
+srdce je normální velikosti a kontury. plíce jsou čisté, bez známek infiltrátu. není tam žádný pneumotorax nebo výpotek. je tam šikmo orientovaná  lucence skrz zadní pravé 12. žebro.
+
+---- Model: 1-med-trained-all:
+mírná hypoinflate bez akutního onemocnění.
+srdce má normální velikost. mediastinum je nevýrazné. plíce jsou hypoinflatované. není vidět fokální konsolidace. změny po operaci/biopsii.
+
+---- Model: 2-gen-trained-all:
+žádné akutní kardiopulmonální nálezy..
+kardiomediastinální silueta a plicní vaskulatura jsou ve velikosti v normálních mezích. plíce jsou bez fokálního onemocnění vzdušného prostoru, pneumotoraxu nebo pleurálního výpotku. nejsou zde žádné akutní kostní nálezy.
+
+---- Model: 3-med-trained-dec:
+hypoinflatie s bibazilární fokální atelektázou.
+objem plic zůstává. kropy  jsou přítomny v obou dolních lalokech. vpravo jsou staré zlomeniny žeber a zahuštění pohrudnice. srdce a plicní  jsou normální.
+
+---- Model: 4-gen-trained-dec:
+1.je zde levá bazilární neprůhlednost vzdušného prostoru, která se týká zápalu plic. 2. pravá bazalární atelektáza.
+je zde levá bazilární neprůhlednost vzdušného prostoru. pravá bazilární atelektáza. velikost srdce a mediastinální silueta jsou v normálních mezích kontury. žádný pneumotorax nebo pleurální výpotek.  jsou neporušené.
+

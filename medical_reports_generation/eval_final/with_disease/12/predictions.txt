@@ -1,0 +1,20 @@
+---- Original Translated Czech:
+žádné známky aktivního onemocnění.
+je zde několik malých zvápenatělých granulomů. plíce jsou jinak čisté. žádné fokální konsolidace vzdušného prostoru. není identifikována žádná podezřelá plicní hmota nebo uzlík. není zde žádný pleurální výpotek nebo pneumotorax. velikost srdce a mediastinální kontura jsou v normálních mezích. jsou zde difúzní degenerativní změny páteře.
+
+---- Model: 1-med-trained-all:
+nedochází k akutnímu kardiopulmonálnímu onemocnění.
+srdce, plicní  a mediastinum jsou v normálních mezích. nedochází k pleurálnímu výpotku ani pneumotoraxu. nedochází k zákalu fokálního vzdušného prostoru, který by naznačoval pneumonii. dochází k mírným degenerativním změnám páteře.
+
+---- Model: 2-gen-trained-all:
+žádné akutní kardiopulmonální abnormality.
+průdušnice je střední linie. kardiomediastinální silueta je normální. plíce jsou čisté, bez známek akutního infiltrátu nebo výpotku. nejsou žádné známky tuberkulózy. neexistuje pneumotorax. vizualizované kostní struktury neodhalily žádné akutní abnormality.
+
+---- Model: 3-med-trained-dec:
+žádné akutní kardiopulmonální onemocnění.
+srdce, plicní  a mediastinum jsou v normálních mezích. není zde pleurální výpotek ani pneumotorax. není zde ohnisková neprůhlednost vzdušného prostoru, která by naznačovala zápal plic. jsou zde mírné degenerativní změny páteře.
+
+---- Model: 4-gen-trained-dec:
+1. žádné známky aktivního onemocnění.
+velikost srdce a plicní vaskularita se pohybují v normálních mezích. plíce jsou bez fokálního onemocnění vzdušného prostoru. není pozorován pleurální výpotek ani pneumotorax. degenerativní změny jsou přítomny v páteři.
+

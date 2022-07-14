@@ -1,0 +1,19 @@
+---- Original Translated Czech:
+1. bibasilární nemoc vzdušného prostoru, větší vpravo, buď atelektáza nebo infiltrát. 2. platelike pravá středoplicní atelektáza..
+je zde mírná kardiomegalie. hrudní aorta je křivolaká. objem plic je nízký s asymetrickým zvýšením pravé hemidiofragmy. v pravé střední části plic je deskovitá atelektáza spolu s bibazilární nemocí vzdušného prostoru, buď atelektáza nebo infiltrát. žádný pneumotorax.
+
+---- Model: 1-med-trained-all:
+1. nepravidelná oboustranná neprůhlednost, především v plicní bázi, jejíž rysy nejvíce odpovídají zápalu plic. možné je také vdechnutí nebo atelektázy, ale méně. 2.  objem plic 3. bez pneumotoraxu
+
+---- Model: 2-gen-trained-all:
+1. kardiomegalie s centrální cévní kongescí a zvýšenou intersticiální neprůhledností naznačující mírný intersticiální plicní edém. 2. malé oboustranné pleurální výpotky. 3. žádný viditelný pneumotorax.
+ap a boční pohled na hrudník.
+
+---- Model: 3-med-trained-dec:
+1. kardiomegalie. 2. pleurální ztluštění podél dolního levého bočního hrudníku je od předchozího vyšetření stabilní.
+celkově nízký objem plic. plíce jsou hrubě čisté. pleurální ztluštění podél dolního levého bočního hrudníku. ve srovnání s předchozím vyšetřením se zdá být relativně stabilní. žádné pleurální výpotky ani pneumotoraxy. kardiomegalie. degenerativní změny páteře.
+
+---- Model: 4-gen-trained-dec:
+1. levý pohrudniční výpotek se sousední atelektázou.  pravý výpotek je také přítomen. 2. kardiomegalie bez zjevného edému.
+silueta srdce je zvětšená, ale nezměněná. je zde levostranná centrální linie  s  lumenem. polyvaskulatura je v normálních mezích. mediastinum je normální. oceněna je zde malý pravý pohrudniční výpotek. není zde pneumotorax.
+

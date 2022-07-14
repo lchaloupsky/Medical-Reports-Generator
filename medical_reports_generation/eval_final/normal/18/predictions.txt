@@ -1,0 +1,20 @@
+---- Original Translated Czech:
+žádné akutní kardiopulmonální onemocnění.
+kardiomediastinální silueta je normální. plicní vaskulatura a  jsou normální. žádná konsolidace, pneumotorax nebo velký pleurální výpotek. jsou přítomny pooperační změny krční páteře.
+
+---- Model: 1-med-trained-all:
+negativní na akutní abnormalitu.
+kardiomediastinální silueta má normální velikost a konturu. hyperexpandované plíce bez fokální konsolidace, pneumotoraxu nebo velkého pleurálního výpotku. chirurgické klipy zaznamenány v pravém horním kvadrantu.
+
+---- Model: 2-gen-trained-all:
+žádné akutní kardiopulmonální abnormality.
+kardiomediastinální siluety jsou v normálních mezích. plíce jsou čisté bez fokální konsolidace, pneumotoraxu nebo pleurálního výpotku. stabilní levý dolní lalok zvápenatělého granulomu. vzdálená zlomenina levé klíční kosti.
+
+---- Model: 3-med-trained-dec:
+žádné akutní kardiopulmonální abnormality.
+srdce má normální velikost. plicní vaskularita je ve vzhledu v normálních mezích. žádné ohniskové neprůhlednosti vzdušného prostoru. žádné pohrudniční výpotky nebo pneumotorax. žádné akutní kostní abnormality.
+
+---- Model: 4-gen-trained-dec:
+žádné akutní kardiopulmonální abnormality.
+velikost srdce a mediastinální silueta jsou v normálních mezích kontury. plíce jsou čisté. žádný pneumotorax nebo pleurální výpotek.  jsou neporušený.
+

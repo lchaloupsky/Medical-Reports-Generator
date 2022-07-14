@@ -1,0 +1,20 @@
+---- Original Translated Czech:
+1. obava o levý subfrenní volný vzduch. pro další vyšetření se doporučuje verifikace s břišními dekubity. 2. intervalové zvětšení velikosti středně velkých až velkých oboustranných pleurálních výpotků s bibazalární atelektázou/onemocněním vzdušného prostoru. 3. levý centrální žilní katetr v nezměněné poloze. 4. intervalové umístění krmné trubice chody pod bránicí a mimo -of-view.
+je zde levá subfrenní srpkovitá lucence, to se týká pneumoperitonea. jsou zde nízké plicní objemy a oboustranné středně velké až velké pleurální výpotky s bibazalární atelektázou/onemocněním vzdušného prostoru, které jsou ve srovnání s předchozím vyšetřením větší velikosti. žádný pneumotorax. velikost srdce horní hranice normálu. levá centrální špička žilního katetru překrývá dolní svc. krmná trubice byla umístěna v intervalu a zasahuje pod bránici a pod -of-view.
+
+---- Model: 1-med-trained-all:
+1. intervalové umístění dvoulumenového dialyzačního katetru s distální špičkou promítnutou přes pravou síň a pravou komoru. 2. bibasilární neprůhlednost vzdušného prostoru a bilaterální pleurální výpotky.
+došlo k intervalovému umístění dvoulumenového dialyzačního katetru s distální špičkou promítnutou přes pravou síň a pravou komoru. byla zjištěna středně závažná kardiomegalie. došlo k intervalovému umístění dvoulumenového dialyzačního katetru s distální špičkou promítnutou přes pravou síň a pravou komoru. byla zjištěna středně závažná kardiomegalie.
+
+---- Model: 2-gen-trained-all:
+čáry a hadičky jako výše. střední až velký levostranný pohrudniční výpotek, s přilehlým onemocněním vzdušného prostoru nebo atelektázou.
+došlo k otupení levého kostofrenického  kompatibilnímu se středně velkým až velkým odběrem levé pohrudniční tekutiny. uvnitř levé plicní báze jsou oblasti neprůhlednosti vzdušného prostoru, které mohou představovat atelektázu nebo infiltrát. minimální pásová atelektázie uvnitř pravé plicní báze. velikost srdce je normální. žádný pneumotorax. levostranný tunelovaný katetr končí na duté síňové křižovatce.
+
+---- Model: 3-med-trained-dec:
+městnavé srdeční selhání s bazilárním plicním intersticiálním edémem a oboustrannou pleurální tekutinou.
+srdce je velké. plicní  jsou přeplněné. jsou přítomny biblické intersticiální infiltráty a oboustranné kostofrenické  otupení.
+
+---- Model: 4-gen-trained-dec:
+1. středně velký pravý pohrudniční výpotek se zdá být menší než v předchozí studii. 2. malý levý pohrudniční výpotek se zdá být nezměněn.
+je zde středně velký pravý pohrudniční výpotek. závažný o něco menší než je ve srovnání s. je zde malý levý pohrudniční výpotek. ten je v porovnání s předchozí studií nezměněn. je zde pravá hrudní stěna žilní , která se zdá být zpřístupněna. žádný pneumotorax. skafoidní břicho. skafoidní břicho.
+

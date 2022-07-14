@@ -1,0 +1,20 @@
+---- Original Translated Czech:
+malá pruhovaná opacita laterální pravé plíce, subsegmentální atelektáza versus zjizvení.
+srdce je v normálních mezích. negativní na fokální plicní konsolidaci, pleurální výpotek nebo pneumotorax. mírná pruhovaná opacita laterální pravé plíce, atelektáza versus zjizvení.
+
+---- Model: 1-med-trained-all:
+1. prominence levého hilu, která může být způsobena uzlinou/lymfatickou uzlinou nebo překrývající se krví. při absenci předchozích studií pro porovnání,  hrudník pro další vyšetření. oznámení výsledku zdokumentováno prostřednictvím primordial.
+nad levým hilem se projevuje nepravidelná neprůhlednost podobná pásům. nedochází k fokální konsolidaci. nedochází k pneumotoraxu ani pleurálnímu výpotku. velikost srdce je normální.
+
+---- Model: 2-gen-trained-all:
+levá báze onemocnění vzdušného prostoru a neprůhlednost uzlin v pravé střední části plic.
+velikost srdce v normálních mezích. v pravé střední části plic je 6 mm neprůhlednost uzlin. v pravé střední části plic je 6 mm neprůhlednost uzlin. žádný pneumotorax. žádný pohrudniční výpotek. žádné posunuté zlomeniny žeber.
+
+---- Model: 3-med-trained-dec:
+pneumonie pravého dolního laloku.
+velikost srdce je v normálních mezích. tortuózní hrudní aorta. je zde nerovnoměrné onemocnění pravého základu vzdušného prostoru. žádný pneumotorax nebo pleurální výpotek. jsou zde mírné degenerativní změny v celé hrudní páteři.
+
+---- Model: 4-gen-trained-dec:
+1. levá báze onemocnění vzdušného prostoru. 2. levý žilní katetr se špičkou v pravé síni.
+je tam levá báze neprůhlednosti. pravá plíce je hrubě čistá. velikost srdce a plicní  se zdají normální. v levé bázi je zaznamenáno onemocnění vzdušného prostoru. není tam pneumotorax. žádný pleurální výpotek.
+

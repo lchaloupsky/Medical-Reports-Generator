@@ -1,0 +1,20 @@
+---- Original Translated Czech:
+žádné známky aktivního onemocnění.
+jsou přítomny nízké plicní objemy. velikost srdce a plicní vaskularita se pohybují v normálních mezích. plíce jsou bez fokálního onemocnění vzdušného prostoru. není pozorován pleurální výpotek ani pneumotorax. dochází k intervalovému rozvoji mnohočetných zhojených zlomenin levého žebra. degenerativní změny jsou přítomny v páteři.
+
+---- Model: 1-med-trained-all:
+nízký objem plic, jinak žádné jednoznačné akutní nálezy.
+čelní pohled kyfotický a otočený, nízký objem plic s bronchovaskulárním přeplněním. jinak žádná jednoznačná konsolidace vzdušného prostoru nebo pleurální výpotek. zohlednění technických faktorů velikost srdce  hraniční zvětšení.
+
+---- Model: 2-gen-trained-all:
+žádné akutní kardiopulmonální abnormality.
+průdušnice je střední linie. kardiomediastinální silueta je normální. plíce jsou čisté, bez známek akutního infiltrátu nebo výpotku. nejsou žádné známky tuberkulózy. neexistuje pneumotorax. vizualizované kostní struktury neodhalily žádné akutní abnormality.
+
+---- Model: 3-med-trained-dec:
+žádné akutní kardiopulmonální abnormality..
+průdušnice je střední linie. kardiomediastinální silueta je normální. plíce jsou čisté, bez známek akutního infiltrátu nebo výpotku. nejsou žádné známky tuberkulózy. neexistuje pneumotorax. vizualizované kostní struktury neodhalily žádné akutní abnormality.
+
+---- Model: 4-gen-trained-dec:
+1. žádné známky aktivního onemocnění.
+zaznamenány jsou změny renální osteodystrofie. velikost srdce a plicní vaskularita se objevují v normálních mezích. plíce jsou bez fokálních onemocnění vzdušného prostoru. není pozorován pleurální výpotek ani pneumotorax.
+

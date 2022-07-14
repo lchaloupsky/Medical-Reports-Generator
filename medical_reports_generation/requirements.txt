@@ -1,0 +1,16 @@
+efficientnet==1.0.0
+gensim==3.8.3
+h5py==3.1.0
+imgaug==0.3.0
+matplotlib==3.4.3
+nlg_eval==2.3
+nltk==3.4.5
+numpy==1.21.2
+pandas==1.4.3
+Pillow==9.2.0
+scikit_image==0.15.0
+skimage==0.0
+tensorflow==2.5.0
+torch==1.10.0+cu111
+tqdm==4.64.0
+transformers==2.5.0

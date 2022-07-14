@@ -1,0 +1,20 @@
+---- Original Translated Czech:
+hyperexpandované, ale čisté plíce.
+plíce jsou hyperexpandované, ale čisté. žádné pohrudniční výpotky nebo pneumotoraxy. srdce a mediastinum normální velikosti a kontury. degenerativní změny páteře.
+
+---- Model: 1-med-trained-all:
+1. hyperexpandované plíce. charakter naznačuje rozedmu plic. 2. žádné známky akutního onemocnění.
+plíce se zdají hyperexpandované, což naznačuje rozedmu plic. velikost srdce a plicní vaskularita se zdají být v normálních mezích. plíce jsou prosté fokálního onemocnění vzdušného prostoru. je identifikován kalcifikovaný granulom. není pozorován pleurální výpotek ani pneumotorax.
+
+---- Model: 2-gen-trained-all:
+1. nebyl identifikován žádný akutní kardiopulmonální proces. konkrétně žádný radiografický důkaz aspirace. 2. stabilní emphysematózní změny, pravé kostofrenické  pleurální ztluštění a oboustranně zvápenatělé granulomy.
+nebyla identifikována fokální konsolidace, pneumotorax ani velký pleurální výpotek. stabilní otupení pravé kostofrenické   v důsledku pleurálního ztluštění/sklerózy. stabilní otupení pravé kostofrenické   v důsledku pleurálního ztluštění/sklerózy. redemonstrace bez akutních kostních abnormalit.
+
+---- Model: 3-med-trained-dec:
+rozedma plic.
+plíce jsou hypernafouknuté s hrubými intersticiálními znaky kompatibilními s obstrukční plicní nemocí a rozedmou plic. v plicních bázích je chronické pleurální-parenchymální zjizvení. není pozorována žádná lobární konsolidace. žádný pleurální výpotek nebo pneumotorax. srdce a mediastinum jsou stabilní s normální velikostí srdce.
+
+---- Model: 4-gen-trained-dec:
+chopn s téměř kompletně vyřešeným odběrem pravého apikálního pleurálního vzduchu.
+obě plíce zůstávají hyperexpandované. žádné  fokální infiltráty. malá pleurální nebo odběr je  přítomný v pravém vrcholu. od předchozího vyšetření se však výrazně zmenšil. velikost srdce zůstává normální.
+

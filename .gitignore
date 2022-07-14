@@ -1,14 +1,20 @@
 # bytecode compiled python files
 */__pycache__
 */*/__pycache__
+*/*/*/__pycache__
 
 # generated files / large data files
-logs/
-translations*/
-data/
-rawReports/
+medical_reports_translation/logs/
+medical_reports_translation/translations*/
+medical_reports_translation/data/
+medical_reports_translation/raw_reports/
 
 # testing files
 testing/
 
-gpt2_utils/model_testing/*
+# czech_gpt2 huge files - models
+czech_gpt2/model_testing/*
+
+# med report generation huge files - models
+medical_reports_generation/final_models/*
+medical_reports_generation/NLG_eval/home_cache/*

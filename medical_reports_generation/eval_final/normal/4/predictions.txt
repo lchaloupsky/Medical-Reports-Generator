@@ -1,0 +1,18 @@
+---- Original Translated Czech:
+velikost srdce je normální a plíce jsou čisté.
+
+---- Model: 1-med-trained-all:
+žádné akutní plicní onemocnění.
+plíce jsou čisté. není zde žádný pohrudniční výpotek ani pneumotorax. srdce a mediastinum jsou v normálu. kosterní struktury jsou v normálu.
+
+---- Model: 2-gen-trained-all:
+žádné akutní kardiopulmonální nálezy..
+kardiomediastinální silueta a plicní vaskulatura jsou ve velikosti v normálních mezích. plíce jsou bez fokálního onemocnění vzdušného prostoru, pneumotoraxu nebo pleurálního výpotku. nejsou zde žádné akutní kostní nálezy.
+
+---- Model: 3-med-trained-dec:
+žádné akutní kardiopulmonální onemocnění.
+srdce je normální velikostí i tvarem. plíce jsou čisté, bez známek infiltrátu. není tam pneumotorax ani výpotek.
+
+---- Model: 4-gen-trained-dec:
+porovnání,. dobře rozšířené a čisté plíce. medistinální kontura v normálních mezích. žádná akutní kardiopulmonální abnormalita identifikována. stabilní hrudník.
+

@@ -1,0 +1,20 @@
+---- Original Translated Czech:
+žádné akutní onemocnění.
+srdce má normální velikost. mediastinum je nevýrazné. plíce jsou čisté.
+
+---- Model: 1-med-trained-all:
+žádné akutní kardiopulmonální nálezy.
+odeslány tři snímky. kardiomediastinální silueta a plicní vaskulatura jsou v normálních mezích. plíce jsou čisté. žádný pneumotorax nebo pleurální výpotek. žádné akutní kostní nálezy.
+
+---- Model: 2-gen-trained-all:
+žádné akutní kardiopulmonální abnormality.
+srdce má normální velikost. plicní vaskularita je ve vzhledu v normálních mezích. žádné ohniskové neprůhlednosti vzdušného prostoru. žádné pohrudniční výpotky nebo pneumotorax. žádné akutní kostní abnormality.
+
+---- Model: 3-med-trained-dec:
+žádné akutní kardiopulmonální onemocnění.
+srdce, plicní  a mediastinum jsou v normálních mezích. není zde pleurální výpotek ani pneumotorax. není zde ohnisková neprůhlednost vzdušného prostoru, která by naznačovala pneumonii.
+
+---- Model: 4-gen-trained-dec:
+žádné akutní kardiopulmonální abnormality.
+plíce jsou jasné bilaterálně. srdeční a mediastinální siluety jsou normální. plicní vaskulatura je normální. žádný pneumotorax nebo pleurální výpotek. žádné akutní kostní abnormality.
+

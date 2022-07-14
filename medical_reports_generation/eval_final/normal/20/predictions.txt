@@ -1,0 +1,20 @@
+---- Original Translated Czech:
+1. žádné známky aktivního onemocnění.
+velikost srdce a plicní vaskularita se pohybují v normálních mezích. plíce jsou bez fokálních onemocnění vzdušného prostoru. není pozorován pleurální výpotek ani pneumotorax.
+
+---- Model: 1-med-trained-all:
+žádné akutní kardiopulmonální onemocnění.
+plíce jsou čisté. žádný fokální infiltrát nebo výpotek. žádný pneumotorax. kontury srdce a mediastina v normálních mezích. vizualizované kostní struktury neporušené.
+
+---- Model: 2-gen-trained-all:
+žádné akutní kardiopulmonální onemocnění.
+srdce je horní hranice normální velikosti. plíce jsou čisté, bez známek infiltrátu. není tam pneumotorax ani výpotek.
+
+---- Model: 3-med-trained-dec:
+žádné akutní kardiopulmonální nálezy..
+kardiomediastinální silueta a plicní vaskulatura jsou ve velikosti v normálních mezích. plíce jsou bez fokálního onemocnění vzdušného prostoru, pneumotoraxu nebo pleurálního výpotku. nejsou tam žádné akutní kostní nálezy.
+
+---- Model: 4-gen-trained-dec:
+žádné známky aktivního onemocnění.
+velikost srdce a plicní vaskularita se pohybují v normálních mezích. plíce jsou prosté fokálního onemocnění vzdušného prostoru. není pozorován pleurální výpotek ani pneumotorax.
+

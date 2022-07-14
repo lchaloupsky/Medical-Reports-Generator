@@ -1,0 +1,20 @@
+---- Original Translated Czech:
+žádné akutní kardiopulmonální abnormality.
+srdeční velikost, mediastinální kontura a plicní vaskularita jsou v normě. žádná fokální konsolidace, podezřelá plicní opacita, pleurální výpotek nebo pneumotorax. vizualizované kostní struktury vypadají neporušené.
+
+---- Model: 1-med-trained-all:
+minimální bibasilární onemocnění vzdušného prostoru.
+stabilní kardiomediastinální silueta. kalcifikovaný granulom v levém dolním laloku. minimální bibasilární onemocnění vzdušného prostoru. žádný pneumotorax. degenerativní změny hrudní páteře.
+
+---- Model: 2-gen-trained-all:
+žádné akutní kardiopulmonální abnormality.
+velikost srdce je na horní hranici normálu. mediastinum je nevýrazné. nedochází k pleurálnímu výpotku, pneumotoraxu ani k fokálnímu onemocnění vzdušného prostoru. mírné chronické degenerativní změny jsou přítomny uvnitř hrudní páteře.
+
+---- Model: 3-med-trained-dec:
+žádné akutní kardiopulmonální nálezy..
+kardiomediastinální silueta a plicní vaskulatura jsou ve velikosti v normálních mezích. plíce jsou bez fokálního onemocnění vzdušného prostoru, pneumotoraxu nebo pleurálního výpotku. nejsou žádné akutní kostní nálezy.
+
+---- Model: 4-gen-trained-dec:
+nízké objemy plic s bibazalární pruhovanou neprůhledností většina  představující subsegmentální atelektázu.
+jsou zde nízké objemy plic s bibazilární neprůhledností  představující subsegmentální atelektázu. kardio silueta srdce je  normální. není zde pneumotorax ani pleurální výpotek.
+

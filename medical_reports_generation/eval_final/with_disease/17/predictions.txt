@@ -1,0 +1,20 @@
+---- Original Translated Czech:
+1. žádná akutní kardiopulmonální abnormalita. 2. stabilní kardiomegalie, tortuózní hrudní aorta a aterosklerotická kalcifikace..
+ sternotomie  a četné mediastinální klipy se zdají být v poloze stabilní. dochází k aortální aterosklerotické kalcifikaci. hrudní aorta je tortuózní. stabilní rozšíření horního mediastina. stabilní kardiomegalie. prominentní mitrální prstencová kalcifikace prokázána na bočním pohledu. žádný pneumotorax, pleurální výpotek nebo konsolidace vzdušného prostoru.   se zdají být neporušené.
+
+---- Model: 1-med-trained-all:
+1. stabilní kardiomegalie bez průkazu akutního plicního procesu.
+srdce je mírně zvětšené, ale stabilní. plicní vaskularita normální. pacient je stav po výměně chlopně.  sternotomie  neporušená. žádné fokální onemocnění vzdušného prostoru nebo výpotek. degenerativní změny hrudní páteře.
+
+---- Model: 2-gen-trained-all:
+1. žádná akutní plicní abnormalita. 2. mírná kardiomegalie bez plicního edému.
+plíce a pohrudniční prostory nevykazují žádné akutní abnormality. kalcifikovaná pravá hilární lymfa. velikost srdce je zvětšena, plicní céva v normálních mezích.  sternotomie  a protetická aortální chlopeň zaznamenány.
+
+---- Model: 3-med-trained-dec:
+1. žádná akutní kardiopulmonální abnormalita. 2. klínovitá  zlomenina t12.
+velikost srdce a mediastinální kontura jsou v normálních mezích. není identifikována fokální konsolidace, podezřelá neprůhlednost plic, velký pleurální výpotek nebo pneumotorax. opět je vizualizována klínovitá  zlomenina t12.
+
+---- Model: 4-gen-trained-dec:
+žádná intervalová změna.
+sternotomie  a mediastinální klipy jsou beze změny. kardiomediastinální silueta je beze změny. plicní vaskulatura a  jsou beze změny. žádná konsolidace, pneumotorax nebo velký pleurální výpotek. osseózní struktury se zdají být neporušená.
+

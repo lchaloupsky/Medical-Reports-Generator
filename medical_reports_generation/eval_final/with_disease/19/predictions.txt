@@ -1,0 +1,18 @@
+---- Original Translated Czech:
+porovnání,  bilaterální zvápenatělé granulomy a jizvy levé bazalky  jako dříve. čisté plíce. žádné výpotky. nevšední mediastinální kontura. nebyla zjištěna žádná akutní kardiopulmonální abnormalita. stabilní hrudník.
+
+---- Model: 1-med-trained-all:
+žádné akutní plicní onemocnění.
+v levé plicní bázi je zvápenatělý granulom. není tam pleurální výpotek ani pneumotorax. srdce a mediastinum jsou v normálu. kosterní struktury jsou v normálu.
+
+---- Model: 2-gen-trained-all:
+opacity v levé bázi mohou být kompatibilní se zjizvením nebo subsegmentální atelektázou. jinak nedochází k fokální alveolární konsolidaci. nebyl pozorován definitivní pleurální výpotek. velikost srdce v normálních mezích, stabilní mediastinální kontury. žádné typické nálezy plicního edému. žádný pneumotorax.
+
+---- Model: 3-med-trained-dec:
+1 cm apikální neprůhlednosti, zjizvení versus uzlík. pro další charakterizaci je indikován nekontrastní. oznámení o kritickém výsledku zdokumentováno pomocí primordial.
+srdce, plicnice  a mediastinum jsou v normálních mezích. není zde pleurální výpotek ani pneumotorax. není zde ohnisková neprůhlednost vzdušného prostoru, která by naznačovala pneumonii. v pravém dolním laloku je ohnisková neprůhlednost 1 cm, která nebyla tímto vyšetřením dostatečně vyhodnocena. je zde minimální retrokardiální lucence. jsou zde degenerativní změny páteře.
+
+---- Model: 4-gen-trained-dec:
+přibližně 4,8 cm hmoty v levé dolní hemithorax. ta je upřednostňována, aby vycházela z hrudní stěny a byla pleurální. pro další vyšetření se doporučuje ct hrudníku. oznámení kritického výsledku zdokumentováno přes primordial.
+je tam přibližně 4,8 cm opacita uzlin v levé dolní hemithorax. není tam pleurální výpotek ani pneumotorax. velikost srdce je v normálních mezích. je tam zvápenatělá hilární lymfa. kosterní struktury jsou nezajímavé.
+

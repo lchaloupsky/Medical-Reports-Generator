@@ -1,0 +1,19 @@
+---- Original Translated Czech:
+porovnání,. žádné podezřele se objevující plicní uzliny. dobře rozšířené a čisté plíce. medistinální kontura v normálních mezích. žádná zjištěná akutní kardiopulmonální abnormalita. stabilní hrudník.
+
+---- Model: 1-med-trained-all:
+žádné akutní kardiopulmonální onemocnění.
+byly získány pa a boční pohledy na hrudník. kardiomediastinální silueta má normální velikost a konfiguraci. plíce jsou dobře provzdušněny. žádný pneumotorax, pleurální výpotek nebo fokální konsolidace vzdušného prostoru. degenerativní páteř.
+
+---- Model: 2-gen-trained-all:
+žádné akutní kardiopulmonální onemocnění.
+srdce, plicní  a mediastinum jsou v normálních mezích. není zde pleurální výpotek ani pneumotorax. není zde ohnisková neprůhlednost vzdušného prostoru, která by naznačovala pneumonii. jsou zde minimální degenerativní změny páteře.
+
+---- Model: 3-med-trained-dec:
+žádné akutní kardiopulmonální onemocnění.
+srdce, plicní  a mediastinum jsou v normálních mezích. není zde pleurální výpotek ani pneumotorax. není zde ohnisková neprůhlednost vzdušného prostoru, která by naznačovala zápal plic. jsou zde mírné degenerativní změny páteře.
+
+---- Model: 4-gen-trained-dec:
+žádné známky aktivního onemocnění.
+velikost srdce a plicní vaskularita se objevují v normálních mezích. plíce jsou bez fokálních onemocnění vzdušného prostoru. není pozorován pleurální výpotek ani pneumotorax. dochází k eventraci pravé hemidiofragmy. degenerativní změny jsou přítomny v páteři.
+

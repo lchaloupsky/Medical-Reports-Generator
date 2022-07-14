@@ -1,0 +1,19 @@
+---- Original Translated Czech:
+porovnání,. dobře rozšířené a čisté plíce. medistinální kontura v normálních mezích. žádná akutní kardiopulmonální abnormalita identifikována. stabilní hrudník.
+
+---- Model: 1-med-trained-all:
+kardiomegalie a hiátová kýla bez zjištěné akutní abnormality.
+velikost srdce je mírně zvětšená. plicní  a mediastinum jsou v normálních mezích. nedochází k pleurálnímu výpotku ani pneumotoraxu. nedochází k zákalu ohniskového vzdušného prostoru. nedochází k zákalu ohniskového vzdušného prostoru. nedochází k středně velké hiátové kýle. dochází k mírným degenerativním změnám páteře.
+
+---- Model: 2-gen-trained-all:
+žádné akutní kardiopulmonální onemocnění.
+byly získány pa a boční pohledy na hrudník. velikost srdce je horní hranice normální nebo mírně zvětšená. hrudní aorta je mírně zkroucená. plicní  jsou v normálních mezích. žádný pneumotorax, pleurální výpotek nebo fokální konsolidace vzdušného prostoru.
+
+---- Model: 3-med-trained-dec:
+1. kardiomegalie. 2. pleurální ztluštění podél dolního levého bočního hrudníku je od předchozího vyšetření stabilní.
+celkově nízký objem plic. plíce jsou hrubě čisté. pleurální ztluštění podél dolního levého bočního hrudníku. ve srovnání s předchozím vyšetřením se zdá být relativně stabilní. žádné pleurální výpotky ani pneumotoraxy. kardiomegalie. degenerativní změny páteře.
+
+---- Model: 4-gen-trained-dec:
+žádná akutní kardiopulmonální abnormalita. zaznamenány kalcifikované levé koronární tepny..
+velikost srdce, mediastinální kontura a plicní vaskularita jsou v normálních mezích. není identifikována fokální konsolidace, podezřelá plicní neprůhlednost, velký pleurální výpotek nebo pneumotorax. zaznamenány kalcifikované levé koronární tepny. vizualizované kostní struktury se zdají být neporušené.
+

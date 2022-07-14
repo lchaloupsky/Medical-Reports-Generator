@@ -1,0 +1,20 @@
+---- Original Translated Czech:
+žádné x- známky plicního metastatického onemocnění. stabilní vzhled hrudníku.
+kardiální a mediastinální kontury jsou v normálním rozmezí. plíce jsou čisté. kostní struktury jsou neporušené.
+
+---- Model: 1-med-trained-all:
+žádné akutní předoperační nálezy.
+kardiální a mediastinální kontury jsou v normě. plíce jsou čisté. kostní struktury jsou neporušené.
+
+---- Model: 2-gen-trained-all:
+žádné akutní nálezy.
+kardiální a mediastinální kontury jsou v normě. plíce jsou čisté. kostní struktury jsou neporušené.
+
+---- Model: 3-med-trained-dec:
+žádné známky aktivního onemocnění.
+velikost srdce a plicní vaskularita se pohybují v normálních mezích. plíce jsou bez fokálního onemocnění vzdušného prostoru. není pozorován pleurální výpotek ani pneumotorax.
+
+---- Model: 4-gen-trained-dec:
+žádné akutní nálezy.
+kardiomediastinální silueta a plicní vaskulatura jsou v normě. plíce jsou čisté. žádný pneumotorax nebo pleurální výpotek. žádné akutní kostní nálezy.
+

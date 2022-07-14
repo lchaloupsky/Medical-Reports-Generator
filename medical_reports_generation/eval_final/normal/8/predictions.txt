@@ -1,0 +1,20 @@
+---- Original Translated Czech:
+žádné akutní kardiopulmonální abnormality.
+plíce jsou prokazatelné oboustranně. přesněji, žádné známky fokální konsolidace, pneumotoraxu nebo pleurálního výpotku. kardiomediastinální silueta je nevýrazná. vizualizované kostní struktury hrudníku jsou bez akutních abnormalit.
+
+---- Model: 1-med-trained-all:
+1. žádné akutní kardiopulmonální onemocnění.
+srdce a mezihrudí jsou nezajímavé. plíce jsou bez infiltrátu čisté. nedochází k výpotku ani pneumotoraxu.
+
+---- Model: 2-gen-trained-all:
+žádné akutní kardiopulmonální abnormality.
+srdce má normální velikost. plicní vaskularita je ve vzhledu v normálních mezích. žádné ohniskové neprůhlednosti vzdušného prostoru. žádné pohrudniční výpotky nebo pneumotorax. žádné akutní kostní abnormality.
+
+---- Model: 3-med-trained-dec:
+žádná akutní kardiopulmonální abnormalita.
+velikost srdce a mediastinální kontury se pohybují v normálních mezích. plicní vaskularita je v normálních mezích. žádná fokální konsolidace, podezřelá neprůhlednost plic, pneumotorax nebo jednoznačný pleurální výpotek. vizualizované kostní struktury se zdají neporušené.
+
+---- Model: 4-gen-trained-dec:
+žádné akutní kardiopulmonální abnormality.
+srdce má normální velikost a konturu. nedochází k žádnému rozšíření mediastina. žádné ložiskové onemocnění vzdušného prostoru. žádný velký pleurální výpotek nebo pneumotorax.  jsou neporušené.
+

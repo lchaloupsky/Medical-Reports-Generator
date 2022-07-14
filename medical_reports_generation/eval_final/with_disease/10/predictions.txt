@@ -1,0 +1,20 @@
+---- Original Translated Czech:
+mírně hypernafouknuté, průzračné plíce.
+velikost srdce, mediastinální kontura a plicní vaskularita jsou v normálních mezích. dochází k oboustranné hyperinflaci, bez fokální konsolidace, pneumotoraxu nebo pleurálního výpotku. vizualizované kostní struktury vypadají neporušené.
+
+---- Model: 1-med-trained-all:
+hraniční kardiomegalie, jinak nevšední vyšetření.
+horní hranice srdeční velikosti normální. cévnost normální.kalcifikované prsní implantáty zakrývají některé detaily. plíce jsou čisté. cévní kalcifikace aorty. žádné pohrudniční výpotky nebo pneumotoraxy.
+
+---- Model: 2-gen-trained-all:
+žádné akutní kardiopulmonální nálezy..
+kardiomediastinální silueta a plicní vaskulatura jsou ve velikosti v normálních mezích. plíce jsou bez fokálního onemocnění vzdušného prostoru, pneumotoraxu nebo pleurálního výpotku. nejsou zde žádné akutní kostní nálezy.
+
+---- Model: 3-med-trained-dec:
+žádné akutní kardiopulmonální onemocnění.
+byly získány pa a boční pohledy na hrudník. velikost srdce je horní hranice normální nebo mírně zvětšená. hrudní aorta je mírně zkroucená. plicní  jsou v normálních mezích. žádný pneumotorax, pleurální výpotek nebo fokální konsolidace vzdušného prostoru.
+
+---- Model: 4-gen-trained-dec:
+žádná akutní kardiopulmonální abnormalita.
+plíce jsou jasné bilaterálně. srdeční a mediastinální siluety jsou normální. plicní vaskulatura je normální. žádný pneumotorax nebo pleurální výpotek. žádná akutní kostní abnormalita.
+

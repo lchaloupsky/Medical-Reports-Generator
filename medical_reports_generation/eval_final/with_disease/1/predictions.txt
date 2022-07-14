@@ -1,0 +1,18 @@
+---- Original Translated Czech:
+srdeční velikost normální. žádná fibróza. pravá apikální a levá báze 5 mm kalcifikované granulomy. kalcifikovaná hilární lymfa. žádné výpotky.
+
+---- Model: 1-med-trained-all:
+srdeční velikost normální. plíce čisté. žádné známky tuberkulózy. mírně výrazná vzestupná aorta.
+
+---- Model: 2-gen-trained-all:
+žádné akutní kardiopulmonální onemocnění.
+srdce, plicní  a mediastinum jsou v normálních mezích. není zde pleurální výpotek ani pneumotorax. není zde ohnisková neprůhlednost vzdušného prostoru, která by naznačovala pneumonii. jsou zde minimální degenerativní změny páteře.
+
+---- Model: 3-med-trained-dec:
+žádné akutní nálezy.
+kardiální a mediastinální kontury jsou v normě. předchozí granulomatózní onemocnění. plíce jsou čisté. kostní struktury jsou neporušené.
+
+---- Model: 4-gen-trained-dec:
+žádná akutní kardiopulmonální abnormalita.
+srdce má normální velikost. mediastinum je nevýrazné. není zde žádný pohrudniční výpotek, pneumotorax, ani fokální onemocnění vzdušného prostoru. je zde stabilní nepravidelnost zadního levého 6. žebra, které  představuje starou zlomeninu..
+

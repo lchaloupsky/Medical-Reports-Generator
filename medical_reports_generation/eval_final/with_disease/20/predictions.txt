@@ -1,0 +1,20 @@
+---- Original Translated Czech:
+1. žádné akutní kardiopulmonální onemocnění.
+byly získány pa a boční pohledy na hrudník. kardiomediastinální silueta má normální velikost a konfiguraci. plíce jsou dobře provzdušněny. nedochází k pneumotoraxu, pleurálnímu výpotku ani ke konsolidaci fokálního vzdušného prostoru. staré zlomeniny pravého žebra.
+
+---- Model: 1-med-trained-all:
+negativní hrudník x-.
+kardiální a mediastinální kontury jsou v normě. plíce jsou čisté. kostní struktury jsou neporušené.
+
+---- Model: 2-gen-trained-all:
+žádné akutní předoperační nálezy.
+kardiální kontury jsou normální. plíce jsou čisté. hrudní spondylóza.
+
+---- Model: 3-med-trained-dec:
+žádné akutní kardiopulmonální onemocnění.
+srdce, plicní  a mediastinum jsou v normálních mezích. není zde pleurální výpotek ani pneumotorax. není zde ohnisková neprůhlednost vzdušného prostoru, která by naznačovala pneumonii. jsou zde minimální degenerativní změny páteře.
+
+---- Model: 4-gen-trained-dec:
+žádná akutní kardiopulmonální abnormalita.
+srdce má normální velikost. mediastinum je nevýrazné. není zde žádný pohrudniční výpotek, pneumotorax, ani fokální onemocnění vzdušného prostoru. je zde stabilní nepravidelnost zadního levého 6. žebra, které  představuje starou zlomeninu žebra.
+

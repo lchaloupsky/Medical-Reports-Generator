@@ -1,0 +1,19 @@
+---- Original Translated Czech:
+1. žádné akutní kardiopulmonální abnormality. 2. krmná trubice  distálně od gastroezofageální spojky.
+krmná trubice zaznamenána špičkou  distálně od gastroezofageální spojky. žádné ohniskové oblasti konsolidace. velikost srdce v normálních mezích. žádné pleurální výpotky. osseózní struktury neporušeny.
+
+---- Model: 1-med-trained-all:
+žádná akutní kardiopulmonální abnormalita.
+plíce jsou jasné bilaterálně. srdeční a mediastinální siluety jsou normální. plicní vaskulatura je normální. žádný pneumotorax nebo pleurální výpotek. žádná akutní kostní abnormalita.
+
+---- Model: 2-gen-trained-all:
+velikost srdce je normální. vícenásobně roztroušené malé 4 mm uzlíky po celém hrudníku. tyto nejvíce  představují zvápenatělé malé granulomy. nízký kv film  prokazuje, že jsou pravděpodobně zvápenatělé.
+
+---- Model: 3-med-trained-dec:
+žádné akutní kardiopulmonální onemocnění.
+srdce, plicní  a mediastinum jsou v normálních mezích. není zde pleurální výpotek ani pneumotorax. není zde ohnisková neprůhlednost vzdušného prostoru, která by naznačovala zápal plic. jsou zde mírné degenerativní změny páteře.
+
+---- Model: 4-gen-trained-dec:
+žádný radiografický průkaz akutního kardiopulmonálního onemocnění
+plíce jsou čisté bez průkazu ohniskového onemocnění vzdušného prostoru. není prokázán pneumotorax nebo velký pleurální výpotek. kontury srdce a mediastina jsou v normálních mezích.  jsou nevýrazné.
+

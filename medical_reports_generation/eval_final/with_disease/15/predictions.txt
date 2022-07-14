@@ -1,0 +1,20 @@
+---- Original Translated Czech:
+1. žádné akutní kardiopulmonální onemocnění.
+srdce a mezihrudí jsou nevýrazné. v pravé plíci jsou zaznamenány dvě subcentimetrové hyperdense nodulární opacity. ty mohou představovat  na konci nebo alternativně kalcifikované granulomy. plíce jsou bez infiltrátu čisté. nedochází k výpotku ani pneumotoraxu.
+
+---- Model: 1-med-trained-all:
+1. žádné akutní kardiopulmonální onemocnění.
+srdce a mezihrudí jsou nevýrazné. plíce jsou bez infiltrátu čisté. nedochází k výpotku ani pneumotoraxu.
+
+---- Model: 2-gen-trained-all:
+žádné akutní kardiopulmonální nálezy.
+velikost srdce je v normálních mezích. žádné fokální konsolidace vzdušného prostoru. žádný pneumotorax nebo pleurální výpotek.
+
+---- Model: 3-med-trained-dec:
+žádné akutní kardiopulmonální onemocnění.
+srdce je normální velikostí i tvarem. plíce jsou čisté, bez známek infiltrátu. není tam pneumotorax ani výpotek.
+
+---- Model: 4-gen-trained-dec:
+normální hrudník
+velikost srdce normální. plíce čisté.  normální. žádný zápal plic, výpotek, edém, pneumotorax, adenopatie, uzlíky nebo masy.
+

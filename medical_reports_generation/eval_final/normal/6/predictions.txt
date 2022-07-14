@@ -1,0 +1,19 @@
+---- Original Translated Czech:
+bez porovnání hrudníku x-. dobře rozšířené a čisté plíce. medistinální kontura v normálních mezích. žádná akutní kardiopulmonální abnormalita identifikována.
+
+---- Model: 1-med-trained-all:
+žádné akutní plicní onemocnění.
+plíce jsou čisté. nedochází k pleurálnímu výpotku. srdce a mediastinum jsou v normálu. kosterní struktury a měkké tkáně jsou v normálu.
+
+---- Model: 2-gen-trained-all:
+nízký objem plic, jinak čistý.
+kardiomediastinální silueta má normální velikost a konturu. žádná fokální konsolidace, pneumotorax nebo velký pleurální výpotek. normální.  cholecystektomie.
+
+---- Model: 3-med-trained-dec:
+žádné akutní kardiopulmonální onemocnění.
+srdce, plicní  a mediastinum jsou v normálních mezích. není zde pleurální výpotek ani pneumotorax. není zde ohnisková neprůhlednost vzdušného prostoru, která by naznačovala pneumonii. jsou zde minimální degenerativní změny páteře.
+
+---- Model: 4-gen-trained-dec:
+nízký objem plic, jinak čistý.
+kardiomediastinální silueta má normální velikost a konturu. nízký objem plic bez fokální konsolidace, pneumotorax nebo velký pleurální výpotek. normální.
+

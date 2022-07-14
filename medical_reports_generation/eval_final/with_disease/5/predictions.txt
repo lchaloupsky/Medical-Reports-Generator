@@ -1,0 +1,20 @@
+---- Original Translated Czech:
+žádná akutní kardiopulmonální abnormalita.
+kardiomediastinální silueta a plicní vaskulatura jsou v normálních mezích. chybí pneumotorax nebo pleurální výpotek. chybí fokální oblasti konsolidace. malé osteofyty t-páteře.
+
+---- Model: 1-med-trained-all:
+žádné akutní kardiopulmonální onemocnění.
+srdce je normální velikostí i tvarem. plíce jsou čisté, bez známek infiltrátu. není tam pneumotorax ani výpotek. mírné degenerativní změny v dolní části hrudní páteře.
+
+---- Model: 2-gen-trained-all:
+žádné akutní kardiopulmonální onemocnění.
+srdce, plicní  a mediastinum jsou v normálních mezích. není zde pleurální výpotek ani pneumotorax. není zde ohnisková neprůhlednost vzdušného prostoru, která by naznačovala pneumonii. jsou zde minimální degenerativní změny páteře.
+
+---- Model: 3-med-trained-dec:
+žádné akutní kardiopulmonální onemocnění.
+srdce, plicní  a mediastinum jsou v normálních mezích. není zde pleurální výpotek ani pneumotorax. není zde ohnisková neprůhlednost vzdušného prostoru, která by naznačovala zápal plic. jsou zde mírné degenerativní změny páteře.
+
+---- Model: 4-gen-trained-dec:
+1. žádné známky aktivního onemocnění.
+velikost srdce a plicní vaskularita se pohybují v normálních mezích. plíce jsou bez fokálního onemocnění vzdušného prostoru. není pozorován pleurální výpotek ani pneumotorax. degenerativní změny jsou přítomny v páteři.
+

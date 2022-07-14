@@ -1,0 +1,18 @@
+---- Original Translated Czech:
+byl získán ap a boční pohled. bibasilární atelektáza a malý levostranný pleurální výpotek. stabilní kardiomegalie. žádný pneumotorax. mírná plicní vaskulární kongesce.
+
+---- Model: 1-med-trained-all:
+1. snížený objem plic. bibasilární neprůhlednost vzdušného prostoru pozorovaná na laterální   je atelektáza nebo případně pneumonie.
+  a bylo provedeno laterální vyšetření hrudníku. je zde zvětšená silueta srdce. snížený objem plic. plíce vykazují dvojbazalární neprůhlednost vzdušného prostoru lépe vizualizovanou na bočním pohledu. není zde žádný výpotek ani pneumotorax. degenerativní změny bilaterální.
+
+---- Model: 2-gen-trained-all:
+1. všechny hadičky a hadičky ve stabilní,  poloze. 2. omezená přenosná studie se stabilním vzhledem plic  se stabilním rozšířeným mediastinem 3. nebyly zaznamenány  akutní nálezy/pneumotorax.
+
+---- Model: 3-med-trained-dec:
+1. nízkoobjemová studie bez akutního procesu.
+kardiomediastinální silueta a vaskulatura jsou v normálních mezích velikosti a kontury. pokračování předchozího granulomatózního onemocnění objem plic je nízký s centrálním bronchovaskulárním přeplněním a nepravidelnou bazilární atelektázou. degenerativní změny páteře.
+
+---- Model: 4-gen-trained-dec:
+1. snížený objem plic. bibasilární neprůhlednost vzdušného prostoru pozorovaná na laterální   je atelektáza nebo případně pneumonie.
+  a bylo provedeno laterální vyšetření hrudníku. je zde zvětšená silueta srdce. snížený objem plic. plíce vykazují dvojbazalární neprůhlednost vzdušného prostoru lépe vizualizovanou na bočním pohledu. není zde žádný výpotek ani pneumotorax. degenerativní změny páteře.
+
