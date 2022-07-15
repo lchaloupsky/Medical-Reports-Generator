@@ -1,7 +1,7 @@
 % Metadata to be stored in PDF, see documentation of the pdfx package for more details.
 
 \Author{Bc. Lukáš Chaloupský}
-\Title{Automatic generation of medical reports from chest X-rays}
+\Title{Automatic generation of medical reports from chest X-rays in Czech}
 \Keywords{natural language processing\sep image captioning\sep x-ray\sep medical report generation}
 \Subject{This thesis deals with the problem of automatic generation of medical reports in the Czech langugage based on the input chest X-ray images using deep neural networks. The first part deals with the analysis of problem itself including comparison of existing solutions from several common points of view. In order to interpret medical images in the Czech language we present a fine-tuned a Czech GPT-2 model specialized on medical texts based on the original pre-trained English GPT-2 model along with its evaluation. In the second part the created Czech GPT-2 is used for training neural network model for generating medical reports. The training was conducted on freely available data along with data pre-processing and their adjustment for the Czech language. Furthermore the model results are discussed and evaluated using standard metrics for natural language processing to determine the performance.}
 \Publisher{Charles University}
