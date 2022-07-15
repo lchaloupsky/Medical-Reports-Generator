@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.2.24)  15 JUL 2022 15:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.2.24)  15 JUL 2022 22:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1240,7 +1240,12 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[44] [45]) [46]
+[44]
+Underfull \hbox (badness 10000) in paragraph at lines 150--151
+
+ []
+
+[45]) [46]
 \openout2 = `epilog.aux'.
 
  (./epilog.tex
@@ -1342,10 +1347,10 @@ xlive/2019/texmf-dist/fonts/type1/public/lm/lmri12.pfb><d:/texlive/2019/texmf-d
 ist/fonts/type1/public/lm/lmsy10.pfb><d:/texlive/2019/texmf-dist/fonts/type1/pu
 blic/lm/lmsy8.pfb><d:/texlive/2019/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
 <d:/texlive/2019/texmf-dist/fonts/type1/public/lm/lmtt12.pfb>
-Output written on thesis.pdf (61 pages, 2682594 bytes).
+Output written on thesis.pdf (61 pages, 2685008 bytes).
 PDF statistics:
- 1279 PDF objects out of 1440 (max. 8388607)
- 1129 compressed objects within 12 object streams
+ 1281 PDF objects out of 1440 (max. 8388607)
+ 1131 compressed objects within 12 object streams
  278 named destinations out of 1000 (max. 500000)
  564 words of extra memory for PDF output out of 10000 (max. 10000000)
 

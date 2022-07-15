@@ -147,48 +147,50 @@ Models are described in Chapter \ref{sec:medGenReportExperiments},
 This section presents the results of the manual evaluation. We would like to express our gratitude to MUDr.\ Martin Hyršl from the University Hospital Hradec Králové for the execution of manual evaluation on our generated reports. The manual evaluation was performed on a total of 40 X-ray images and their corresponding reports for all four \textit{best} models from the previous section. The X-rays are divided into two equally sized groups for evaluation - with and without the presence of any findings.
 
 \subsection{Method}
-All images were evaluated using the following method. Each report is classified into one of three categories. First category reflects the case where the report contains all corresponding findings and overall diagnosis without any false information. The next category decribes cases in which the report is missing some important points without any false information. To the last category fall reports that contain untrue facts.
+All images with the presence of any disease were evaluated using the following method. Each report is assigned at least one of three non-disjunctive categories. First category reflects the cases where the report contains at least one correct finding or diagnosis. The next category decribes cases where an important part of the diagnosis is missing from the report. To the last category fall reports that contain untrue facts. We chose this method over the one in the original paper as it has greater informational value.\\
+
+The images of healthy patients were classified into two cases only according to whether they contained any finding or not.
 
 \subsection{Results}
 TODO po obdržení výsledků
 
 \begin{table}[h!]
 \centering
-\begin{tabular}{l@{\hspace{0.75cm}}D{.}{,}{3.0}D{.}{,}{2.3}D{.}{,}{2.3}D{.}{,}{2.3}D{.}{,}{2.3}}
+\begin{tabular}{l@{\hspace{0.75cm}}D{.}{,}{5.0}D{.}{,}{5.0}D{.}{,}{5.0}D{.}{,}{5.0}D{.}{,}{5.0}}
 \toprule
  & \mc{} & \mc{} & \mc{} & \mc{} \\
-\pulrad{\textbf{Group}} & \mc{\pulrad{\textbf{Accurate}}} & \mc{\pulrad{\textbf{Incomplete}}} & \mc{\pulrad{\textbf{Incorrect}}} \\
+\pulrad{\textbf{Model}} & \mc{\pulrad{\textbf{AF (\#/\%)}}} & \mc{\pulrad{\textbf{MF (\#/\%)}}} & \mc{\pulrad{\textbf{IF (\#/\%)}}} \\
 \midrule
-GEN-dec-best      & \mc{---}  & \mc{---}  & \mc{---} \\
-GEN-all-best        & \mc{---}  & \mc{---}  & \mc{---} \\
-MED-dec-best	 & \mc{---}  & \mc{---}  & \mc{---} \\
-MED-all-best       & \mc{---}  & \mc{---}  & \mc{---} \\
+GEN-dec-best      & \mc{7 (35\%)}  & \mc{18 (90\%)}  & \mc{12 (60\%)} \\
+GEN-all-best        & \mc{5 (25\%)}  & \mc{18 (90\%)}  & \mc{\phantom{0}8 (40\%)} \\
+MED-dec-best	 & \mc{7 (35\%)}  & \mc{18 (90\%)}  & \mc{\phantom{0}6 (30\%)} \\
+MED-all-best       & \mc{9 (45\%)}  & \mc{17 (85\%)}  & \mc{\phantom{0}8 (40\%)} \\
 \bottomrule
 \multicolumn{4}{l}{\footnotesize \textit{Note:} All values are rounded to 4 decimal places.}
 \end{tabular}
 
 \caption{Manual evaluation results - without findings.}\label{tab05:ManualEvalNormal}
-Evaluation categories are described above
+Evaluation categories are described above, \textit{AF} - Accurate Finding, \textit{MF} - Missing Finding, \textit{IF} - Incorrect Finding
 \end{table}
 
 
 \begin{table}[h!]
 \centering
-\begin{tabular}{l@{\hspace{0.75cm}}D{.}{,}{3.0}D{.}{,}{2.3}D{.}{,}{2.3}D{.}{,}{2.3}D{.}{,}{2.3}}
+\begin{tabular}{l@{\hspace{0.75cm}}D{.}{,}{5.0}D{.}{,}{5.0}D{.}{,}{5.0}D{.}{,}{5.0}}
 \toprule
  & \mc{} & \mc{} & \mc{} & \mc{} \\
-\pulrad{\textbf{Group}} & \mc{\pulrad{\textbf{Accurate}}} & \mc{\pulrad{\textbf{Incomplete}}} & \mc{\pulrad{\textbf{Incorrect}}} \\
+\pulrad{\textbf{Model}} & \mc{\pulrad{\textbf{NF (\#/\%)}}} & \mc{\pulrad{\textbf{IF (\#/\%)}}} \\
 \midrule
-GEN-dec-best      & \mc{---}  & \mc{---}  & \mc{---} \\
-GEN-all-best        & \mc{---}  & \mc{---}  & \mc{---} \\
-MED-dec-best	 & \mc{---}  & \mc{---}  & \mc{---} \\
-MED-all-best       & \mc{---}  & \mc{---}  & \mc{---} \\
+GEN-dec-best      & \mc{17 (85\%)}   & \mc{3 (15\%)} \\
+GEN-all-best        & \mc{17 (85\%)}   & \mc{3 (15\%)} \\
+MED-dec-best	 & \mc{19 (95\%)}   & \mc{1 (\phantom{0}5\%)} \\
+MED-all-best       & \mc{16 (80\%)}   & \mc{4 (20\%)} \\
 \bottomrule
 \multicolumn{4}{l}{\footnotesize \textit{Note:} All values are rounded to 4 decimal places.}
 \end{tabular}
 
 \caption{Manual evaluation results - with findings.}\label{tab06:ManualEvalFinding}
-Evaluation categories are described above
+Evaluation categories are described above, \textit{NF} - No Finding, \textit{IF} - Incorrect Finding
 \end{table}
 
 \section{Examples}
