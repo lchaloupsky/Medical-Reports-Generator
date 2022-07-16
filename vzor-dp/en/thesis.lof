@@ -16,4 +16,6 @@
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Sample output of the medical Czech GPT-2 model.\relax }}{39}{figure.caption.43}%
 \contentsline {figure}{\numberline {4.3}{\ignorespaces Example of original and corresponding translated report.\relax }}{40}{figure.caption.44}%
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Examples of generated reports by the \textit {MED-all-best} model.\relax }}{48}{figure.caption.60}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Examples of generated reports by the \textit {MED-dec-best} model.\relax }}{49}{figure.caption.61}%
 \addvspace {10\p@ }
