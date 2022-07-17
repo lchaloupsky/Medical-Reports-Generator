@@ -25,7 +25,7 @@ pip3 install -r requirements.txt
 Contains modified original `.csv` files to Czech containig reports used for the training and testing.
 
 ## eval_final
-Contains all data used for the manual evaluation of the generated reports. To prepare these files run the `prepare_eval_final.py` script:
+Contains all data used for the manual evaluation of the generated reports. To prepare these files run the `prepare_eval_final.py` script. Parameters are further described directly in the source file or by entering the **-h** or **--help** option.
 ```bash
 python3 prepare_eval_final.py [-h] [--img_dir IMG_DIR] 
         [--models_outputs MODELS_OUTPUTS]
@@ -63,7 +63,7 @@ mv cc.cs.300.vec.bin.vectors.npy glove.6B.300d.model.bin.vectors.npy
 ```
 
 ## Modify Original Prepared .csv Files
-To run the training on the Czech data, it is necessary to prepare training and testing files with Czech translations. The original solution uses 3 `.csv` files. In order to modify them and replace the English reports with the corresponding Czech translations run the following script:
+To run the training on the Czech data, it is necessary to prepare training and testing files with Czech translations. The original solution uses 3 `.csv` files. In order to modify them and replace the English reports with the corresponding Czech translations run the following script. Parameters are further described directly in the source file or by entering the **-h** or **--help** option.
 ```bash
 modify_csv_to_translations.py [-h]
         [--original_csv_dir ORIGINAL_CSV_DIR]
@@ -83,7 +83,7 @@ Furthermore, in order to run the training, testing or prediction on the custom G
 1. Follow original *README* steps
 2. Put your GPT-2 model directory inside the top level of the `GPT2-Chest-X-Ray-Report-Generation` directory
 3. Change "distilgpt2" and "gpt2" model and tokenizer string identifiers to the name of your GPT-2 model in these files - `train.py`, `test.py`, `tokenizer wrapper.py`
-4. Switch the original .csv files in the `IU-XRay` directory with the ones in the `czech_csv_train_data` directory
+4. Switch the original .csv files in the `IU-XRay` directory with the ones in the `czech_csv_train_data` directory (if not already switched - both the original and the modified Czech `.csv` files are currently stored there)
 5. Change hyperparameters in `configs.py` to the desired values
 
 After that the training, testing or predtiction process can be run by running its corresponding command:
