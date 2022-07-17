@@ -10,9 +10,6 @@ import copy
 from requests.models import Response
 from translators.translator import Translator
 
-_proxies = ["5.189.184.6:80", "173.249.57.9:443", "138.201.120.214:1080"]
-_proxy = 0
-
 class _DeepLClientState():
 	_url = 'https://w.deepl.com/web?request_type=jsonrpc&il=E&method=getClientState' #'https://www.deepl.com/PHP/backend/clientState.php?request_type=jsonrpc&il=en&method=getClientState'
 	_body = {
@@ -25,14 +22,11 @@ class _DeepLClientState():
 	}
 
 	def get_state(self) -> Response:
-		global _proxy
 		while True:
-			proxies = {'https': 'http://' + _proxies[_proxy], 'http': 'http://' + _proxies[_proxy]} if len(_proxies) > 0 else None
 			try:
-				return requests.post(self._url, data=json.dumps(self._get_body()), headers={'Content-Type': 'application/json', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:94.0) Gecko/20100101 Firefox/94.0'}, proxies=proxies, timeout=10000)
-			except Exception as e:
-				
-				_proxy = 0 if _proxy == len(_proxies) - 1 else _proxy + 1
+				return requests.post(self._url, data=json.dumps(self._get_body()), headers={'Content-Type': 'application/json', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:94.0) Gecko/20100101 Firefox/94.0'}, timeout=10000)
+			except Exception:
+				time.sleep(1)
 
 	def _get_body(self) -> dict:
 		body = self._body.copy()
@@ -41,6 +35,7 @@ class _DeepLClientState():
 		return body
 
 class DeepLTranslator(Translator):
+	'''Class for translating texts using the DeepL translator.'''
 	_PAUSE = 8.0
 	_url = 'https://www2.deepl.com/jsonrpc?method=LMT_handle_jobs'
 	_body = {
@@ -93,8 +88,6 @@ class DeepLTranslator(Translator):
 		self._request_count = 0
 
 	def reset(self) -> None:
-		global _proxy
-		_proxy = 0 if _proxy == len(_proxies) - 1 else _proxy + 1 
 		self._client_state = _DeepLClientState()
 		self._id_number = json.loads(self._client_state.get_state().text)["id"]
 
@@ -108,23 +101,7 @@ class DeepLTranslator(Translator):
 			# wait at least self._PAUSE seconds between consecutive requests
 			time.sleep(abs(self._PAUSE + self._last_request_time - time.time()))
 		
-		reponse, retry_counter, failed_proxies = None, 0, 0
-		while True:
-			proxies = {'https': 'http://' + _proxies[_proxy], 'http': 'http://' + _proxies[_proxy]} if len(_proxies) > 0 else None
-			try:
-				reponse = requests.post(self._url, data=json.dumps(self._fill_text(text)), headers=self._headers, proxies=proxies, timeout=10000)
-				failed_proxies = 0
-				break
-			except Exception as e:
-				retry_counter += 1
-				if retry_counter == 2:
-					failed_proxies += 1
-					retry_counter = 0
-					self.reset()
-
-			if failed_proxies == len(_proxies) - 1 or len(_proxies) == 0:
-				break
-		
+		reponse = requests.post(self._url, data=json.dumps(self._fill_text(text)), headers=self._headers, timeout=10000)		
 		self._last_request_time = time.time()
 		return reponse
 

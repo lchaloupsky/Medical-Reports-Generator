@@ -3,9 +3,8 @@
 from preprocessors.preprocessor import Preprocessor
 
 class WhitespacesSquashPreprocessor(Preprocessor):
+    '''Squashes all multiple occurences of whitespace inside(not on the sides) text into one.'''
     def preprocess(self, text: str) -> str:
-        '''Squashes all multiple occurences of whitespace inside(not on the sides) text into one.'''
-
         # split text
         line_splits = text.split('\n')
 

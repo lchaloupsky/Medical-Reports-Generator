@@ -3,11 +3,10 @@
 from preprocessors.preprocessor import Preprocessor
 
 class SemicolonParagraphPreprocessor(Preprocessor):
-    SEMICOLON = ":"
+    '''Puts paragraps starting after a semicolon on the same line.'''
+    _SEMICOLON = ":"
 
     def preprocess(self, text: str) -> str:
-        '''Puts paragraps starting after a semicolon on the same line.'''
-
         # split text
         line_splits = text.split('\n')
 
@@ -17,7 +16,7 @@ class SemicolonParagraphPreprocessor(Preprocessor):
             line_split = line.split()
             
             # if there is some headline with no text starting on the same line:
-            if line_split and line_split[-1][-1] == self.SEMICOLON:            
+            if line_split and line_split[-1][-1] == self._SEMICOLON:            
                 while True:
                     # There is an empty heading as the final line of the text
                     if (next_line := next(line_iter, None)) is None:
@@ -30,7 +29,7 @@ class SemicolonParagraphPreprocessor(Preprocessor):
                         continue
 
                     # if we encountered another headline(possibly with text)
-                    if self.SEMICOLON in next_line:
+                    if self._SEMICOLON in next_line:
                         break
 
                     # there is a line which is not a headline line

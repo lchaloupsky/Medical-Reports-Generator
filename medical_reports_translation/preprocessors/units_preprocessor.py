@@ -5,13 +5,14 @@ import re
 from preprocessors.preprocessor import Preprocessor
 
 class UnitsPreprocessor(Preprocessor):
+    '''
+    Finds units to numbers which are glued together in one word and splits them.\n
+    This also includes non-existing units - mistakes in text, where the number and the word should be separated.
+    '''
     _NUMBER_EXCEPTIONS = {u + str(i) for u in {"nm", "μm", "mm", "cm", "dm", "m", "km"} for i in range(2,4)}
     _UNITS_EXCEPTIONS = {"vd", "des"}
 
     def preprocess(self, text: str) -> str:
-        '''Finds units to numbers which are glued together in one word and splits them.\n
-        This also includes non-existing units - mistakes in text, where the number and the word should be separated.'''
-
         # split text and map each line
         return "\n".join(map(self._map_line, text.split('\n')))
 

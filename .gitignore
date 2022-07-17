@@ -1,7 +1,6 @@
 # bytecode compiled python files
-*/__pycache__
-*/*/__pycache__
-*/*/*/__pycache__
+**/__pycache__
+**/.pytest_cache
 
 # generated files / large data files
 medical_reports_translation/logs/

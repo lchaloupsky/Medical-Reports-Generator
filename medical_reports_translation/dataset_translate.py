@@ -13,9 +13,9 @@ from translators import *
 from extractors import *
 from utils import *
 
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser(description="The script serves for the purpose of translating medical report datasets.\n Note: The DeepL translator is not practically usable.")
 parser.add_argument('--translator', default='cubbitt', choices=['cubbitt', 'deepl'], type=str, help="Translator used for reports translation.")
-parser.add_argument('--dataset', default='mimic', choices=['mimic', 'openi'], type=str, help="Dataset intended for translation.")
+parser.add_argument('--dataset', default='openi', choices=['mimic', 'openi'], type=str, help="Dataset intended for translation.")
 parser.add_argument('--data', default=None, type=str, help="Dataset location path.")
 parser.add_argument('--preprocess', default="pipeline", choices=["lowercase", "pipeline", "none"], type=str, help="Dataset preprocessing mode.")
 parser.add_argument('--preprocess_only', default=False, type=bool, help="Flag indicating whether the data should be only preprocessed without translation.")
@@ -39,6 +39,17 @@ def _log_error(filename: str, response: Response):
     logging.error("Maximum repeat count reached. Cannot translate report: {}\n Reason code: {}\n Reason: {}".format(filename, response.status_code, response.reason))
 
 def translate_report(translator: Translator, extractor: Extractor, filename: str, destination: str, preprocess_only: bool):
+    '''
+    Translates medical report and saves it locally.
+
+    :param translator: Translator to be used for the report translation.
+    :param extractor: Specific dataset translator
+    :param filename: Report to be translated
+    :param destination: Destination where the translated text should be saved
+    :param preprocess_only: Flag indicating whether the text should be preprocessed only and not translated
+    :return 1/0 if the report was translated or not
+    '''
+
     # extract text from a file
     text = extractor.extract_report(filename)
 
@@ -55,7 +66,7 @@ def translate_report(translator: Translator, extractor: Extractor, filename: str
         if response.status_code != 200:
             # wait between repetition
             repeats += 1
-            time.sleep(repeats) # For DEEPL -> modify to 3 * repeats
+            time.sleep(repeats * 5 if type(translator) is DeepLTranslator else repeats)
 
             if repeats == MAX_REPEAT_COUNT:
                 print("Cannot translate report: {}. Reason: {}".format(filename, response.reason))
@@ -148,7 +159,7 @@ def main(args: argparse.Namespace):
             cf.thread._threads_queues.clear()
             raise e
 
-    print(f"The translation of '{args.dataset}' dataset is done.")
+    print(f"The translation of '{args.dataset}' dataset completed.")
     if done_sum != total:
         print(f"{total - done_sum} report(s) cannot be translated, please check the log file for additional information.")
 

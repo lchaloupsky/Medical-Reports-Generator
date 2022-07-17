@@ -1,8 +1,18 @@
+#!/usr/bin/python3
+
 class ProgressBar:
+    '''ProgressBar class for indication of the current processing progress.'''
     _PROGRESS_BAR_LENGTH = 40
     _UPDATE_FREQ = 10
 
     def __init__(self, total: int, update_freq: int = _UPDATE_FREQ, num_bars: int = _PROGRESS_BAR_LENGTH):
+        '''
+        Constructs new ProgressBar instance.
+
+        :param total: Total number of elements
+        :update_freq: Number after how many number of steps the progress bar should be updated
+        :num_bars: Total number of bars in the ProgressBar
+        '''
         if total < 1:
             raise ValueError("Total value must be a positive number!")
 

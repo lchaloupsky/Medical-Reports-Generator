@@ -11,6 +11,7 @@ from pathlib import Path
 from utils import *
 
 class TrueCasingPreprocessor(Preprocessor):
+    '''Coverts all words written only with capital letters into form with only one capital letter.'''
     _DO_SKIP = {
         'CHEST', 'PORTABLE', 'CONCLUSION', 'TYPE', 'FOR', 'SINGLE', 'REPORT', 'COMMENT', 'CC', 'TWO', 'URGENT',
         'WET', 'BRINGS', 'MOTHER', 'BRACES', 'PEOPLE', 'ROTHIA', 'READ', 'PEOPLE', 'HIDING'
@@ -18,7 +19,15 @@ class TrueCasingPreprocessor(Preprocessor):
     _DO_NOT_SKIP = {'PA', 'AP', 'CXR', 'RN'}
     _SEP = "<##--separator--##>"
 
-    def __init__(self, extractor: Extractor = None, directory: str = None, dataset: str = None, skip_regex:str = None) -> None:
+    def __init__(self, extractor: Extractor = None, directory: str = None, dataset: str = None, skip_regex: str = None) -> None:
+        '''
+        Constructs new AnonymousSequencePreprocessor class.
+
+        :param extractor: Specific dataset exractor
+        :param directory:
+        :param dataset:
+        :param skip_regex:
+        '''
         super().__init__()
         
         self._skip_regex = skip_regex
@@ -26,8 +35,6 @@ class TrueCasingPreprocessor(Preprocessor):
             self._get_word_frequencies(extractor, directory, dataset)
 
     def preprocess(self, text: str) -> str:
-        '''Coverts all words written only with capital letters into form with only one capital letter.'''
-
         # split text
         line_splits = text.split('\n')
 

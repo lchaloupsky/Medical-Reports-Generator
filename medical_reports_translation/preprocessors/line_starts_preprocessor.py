@@ -3,9 +3,8 @@
 from preprocessors.preprocessor import Preprocessor
 
 class LineStartsPreprocessor(Preprocessor):
+    '''Takes away all whitespaces at the start/end of a line which are common for all lines.'''
     def preprocess(self, text: str) -> str:
-        '''Takes away all whitespaces at the start/end of a line which are common for all lines.'''
-
         # split text
         line_splits = text.rstrip('\n').split('\n')
 

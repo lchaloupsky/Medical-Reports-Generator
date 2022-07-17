@@ -5,10 +5,11 @@ import re
 from preprocessors.preprocessor import Preprocessor
 
 class TimePreprocessor(Preprocessor):
+    '''
+    Finds all incorrectly written english form times(not dates) and corrects them.
+    E.g.: 945AM -> 9:45 AM
+    '''
     def preprocess(self, text: str) -> str:
-        '''Finds all incorrectly written english form times(not dates) and corrects them.
-        For example: 945AM -> 9:45 AM
-        '''
         for found in reversed(list(re.finditer(r'(a|A|p|P)\.{,1}(m|M)\.{,1}', text))):
             # skip those where the found part is not preceded with a number
             if not self._is_time(text, found.start()): 

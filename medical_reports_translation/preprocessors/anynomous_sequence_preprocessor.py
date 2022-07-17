@@ -5,16 +5,20 @@ import re
 from preprocessors.preprocessor import Preprocessor
 
 class AnonymousSequencePreprocessor(Preprocessor):
+    '''Identifies all sequences anonymizing sensitive data and turns them into separate words.'''
     DEFAULT_SEQ: str = "_"
 
     def __init__(self, seq: str = DEFAULT_SEQ) -> None:
-        '''The "seq" attribute represents a common start of every anonymous sequence.'''
+        '''
+        Constructs new AnonymousSequencePreprocessor class.
+
+        :param seq: Represents a common start of every anonymous sequence.
+        '''
         super().__init__()
         self._seq = seq if seq is not None else self.DEFAULT_SEQ
 
 
     def preprocess(self, text: str) -> str:
-        '''Identifies all sequences anonymizing sensitive data and turns them into separate words.'''
         seq_end = self._seq[-1]
         split = re.split(f"({self._seq[:-1]}{seq_end}+)", text)
         curr = ""

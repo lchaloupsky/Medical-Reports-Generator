@@ -5,8 +5,8 @@ import re
 from preprocessors.preprocessor import Preprocessor
 
 class CapitalizeStartsPreprocessor(Preprocessor):
+    '''Capitalize each sentence start and the headings.'''
     def preprocess(self, text: str) -> str:
-        '''Capitalize each sentence start and the headings.'''
         return "".join(map(self._map_paragraph, re.split(r"((?: *\r? *[\n]){2,})", text)))
 
     def _map_paragraph(self, par: str) -> str:
