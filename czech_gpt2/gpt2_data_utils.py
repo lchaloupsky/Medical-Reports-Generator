@@ -4,7 +4,7 @@ import argparse
 
 from typing import List, Tuple
 
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser(description="This file serves for the purposes of preparing data for the GPT-2 fine-tuning process.")
 # arguments used during generation of text
 parser.add_argument('--folder', default=".", type=str, help="Folder containing all data, that should be aggregated.", required=True)
 parser.add_argument('--text_delim', default="<###|---text_delimiter---|###>", type=str, help="Text delimiter sequence indcating the end of the text within a file.")
@@ -19,15 +19,15 @@ def create_aggregates_from_texts(folder: str, text_delim: str, regenerate: bool 
     Each paragraph will be then saved as one entry in the final csv file.
     If 'regenerate' is true, then the aggregated files are generated from the beginning regardless wheter they exist or not.
 
-    Parameters:
-        folder: str - the folder where to begin the search
-        text_delim: str - the text delimiter to separate independent texts within one file
-        regenerate: bool - the flag indicating if the final files should be generated even if they already exists.
-        line_split: int - the number of lines after which the text should split.
-        extensions: list[str] - other extensions that should be taken into account
-
-    Returns:
-        (str, str) - paths to aggregated *csv* and *txt* files
+    :param folder: str - the folder where to begin the search
+    :param text_delim: str - the text delimiter to separate independent texts within one file
+    :param regenerate: bool - the flag indicating if the final files should be generated even if they already exists.
+    :param line_split: int - the number of lines after which the text should split.
+    :param extensions: list[str] - other extensions that should be taken into account
+    :raises ValueError: Folder is not specified
+    :raises ValueError: Specified folder does not exist
+    :raises ValueError: Incorrect line_split value
+    :return: (str, str) - paths to aggregated *csv* and *txt* files
     '''
     if folder is None:
         raise ValueError("You have to specify a folder!")

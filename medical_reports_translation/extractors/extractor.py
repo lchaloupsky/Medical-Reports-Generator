@@ -9,7 +9,8 @@ class Extractor(ABC):
     def __init__(self, base_dir: str = "."):
         '''
         Constructs new Extractor class.
-        :param base_dir: Base directory for the files
+
+        :param base_dir: Base directory for the files, defaults to "."
         '''
         self.base_dir = "{0}/".format(base_dir)
 
@@ -19,6 +20,6 @@ class Extractor(ABC):
         Extracts text from the report file.
 
         :param file_path: The file name or path to the file
-        :return Extracted report text
+        :return: Extracted report text
         '''
         raise NotImplementedError()

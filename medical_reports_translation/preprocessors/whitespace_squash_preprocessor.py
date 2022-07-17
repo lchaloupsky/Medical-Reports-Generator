@@ -15,8 +15,12 @@ class WhitespacesSquashPreprocessor(Preprocessor):
         return '\n'.join(line_splits)
 
     def _split_and_keep_sides(self, text: str):
-        '''Squashes whitespaces inside text with keeping trailing spaces.'''
+        '''
+        Squashes whitespaces inside text with keeping trailing spaces.
         
+        :param text: Text to be processed
+        :return: Processed text
+        '''
         text_len = len(text)
         start = text_len - len(text.lstrip())
         end = text_len - len(text.rstrip())

@@ -1,9 +1,14 @@
 # Czech GPT-2
 
 ## Overview
-This part contains code for fine-tuning the GPT-2 language models to any specified data. For the purposes of the diploma thesis it is used to fine-tune the Czech GPT-2 language model from English GPT2 using the trasnfer learning.
+Czech GPT-2 part contains code for fine-tuning the GPT-2 language models to any specified data. For the purposes of the diploma thesis it is used to fine-tune the Czech GPT-2 language model from English GPT2 by transfer learning. Link to the trained models can be found below.
 
-## Prerequisites
+The training process and the code is based on this article - [Faster than training from scratch — Fine-tuning the English GPT-2 in any language with Hugging Face and fastai v2](https://medium.com/@pierre_guillou/faster-than-training-from-scratch-fine-tuning-the-english-gpt-2-in-any-language-with-hugging-f2ec05c98787)
+
+## Trained Models
+All trained Czech GPT-2 models are available [here](TODO).
+
+## Requirements
 All code was tested with the following configuration:
 * Python - 3.8.6 GCCcore-10.2.0
 * CUDA - 11.1
@@ -14,9 +19,10 @@ Install all required Python dependencies.
 ```bash
 pip3 install -r requirements.txt
 ```
+*Note*: The *requirements_full.txt* file contains all packages installed on the computing cluster during the developement phase.
 
 ## DatasetsWrapper usage
-The usage of DatasetsWrapper class is identical to the usage of the original classes of the **datasets** package. The DatasetsWrapper encapsulates these classes and adds additional features:
+The usage of DatasetsWrapper class is identical to the usage of the original classes of the `datasets` package. The DatasetsWrapper encapsulates these classes and adds additional features:
 - direct text iteration
 - direct text batch iteration
 - control charactes filtering
@@ -50,7 +56,10 @@ gdu.create_aggregates_from_texts("storage/data/oscar", text_delim="<###|---text_
 ```
 
 ## Training
-For the fine-tuning process, run the following script. Parameters are further described directly in the source file or by entering the **-h** or **--help** option.
+To start the fine-tuning process, run the following script. Parameters are further described directly in the source file or by entering the **-h** or **--help** option.
+
+The dataset to be trained on should be located in the `storage/data` directory.
+The `run.sh` script was used on the cluster for training.
 ```bash
 python3 gpt2_train.py [-h] [--type {gradual,full}] 
             [--model MODEL] [--max_len MAX_LEN] 

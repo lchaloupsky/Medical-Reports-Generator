@@ -47,7 +47,7 @@ def translate_report(translator: Translator, extractor: Extractor, filename: str
     :param filename: Report to be translated
     :param destination: Destination where the translated text should be saved
     :param preprocess_only: Flag indicating whether the text should be preprocessed only and not translated
-    :return 1/0 if the report was translated or not
+    :return: 1/0 if the report was translated or not
     '''
 
     # extract text from a file

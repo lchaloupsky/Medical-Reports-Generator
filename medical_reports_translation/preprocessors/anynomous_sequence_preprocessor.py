@@ -12,7 +12,7 @@ class AnonymousSequencePreprocessor(Preprocessor):
         '''
         Constructs new AnonymousSequencePreprocessor class.
 
-        :param seq: Represents a common start of every anonymous sequence.
+        :param seq: Represents a common start of every anonymous sequence, defaults to "_"
         '''
         super().__init__()
         self._seq = seq if seq is not None else self.DEFAULT_SEQ

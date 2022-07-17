@@ -8,10 +8,16 @@ import sys
 import csv
 
 # script arguments
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser(description="Creates wiki files suitable for the GPT-2 training process.")
 parser.add_argument('--lang', default='cs', type=str, help="The wiki language to be processed.", required=True)
 
 def download_url(url, path):
+    '''
+    Dowloads wiki dump.
+
+    :param url: Wikidump url
+    :param path: Path where to save the dump
+    '''
     resp = requests.get(url, stream=True)
     with path.open("wb") as f:
         for chunk in resp.iter_content(chunk_size=8192):
@@ -19,6 +25,12 @@ def download_url(url, path):
                 f.write(chunk)
 
 def get_wiki(path, lang):
+    '''
+    Gets the wiki for specific language and preprocesses it.
+
+    :param path: Path where the processing should take its place
+    :param lang: Wikidump language
+    '''
     name = f"{lang}wiki"
     if (path/name).exists():
         print(f"{path/name} already exists, not downloading.")
@@ -51,6 +63,13 @@ def get_wiki(path, lang):
     os.chdir(prev_cwd)
 
 def split_wiki(path, lang):
+    '''
+    Splits wiki into individual files.
+
+    :param path: Path where the processing should take its place
+    :param lang: Wiki language
+    :return: Path to wiki files
+    '''
     dest = path/"temp"
     if dest.exists():
         print(f"{dest} already exists, not splitting.")
@@ -77,6 +96,12 @@ def split_wiki(path, lang):
     return dest
         
 def get_one_clean_txt_file(dest,lang):
+    '''
+    Creates single clean .txt file comprising of all wiki texts.
+
+    :param dest: Wiki files location
+    :param lang: Wiki lanugage
+    '''
     fname = f"{lang}wiki_agg.txt"
     # regex to delete </doc>
     doc_re = re.compile(rf"([\w\W]*)<\/doc>")
@@ -101,7 +126,13 @@ def get_one_clean_txt_file(dest,lang):
         txt_f.write(all_texts)
     print(f"All texts from '{lang}' wikipedia saved in the file {dest.parent/fname}.\n")
 
-def get_one_clean_csv_file(dest,lang):            
+def get_one_clean_csv_file(dest,lang):
+    '''
+    Creates single clean .csv file comprising of all wiki texts.
+
+    :param dest: Wiki files location
+    :param lang: Wiki lanugage
+    '''
     fname = f"{lang}wiki_agg.csv"
     # regex to delete </doc>
     doc_re = re.compile(rf"([\w\W]*)<\/doc>")
@@ -129,6 +160,12 @@ def get_one_clean_csv_file(dest,lang):
     print(f"All texts from '{lang}' wikipedia saved in the file {dest.parent/fname}.\n")
 
 def get_clean_files(dest, lang):
+    '''
+    Creates clean .txt and .csv files comprising of all wiki texts.
+
+    :param dest: Wiki files location
+    :param lang: Wiki lanugage
+    '''
     fname_txt, fname_csv = f"{lang}wiki_agg.txt", f"{lang}wiki_agg.csv"
 
     # regex to delete </doc>

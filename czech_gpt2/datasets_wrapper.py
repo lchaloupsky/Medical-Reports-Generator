@@ -4,7 +4,15 @@ import itertools
 from pathlib import Path
 
 class DatasetsWrapper:
+    '''Class encapsulating the "datasets" package classes adding additional features.'''    
     def __init__(self, *args, dataset = None, batch_size = 1000, stream_iter = False, **kwargs):
+        '''
+        Constructs a new instance of DatasetsWrapper class.
+
+        :param dataset: Name of the dataset, defaults to None
+        :param batch_size: Batch size for batch iteration of the dataset, defaults to 1000
+        :param stream_iter: Flag indicating wheter to use the streaming iterator or the batch iterator, defaults to False
+        '''
         self.batch_size = batch_size
         self.stream_iter = stream_iter
         self.control_chars_filter = ControlCharsFilter()
@@ -72,7 +80,13 @@ class DatasetsWrapper:
         )
 
     def save_to_file(self, path, text_delim="", control_chars_behaviour="remove"):
-        '''control_chars_behaviour - one of [None, "filter", "remove"].'''
+        '''
+        Saves the whole dataset into the given path. Possibly filtering out texts with control characters in them.
+
+        :param path: Path to save the dataset
+        :param text_delim: Text delimiter to separate the texts, defaults to ""
+        :param control_chars_behaviour: How should treat the control chars. One of [None, "filter", "remove"], defaults to "remove"
+        '''
         datasets_to_save = []
         if isinstance(self._dataset, dict):
             datasets_to_save = datasets_to_save.extend(zip(self._dataset.keys(), map(self._copy_self, self._dataset.values())))
@@ -92,13 +106,26 @@ class DatasetsWrapper:
                     f.write(f"{text}\n{text_delim}")
 
 class ControlCharsFilter:
+    '''Helper class dealing with the control characters.'''
     _CONTROL_CHARS = set(map(chr, itertools.chain(range(0x00, 0x20), range(0x7f, 0xa0))))
     _CONTROL_CHARS_EXCEPTIONS = {"\n", "\r", "\t"}
     _CONTROL_CHARS_MAP = {ord(char):None for char in _CONTROL_CHARS - _CONTROL_CHARS_EXCEPTIONS}
 
     def contains_control_chars(self, text):
+        """
+        Checks whether text contains a control character or not.
+
+        :param text: Text to be checked
+        :return: True if text contain a control character
+        """        
         text_len = len(text)
         return text_len != len(self.filter(text))
 
     def filter(self, text):
+        '''
+        Filters out the control character from the text.
+
+        :param text: Text to be filtered
+        :return: Filtered text
+        '''
         return text.translate(self._CONTROL_CHARS_MAP)

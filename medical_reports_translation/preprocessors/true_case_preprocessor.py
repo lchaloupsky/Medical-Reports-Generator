@@ -23,10 +23,10 @@ class TrueCasingPreprocessor(Preprocessor):
         '''
         Constructs new AnonymousSequencePreprocessor class.
 
-        :param extractor: Specific dataset exractor
-        :param directory:
-        :param dataset:
-        :param skip_regex:
+        :param extractor: Specific dataset exractor, defaults to None
+        :param directory: Dataset directory location, defaults to None
+        :param dataset: Dataset name, defaults to None
+        :param skip_regex: Regex used used to skip corresponding texts during the dictionary creation, defaults to None
         '''
         super().__init__()
         

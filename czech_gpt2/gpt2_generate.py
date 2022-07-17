@@ -4,7 +4,7 @@ from transformers import GPT2Tokenizer, GPT2LMHeadModel
 import argparse
 import torch
 
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser(description="This script serves for the purposes of the text generation using the specified GPT-2 model.")
 # arguments used during generation of text
 parser.add_argument('--max_len', default=512, type=int, help="Maximum length of generated text.")
 parser.add_argument('--model', default="model_testing/gpt2_cz_med_smaller_full_16bs", type=str, help="Model name.")
@@ -21,6 +21,11 @@ parser.add_argument('--eos_token_id', default=None, type=int, help="End token id
 parser.add_argument('--pad_token_id', default=50256, type=int, help="Pad token id.")
 
 def generate(args: argparse.Namespace) -> None:
+    '''
+    Generates text using the GPT-2 model according to the given arguments.
+
+    :param args: Text generation parameters
+    '''
     if args.model == None:
         raise ValueError("The model argument must be set for generating the text!")
 

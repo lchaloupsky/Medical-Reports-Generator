@@ -18,7 +18,7 @@ class CubbittTranslator(Translator):
 		'''
 		Constructs new CubbittTranslator instance.
 		
-		:param model: Name of the model to bed used for the translation
+		:param model: Name of the model to bed used for the translation, defaults to "doc-en-cs"
 		'''
 		super().__init__()
 		self._model = model

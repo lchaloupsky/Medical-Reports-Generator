@@ -29,8 +29,10 @@ The repository is structured as follows:
 
 ### translators 
 * Contains `Translator` classes. 
-* These serves for the text translation. You can define your own class by inheriting the `Translator` abstract class.
+* These serves for the automatic machine translation of text. You can define your own class by inheriting the `Translator` abstract class.
 * Currently supported are **CUBBITT** and **DeepL**(unusable in real terms due to strict DeepL limits) translators.
+  * [**CUBBITT**](https://lindat.mff.cuni.cz/services/translation/) - Freely available translator without restrictions on its REST API created at the Charles University.
+  * [**DeepL**](https://www.deepl.com/translator) - Using the REST API used on their web page, but it has limitations for circa 25 consecutive calls in an hour.
 
 ### tests
 * Contains `pytest` tests for **preprocessors** and **extractors** validation.
@@ -40,6 +42,8 @@ The repository is structured as follows:
 
 ## Run Translation Process
 The translation of the dataset can be run in the following way. Parameters are further described directly in the source file or by entering the **-h** or **--help** option.
+More information can be found inside the script.
+
 ```bash
 python3 dataset_translate.py [-h] 
         [--translator {cubbitt,deepl}] 

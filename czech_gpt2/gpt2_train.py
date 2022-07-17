@@ -15,7 +15,7 @@ import sys
 import argparse
 import os
 
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser(description="Fine-tunes the new GPT-2 model based on the given arguments.")
 # general arguments
 parser.add_argument('--type', default='full', choices=['gradual', 'full'], type=str, help="Type of the finetuning method.")
 parser.add_argument('--model', default="your_new_model_name", type=str, help="New model name.")
@@ -43,6 +43,15 @@ TRAINING_DATA_PATH = "training_data"
 CHECKPOINTS_PATH = "checkpoints"
 
 def train_tokenizer(config, dataset_name, args):
+    '''
+    Trains new tokenizer on the given data.
+
+    :param config: Config object containing paths to all important model directories
+    :param dataset_name: Dataset name
+    :param args: Script arguments
+    :return: (tok_en, tok_cs) Tuple of original tokenizer and newly trained tokenizer
+    '''
+    
     # tokenizer name and path declarations
     ByteLevelBPE_tokenizer_cs_rep = 'ByteLevelBPE_tokenizer_cs'
     path_to_ByteLevelBPE_tokenizer_cs_rep = config["tokenizers_path"]/ByteLevelBPE_tokenizer_cs_rep
@@ -94,6 +103,15 @@ def train_tokenizer(config, dataset_name, args):
     return tokenizer_en, tokenizer_cs
 
 def compare_embedding_matrices(config, tokenizer_en, tokenizer_cs, args):
+    '''
+    Compares embedding matrices and updates the weight of the GPT-2 wte and lm_head accordingly.
+
+    :param config: Config object containing paths to all important model directories
+    :param tokenizer_en: Original tokenizer
+    :param tokenizer_cs: New tokenizer
+    :param args: Script arguments
+    :return: Updated GPT-2 model
+    '''
     tokenizer_fastai_en = TransformersTokenizer(tokenizer_en)
     tokenizer_fastai_cs = TransformersTokenizer(tokenizer_cs)
 
@@ -144,6 +162,14 @@ def compare_embedding_matrices(config, tokenizer_en, tokenizer_cs, args):
     return model
 
 def load_dataframe(config, dataset_name, args):
+    '''
+    Loads dataset and creates training and validation indices.
+
+    :param config: Config object containing paths to all important model directories
+    :param dataset_name: Dataset name
+    :param args: Script arguments
+    :return: data frame, train indices, validation indices
+    '''
     df = pd.read_csv(config["data_path"]/f'{dataset_name}_agg.csv')
 
     # For debug purposes take only first 50 documents
@@ -167,8 +193,16 @@ def load_dataframe(config, dataset_name, args):
 
     return df, idxs_train, idxs_val
 
-def show_batch_text(batch, tokenizer, column_size:int = 75, show_by_words:bool = True) -> str:
-    '''Shows all batch data from dataloaders.show_batch(...) in the text form instead of the html form.'''
+def show_batch_text(batch, tokenizer, column_size: int = 75, show_by_words: bool = True) -> str:
+    '''
+    Shows all batch data from dataloaders.show_batch(...) in the text form instead of the html form.
+
+    :param batch: Batch of data to be showed
+    :param tokenizer: Corresponding text tokenizer
+    :param column_size: Width of the column, defaults to 75
+    :param show_by_words: Flag whether the column should be matched by number of characters or words, defaults to True
+    :return: Formatted batch data texts
+    '''
     delim = " | "
     inputs, validations, n = batch[0], batch[1], len(batch[2])
 
@@ -210,6 +244,7 @@ def show_batch_text(batch, tokenizer, column_size:int = 75, show_by_words:bool =
 
 ### ----------------- TOKENIZE AT RUNTIME VERSION -----------------------
 class TransformersTokenizer(Transform):
+    '''Tokenizer wrapper for the fastai process.'''
     def __init__(self, tokenizer): self.tokenizer = tokenizer
     def encodes(self, x): 
         toks = self.tokenizer.tokenize(x)
@@ -217,6 +252,17 @@ class TransformersTokenizer(Transform):
     def decodes(self, x): return TitledStr(self.tokenizer.decode(x.cpu().numpy()))
 
 def prepare_data_without_tokenization(df, idxs_train, idxs_val, tokenizer_cs, args):
+    '''
+    Prepares data to corresponding structures without pre-tokenizing them in advance.
+
+    :param df: Dataset DataFrame
+    :param idxs_train: Train indices
+    :param idxs_val: Validation indices
+    :param tokenizer_cs: New tokenizer
+    :param args: Script arguments
+    :return: Prepared DataLoaders object
+    '''
+
     # gather all texts in one numpy array 
     all_texts = np.concatenate([df.iloc[idxs_train].text.values, df.iloc[idxs_val].text.values])
 
@@ -242,6 +288,7 @@ def prepare_data_without_tokenization(df, idxs_train, idxs_val, tokenizer_cs, ar
 
 ### ---------------- PRETOKENIZE WHOLE DATASET VERSION ------------------
 class TransformersTokenizerPreTokenized(Transform):
+    '''Tokenizer wrapper for the fastai process.'''
     def __init__(self, tokenizer): 
         self.tokenizer = tokenizer
 
@@ -252,10 +299,30 @@ class TransformersTokenizerPreTokenized(Transform):
         return TitledStr(self.tokenizer.decode(x.cpu().numpy()))
 
 def tokenize(text, tokenizer_cs):
+    '''
+    Tokenizes the given text into token ids in the tensor.
+
+    :param text: Text to be tokenized
+    :param tokenizer_cs: Tokenizer object
+    :return: Tokenized text tensor
+    '''
     toks = tokenizer_cs.tokenize(text)
     return tensor(tokenizer_cs.convert_tokens_to_ids(toks))
 
 def prepare_data_with_tokenization(config, df, idxs_train, idxs_val, tokenizer_cs, dataset_name, args):
+    '''
+    Prepares data to corresponding structures while pre-tokenizing them in advance.
+
+    :param config: Config object containing paths to all important model directories
+    :param df: Dataset DataFrame
+    :param idxs_train: Train indices
+    :param idxs_val: Validation indices
+    :param tokenizer_cs: New tokenizer
+    :param dataset_name: Dataset name
+    :param args: Script arguments
+    :return: Prepared DataLoaders object
+    '''
+
     # gather all texts in one numpy array 
     all_texts = np.concatenate([df.iloc[idxs_train].text.values, df.iloc[idxs_val].text.values])
 
@@ -308,6 +375,7 @@ class DropOutput(Callback):
         self.learn.pred = self.pred[0]
 
 class StartFromEpoch(Callback):
+    '''Callback to be able to skip some epochs and train later phases.'''
     def __init__(self, start_epoch):
         self.start_epoch = start_epoch
 
@@ -326,6 +394,9 @@ def splitter(n=4):
     (2) - second 'n' decoder blocks
     (3) - third 'n' decoder blocks
     (4) - wte, wpe and final LayerNorm
+    
+    :param n: Number of blocks to split by
+    :return: Function 'inner_splitter' that splits the blocks into groups
     '''
     def inner_splitter(model):
         # First group: decoder blocks from 0 to 'n-1'
@@ -354,6 +425,16 @@ def splitter(n=4):
     return inner_splitter
 
 def find_learning_rates(training_data_path, learn, exit=True, name="lr_plot", epoch=None):
+    '''
+    Finds and saves learning rates to be used.
+
+    :param training_data_path: Path to the training data
+    :param learn: Learner object
+    :param exit: If the program should exit after finding the learning rates, defaults to True
+    :param name: Name of the created learning rate plot, defaults to "lr_plot"
+    :param epoch: Epoch in which the learning rates were found, defaults to None
+    '''
+
     # Find all possible good learning rates
     lrs = learn.lr_find(show_plot=True, suggest_funcs=(minimum, steep, valley, slide))
 
@@ -364,6 +445,16 @@ def find_learning_rates(training_data_path, learn, exit=True, name="lr_plot", ep
     if exit: sys.exit()
 
 def finetune_gradual(model_dirs, model_name, learn, tokenizer_cs, dataset_name, args):
+    '''
+    Fine-tunes the model in the gradual way.
+
+    :param model_dirs: Model directories tuple - Final model destination, Checkpoints destination, Training data destination
+    :param model_name: New model name
+    :param learn: Learner object
+    :param tokenizer_cs: New tokenizer
+    :param dataset_name: Dataset name
+    :param args: Script arguments
+    '''
     final_dest, checkpoint_dest, training_data_dest = model_dirs
 
     # --- FINE-TUNING ---
@@ -415,6 +506,16 @@ def finetune_gradual(model_dirs, model_name, learn, tokenizer_cs, dataset_name, 
     save_models(final_dest, learn, tokenizer_cs)
 
 def finetune_all_at_once(model_dirs, model_name, learn, tokenizer_cs, dataset_name, args):
+    '''
+    Fine-tunes the model in two phases - new head only, entire model.
+
+    :param model_dirs: Model directories tuple - Final model destination, Checkpoints destination, Training data destination
+    :param model_name: New model name
+    :param learn: Learner object
+    :param tokenizer_cs: New tokenizer
+    :param dataset_name: Dataset name
+    :param args: Script arguments
+    '''
     final_dest, checkpoint_dest, training_data_dest = model_dirs
 
     # --- FINE-TUNING ---
@@ -454,6 +555,13 @@ def finetune_all_at_once(model_dirs, model_name, learn, tokenizer_cs, dataset_na
     save_models(final_dest, learn, tokenizer_cs)
 
 def save_models(final_dest, learn, tokenizer_cs):
+    '''
+    Saves model.
+
+    :param final_dest: Destination where to save to model
+    :param learn: Learner object
+    :param tokenizer_cs: Tokenizer object
+    '''
     # save pyTorch version of the trained model
     learn.model.save_pretrained(str(final_dest))
     tokenizer_cs.save_pretrained(str(final_dest))
@@ -465,6 +573,14 @@ def save_models(final_dest, learn, tokenizer_cs):
     print("Saved 'tensorflow' version.")
 
 def load_checkpoint(learn, checkpoints_dir, name=None):
+    '''
+    Loads existing checkpoint.
+
+    :param learn: Learner object
+    :param checkpoints_dir: Checkpoints directory
+    :param name: Name of the checkpoint - optional, defaults to None
+    :return: Loaded checkpoint Learner object
+    '''
     if name is not None:
         return learn.load(name)
     
@@ -472,7 +588,16 @@ def load_checkpoint(learn, checkpoints_dir, name=None):
     return learn.load(".".join(latest_ckpt.split(".")[:-1])), int(latest_ckpt.split("_")[-1].split(".")[0])
 
 def prepare_model_dirs(config, args, dataset_name):
-    # Prepare all dirs for current model
+    '''
+    Prepares all dirs for the current model.
+
+    :param config: Config object containing paths to all important model directories
+    :param args: Script arguments
+    :param dataset_name: Dataset name
+    :return: Tuple of all neccessary directories and model name - ((model_dir, checkpoints_dir, training_data_dir), model_name)
+    '''
+
+    # Prepares all dirs for the current model
     model_name = args.model if args.model is not None else f"{args.pretrained_weights}_{dataset_name}_{'_'.join(args.learning.rates)}"
     final_dest = config["models_path"]/model_name
     checkpoints_dest = config["checkpoints_path"]/model_name
@@ -486,15 +611,36 @@ def prepare_model_dirs(config, args, dataset_name):
     return (final_dest, checkpoints_dest, training_data_dest), model_name
 
 def save_checkpoint(learn, checkpoint_name, args):
+    '''
+    Saves checkpoint.
+
+    :param learn: Learner object
+    :param checkpoint_name: Checkpoint name
+    :param args: Script arguments
+    '''
     if args.save_checkpoints:
         learn.save(checkpoint_name)
 
 def plot_and_save_loss(learn, destination, plot_name):
+    '''
+    Plots and saves last run training losses
+
+    :param learn: Learner object
+    :param destination: Plot destination
+    :param plot_name: Plot name
+    '''
+
     learn.recorder.plot_loss()
     plt.savefig(f"{str(destination/plot_name)}.png")
     plt.clf()
 
 def prepare_config(dataset_name):
+    '''
+    Prepares all basic directories for given dataset.
+
+    :param dataset_name: Dataset name
+    :return: Prepared config object - dictionary of "data_path", "tokenizers_path", "training_data_path", "models_path" and "checkpoints_path"
+    '''
     base_path = Path(__file__).parent.resolve()/BASE_PATH
     config = {
         "data_path": base_path/DATA_PATH/dataset_name,
@@ -510,6 +656,12 @@ def prepare_config(dataset_name):
     return config
 
 def train(args: argparse.Namespace) -> None:
+    '''
+    Main entry of the script, where the entire training process runs.
+
+    :param args: Script arguments
+    '''
+
     # check pretrained model config
     print(GPT2Config.from_pretrained(args.pretrained_weights))
 

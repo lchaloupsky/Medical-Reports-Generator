@@ -12,7 +12,7 @@ medical_reports_translation/raw_reports/
 testing/
 
 # czech_gpt2 huge files - models
-czech_gpt2/model_testing/*
+czech_gpt2/model_testing/
 
 # med report generation huge files - models
 medical_reports_generation/final_models/*

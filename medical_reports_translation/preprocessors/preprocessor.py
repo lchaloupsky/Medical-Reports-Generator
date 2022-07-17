@@ -11,6 +11,6 @@ class Preprocessor(ABC):
         Preprocesses text for translation.
 
         :param text: Text to be preprocessed
-        :return Preprocessed text
+        :return: Preprocessed text
         '''
         raise NotImplementedError()

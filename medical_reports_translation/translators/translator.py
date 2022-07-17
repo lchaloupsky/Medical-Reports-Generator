@@ -12,7 +12,7 @@ class Translator(ABC):
 		Translates input text.
 		
 		:param text: Text to be translated
-		:return Translator service response object
+		:return: Translator service response object
 		'''
 		raise NotImplementedError()
 
@@ -23,6 +23,6 @@ class Translator(ABC):
 		
 		:param text: Original report text
 		:param response: Translator response from the translate() method
-		:return Translated text
+		:return: Translated text
 		'''
 		raise NotImplementedError()

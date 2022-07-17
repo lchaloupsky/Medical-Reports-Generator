@@ -10,8 +10,8 @@ class ProgressBar:
         Constructs new ProgressBar instance.
 
         :param total: Total number of elements
-        :update_freq: Number after how many number of steps the progress bar should be updated
-        :num_bars: Total number of bars in the ProgressBar
+        :param update_freq: Number after how many number of steps the progress bar should be updated, defaults to 10
+        :param num_bars: Total number of bars in the ProgressBar, defaults to 40
         '''
         if total < 1:
             raise ValueError("Total value must be a positive number!")
