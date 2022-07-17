@@ -11,6 +11,12 @@ from gpt2.gpt2_model import TFGPT2LMHeadModel
 from skimage.transform import resize
 
 def load_image(image_file):
+    '''
+    Loads an image from the given file path.
+
+    :param image_file: Image path
+    :return: Loaded image as numpy array
+    '''
     print(f"Loading '{image_file}'")
     image = Image.open(image_file)
     image_array = np.asarray(image.convert("RGB"))
@@ -24,6 +30,16 @@ def load_image(image_file):
     return image_array
 
 def predict(FLAGS, encoder, decoder, tokenizer_wrapper, image):
+    '''
+    Predicts medical report for the given input image.
+
+    :param FLAGS: Configuration object
+    :param encoder: Encoder part of the network (CNN)
+    :param decoder: Decoder part of the network (GPT-2)
+    :param tokenizer_wrapper: TokenizerWrapper object
+    :param image: Loaded image as numpy array
+    :return: Generated medical report
+    '''
     visual_features, tags_embeddings = encoder(image, training=False)
     dec_input = tf.expand_dims(tokenizer_wrapper.GPT2_encode("startseq", pad=False), 0)
     num_beams = FLAGS.beam_width

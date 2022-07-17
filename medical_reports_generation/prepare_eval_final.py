@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import shutil
 import argparse
 import pandas as pd
@@ -5,16 +7,21 @@ import json
 
 from pathlib import Path
 
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser(description="Prepares random sample from the testing .csv file for the manual evaluation.")
 parser.add_argument('--img_dir', default="IU-XRay/images", type=str, help="X-ray images dir.")
-parser.add_argument('--models_outputs', default="models_outputs", type=str, help="Folder where outputs are saved.")
-parser.add_argument('--reports_orig_dir', default="../translations_openi_cubbit_original/data/ecgen-radiology", type=str, help="Original reports destination.")
-parser.add_argument('--reports_trans_dir', default="../translations_openi_cubbit_cased/data/ecgen-radiology", type=str, help="Translated reports destination.")
-parser.add_argument('--csv_file', default="testing_set_cz.csv", type=str, help="Path to the testing csv file.")
+parser.add_argument('--models_outputs', default="model_outputs/best", type=str, help="Folder where outputs are saved.")
+parser.add_argument('--reports_orig_dir', default="../medical_reports_translation/original_openi/data/ecgen-radiology", type=str, help="Original preprocessed reports location.")
+parser.add_argument('--reports_trans_dir', default="../medical_reports_translation/translations_openi/data/ecgen-radiology", type=str, help="Translated reports location.")
+parser.add_argument('--csv_file', default="./czech_csv_train_data/testing_set_cz.csv", type=str, help="Path to the testing csv file.")
 
 def prepare(args: argparse.Namespace):
+    '''
+    Prepares random sample from the testing .csv file for the manual evaluation.
+
+    :param args: Script arguments
+    '''
     models_out_dir = Path(args.models_outputs)
-    eval_dir = Path("./eval")
+    eval_dir = Path("./eval_final")
     eval_dir.mkdir(exist_ok=True)
 
     # prepare both sets randomly
@@ -34,14 +41,14 @@ def prepare(args: argparse.Namespace):
         preds = pd.read_csv(mod_dir/"predictions.csv", encoding="utf-8")
 
         # prepare for each model
-        prepare_df_set(normal, mod_dir.parts[-1], preds, norm_dict, norm_map)
-        prepare_df_set(with_disease, mod_dir.parts[-1], preds, with_dis_dict, with_dis_map)
+        _prepare_df_set(normal, mod_dir.parts[-1], preds, norm_dict, norm_map)
+        _prepare_df_set(with_disease, mod_dir.parts[-1], preds, with_dis_dict, with_dis_map)
 
     # save both normal and with diseases
-    save_preds(eval_dir/"normal", norm_dict, norm_map, args)
-    save_preds(eval_dir/"with_disease", with_dis_dict, with_dis_map, args)
+    _save_preds(eval_dir/"normal", norm_dict, norm_map, args)
+    _save_preds(eval_dir/"with_disease", with_dis_dict, with_dis_map, args)
 
-def save_preds(mod_dir, fin_dict, map_index_img, args):
+def _save_preds(mod_dir, fin_dict, map_index_img, args):
     for k, report in fin_dict.items():
         final_path_dir = mod_dir/str(k)
         final_path_dir.mkdir(exist_ok=True, parents=True)
@@ -56,7 +63,7 @@ def save_preds(mod_dir, fin_dict, map_index_img, args):
     with open(final_path_dir.parent/"mapping_index_to_img.json", "w") as map_f:
         json.dump(map_index_img, map_f)
 
-def prepare_df_set(df, mod_name, preds, fin_dict, map_index_img):
+def _prepare_df_set(df, mod_name, preds, fin_dict, map_index_img):
     for index, (_, row_n) in enumerate(df.iterrows(), 1):
         _, pred_row = next(preds.loc[preds["image_path"] == row_n["Image Index"]].iterrows())
         assert pred_row["image_path"] == row_n["Image Index"]

@@ -5,7 +5,7 @@ import re
 
 from pathlib import Path
 
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser(description="Script intended for preprocessing and fixing medical texts for further GPT-2 fine-tuning.")
 parser.add_argument('--action', default='none', choices=['none', 'fix', 'remove'], type=str, help="The way incorrect dashes should be treated.")
 parser.add_argument('--data', type=str, required=True, help="Dataset location path.")
 parser.add_argument('--dest', type=str, required=True, help="Destination directory location path.")
@@ -30,6 +30,12 @@ _REGEXES_TO_DEL = [
 ]
 
 def process_file(file_path: Path, dest_path: Path):
+    '''
+    Preprocesses text file. Deletes unwanted characters. Skips texts with unrecognized or undesirable characters. Fixes some common text pitfalls.
+
+    :param file_path: File path
+    :param dest_path: Destination directory location path
+    '''
     dest_file = dest_path/file_path.parent/f"{file_path.stem}_fixed{file_path.suffix}"
     dest_file.parent.mkdir(exist_ok=True, parents=True)
 

@@ -59,6 +59,7 @@ gdu.create_aggregates_from_texts("storage/data/oscar", text_delim="<###|---text_
 To start the fine-tuning process, run the following script. Parameters are further described directly in the source file or by entering the **-h** or **--help** option.
 
 The dataset to be trained on should be located in the `storage/data` directory.
+
 The `run.sh` script was used on the cluster for training.
 ```bash
 python3 gpt2_train.py [-h] [--type {gradual,full}] 
@@ -93,3 +94,6 @@ python3 gpt2_generate.py [-h] [--max_len MAX_LEN]
             [--eos_token_id EOS_TOKEN_ID]
             [--pad_token_id PAD_TOKEN_ID]
 ```
+
+## Medical Data
+Contains medical data and script used to fix some common pitfalls.
