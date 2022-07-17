@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.2.24)  17 JUL 2022 00:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.2.24)  17 JUL 2022 11:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -726,10 +726,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 30--31
 
  (./chap01.tex
 Chapter 1.
-
-
-pdfTeX warning: pdflatex.exe (file ../img/ProblemExample.pdf): PDF inclusion: f
-ound PDF version <1.7>, but at most version <1.5> allowed
 <../img/ProblemExample.pdf, id=378, 586.44093pt x 177.66376pt>
 File: ../img/ProblemExample.pdf Graphic file (type pdf)
 <use ../img/ProblemExample.pdf>
@@ -755,16 +751,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 38--39
  []
 
 [6]
-
-pdfTeX warning: pdflatex.exe (file ../img/VisualTransformerArchitecture.pdf): P
-DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 <../img/VisualTransformerArchitecture.pdf, id=429, 710.655pt x 369.63094pt>
 File: ../img/VisualTransformerArchitecture.pdf Graphic file (type pdf)
 <use ../img/VisualTransformerArchitecture.pdf>
 Package pdftex.def Info: ../img/VisualTransformerArchitecture.pdf  used on inpu
 t line 47.
 (pdftex.def)             Requested size: 412.57056pt x 216.24167pt.
-[7 <../img/VisualTransformerArchitecture.pdf>]
+ [7 <../img/VisualTransformerArchitecture.pdf>]
 Underfull \hbox (badness 10000) in paragraph at lines 58--59
 
  []
@@ -800,11 +793,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 75--76
 
  []
 
-
-
-pdfTeX warning: pdflatex.exe (file ../img/IUChestXRaySample_CXR1728_IM-0479-100
-1.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allow
-ed
 <../img/IUChestXRaySample_CXR1728_IM-0479-1001.pdf, id=475, 848.80376pt x 309.7
 2859pt>
 File: ../img/IUChestXRaySample_CXR1728_IM-0479-1001.pdf Graphic file (type pdf)
@@ -859,10 +847,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 129--130
 
  []
 
-
-
-pdfTeX warning: pdflatex.exe (file ../img/OmarExample.pdf): PDF inclusion: foun
-d PDF version <1.7>, but at most version <1.5> allowed
 <../img/OmarExample.pdf, id=585, 832.47229pt x 596.91115pt>
 File: ../img/OmarExample.pdf Graphic file (type pdf)
 <use ../img/OmarExample.pdf>
@@ -876,10 +860,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 137--138
 
  []
 
-
-
-pdfTeX warning: pdflatex.exe (file ../img/ZhihongExample.pdf): PDF inclusion: f
-ound PDF version <1.7>, but at most version <1.5> allowed
 <../img/ZhihongExample.pdf, id=594, 846.51137pt x 331.65768pt>
 File: ../img/ZhihongExample.pdf Graphic file (type pdf)
 <use ../img/ZhihongExample.pdf>
@@ -894,9 +874,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 145--146
  []
 
 [13]
-
-pdfTeX warning: pdflatex.exe (file ../img/YuanExample.pdf): PDF inclusion: foun
-d PDF version <1.7>, but at most version <1.5> allowed
 <../img/YuanExample.pdf, id=621, 843.91476pt x 188.13142pt>
 File: ../img/YuanExample.pdf Graphic file (type pdf)
 <use ../img/YuanExample.pdf>
@@ -904,7 +881,7 @@ Package pdftex.def Info: ../img/YuanExample.pdf  used on input line 148.
 (pdftex.def)             Requested size: 412.55608pt x 91.05128pt.
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
 52.
-(d:/texlive/2019/texmf-dist/tex/latex/lm/ts1lmr.fd
+ (d:/texlive/2019/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 
@@ -941,15 +918,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 19--20
 
 
 ]
-
-pdfTeX warning: pdflatex.exe (file ../img/OmarArchitecture.pdf): PDF inclusion:
- found PDF version <1.7>, but at most version <1.5> allowed
 <../img/OmarArchitecture.pdf, id=686, 845.38057pt x 332.35278pt>
 File: ../img/OmarArchitecture.pdf Graphic file (type pdf)
 <use ../img/OmarArchitecture.pdf>
 Package pdftex.def Info: ../img/OmarArchitecture.pdf  used on input line 22.
 (pdftex.def)             Requested size: 412.56317pt x 162.1798pt.
-[17 <../img/OmarArchitecture.pdf>]
+ [17 <../img/OmarArchitecture.pdf>]
 Underfull \hbox (badness 10000) in paragraph at lines 36--37
 
  []
@@ -980,10 +954,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 78--79
 
  []
 
-
-
-pdfTeX warning: pdflatex.exe (file ../img/lrFinder.pdf): PDF inclusion: found P
-DF version <1.7>, but at most version <1.5> allowed
 <../img/lrFinder.pdf, id=763, 421.575pt x 326.72063pt>
 File: ../img/lrFinder.pdf Graphic file (type pdf)
 <use ../img/lrFinder.pdf>
@@ -1004,10 +974,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 94--95
 
  []
 
-
-
-pdfTeX warning: pdflatex.exe (file ../img/lrSchedule.pdf): PDF inclusion: found
- PDF version <1.7>, but at most version <1.5> allowed
 <../img/lrSchedule.pdf, id=780, 393.72093pt x 276.28218pt>
 File: ../img/lrSchedule.pdf Graphic file (type pdf)
 <use ../img/lrSchedule.pdf>
