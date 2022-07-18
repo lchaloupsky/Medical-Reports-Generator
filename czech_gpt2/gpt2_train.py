@@ -19,11 +19,9 @@ parser = argparse.ArgumentParser(description="Fine-tunes the new GPT-2 model bas
 # general arguments
 parser.add_argument('--type', default='full', choices=['gradual', 'full'], type=str, help="Type of the finetuning method.")
 parser.add_argument('--model', default="your_new_model_name", type=str, help="New model name.")
-parser.add_argument('--max_len', default=512, type=int, help="Maximum length of the generated text.")
 # training arguments
 parser.add_argument('--pretrained_weights', default="gpt2", type=str, help="Pretrained model name.")
 parser.add_argument('--dataset', default="oscar", type=str, help="Dataset name. Optional.")
-parser.add_argument('--data_path', default="oscar", type=str, help="Data path. The data should be inside the 'storage/data' folder.")
 parser.add_argument('--batch_size', default=16, type=int, help="Dataset name.")
 parser.add_argument('--train_data_ratio', default=0.8, type=float, help="Portion of data to be used for trainig.")
 parser.add_argument('--sequence_length', default=512, type=int, help="Dataset name.")
@@ -666,7 +664,7 @@ def train(args: argparse.Namespace) -> None:
     print(GPT2Config.from_pretrained(args.pretrained_weights))
 
     # create folders where all data will be stored
-    dataset_name = args.dataset if args.dataset is not None else os.path.basename(os.path.normpath(args.data_path))
+    dataset_name = args.dataset
     config = prepare_config(dataset_name)
     print(config)
 

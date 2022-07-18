@@ -63,9 +63,9 @@ The dataset to be trained on should be located in the `storage/data` directory.
 The `run.sh` script was used on the cluster for training.
 ```bash
 python3 gpt2_train.py [-h] [--type {gradual,full}] 
-            [--model MODEL] [--max_len MAX_LEN] 
+            [--model MODEL]
             [--pretrained_weights PRETRAINED_WEIGHTS] 
-            [--dataset DATASET] [--data_path DATA_PATH] 
+            [--dataset DATASET]
             [--batch_size BATCH_SIZE]
             [--train_data_ratio TRAIN_DATA_RATIO] 
             [--sequence_length SEQUENCE_LENGTH] [--debug DEBUG] 

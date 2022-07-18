@@ -7,7 +7,7 @@ The medical reports generation models source code is based on this repository: [
 
 The full OpenI(Indiana chest X-ray) dataset can be found [here](https://openi.nlm.nih.gov/faq#collection).
 
-## Traned Models
+## Trained Models
 All trained Czech GPT-2 models are available [here](TODO).
 
 ## Requirements
