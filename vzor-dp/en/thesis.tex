@@ -87,12 +87,12 @@
 % An optional dedication: you can thank whomever you wish (your supervisor,
 % consultant, a person who lent the software, etc.)
 \def\Dedication{%
-First of all, I would like to thank my supervisor Mgr. Rudolf Rosa, Ph.D. for all his time, guidance and valuable advices he gave me while working on this thesis. I would also like to thank my parents for their unlimited support and patience during my studies.
+First of all, I would like to thank my supervisor Mgr. Rudolf Rosa, Ph.D. for all his time, guidance and valuable advices he gave me while working on this thesis. I would also like to express my thanks to MUDr.\ Martin Hyršl from the University Hospital Hradec Králové for the execution of manual evaluation.  Last but not least, I would like to thank my parents for their unlimited support and patience during my studies. This work was supported by the Ministry of Education, Youth and Sports of the Czech Republic through the e-INFRA CZ (ID:90140).
 }
 
 % Abstract (recommended length around 80-200 words; this is not a copy of your thesis assignment!)
 \def\Abstract{%
-This thesis deals with the problem of automatic generation of medical reports in the Czech langugage based on the input chest X-ray images using deep neural networks. The first part deals with the analysis of problem itself including comparison of existing solutions from several common points of view. In order to interpret medical images in the Czech language we present a fine-tuned a Czech GPT-2 model specialized on medical texts based on the original pre-trained English GPT-2 model along with its evaluation. In the second part the created Czech GPT-2 is used for training neural network model for generating medical reports. The training was conducted on freely available data along with data pre-processing and their adjustment for the Czech language. Furthermore the model results are discussed and evaluated using standard metrics for natural language processing to determine the performance.
+This thesis deals with the problem of automatic generation of medical reports in the Czech langugage based on the input chest X-ray images using deep neural networks. The first part deals with the analysis of the problem itself including comparison of existing solutions from several common points of view. In order to interpret medical images in the Czech language we present a fine-tuned Czech GPT-2 model specialized on medical texts based on the original pre-trained English GPT-2 model along with its evaluation. In the second part the created Czech GPT-2 is used for training a neural network model for generating medical reports. The training was conducted on freely available data along with data pre-processing and their adjustment for the Czech language. Furthermore the model results are discussed and evaluated using standard metrics for natural language processing to determine the performance.
 }
 
 % 3 to 5 keywords (recommended), each enclosed in curly braces
@@ -196,7 +196,7 @@ GloVe -- Global Vectors for Word Representation
 
 \section{Source code}
 \label{add:Codes}
-The first attachement of this thesis is the \textit{Medical-Reports-Generator} directory, which contains all used source codes divided into individual parts. Each part is described in detail in the corresponding \textit{README.md} file. All source codes are also available in the Github repository \url{https://github.com/lchaloupsky/Medical-Reports-Generator.git}. The trained models are not a part of this attachment as the models take up a lot of space. However, they are available for download via the link in the GitHub repository. The link to the location of the models will be always up to date. TODO možná by se to dalo dát na velký DVD - pokud jsem na nic velkýho nezapomněl, tak by to mělo dát na 16-17 GB ořezané.
+The first attachement of this thesis is the \textit{Medical-Reports-Generator} directory, which contains all used source codes divided into individual parts. Each part is described in detail in the corresponding \textit{README.md} file. All source codes are also available in the Github repository \url{https://github.com/lchaloupsky/Medical-Reports-Generator.git}. The trained models are not a part of this attachment as the models take up a lot of space. However, they are available for download via the link in the GitHub repository. The link to the location of the models will be always up to date.
 \begin{itemize}
 	\item \textit{czech\_gpt2} - contains all source files related to working with GPT-2
 	\item \textit{medical\_reports\_translation} - contains all source files related to automatic medical reports translation
@@ -209,7 +209,7 @@ The results of all experiments and evaluations together with the predictions are
 \begin{itemize}
 	\item \textit{czech\_gpt2} - all training outputs of all trained GPT-2 models
 	\item \textit{medical\_reports\_translation} - translations of the Indiana University chest X-ray reports into Czech language
-	\item \textit{medical\_reports\_generation} - all TODO training?, evaluation outputs and test predictions of all trained models and the results of the manual evaluation
+	\item \textit{medical\_reports\_generation} - all TODO training, evaluation outputs and test predictions of all trained models and the results of the manual evaluation
 \end{itemize}
 
 \openright

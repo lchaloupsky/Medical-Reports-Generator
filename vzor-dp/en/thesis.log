@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.2.24)  17 JUL 2022 11:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.2.24)  18 JUL 2022 12:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -721,6 +721,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 30--31
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--33
+
+ []
+
 ) [4]
 \openout2 = `chap01.aux'.
 
@@ -954,7 +959,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 78--79
 
  []
 
-<../img/lrFinder.pdf, id=763, 421.575pt x 326.72063pt>
+<../img/lrFinder.pdf, id=762, 421.575pt x 326.72063pt>
 File: ../img/lrFinder.pdf Graphic file (type pdf)
 <use ../img/lrFinder.pdf>
 Package pdftex.def Info: ../img/lrFinder.pdf  used on input line 83.
@@ -974,7 +979,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 94--95
 
  []
 
-<../img/lrSchedule.pdf, id=780, 393.72093pt x 276.28218pt>
+<../img/lrSchedule.pdf, id=779, 393.72093pt x 276.28218pt>
 File: ../img/lrSchedule.pdf Graphic file (type pdf)
 <use ../img/lrSchedule.pdf>
 Package pdftex.def Info: ../img/lrSchedule.pdf  used on input line 99.
@@ -982,12 +987,12 @@ Package pdftex.def Info: ../img/lrSchedule.pdf  used on input line 99.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
+[22]
 Underfull \hbox (badness 10000) in paragraph at lines 114--115
 
  []
 
-[22] [23 <../img/lrSchedule.pdf>]
+[23 <../img/lrSchedule.pdf>]
 Underfull \hbox (badness 10000) in paragraph at lines 138--139
 
  []
@@ -997,7 +1002,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 140--141
 
  []
 
-[24] [25]) [26]
+[24] [25] [26]) [27]
 \openout2 = `chap03.aux'.
 
  (./chap03.tex
@@ -1007,7 +1012,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 2--3
 
  []
 
-[27
+[28
 
 
 
@@ -1016,7 +1021,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 51--52
 
  []
 
-[28]
+[29]
 Underfull \hbox (badness 10000) in paragraph at lines 63--64
 
  []
@@ -1041,7 +1046,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 79--80
 
  []
 
-[29]
+[30]
 Underfull \hbox (badness 10000) in paragraph at lines 81--82
 
  []
@@ -1056,12 +1061,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 92--93
 
  []
 
-[30]
+[31]
 Underfull \hbox (badness 10000) in paragraph at lines 116--117
 
  []
 
-) [31]
+) [32]
 \openout2 = `chap04.aux'.
 
  (./chap04.tex
@@ -1081,7 +1086,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 29--30
 
  []
 
-[32
+[33
 
 
 
@@ -1095,7 +1100,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 53--54
 
  []
 
-[33]
+[34]
 Underfull \hbox (badness 10000) in paragraph at lines 103--104
 
  []
@@ -1105,7 +1110,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 105--106
 
  []
 
-[34]
+[35]
 Underfull \hbox (badness 10000) in paragraph at lines 122--123
 
  []
@@ -1145,7 +1150,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 179--179
 
  []
 
-[35]
+[36]
 Underfull \hbox (badness 10000) in paragraph at lines 193--194
 
  []
@@ -1160,12 +1165,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 201--202
 
  []
 
-[36]
+[37]
 Underfull \hbox (badness 10000) in paragraph at lines 203--204
 
  []
 
-) [37] [38] [39] [40]
+) [38] [39] [40] [41]
 \openout2 = `chap05.aux'.
 
  (./chap05.tex
@@ -1175,11 +1180,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 5--6
 
  []
 
-[41
+[42
 
 
 
-] [42]
+] [43]
 Underfull \hbox (badness 10000) in paragraph at lines 37--38
 
  []
@@ -1199,56 +1204,70 @@ Underfull \hbox (badness 10000) in paragraph at lines 43--44
 
  []
 
-[43]
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 [44]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[45]
 Underfull \hbox (badness 10000) in paragraph at lines 150--151
 
  []
 
-[45]
+[46]
 Underfull \hbox (badness 10000) in paragraph at lines 155--156
 
  []
 
 
+Underfull \hbox (badness 10000) in paragraph at lines 157--158
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 159--160
+
+ []
+
+
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[46]
-Underfull \hbox (badness 10000) in paragraph at lines 198--199
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[47]
+Underfull \hbox (badness 10000) in paragraph at lines 202--203
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 200--201
+Underfull \hbox (badness 10000) in paragraph at lines 204--205
 
  []
 
-<../img/Examples1.pdf, id=1041, 609.23605pt x 746.79pt>
+<../img/Examples1.pdf, id=1045, 609.23605pt x 746.79pt>
 File: ../img/Examples1.pdf Graphic file (type pdf)
 <use ../img/Examples1.pdf>
-Package pdftex.def Info: ../img/Examples1.pdf  used on input line 205.
+Package pdftex.def Info: ../img/Examples1.pdf  used on input line 209.
 (pdftex.def)             Requested size: 412.57384pt x 505.03008pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<../img/Examples2.pdf, id=1042, 609.23605pt x 740.7675pt>
+<../img/Examples2.pdf, id=1046, 609.23605pt x 740.7675pt>
 File: ../img/Examples2.pdf Graphic file (type pdf)
 <use ../img/Examples2.pdf>
-Package pdftex.def Info: ../img/Examples2.pdf  used on input line 212.
+Package pdftex.def Info: ../img/Examples2.pdf  used on input line 222.
 (pdftex.def)             Requested size: 412.57384pt x 505.0377pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) [47] [48 <../img/Examples1.pdf>] [49 <../img/Examples2.pdf>]
+[48]) [49] [50 <../img/Examples1.pdf>] [51 <../img/Examples2.pdf>]
 \openout2 = `epilog.aux'.
 
- (./epilog.tex
+
+(./epilog.tex
 Underfull \hbox (badness 10000) in paragraph at lines 4--5
 
  []
@@ -1268,11 +1287,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 10--11
 
  []
 
-[50
+[52
 
 
 
-]) [51]
+]) [53]
 \openout2 = `bibliography.aux'.
 
  (./bibliography.tex (./thesis.bbl
@@ -1281,34 +1300,34 @@ Underfull \hbox (badness 1275) in paragraph at lines 25--29
 T1/lmr/m/it/12 arXiv preprint
  []
 
-[52
+[54
 
 
 
-] [53] [54] [55]
+] [55] [56] [57]
 Underfull \hbox (badness 1436) in paragraph at lines 370--374
 []\OT1/lmr/m/n/12 Ramakrishna Vedan-tam, C Lawrence Zit-nick, and Devi Parikh. 
  Cider:
  []
 
-)) [56] (./thesis.lof)
+)) [58] (./thesis.lof)
 \tf@lof=\write7
 \openout7 = `thesis.lof'.
 
- [57
+ [59
 
 
 ] (./thesis.lot)
 \tf@lot=\write8
 \openout8 = `thesis.lot'.
 
- [58
+ [60
 
-] [59
+] [61
 
 ]
 Appendix A.
-[60
+[62
 
 ]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 216.
@@ -1319,13 +1338,13 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 216.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 216.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 216.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 5FE9B5EC346764D4FB6F69EE29488690;7868.
+(rerunfilecheck)             Checksum: AE693E4289E6E7A2CF8C388F39D76C50;7969.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 216.
  ) 
 Here is how much of TeX's memory you used:
- 16465 strings out of 481228
- 237677 string characters out of 5921397
- 496772 words of memory out of 5000000
+ 16467 strings out of 481228
+ 237691 string characters out of 5921397
+ 497107 words of memory out of 5000000
  31078 multiletter control sequences out of 15000+600000
  615240 words of font info for 90 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1347,10 +1366,10 @@ xlive/2019/texmf-dist/fonts/type1/public/lm/lmri12.pfb><d:/texlive/2019/texmf-d
 ist/fonts/type1/public/lm/lmsy10.pfb><d:/texlive/2019/texmf-dist/fonts/type1/pu
 blic/lm/lmsy8.pfb><d:/texlive/2019/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
 <d:/texlive/2019/texmf-dist/fonts/type1/public/lm/lmtt12.pfb>
-Output written on thesis.pdf (64 pages, 4896245 bytes).
+Output written on thesis.pdf (66 pages, 4897897 bytes).
 PDF statistics:
- 1437 PDF objects out of 1440 (max. 8388607)
- 1163 compressed objects within 12 object streams
- 283 named destinations out of 1000 (max. 500000)
+ 1445 PDF objects out of 1728 (max. 8388607)
+ 1169 compressed objects within 12 object streams
+ 285 named destinations out of 1000 (max. 500000)
  574 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -65,6 +65,11 @@
    <dc:title><rdf:Alt><rdf:li xml:lang="x-default">Automatic generation of medical reports from chest X-rays in Czech</rdf:li></rdf:Alt></dc:title>
    <dc:creator><rdf:Seq><rdf:li>Bc. Lukáš Chaloupský</rdf:li></rdf:Seq></dc:creator>
    <dc:publisher><rdf:Bag><rdf:li>Charles University</rdf:li></rdf:Bag></dc:publisher>
+   <dc:description><rdf:Alt><rdf:li xml:lang="x-default">This thesis deals with the problem of automatic generation of medical reports in the Czech langugage based on the input chest X-ray images using deep neural networks. The first part deals with the analysis of the problem itself including comparison of existing solutions from several common points of view. In order to interpret medical images in the Czech language we present a fine-tuned Czech GPT-2 model specialized on medical texts based on the original pre-trained English GPT-2 model along with its evaluation. In the second part the created Czech GPT-2 is used for training a neural network model for generating medical reports. The training was conducted on freely available data along with data pre-processing and their adjustment for the Czech language. Furthermore the model results are discussed and evaluated using standard metrics for natural language processing to determine the performance.</rdf:li></rdf:Alt></dc:description>
+   <dc:subject><rdf:Bag><rdf:li>natural language processing</rdf:li>
+     <rdf:li>image captioning</rdf:li>
+     <rdf:li>x-ray</rdf:li>
+     <rdf:li>medical report generation</rdf:li></rdf:Bag></dc:subject>
   </rdf:Description> 
   <rdf:Description rdf:about="" xmlns:prism="http://prismstandard.org/namespaces/basic/2.2/"> 
   </rdf:Description> 
@@ -76,15 +81,15 @@
   </rdf:Description> 
   <rdf:Description rdf:about="" xmlns:xmp="http://ns.adobe.com/xap/1.0/"> 
    <xmp:CreatorTool>LaTeX with hyperref</xmp:CreatorTool> 
-   <xmp:ModifyDate>2022-07-17T11:19:15+02:00</xmp:ModifyDate> 
-   <xmp:CreateDate>2022-07-17T11:19:15+02:00</xmp:CreateDate> 
-   <xmp:MetadataDate>2022-07-17T11:19:15+02:00</xmp:MetadataDate> 
+   <xmp:ModifyDate>2022-07-18T12:54:30+02:00</xmp:ModifyDate> 
+   <xmp:CreateDate>2022-07-18T12:54:30+02:00</xmp:CreateDate> 
+   <xmp:MetadataDate>2022-07-18T12:54:30+02:00</xmp:MetadataDate> 
   </rdf:Description> 
   <rdf:Description rdf:about="" xmlns:xmpRights = "http://ns.adobe.com/xap/1.0/rights/"> 
   </rdf:Description> 
   <rdf:Description rdf:about="" xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/"> 
-   <xmpMM:DocumentID>uuid:4339886F-1637-D7BD-C0DC-0388F78A3EFD</xmpMM:DocumentID> 
-   <xmpMM:InstanceID>uuid:6CA01175-BD3F-3343-8076-B54173B8600E</xmpMM:InstanceID> 
+   <xmpMM:DocumentID>uuid:C8CFC28F-88E1-7995-E9AD-F6D12EAD346B</xmpMM:DocumentID> 
+   <xmpMM:InstanceID>uuid:E3D7325B-4BBD-76E7-89CF-D5134752591A</xmpMM:InstanceID> 
   </rdf:Description> 
  </rdf:RDF> 
 </x:xmpmeta> 

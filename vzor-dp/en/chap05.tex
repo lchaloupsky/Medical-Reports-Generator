@@ -154,7 +154,11 @@ The images of healthy patients were classified into two cases only according to 
 \subsection{Results}
 The obtained results of the manual evaluation are shown in Table \ref{tab05:ManualEvalFinding} and Table \ref{tab06:ManualEvalNormal}. In the previous section we concluded that all \textit{best} model are comparable, with \textit{GEN-all-best} being the best. Nevertheless we can clearly see in the results that the  \textit{MED} models perform overall better than the \textit{GEN} models. In cases where any disease is present, the \textit{MED-all-best} found some correct finding in more cases than any other model, while maintaining comparable values in the rest of the categories. From the other side, the \textit{MED-dec-best} model done the least number of mistakes, 50\% less than the \textit{GEN-dec-best} model, and found any right finding as many times as the \textit{GEN-dec-best}. In terms of completely accurate predictions, the \textit{MED} models also turned out better.\\
 
-On the images without any anomaly, the results of all models are very similar and they generally predict a small number of false positives. However, the results of two models stand out - the \textit{MED} models. In particular, the \textit{MED-all-best} made more mistakes than the others and \textit{MED-dec-best} made the least in contrast. This result is in correspondence with the evaluation on the images where problems occur. The \textit{MED-all-best} is more courageous and tries to find something. On the other hand, the \textit{MED-dec-best} model is more cautious and rather assumes that the patient is healthy.
+On the images without any anomaly, the results of all models are very similar and they generally predict a small number of false positives. However, the results of two models stand out - the \textit{MED} models. In particular, the \textit{MED-all-best} made more mistakes than the others and \textit{MED-dec-best} made the least in contrast. This result is in correspondence with the evaluation on the images where problems occur. The \textit{MED-all-best} is more courageous and tries to find something. On the other hand, the \textit{MED-dec-best} model is more cautious and rather assumes that the patient is healthy. In overall, the \textit{MED-all-best} seems to be optimized for Recall (high \textit{AF}), while the \textit{MED-dec-best} for Precision (low \textit{IF}).\\
+
+After a discussion, the physician did not rate the final generated reports very beneficial due to the following reasons. Firstly, in medical environment, it is critical to find all the true pathologies on the X-ray image and none others for the purposes of proper treatment. Moreover, he also mentioned that it would be better to have a more structured form of the reports and not describe the normal conditions so much. Lastly, he mentioned the slightly lower quality of the translations.\\
+
+Nevertheless, we see the final result in a positive way. In our oppinion, the prediction works reasonably well. Although the model rarely provides a completely accurate corresponding report, it identifies at least one correct finding in almost half of the cases. Furthermore, healthy radiographs are described as normal in the majority of cases. Taking everything into account, it is clear that the models are not ready for deployment in the hospitals, however we consider the overall outcome as promising results.
 
 \begin{table}[h!]
 \centering
@@ -205,7 +209,13 @@ We can notice, that in some cases both the translation and the generated outputs
 \includegraphics[width=145mm, height=177.5mm]{../img/Examples1}
 \caption{Examples of generated reports by the \textit{MED-all-best} model.}
 \label{fig01:Examples1}
-\textit{wf} denotes X-ray images with some finding, \textit{n} denotes normal X-ray images
+\textit{wf} denotes X-ray images with some finding, \textit{n} denotes normal X-ray images\\
+Images' categories:
+\textbf{1} - \textit{AF}, \textit{CA};
+\textbf{2} - \textit{AF}, \textit{MF};
+\textbf{3} - \textit{MF};
+\textbf{4} - \textit{NF};
+\textbf{5} - \textit{IF}
 \end{figure}
 
 \begin{figure}[h]\centering
@@ -213,6 +223,12 @@ We can notice, that in some cases both the translation and the generated outputs
 \caption{Examples of generated reports by the \textit{MED-dec-best} model.}
 \label{fig02:Examples2}
 \textit{wf} denotes X-ray images with some finding, \textit{n} denotes normal X-ray images
+Images' categories:
+\textbf{1} - \textit{AF}, \textit{CA};
+\textbf{2} - \textit{MF}, \textit{IF};
+\textbf{3} - \textit{AF}, \textit{MF};
+\textbf{4} - \textit{NF};
+\textbf{5} - \textit{IF}
 \end{figure}
 
 \section{Conclusion}
