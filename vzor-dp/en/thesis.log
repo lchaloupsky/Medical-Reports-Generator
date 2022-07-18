@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.2.24)  18 JUL 2022 20:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.2.24)  18 JUL 2022 20:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1204,30 +1204,35 @@ Underfull \hbox (badness 10000) in paragraph at lines 43--44
 
  []
 
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 [43]
+Underfull \hbox (badness 10000) in paragraph at lines 149--150
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+ []
 
 [44]
-Underfull \hbox (badness 10000) in paragraph at lines 150--151
+Underfull \hbox (badness 10000) in paragraph at lines 154--155
 
  []
 
 [45]
-Underfull \hbox (badness 10000) in paragraph at lines 155--156
+Underfull \hbox (badness 10000) in paragraph at lines 156--157
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 157--158
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 159--160
+Underfull \hbox (badness 10000) in paragraph at lines 158--159
 
  []
 
@@ -1238,19 +1243,19 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [46]
-Underfull \hbox (badness 10000) in paragraph at lines 202--203
+Underfull \hbox (badness 10000) in paragraph at lines 201--202
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 204--205
+Underfull \hbox (badness 10000) in paragraph at lines 203--204
 
  []
 
 <../img/Examples1.pdf, id=1045, 609.23605pt x 746.79pt>
 File: ../img/Examples1.pdf Graphic file (type pdf)
 <use ../img/Examples1.pdf>
-Package pdftex.def Info: ../img/Examples1.pdf  used on input line 209.
+Package pdftex.def Info: ../img/Examples1.pdf  used on input line 208.
 (pdftex.def)             Requested size: 412.57384pt x 505.03008pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -1258,7 +1263,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <../img/Examples2.pdf, id=1046, 609.23605pt x 740.7675pt>
 File: ../img/Examples2.pdf Graphic file (type pdf)
 <use ../img/Examples2.pdf>
-Package pdftex.def Info: ../img/Examples2.pdf  used on input line 223.
+Package pdftex.def Info: ../img/Examples2.pdf  used on input line 222.
 (pdftex.def)             Requested size: 412.57384pt x 505.0377pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -1367,7 +1372,7 @@ ist/fonts/type1/public/lm/lmri12.pfb><d:/texlive/2019/texmf-dist/fonts/type1/pu
 blic/lm/lmsy10.pfb><d:/texlive/2019/texmf-dist/fonts/type1/public/lm/lmsy8.pfb>
 <d:/texlive/2019/texmf-dist/fonts/type1/public/lm/lmtt10.pfb><d:/texlive/2019/t
 exmf-dist/fonts/type1/public/lm/lmtt12.pfb>
-Output written on thesis.pdf (65 pages, 4903332 bytes).
+Output written on thesis.pdf (65 pages, 4903272 bytes).
 PDF statistics:
  1449 PDF objects out of 1728 (max. 8388607)
  1172 compressed objects within 12 object streams

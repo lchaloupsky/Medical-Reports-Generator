@@ -41,7 +41,6 @@ For the BLEU and GLEU metrics, we can see in Tables \ref{tab01:AutoEvalBleu} and
 The same trend continues in the rest of the word-overlap metrics, presented in Table \ref{tab03:AutoEvalWordRest}. However, the \textit{MED-all-best} is worse than other \textit{best} models on most metrics. We can also notice that the \textit{MED-dec-last} surprisingly outperformed all models on CIDEr metric with 0.2978, whilst underperforming in others. The oppsosite phenomenon occured for the \textit{MED-dec-best} model, which was the worst on CIDEr with 0.1798, but comparable to other \textit{best} models on the rest.\\
 
 Regarding the embedding metrics evaluation listed in Table \ref{tab03:AutoEvalWordRest}, the \textit{GEN-dec-best} model beat the rest of the models, but the otherwise best \textit{GEN-all-best} model's results are very close to it. Suprisingly, the \textit{MED-dec-best} has better results on all of these metrics than the \textit{MED-all-best} model, where the whole model was trainable.\\
-\newpage
 
 We can see that \textit{GEN-all-best}, which was trained on a entirely unfrozen network, model outperformed the other models in almost all metrics. Nevertheless, the model comes from the earlier phases of the training. All other \textit{best} models were performing well and outdid each other in different examined metrics. As we mentioned earlier, the automatic evaluation only suggests which models could be performing well, and their final performance will be determined by manual evaluation in the next section.
 

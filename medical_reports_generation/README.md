@@ -5,6 +5,8 @@ Medical Reports Generation part contains all source code and data used for the t
 
 The medical reports generation models source code is based on this repository: [GPT2-Chest-X-Ray-Report-Generation (CDGPT2)](https://github.com/omar-mohamed/GPT2-Chest-X-Ray-Report-Generation)
 
+The full OpenI(Indiana chest X-ray) dataset can be found [here](https://openi.nlm.nih.gov/faq#collection).
+
 ## Traned Models
 All trained Czech GPT-2 models are available [here](TODO).
 
@@ -44,7 +46,7 @@ The `NLG_eval/package` contains modified packege used on the computing cluster f
 
 Otherwise the package source code must be modified in the following way. For METEOR evaluation, iside the package, modifiy in the `nlgeval/pycocoevalcap/meteor/meteor.py` the `meteor_cmd` array and replace the "en" with "cz". Furthermore, download https://github.com/cmu-mtlab/meteor/blob/master/data/paraphrase-cz.gz file to the `nlgeval/pycocoevalcap/meteor/data` directory.
 
-For the embedding-based metrics we have to replace the English GloVe vectors with the Czech word2vec ones. As these are very large and cannot be attached in this repository, it is necessary to run the following pipeline. To replace the original English GloVe vectors with the Czech word2vec vectors, run following commands inside the **$HOME/.cache/nlgeval** directory after installing the **nlgeval** package:
+For the embedding-based metrics we have to replace the English GloVe vectors with the Czech word2vec ones. As these are very large and cannot be attached in this repository, it is necessary to run the following pipeline. To replace the original English GloVe vectors with the Czech word2vec vectors, run following commands inside the `$HOME/.cache/nlgeval` directory after installing the **nlgeval** package:
 ```bash
 # using bash
 cd $HOME/.cache/nlgeval
