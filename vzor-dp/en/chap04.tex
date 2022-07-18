@@ -1,10 +1,10 @@
 \chapter{Experiments}
 This chapter describes all the experiments we conducted during the elaboration of our thesis and which will be further evaluated in the following chapter. Moreover, we will describe some technical details and environments we used for our experiments.\\
 
-In the beginning we want to emphasize the fact that during the elaboration of this thesis we performed a lot of experiments with different setups, methods and data. Nertheless, we present only the experiments and setups we used for the final experiments and evaluation.
+In the beginning we want to emphasize the fact that during the elaboration of this thesis we performed a lot of experiments with different setups, methods and data. Nevertheless, we present only the experiments and setups we used for the final experiments and evaluation.
 
 \section{Environment}
-For training our neural networks, we used two different computational clusters, namely - AIC cluster\footnote[5]{\url{https://aic.ufal.mff.cuni.cz/index.php/Main\_Page}} and IT4I cluster.\footnote[6]{\url{https://www.it4i.cz/}}. Both of them provide a support for CPU and GPU computational tasks. However, since our models are large, we perform the trainings only on GPUs.  For less time-consuming tasks, especially in the earlier phases of our thesis, we employed the AIC cluster. The IT4I cluster was used for the final training of all our models and all values reported in the subsequent parts of the text refer to the IT4I cluster hardware. Table \ref{tab01:clusterHW} lists the hardware available in both clusters. This work was supported by the Ministry of Education, Youth and Sports of the Czech Republic through the e-INFRA CZ (ID:90140)
+For training our neural networks, we used two different computational clusters, namely - AIC cluster\footnote[1]{\url{https://aic.ufal.mff.cuni.cz/index.php/Main\_Page}} and IT4I cluster.\footnote[2]{\url{https://www.it4i.cz/}}. Both of them provide a support for CPU and GPU computational tasks. However, since our models are large, we perform the trainings only on GPUs.  For less time-consuming tasks, especially in the earlier phases of our thesis, we employed the AIC cluster. The IT4I cluster was used for the final training of all our models and all values reported in the subsequent parts of the text refer to the IT4I cluster hardware. Table \ref{tab01:clusterHW} lists the hardware available in both clusters. This work was supported by the Ministry of Education, Youth and Sports of the Czech Republic through the e-INFRA CZ (ID:90140)
 
 \begin{table}[h]
 \centering
@@ -44,11 +44,11 @@ Medical GPT-2     & \mc{$8e^{-4}$}  & \mc{$4e^{-4}$}  & \mc{16} & \mc{512} & \mc
 \end{tabular}
 
 \caption{Training hyperparameters of the Czech GPT-2 models.}\label{tab00:Gpt2TrainingParams}
-LR - Learning rate, \textit{Head} - Learning rate used during the first epoch where only the new head is trained, \textit{All} - Learning rate used during the rest of the epochs where the whole model is trained
+LR - Maximum learning rate, \textit{Head} - Learning rate used during the first epoch where only the new head is trained, \textit{All} - Learning rate used during the rest of the epochs where the whole model is trained
 \end{table}
 
 \subsection{Results}
-In this section, we present the training results for our fine-tuned Czech GPT-2 models. The training results can be seen in Table \ref{tab02:GeneralCzGpt2Results} and Table \ref{tab03:MedicalCzGpt2Results}. During training, we measured accuracy and perplexity\footnote[7]{\url{https://en.wikipedia.org/wiki/Perplexity}} metrics.\\
+In this section, we present the training results for our fine-tuned Czech GPT-2 models. The training results can be seen in Table \ref{tab02:GeneralCzGpt2Results} and Table \ref{tab03:MedicalCzGpt2Results}. During training, we measured accuracy and perplexity\footnote[3]{\url{https://en.wikipedia.org/wiki/Perplexity}} metrics.\\
 
 We can see that the general model achieved an accuracy of 40.02 and a perplexity of 30.35. These values are comparable to the original article\citep{guillou2020faster}, where they trained a model for Portuguese on Wikipedia articles. However, there are two major differences between ours and theirs setup. First, our training was conducted on a total of a 21 GB of raw data, compared to the original 1.6 GB. Further, we train our model on sequences of length 512 compared to original 1024. The factors of sequence length and the heterogeneity of our data increase our measured perplexity values and thus the results cannot be compared directly. Nevertheless, even if we trained the model with an identical sequence length, our results would be worse than in the original paper even though we trained on an order of magnitude larger data. This is due to the fact that Portuguese and English are more similar languages than Czech and English and because the original article used only more homogenous data from Wikipedia.\\
 
@@ -102,7 +102,7 @@ In the last part of the GPT-2 experiments section, examples of texts generated b
 \subsubsection*{General Czech GPT-2}
 Firstly, we want to discuss outputs from our general GPT-2 model trained on OSCAR dataset. The generated sample from the empty input is shown in Figure \ref{fig01:gpt2GenExample}. We can see, that the model can quite well understand the context and the Czech language in general. Moreover, we can notice the overall nice text fluency.\\
 
-Nevertheless, the generated texts may have some imperfections, mistakes or defects. This includes for example incorrect interpunction, wrong word forms, grammatical errors, repetition or changes of the subject inside the text. All of these mistakes are the result of the data we trained on. The OSCAR dataset consists of crawled texts from all over the internet, comprising from various texts from news and articles to forums or advertisements. Some of these areas introduce noise into the data. Furthermore, all texts were concatenated and then split by the defined number of tokens before the training. For this reason, the model can change the subject during the text generation.\\
+Nevertheless, the generated texts may have some imperfections, mistakes or defects. This includes for example incorrect punctuation, wrong word forms, grammatical errors, repetition or changes of the subject inside the text. All of these mistakes are the result of the data we trained on. The OSCAR dataset consists of crawled texts from all over the internet, comprising from various texts from news and articles to forums or advertisements. Some of these areas introduce noise into the data. Furthermore, all texts were concatenated and then split by the defined number of tokens before the training as described in Chapter \ref{sec:gpt2Training}. For this reason, the model can change the subject during the text generation.\\
 
 In the end, however, it is not such a problem for us because our objective was to capture the overall essence of the Czech language in our model for further fine-tuning and we accomplished that.
 
@@ -115,13 +115,13 @@ In the end, however, it is not such a problem for us because our objective was t
              \end{tabular}
         \caption{Sample output of the general Czech GPT-2 model.}
 	\label{fig01:gpt2GenExample}
-\textit{Note:} the first and last uncomplete sentences were omitted. Text was generated for empty input.
+\textit{Note:} the first and last incomplete sentences were omitted. Text was generated for empty input.
 \end{figure}
 
 \subsubsection*{Medical Czech GPT-2}
 Similar properties to the general model are produced in the output generated by the medical model, as we can see in Figure \ref{fig02:gpt2MedExample}. Nevertheless, there are more frequent changes of the subject. Again, this is the result of the training data. The medical texts we trained on, are mainly brief texts much shorter than the defined model sequence length, thus the training sequences may contain several different subjects due to the style of training data preparation. Also, some medical terms may not correspond directly because of this. \\
 
-On the other hand, we can notice that the output does not suffer so much from general grammatical or interpunction errors compared to the general model even though we trained on smaller, but more formal data. Nertheless, some unexpected and undesirable elements may occur.\\
+On the other hand, we can notice that the output does not suffer so much from general grammatical or punctuation errors compared to the general model even though we trained on smaller, but more formal data. Nertheless, some unexpected and undesirable elements may occur.\\
 
 Despite the mentioned imperfections, we have trained a model understanding the medical environment that is suitable for further fine-tuning to generate medical reports.
 \begin{figure}[htb]
@@ -190,7 +190,7 @@ The example is taken from the Indiana University Chest X-ray dataset.
 Tha last section of this chapter describes all the experiments conducted for the medical report generation. Furthermore, all the necessary technical information about running models and data preparation is summarized.
 
 \subsection{Setup}
-As we already mentioned in the previous parts of text, we use the solution from \citet{alfarghaly2021automated} paper that is freely available on the github.\footnote[8]{\url{https://github.com/omar-mohamed/GPT2-Chest-X-Ray-Report-Generation}} The code uses older tensorflow 2.3.0 with some deprecated features, thus some minor adjustments had to be done in order to run on a newer 2.5.0 version. This version was chosen because of the available support for the corresponding CUDA and cuDNN version on the IT4I cluster. \\
+As we already mentioned in the previous parts of text, we use the solution from \citet{alfarghaly2021automated} paper that is freely available on the github.\footnote[4]{\url{https://github.com/omar-mohamed/GPT2-Chest-X-Ray-Report-Generation}} The code uses older tensorflow 2.3.0 with some deprecated features, thus some minor adjustments had to be done in order to run on a newer 2.5.0 version. This version was chosen because of the available support for the corresponding CUDA and cuDNN version on the IT4I cluster. \\
 
 For the training, the Inidiana Univesity chest X-ray dataset was utilized as in the original paper. The key reason is that the solution uses a pre-trained CNN backbone, which is directly fine-tuned for the Inidiana Univesity chest X-ray dataset tags. The MIMIC-CXR v2.0.0 does not provide these tags, but only 14 labels which are different from the original ones. Thus the original Chexnet model would have to be fine-tuned again for this huge dataset. Moreover, the whole training time would be considerably prolonged and the code would have to be modified more extensively.\\
  
@@ -198,7 +198,7 @@ As we need to have the Czech translated reports in the same format as in the ori
 
 \subsection{Experiments}
 \label{sec:medGenReportExperiments}
-Final thing that needs to be perfomed is to run experiments for the medical report generation. We conducted our experiments with multiple different setups of the neural network. All of them were performed on the IT4I cluster with the batch size of 8 as it was the maximum size we were able to fit into the GPU. In the original article, they trained the model with the constant learning rate of $1e^{-3}$ and Adam optimizer. Nevertheless, we trained our models with a smaller learning rate of $1e^{-4}$, because we find it better to train already pre-trained models with a lower value. The max sequence length is set to be 200 tokens, as the reports are generally of a shorter nature. The entire training took place in a total of 100 epochs and the model is evaluated every third epoch on the test set.\\
+Final thing that needs to be perfomed is to run experiments for the medical report generation. We conducted our experiments with multiple different setups of the neural network. All of them were performed on the IT4I cluster with the batch size of 8 as it was the maximum size we were able to fit into the GPU. In the original article, they trained the model with the constant learning rate of $1e^{-3}$ and Adam optimizer. Nevertheless, we trained our models with a smaller learning rate of $1e^{-4}$, because we find it better to train already pre-trained models with a lower value. The max sequence length is set to be 200 tokens, as the reports are generally of a shorter nature. The entire training took place in a total of 100 epochs and the model is evaluated every third epoch on the test set as in the original article. The dev set would only reduce the already small training set.\\
 \newpage
 We run the final training on both of our trained Czech GPT-2 models - general Czech model and specialized Czech medical model. On top of the original paper where they trained only the decoder part of the network with the frozen CNN backbone, we also train with setups in which we have left the entire network unfrozen. In the end, we have a total of 4 different setups listed in Table \ref{tab04:MedGenReportSetups} for training. For each of them, the best and the last model will be evaluted.\\
 

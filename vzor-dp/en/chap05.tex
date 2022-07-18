@@ -1,5 +1,5 @@
 \chapter{Evaluation}
-The last chapter of our thesis presents an evaluation results, included in Attachement \ref{add:Outputs}, of all conducted experiments, described in detail in Chapter \ref{sec:medGenReportExperiments}, for medical reports generation task. Each performed experiment was evaluated automatically with the common machine translation metrics. Furthermore, the outputs of the best model were manually evaluated by an experienced radiologist.
+The last chapter of our thesis presents evaluation results, included in Attachement \ref{add:Outputs}, of all conducted experiments, described in detail in Chapter \ref{sec:medGenReportExperiments}, for medical reports generation task. Each performed experiment was evaluated automatically with the common machine translation metrics. Furthermore, the outputs of the best models were manually evaluated by an experienced physician.
 
 \section{Automatic evaluation}
 First part of this chapter reports the results of the automatic evaluation of our trained models. Important thing to mention is that these metrics give us only an indication of which models could be theoretically perfoming good and not their true performance. Each image can be described in multiple different ways. The metrics only compare words between generated and reference texts with minimal logic to capture meaning. Therefore they measure whether the texts are similar rather than having the same meaning. This fact is further intensified by the nature of our area, where we need to capture all findings appearing in the image and the overall diagnosis. \\
@@ -31,7 +31,7 @@ For both of the texts - generated and the reference, the embeddings of all words
 This metric was presented in \citet{forgues2014bootstrapping}. As in the previous case it computes the cosine similarity between the generated and reference text. However, instead of the mean embeddings, the most extreme values (the largest in terms of absolute value) in each dimension are taken.
 
 \subsubsection*{Greedy Matching score}
-The final used metric is Greedy Matching score from \citet{rus2012optimal}. For each word embedding in the generated text, the maximum cosine similarity is calculated against the words' embeddngs of the reference text. These score are then averaged by the total number of words in the generated text. The identical procedure is then used the other way around with the reference text. As the final score, the mean of these scores is taken.
+The final used metric is Greedy Matching score from \citet{rus2012optimal}. For each word embedding in the generated text, the maximum cosine similarity is calculated against the words' embeddings of the reference text. These scores are then averaged by the total number of words in the generated text. The identical procedure is then used the other way round with the reference text. As the final score, the mean of these scores is taken.
 
 \subsection{Results}
 The results of the automatic evaluation are reported in Table \ref{tab01:AutoEvalBleu}, Table \ref{tab02:AutoEvalGleu} and Table \ref{tab03:AutoEvalWordRest} for the standard NLP metrics and in Table \ref{tab04:AutoEvalEmbedding} for the embedding-based metrics. For metrics that are evaluated for different n-gram bases (BLEU and GLEU), we further refer to those working with up to tetragrams if not specified otherwise. Since there are no works solving our problem in the Czech language, we do not have a direct baseline to compare our results with and thus we will only compare them to each other.\\
@@ -43,7 +43,7 @@ The same trend continues in the rest of the word-overlap metrics, presented in T
 Regarding the embedding metrics evaluation listed in Table \ref{tab03:AutoEvalWordRest}, the \textit{GEN-dec-best} model beat the rest of the models, but the otherwise best \textit{GEN-all-best} model's results are very close to it. Suprisingly, the \textit{MED-dec-best} has better results on all of these metrics than the \textit{MED-all-best} model, where the whole model was trainable.\\
 \newpage
 
-We can see that \textit{GEN-all-best}, which was trained on a entirely unfrozen network, model outperformed the other models in almost all metrics. Nevertheless, the model comes from the earlier phases of the training. All other \textit{best} models were performing well and outdid each other in different examined metrics. As we mentioned earlier, the automatic evaluation only suggests which models could be performing well, and their final performance will be determined by manual evalutation in the next section.
+We can see that \textit{GEN-all-best}, which was trained on a entirely unfrozen network, model outperformed the other models in almost all metrics. Nevertheless, the model comes from the earlier phases of the training. All other \textit{best} models were performing well and outdid each other in different examined metrics. As we mentioned earlier, the automatic evaluation only suggests which models could be performing well, and their final performance will be determined by manual evaluation in the next section.
 
 \begin{table}[h!]
 \centering
@@ -144,17 +144,17 @@ Models are described in Chapter \ref{sec:medGenReportExperiments},
 
 \newpage
 \section{Manual evaluation}
-This section presents the results of the manual evaluation. We would like to express our gratitude to MUDr.\ Martin Hyršl from the University Hospital Hradec Králové for the execution of manual evaluation on our generated reports. The manual evaluation was performed on a total of 40 X-ray images and their corresponding reports for all four \textit{best} models from the previous section. The X-rays are divided into two equally sized groups for evaluation - with and without the presence of any findings.
+This section presents the results of the manual evaluation. We would like to express our gratitude to MUDr.\ Martin Hyršl from the University Hospital Hradec Králové for the execution of manual evaluation on our generated reports. The manual evaluation was performed on a total of 40 X-ray images and their corresponding reports for all four \textit{best} models from the previous section. The X-rays are divided into two equally sized groups for evaluation - with and without the presence of any medical findings.
 
 \subsection{Method}
-All images with the presence of any disease were evaluated using the following method. Each report is assigned at least one of three non-disjunctive categories. First category reflects the cases where the report contains at least one correct finding or diagnosis. The next category decribes cases where an important part of the diagnosis is missing from the report. To the last category fall reports that contain untrue facts. In addition, we also report the number of completely accurate reports. We chose this method over the one in the original paper as it has greater informational value.\\
+All images with the presence of any disease were evaluated using the following method. Each report is assigned at least one of three non-disjunctive categories. First category (Accurate Finding) reflects the cases where the report contains at least one correct finding or diagnosis. The next category (Missing Finding) decribes cases where an important part of the diagnosis is missing from the report. To the last category (Incorrect Finding) fall reports that contain untrue facts. In addition, we also report the number of completely accurate reports. We chose this method over the one in the original paper as it has greater informational value.\\
 
 The images of healthy patients were classified into two cases only according to whether they contained any finding or not.
 
 \subsection{Results}
-The obtained results of the manual evaluation are shown in Table \ref{tab05:ManualEvalFinding} and Table \ref{tab06:ManualEvalNormal}. In the previous section we concluded that all \textit{best} model are comparable, with \textit{GEN-all-best} being the best. Nevertheless we can clearly see in the results that the  \textit{MED} models perform overall better than the \textit{GEN} models. In cases where any disease is present, the \textit{MED-all-best} found some correct finding in more cases than any other model, while maintaining comparable values in the rest of the categories. From the other side, the \textit{MED-dec-best} model done the least number of mistakes, 50\% less than the \textit{GEN-dec-best} model, and found any right finding as many times as the \textit{GEN-dec-best}. In terms of completely accurate predictions, the \textit{MED} models also turned out better.\\
+The obtained results of the manual evaluation are shown in Table \ref{tab05:ManualEvalFinding} and Table \ref{tab06:ManualEvalNormal}. In the previous section we concluded that all \textit{best} models are comparable, with \textit{GEN-all-best} being the best. Nevertheless we can clearly see in the results that the  \textit{MED} models perform overall better than the \textit{GEN} models. In cases where any disease is present, the \textit{MED-all-best} found some correct finding in more cases than any other model, while maintaining comparable values in the rest of the categories. From the other side, the \textit{MED-dec-best} model made the least number of mistakes, 50\% less than the \textit{GEN-dec-best} model, and found any right finding as many times as the \textit{GEN-dec-best}. In terms of completely accurate predictions, the \textit{MED} models also turned out better.\\
 
-On the images without any anomaly, the results of all models are very similar and they generally predict a small number of false positives. However, the results of two models stand out - the \textit{MED} models. In particular, the \textit{MED-all-best} made more mistakes than the others and \textit{MED-dec-best} made the least in contrast. This result is in correspondence with the evaluation on the images where problems occur. The \textit{MED-all-best} is more courageous and tries to find something. On the other hand, the \textit{MED-dec-best} model is more cautious and rather assumes that the patient is healthy. In overall, the \textit{MED-all-best} seems to be optimized for Recall (high \textit{AF}), while the \textit{MED-dec-best} for Precision (low \textit{IF}).\\
+On the images without any anomaly, the results of all models are very similar and they generally predict a small number of false positives. However, the results of two models stand out - the \textit{MED} models. In particular, the \textit{MED-all-best} made more mistakes than the others and \textit{MED-dec-best} made the least in contrast. This result is in correspondence with the evaluation on the images where problems occur. The \textit{MED-all-best} is \qq{more courageous} and tries to find something. On the other hand, the \textit{MED-dec-best} model is \qq{more cautious} and rather assumes that the patient is healthy. In overall, the \textit{MED-all-best} seems to be optimized for Recall (high \textit{AF}), while the \textit{MED-dec-best} for Precision (low \textit{IF}).\\
 
 After a discussion, the physician did not rate the final generated reports very beneficial due to the following reasons. Firstly, in medical environment, it is critical to find all the true pathologies on the X-ray image and none others for the purposes of proper treatment. Moreover, he also mentioned that it would be better to have a more structured form of the reports and not describe the normal conditions so much. Lastly, he mentioned the slightly lower quality of the translations.\\
 
@@ -203,13 +203,14 @@ In the previous section, we evaluated all trained models and determined their ac
 
 Another observation is that the models tend to describe a lot of irrelevant information on the X-ray image that describes normal conditions. Again, this is based on the underlying data, as the vast majority of reports contain this kind of description.\\
 
-We can notice, that in some cases both the translation and the generated outputs contain some grammatical or syntactical issues. This is a consequence of the automatic machine translation noise. The original data are already noisy, as they contain some undesirable elements replacing sensitive patient data, which is further intesified by the machine translation process. Moreover, these elements are removed from the sentences druing training, sometimes resulting in an incoherent part of the text.
+We can notice, that in some cases both the translation and the generated outputs contain some grammatical or syntactic issues. This is a consequence of the automatic machine translation noise. The original data are already noisy, as they contain some undesirable elements replacing sensitive patient data, which is further intesified by the machine translation process. Moreover, these elements are removed from the sentences during training, sometimes resulting in an incoherent part of the text.
 
 \begin{figure}[h]\centering
 \includegraphics[width=145mm, height=177.5mm]{../img/Examples1}
 \caption{Examples of generated reports by the \textit{MED-all-best} model.}
 \label{fig01:Examples1}
 \textit{wf} denotes X-ray images with some finding, \textit{n} denotes normal X-ray images\\
+Highlighted parts of the text indicate findings\\
 Images' categories:
 \textbf{1} - \textit{AF}, \textit{CA};
 \textbf{2} - \textit{AF}, \textit{MF};
@@ -222,7 +223,8 @@ Images' categories:
 \includegraphics[width=145mm, height=177.5mm]{../img/Examples2}
 \caption{Examples of generated reports by the \textit{MED-dec-best} model.}
 \label{fig02:Examples2}
-\textit{wf} denotes X-ray images with some finding, \textit{n} denotes normal X-ray images
+\textit{wf} denotes X-ray images with some finding, \textit{n} denotes normal X-ray images\\
+Highlighted parts of the text indicate findings\\
 Images' categories:
 \textbf{1} - \textit{AF}, \textit{CA};
 \textbf{2} - \textit{MF}, \textit{IF};
@@ -231,6 +233,7 @@ Images' categories:
 \textbf{5} - \textit{IF}
 \end{figure}
 
+\newpage
 \section{Conclusion}
 We have evaluated our models in several different ways. The automatic evaluation comprised of many NLP metrics that have provided us with basic information about the models and have given us an idea of their performance. Nevertheless, these hypotheses had to be verified by manual evaluation, as the automatic metrics are very sensitive, especially in a medical environment, where a diagnosis can be written in multiple different ways. Finally, the manual evaluation has given us the true performace of all our \textit{best} models. We have found that the model, which came out best overall in the automatic evaluation, and generally both \textit{GEN} models, were outperformed by the \textit{MED} models. From the overall results, we have come to the conclusion that the fine-tuning the Czech GPT-2 on medical data helps the final performance.
 

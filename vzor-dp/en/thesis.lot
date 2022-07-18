@@ -2,16 +2,16 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Available GPU hardware on clusters.\relax }}{33}{table.caption.36}%
-\contentsline {table}{\numberline {4.2}{\ignorespaces Training hyperparameters of the Czech GPT-2 models.\relax }}{34}{table.caption.37}%
-\contentsline {table}{\numberline {4.3}{\ignorespaces General Czech GPT-2 model training results.\relax }}{35}{table.caption.38}%
-\contentsline {table}{\numberline {4.4}{\ignorespaces Medical Czech GPT-2 model training results.\relax }}{35}{table.caption.39}%
-\contentsline {table}{\numberline {4.5}{\ignorespaces Medical report generation experiments' setups.\relax }}{38}{table.caption.45}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces Available GPU hardware on clusters.\relax }}{32}{table.caption.36}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Training hyperparameters of the Czech GPT-2 models.\relax }}{33}{table.caption.37}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces General Czech GPT-2 model training results.\relax }}{34}{table.caption.38}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces Medical Czech GPT-2 model training results.\relax }}{34}{table.caption.39}%
+\contentsline {table}{\numberline {4.5}{\ignorespaces Medical report generation experiments' setups.\relax }}{37}{table.caption.45}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces BLEU evaluation results comparison.\relax }}{45}{table.caption.54}%
-\contentsline {table}{\numberline {5.2}{\ignorespaces GLEU evaluation results comparison.\relax }}{45}{table.caption.55}%
-\contentsline {table}{\numberline {5.3}{\ignorespaces Word-overlap metrics evaluation results.\relax }}{46}{table.caption.56}%
-\contentsline {table}{\numberline {5.4}{\ignorespaces Embeding metrics evaluation results.\relax }}{46}{table.caption.57}%
-\contentsline {table}{\numberline {5.5}{\ignorespaces Manual evaluation results - with findings.\relax }}{48}{table.caption.58}%
-\contentsline {table}{\numberline {5.6}{\ignorespaces Manual evaluation results - without findings.\relax }}{48}{table.caption.59}%
+\contentsline {table}{\numberline {5.1}{\ignorespaces BLEU evaluation results comparison.\relax }}{44}{table.caption.54}%
+\contentsline {table}{\numberline {5.2}{\ignorespaces GLEU evaluation results comparison.\relax }}{44}{table.caption.55}%
+\contentsline {table}{\numberline {5.3}{\ignorespaces Word-overlap metrics evaluation results.\relax }}{45}{table.caption.56}%
+\contentsline {table}{\numberline {5.4}{\ignorespaces Embeding metrics evaluation results.\relax }}{45}{table.caption.57}%
+\contentsline {table}{\numberline {5.5}{\ignorespaces Manual evaluation results - with findings.\relax }}{47}{table.caption.58}%
+\contentsline {table}{\numberline {5.6}{\ignorespaces Manual evaluation results - without findings.\relax }}{47}{table.caption.59}%
 \addvspace {10\p@ }
