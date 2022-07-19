@@ -3,7 +3,7 @@
 **Medical Reports Generator** repository contains the source code and text for a diploma thesis dealing with the problem of automatic generation of text reports for **X-ray** images.
 
 ## Trained Models
-All trained models are available [here](TODO).
+All trained models are available [here](https://owncloud.cesnet.cz/index.php/s/14CyySiWDFPKyr8).
 
 ## Repository layout
 The repository comprises of 4 parts:

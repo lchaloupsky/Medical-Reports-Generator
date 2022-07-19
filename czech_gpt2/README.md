@@ -6,7 +6,7 @@ Czech GPT-2 part contains code for fine-tuning the GPT-2 language models to any 
 The training process and the code is based on this article - [Faster than training from scratch — Fine-tuning the English GPT-2 in any language with Hugging Face and fastai v2](https://medium.com/@pierre_guillou/faster-than-training-from-scratch-fine-tuning-the-english-gpt-2-in-any-language-with-hugging-f2ec05c98787)
 
 ## Trained Models
-All trained Czech GPT-2 models are available [here](TODO).
+All trained Czech GPT-2 models are available [here](https://owncloud.cesnet.cz/index.php/s/L089RYsI014ewIo).
 
 ## Requirements
 All code was tested with the following configuration:
