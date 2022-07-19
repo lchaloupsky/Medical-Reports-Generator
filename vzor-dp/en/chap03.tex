@@ -115,7 +115,7 @@ After all the mentioned steps, we can run the training or testing procedure usin
 
 The checkpoints are gradually stored during the training process in the \textit{checkpoints/CDGPT2} directory. After each epoch, the latest model checkpoint is stored. Moreover, the best training checkpoint is stored in the \textit{best\_ckpt} subdirectory. The testing process uses the model checkpoint stored in the \textit{checkpoints/CDGPT2} directory.\\
 
-For direct prediction on individual images, we implemented an additional script \textit{predict\_for\_img.py}, which loads the checkpoint in the same way as in the testing process and the user is then prompted to enter the location of the chest X-ray image for which the prediction should be made. The corresponing medical report is then printed to the standard output. The script can be run in the following way:
+For direct prediction on individual images, we implemented an additional script \textit{predict\_for\_img.py}, which loads the checkpoint in the same way as in the testing process and the user is then prompted to enter the location of the chest X-ray image for which the prediction should be made. The corresponing medical report is then printed to the standard output. It is important to have the corresponding GPT-2 tokenizer string identifier in the \textit{tokenizer wrapper.py} file. Otherwise, nonsense text could be predicted. The script can be run in the following way:
 \begin{code}
 > python3 predict_for_img.py
 \end{code}

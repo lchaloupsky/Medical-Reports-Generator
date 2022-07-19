@@ -3,7 +3,7 @@
 
 In hospital, inspecting the X-rays and writing corresponding medical reports is a hard work that requires experienced specialized doctors, of which there are not many. A great deal of people visit hospitals daily and X-rays are taken for many of them. Automatic interpretation of X-ray image has a great potential to improve health care and it could be particulary helpful to doctors in order to distinguish serious cases from the ordinary ones and overall accelerate and improve their work.\\
 
-Automatic generation of radiology reports is a subset of a general problem called Image Captioning, i.e. generation of overall textual captions to input images. Image captioning is a combination of Natural Language Processing and Computer Vision areas, experiencing a lot of progress in the last years. Most often the Image Captioning problem is solved using Deep Learning techniques. The specificity of this subset is that we do not want to generate just a general caption of the image, but the exact description of all findings contained in the given medical image. There were done multiple studies for this task in other languages but none in the Czech language.\\
+Automatic generation of radiology reports is a subset of a general problem called Image Captioning, i.e. generation of overall textual captions to input images. Image Captioning is a combination of Natural Language Processing and Computer Vision areas, experiencing a lot of progress in the last years. Most often the Image Captioning problem is solved using Deep Learning techniques. The specificity of this subset is that we do not want to generate just a general caption of the image, but the exact description of all findings contained in the given medical image. There were done multiple studies for this task in other languages but none in the Czech language.\\
 
 Deep learning by its very nature has wide range of uses in a medical sector as it can often capture complex relations in any kind of data with excellent performance results. Nevertheless, in the medical environment the accuracy of predictions is crucial in order to determine the final diagnosis. Therefore, we should not consider the models as such as something that is unmistakably true, but as an auxiliary tool that should help doctors to examine X-rays.\\
 
@@ -17,7 +17,7 @@ The main target of our thesis is to train a neural network for the purpose of ge
 
 Our first goal is to fine-tune a language model directly for the Czech language. The language model will be specialized directly to medical texts in order to capture the essence of the problem. However, ahead of the medical specialization, we want to fine-tune a general Czech language model. Fine-tuning will be based on the original English GPT-2 model presented in \citet{radford2019language}.\\
 
-Finally, we want to utilize our fine-tuned language model for training a neural network model interpreting chest X-rays images and generating corresponding medical textual reports to them in the Czech language. This section also involves the overall data preparation directly for the Czech language. In addition, the training will be done in multiple setups. All possibilities will be evaluated with the purpose of determination of their final performance.\\
+Finally, we want to utilize our fine-tuned language models for training neural network models interpreting chest X-rays images and generating corresponding medical textual reports to them in the Czech language. This section also involves the overall data preparation directly for the Czech language. In addition, the training will be done in multiple setups. All possibilities will be evaluated with the purpose of determination of their final performance.\\
 
 \section*{Thesis structure}
 
@@ -29,6 +29,6 @@ Technical details about the implemented scripts are described in the third chapt
 
 All experiments done with our models take their part in the fourth chapter, describing all used environments and differents setups together with data variants. This section also contains partial results of work related to GPT-2 training.\\
 
-Whole fifth chapter is then dedicated to evaluation of experiments done in the preceding part. Furthermore, our models will be compared to the performance of other existing solutions.\\
+The whole fifth chapter is then dedicated to an extensive evaluation of the experiments carried out in the preceding part.\\
 
 Finally, in epilog we discuss what we have accomplished in the thesis, what the resulting consenquences are and what the future possibilities are.

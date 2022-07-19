@@ -74,7 +74,7 @@ modify_csv_to_translations.py [-h]
 ```
 
 ## Predict Reports
-In order to predict report for single X-ray image, put and run the `predict_for_img.py` script in the `GPT2-Chest-X-Ray-Report-Generation` directory. The reason for its current placement is to distinguish our code from the code of the original repository.
+In order to predict report for single X-ray image, put and run the `predict_for_img.py` script in the `GPT2-Chest-X-Ray-Report-Generation` directory. The reason for its current placement is to distinguish our code from the code of the original repository. Before running the script, follow the steps described below needed for training and testing processes.
 
 ## GPT2-Chest-X-Ray-Report-Generation
 Original repository for the medical report generation task from [GPT2-Chest-X-Ray-Report-Generation (CDGPT2)](https://github.com/omar-mohamed/GPT2-Chest-X-Ray-Report-Generation). In order to run on the computing cluster and the newer version of the tensorflow library, the following files had to be modified accordingly.
@@ -97,7 +97,7 @@ python3 predict_for_img.py
 
 Checkpoints are stored in the `checkpoints/CDGPT2` directory. After training finishes, the latest model is stored directly inside this folder. The best one is inside the `checkpoints/CDGPT2/best` subdirectory. 
 
-The model present in the `checkpoints/CDGPT2` is loaded both for the testing and prediction purposes.
+The model present in the `checkpoints/CDGPT2` is loaded both for the testing and prediction purposes. For testing and prediction, it is important to have the appropriate GPT-2 tokenizer string identifier in the `tokenizer wrapper.py`. Otherwise, nonsense text might be predicted.
 
 ### Running On Cluster
 The `run.sh` and `run_test.sh` scripts were used to run the training and testing on the computing cluster for one specific configuration. These are just examples, how the jobs can be submitted.
