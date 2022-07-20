@@ -6,7 +6,7 @@ import pandas as pd
 from pathlib import Path
 
 parser = argparse.ArgumentParser(description="Modifies original .csv files, used for training and testing of the medical reports generation models, with the corresponding Czech translations")
-parser.add_argument('--original_csv_dir', default="../GPT2-Chest-X-Ray-Report-Generation/IU-Xray", type=str, help="Original csv files directory.")
+parser.add_argument('--original_csv_dir', default="./GPT2-Chest-X-Ray-Report-Generation/IU-Xray", type=str, help="Original csv files directory.")
 parser.add_argument('--translations_dir', default="../medical_reports_translation/translations_openi/data/ecgen-radiology", type=str, help="Directory with the translated files.")
 parser.add_argument('--output_dir', default="czech_csv_train_data", type=str, help="Final path to save the modified csv files.")
 

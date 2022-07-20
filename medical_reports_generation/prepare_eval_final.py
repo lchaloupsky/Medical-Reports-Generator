@@ -10,7 +10,7 @@ from pathlib import Path
 parser = argparse.ArgumentParser(description="Prepares random sample from the testing .csv file for the manual evaluation.")
 parser.add_argument('--img_dir', default="IU-XRay/images", type=str, help="X-ray images dir.")
 parser.add_argument('--models_outputs', default="model_outputs/best", type=str, help="Folder where outputs are saved.")
-parser.add_argument('--reports_orig_dir', default="../medical_reports_translation/original_openi/data/ecgen-radiology", type=str, help="Original preprocessed reports location.")
+parser.add_argument('--reports_orig_dir', default="../medical_reports_translation/original_openi/data/ecgen-radiology", type=str, help="Original preprocessed(.txt) reports location.")
 parser.add_argument('--reports_trans_dir', default="../medical_reports_translation/translations_openi/data/ecgen-radiology", type=str, help="Translated reports location.")
 parser.add_argument('--csv_file', default="./czech_csv_train_data/testing_set_cz.csv", type=str, help="Path to the testing csv file.")
 

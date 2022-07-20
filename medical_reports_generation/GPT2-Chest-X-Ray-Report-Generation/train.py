@@ -81,11 +81,11 @@ loss_plot = []
 @tf.function
 def train_step(images, target, test_mode=False):
     with tf.GradientTape() as tape:
-        visual_features, tags_embeddings = encoder(images, training=True if not test_mode else False)
+        visual_features, tags_embeddings = encoder(images, training=not test_mode)
         dec_input = target[:, 0:-1]
 
         # passing the features through the decoder
-        predictions, _ = decoder(dec_input, visual_features=visual_features, tags_embeddings=tags_embeddings, past=None, training=True if not test_mode else False)
+        predictions, _ = decoder(dec_input, visual_features=visual_features, tags_embeddings=tags_embeddings, past=None, training=not test_mode)
 
         loss = loss_function(target[:, 1:], predictions)
     if not test_mode:
