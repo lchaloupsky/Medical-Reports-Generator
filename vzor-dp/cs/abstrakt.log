@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.2.24)  20 JUL 2022 08:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.2.24)  20 JUL 2022 09:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**abstract
-(./abstract.tex
+**abstrakt
+(./abstrakt.tex
 LaTeX2e <2020-02-02> patch level 3
 L3 programming layer <2020-02-21>
 (d:/texlive/2019/texmf-dist/tex/latex/base/report.cls
@@ -247,8 +247,8 @@ File: se-pdfdoc.def 2019/11/29 v1.12 stringenc: PDFDocEncoding
 (d:/texlive/2019/texmf-dist/tex/latex/pdfx/8bit.def
 File: 8bit.def 2008/03/30 v1.1d Input encoding file
 )
-** pdfx: Metadata file abstract.xmpdata read successfully.
-(./abstract.xmpdata)<<sRGB.icc>>
+** pdfx: Metadata file abstrakt.xmpdata read successfully.
+(./abstrakt.xmpdata)<<sRGB.icc>>
 (d:/texlive/2019/texmf-dist/tex/latex/pdfx/8bit.def
 File: 8bit.def 2008/03/30 v1.1d Input encoding file
 )
@@ -281,7 +281,29 @@ Using XMP template file: pdfa.xmp
 \xmpinclRead=\read2
 \openout3 = `pdfa.xmpi'.
 
-<<pdfa.xmpi>>) (d:/texlive/2019/texmf-dist/tex/latex/base/inputenc.sty
+<<pdfa.xmpi>>) (d:/texlive/2019/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2020/02/14 3.40 The Babel package
+
+(d:/texlive/2019/texmf-dist/tex/generic/babel/switch.def
+File: switch.def 2020/02/14 3.40 Babel switching mechanism
+)
+(d:/texlive/2019/texmf-dist/tex/generic/babel-czech/czech.ldf
+Language: czech 2008/07/06 v3.1a Czech support from the babel system
+
+(d:/texlive/2019/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2020/02/14 3.40 Babel common definitions
+\babel@savecnt=\count191
+\U@D=\dimen147
+
+(d:/texlive/2019/texmf-dist/tex/generic/babel/txtbabel.def)
+\bbl@readstream=\read3
+\bbl@dirlevel=\count192
+)
+Package babel Info: Making " an active character on input line 172.
+\cs@wordlen=\count193
+Package babel Info: Making - an active character on input line 226.
+))
+(d:/texlive/2019/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2018/08/11 v1.3c Input encoding file
 )
 (d:/texlive/2019/texmf-dist/tex/latex/base/fontenc.sty
@@ -327,31 +349,31 @@ Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
 )
 (d:/texlive/2019/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
 File: l3backend-pdfmode.def 2020-02-21 L3 backend support: PDF mode
-\l__kernel_color_stack_int=\count191
+\l__kernel_color_stack_int=\count194
 \l__pdf_internal_box=\box45
 )
-(./abstract.aux)
-\openout1 = `abstract.aux'.
+(./abstrakt.aux)
+\openout1 = `abstrakt.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 12
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 13
 .
  (d:/texlive/2019/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -393,20 +415,20 @@ File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ABD: EveryShipout initializing macros
 (d:/texlive/2019/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count192
-\scratchdimen=\dimen147
+\scratchcounter=\count195
+\scratchdimen=\dimen148
 \scratchbox=\box46
-\nofMPsegments=\count193
-\nofMParguments=\count194
+\nofMPsegments=\count196
+\nofMParguments=\count197
 \everyMPshowfont=\toks20
-\MPscratchCnt=\count195
-\MPscratchDim=\dimen148
-\MPnumerator=\count196
-\makeMPintoPDFobject=\count197
+\MPscratchCnt=\count198
+\MPscratchDim=\dimen149
+\MPnumerator=\count199
+\makeMPintoPDFobject=\count266
 \everyMPtoPDFconversion=\toks21
 )
 \AtBeginShipoutBox=\box47
-Package hyperref Info: Link coloring OFF on input line 12.
+Package hyperref Info: Link coloring OFF on input line 13.
  (d:/texlive/2019/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
 
@@ -416,39 +438,39 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 (d:/texlive/2019/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count198
+\c@section@level=\count267
 )
-LaTeX Info: Redefining \ref on input line 12.
-LaTeX Info: Redefining \pageref on input line 12.
-LaTeX Info: Redefining \nameref on input line 12.
+LaTeX Info: Redefining \ref on input line 13.
+LaTeX Info: Redefining \pageref on input line 13.
+LaTeX Info: Redefining \nameref on input line 13.
 
-(./abstract.out) (./abstract.out)
+(./abstrakt.out) (./abstrakt.out)
 \@outlinefile=\write4
-\openout4 = `abstract.out'.
+\openout4 = `abstrakt.out'.
 
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 18.
  [1
 
 ]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 18.
- (./abstract.aux)
+ (./abstrakt.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 18.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 18.
-Package rerunfilecheck Info: File `abstract.out' has not changed.
+Package rerunfilecheck Info: File `abstrakt.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 18.
  ) 
 Here is how much of TeX's memory you used:
- 12603 strings out of 481228
- 177424 string characters out of 5921397
- 408566 words of memory out of 5000000
- 27726 multiletter control sequences out of 15000+600000
+ 13291 strings out of 481228
+ 186763 string characters out of 5921397
+ 431644 words of memory out of 5000000
+ 28397 multiletter control sequences out of 15000+600000
  536399 words of font info for 27 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 44i,5n,41p,921b,2341s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 44i,5n,41p,1036b,2341s stack positions out of 5000i,500n,10000p,200000b,80000s
 {d:/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}<d:/texlive/2019/tex
 mf-dist/fonts/type1/public/lm/lmr12.pfb>
-Output written on abstract.pdf (1 page, 38638 bytes).
+Output written on abstrakt.pdf (1 page, 38871 bytes).
 PDF statistics:
  22 PDF objects out of 1000 (max. 8388607)
  14 compressed objects within 1 object stream
