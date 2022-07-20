@@ -7,7 +7,7 @@ medical_reports_translation/logs/
 medical_reports_translation/translations*/
 medical_reports_translation/data/
 medical_reports_translation/raw_reports/
-!medical_reports_translation/translations_openi/
+!medical_reports_translation/translations_openi.zip
 
 # testing files
 testing/
@@ -18,6 +18,3 @@ czech_gpt2/model_testing/
 # med report generation huge files - models
 medical_reports_generation/final_models/*
 medical_reports_generation/NLG_eval/home_cache/*
-
-# top level requirements
-/requirements_*.txt
