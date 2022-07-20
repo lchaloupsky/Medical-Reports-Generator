@@ -2,7 +2,7 @@ import os
 import csv
 import argparse
 
-from typing import List, Tuple
+from typing import List
 
 parser = argparse.ArgumentParser(description="This file serves for the purposes of preparing data for the GPT-2 fine-tuning process.")
 # arguments used during generation of text
@@ -12,7 +12,7 @@ parser.add_argument('--regenerate', default=False, type=bool, help="Flag indicat
 parser.add_argument('--line_split', default=None, type=int, help="Number of lines after which a new entry should be created.")
 parser.add_argument('--extensions', default=[], type=str, nargs="*", help="Additional file extensions that should be taken into account.")
 
-def create_aggregates_from_texts(folder: str, text_delim: str, regenerate: bool = False, line_split: int = None, extensions: List[str] = []) -> Tuple([str, str]):
+def create_aggregates_from_texts(folder: str, text_delim: str, regenerate: bool = False, line_split: int = None, extensions: List[str] = []):
     '''
     Goes through specified 'folder' and reads every *txt* file which it can find anywhere in the 'folder' and generates an aggregation of all found files into one csv and one txt files. 
     Each file will be splitted with 'text_delim' into paragraphs. 
@@ -89,4 +89,4 @@ def create_aggregates_from_texts(folder: str, text_delim: str, regenerate: bool 
 
 if __name__ == "__main__":
     args = parser.parse_args([] if "__file__" not in globals() else None)
-    create_aggregates_from_texts(args.folder, args.text_delim, args.regenare, args.line_split, args.extensions)
+    create_aggregates_from_texts(args.folder, args.text_delim, args.regenerate, args.line_split, args.extensions)

@@ -1,17 +1,17 @@
 \chapter{Implementation}
-Entire implementation part of our thesis is divided into three independent parts. Each of them deals with different task desribed in the previous chapter. All source codes are available in Attachment \ref{add:Codes}.\\
+Entire implementation part of our thesis is divided into three independent parts. Each of them deals with a different task described in the previous chapter. All source codes are available in Attachment \ref{add:Codes}.\\
 
-The entire code is written in Python~3\footnote[1]{Different parts may require different versions of Python} with the use of tensorflow\footnote[2]{\url{https://www.tensorflow.org/}}, pyTorch\footnote[3]{\url{https://pytorch.org/}}, huggingface\footnote[4]{\url{https://huggingface.co/}} and fastai\footnote[5]{\url{https://www.fast.ai/}} libraries as they are the standard for working with neural networks. We want to emphasize that different parts of the project may require different dependencies. In order to solve this, virtual environments can be used. To install all the required dependencies, run the following command in the appropriate part of the project.
+The entire code is written in Python~3\footnote[1]{Different parts may require different versions of Python} with the use of tensorflow,\footnote[2]{\url{https://www.tensorflow.org/}} pytorch,\footnote[3]{\url{https://pytorch.org/}} huggingface,\footnote[4]{\url{https://huggingface.co/}} and fastai\footnote[5]{\url{https://www.fast.ai/}} libraries as they are the standard for working with neural networks. We want to emphasize that different parts of the project may require different dependencies. In order to solve this, virtual environments can be used. To install all the required dependencies, run the following command in the appropriate part of the project.
 
 \begin{code}
 > pip3 install -r requirements.txt
 \end{code}
 
 \section{Czech GPT-2}
-The implementation of the GPT-2 related part comprises of several scripts. This section describes all of them with the necessary level of detail. Scripts related to the GPT-2 training and subsequent work are prefixed with \textit{gpt2}.
+The implementation of the GPT-2 related part consists of several scripts. This section describes all of them with the necessary level of detail. Scripts related to the GPT-2 training and subsequent work are prefixed with \textit{gpt2}.
 
 \subsection*{Training}
-The most important script is \textit{gpt2\_train.py} that takes care of the entire training process. The script is parametrized with numerous arguments such as base GPT-2 model, required sequence length, path to data etc. The data are expected to be inside the \textit{storage/data} directory. In the beginning, the script creates all directories necessary for the training and its results - this includes the directories for the final model (\textit{storage/models}), checkpoints (\textit{storage/checkpoints}), intermediate training data (\textit{storage/training\_data}) and tokenizers (\textit{storage/tokenizers}). Inside each of them, a specific directory is created for the model or the dataset so that different run settings do not overwrite each other's data . After the initialization, the script runs according to the description of the process in Chapter \ref{sec:gpt2Training}. Further, the script also allows to resume the training from the last saved checkpoint. Final trained model is saved in both tensorflow and pyTorch version at the end along with its corresponding tokenizer in the \textit{storage/models} directory. Description of all arguments, that can be entered at the input, is directly inside the script. The script can be run as follows:
+The most important script is \textit{gpt2\_train.py} which takes care of the entire training process. The script is parametrized with numerous arguments such as the base GPT-2 model, the required sequence length, the path to data, etc. The data are expected to be inside the \textit{storage/data} directory. In the beginning, the script creates all directories necessary for the training and its results - this includes the directories for the final model (\textit{storage/models}), checkpoints (\textit{storage/checkpoints}), intermediate training data (\textit{storage/training\_data}), and tokenizers (\textit{storage/tokenizers}). Inside each of them, a specific directory is created for the model or the dataset so that different run settings do not overwrite each other's data. After the initialization, the script runs according to the description of the process in Chapter \ref{sec:gpt2Training}. Further, the script also allows resuming the training from the last saved checkpoint. The final trained model is saved in both tensorflow and pytorch versions at the end along with its corresponding tokenizer in the \textit{storage/models} directory. Description of all arguments, that can be entered at the input, is directly inside the script. The script can be run as follows:
 \newpage
 \begin{code}
 > python3 gpt2_train.py [-h] [--type {gradual,full}] 
@@ -30,7 +30,7 @@ The most important script is \textit{gpt2\_train.py} that takes care of the enti
 \end{code}
 
 \subsection*{Testing}
-The \textit{gpt2\_generate.py} script serves for the text generation purposes. It is applicable to any huggingface GPT-2 model whose model name or path is taken as an argument. Moreover, all parameters that can be passed to the general huggingface GPT-2 \textit{generate} method can be also passed as arguments of the script such as \textit{top\_p}, \textit{top\_k} etc. The ouput of the script is the texts generated by the given GPT-2 model. The script can be run as follows:
+The \textit{gpt2\_generate.py} script serves for text generation purposes. It is applicable to any huggingface GPT-2 model whose model name or path is taken as an argument. Moreover, all parameters that can be passed to the general huggingface GPT-2 \textit{generate} method can be also passed as arguments of the script such as \textit{top\_p}, \textit{top\_k}, etc. The output of the script is the texts generated by the given GPT-2 model. The script can be run as follows:
 \begin{code}
 > python3 gpt2_generate.py [-h] [--max_len MAX_LEN] 
                           [--model MODEL] 
@@ -50,7 +50,7 @@ The \textit{gpt2\_generate.py} script serves for the text generation purposes. I
 \subsection*{Data preparation}
 The last important script is \textit{gpt2\_data\_utils.py}. As the \textit{gpt2\_train.py} script needs the data to be in a specific format, this script provides tools for their preparation. For the specified data location, it goes through all files with \textit{.txt} or other user specified extensions. Each of the files can be further split after each number of lines or by a given delimiter. Finally, two files are created- one \textit{.txt} file with all texts merged inside the file for the tokenizer training and one \textit{.csv} file, where each split part corresponds to one row, for the GPT-2 fine-tuning itself. The script can be run as follows:\\
 \begin{code}
-> python3 gpt2_data_utils.py [-h] [--folder FOLDER] 
+> python3 gpt2_data_utils.py [-h] --folder FOLDER 
                              [--text_delim TEXT_DELIM] 
                              [--regenerate REGENERATE] 
                              [--line_split LINE_SPLIT] 
@@ -62,7 +62,7 @@ For the OSCAR dataset (and generally any other dataset from huggingface), we imp
 \section{Medical data translation}
 Implementation details of all related medical data translation source codes are described below.\\
 
-To translate medical reports from English into Czech, the \textit{dataset\_translate.py} script was utilized. It is designed to be versatile and extensible for use on any dataset and any translation service. One can define its own \textit{Translator} or \textit{Extractor} class, described in the following parts of text, and run the script with different data or translator. Moreover, the preprocessing pipeline can also be customized to specific requirements. The script can be run as follows: \\
+To translate medical reports from English into Czech, the \textit{dataset\_translate.py} script was utilized. It is designed to be versatile and extensible for use on any dataset and any translation service. One can define its own \textit{Translator} or \textit{Extractor} class, described in the following parts of the text, and run the script with different data or translator. Moreover, the preprocessing pipeline can also be customized to specific requirements. The script can be run as follows: \\
 \begin{code}
 > python3 dataset_translate.py [-h] [--translator {cubbitt,deepl}] 
                                [--dataset {mimic,openi}] 
@@ -72,19 +72,19 @@ To translate medical reports from English into Czech, the \textit{dataset\_trans
                                [--anonymous_seq ANONYMOUS_SEQ]
 \end{code}
 
-It takes several arguments, such as the data path, and runs the translation. The script runs in multiple threads, so it can make efficient use of system resources and therefore speed up the overall translation. The final report translations are stored in the \textit{translations} directory, where each run is uniquely identified by its start date, dataset name etc., while preserving the original dataset structure. If the user do not want to translate the dataset and only preprocess, the behaviour of the script can be changed with the \textit{-{}-preprocess\_only} argument.\\
+It takes several arguments, such as the data path, and runs the translation. The script runs in multiple threads, so it can make efficient use of system resources and therefore speed up the overall translation. The final report translations are stored in the \textit{translations} directory, where each run is uniquely identified by its start date, dataset name etc. while preserving the original dataset structure. If the user does not want to translate the dataset and only preprocess, the behaviour of the script can be changed with the \textit{-{}-preprocess\_only} argument.\\
 
 For each file, the script first loads the report text using the specified \textit{Extractor}. Next, the text goes through each of the \textit{Preprocessors} to process the text. After the preprocessing finishes, the report is passed to the selected \textit{Translator} to get the translated text. Finally, the translated report is saved under the original file name. Throughout the entire translation process, the progress indication of how much data has been already translated is displayed.\\
 
 All implemented preprocessors, described in Chapter \ref{sec:DataPreprocessing}, are located in the \textit{preprocessors} directory. Each of them implements the  \textit{Preprocessor} interface with only one method \textit{preprocess}, which makes it extensible for possible additional user defined preprocessors. This method takes the text as its only argument and returns the preprocessed text.\\
 
-In our thesis we utilize CUBBITT as our translator. However, the user can implement its own translator class as the main script for dataset translation works with \textit{Translator} interface. This interface defines two methods - \textit{translate} that should return the response object from the translation service, and \textit{get\_text} that should get or create the translated text from the response. During the elaboration of this thesis we also implemented a translator for the DeepL, but it is unusable in practice due to its strict limits. All imlemented translators are located in the \textit{translators} directory.\\
+In our thesis, we utilize CUBBITT as our translator. However, the user can implement its own translator class as the main script for dataset translation works with the \textit{Translator} interface. This interface defines two methods - \textit{translate} that should return the response object from the translation service, and \textit{get\_text} that should get or create the translated text from the response. During the elaboration of this thesis, we also implemented a translator for the DeepL, but it is unusable in practice due to its strict limits. All implemented translators are located in the \textit{translators} directory.\\
 
 The last extensible part of the translation process is text extraction from the dataset files. Since not all datasets are just simple \textit{.txt} files, we created the \textit{Extractor} interface for this purpose. It defines only one method \textit{extract\_report} intended for full report text extraction. We implemented two extractors inside the \textit{extractors} directory - for the Indiana University chest X-ray and MIMIC-CXR v2.0.0 datasets.\\
 
 We also covered the important parts with the \textit{pytest} test suites in the \textit{tests} subdirectory. The tests can be invoked by:
 \begin{code}
-> pytest tests/
+> python3 -m pytest tests/
 \end{code}
 
 \section{Medical report generation}
@@ -115,10 +115,10 @@ After all the mentioned steps, we can run the training or testing procedure usin
 
 The checkpoints are gradually stored during the training process in the \textit{checkpoints/CDGPT2} directory. After each epoch, the latest model checkpoint is stored. Moreover, the best training checkpoint is stored in the \textit{best\_ckpt} subdirectory. The testing process uses the model checkpoint stored in the \textit{checkpoints/CDGPT2} directory.\\
 
-For direct prediction on individual images, we implemented an additional script \textit{predict\_for\_img.py}, which loads the checkpoint in the same way as in the testing process and the user is then prompted to enter the location of the chest X-ray image for which the prediction should be made. The corresponing medical report is then printed to the standard output. It is important to have the corresponding GPT-2 tokenizer string identifier in the \textit{tokenizer wrapper.py} file. Otherwise, nonsense text could be predicted. The script can be run in the following way:
+For direct prediction on individual images, we implemented an additional script \textit{predict\_for\_img.py}, which loads the checkpoint in the same way as in the testing process, and the user is then prompted to enter the location of the chest X-ray image for which the prediction should be made. The corresponding medical report is then printed to the standard output. It is important to have the corresponding GPT-2 tokenizer string identifier in the \textit{tokenizer wrapper.py} file. Otherwise, the nonsense text could be predicted. The script can be run in the following way:
 \begin{code}
 > python3 predict_for_img.py
 \end{code}
 
 \section{Evaluation}
-For the evaluation purposes, the NLG evaluation from \citet{sharma2017nlgeval} was utilized. Nevertheless, as some metrics are language specific, we needed to modify both the source code and data in order to use them. For METEOR metric, we had to change the source code and download the Czech paraphrases\footnote[6]{\url{https://github.com/cmu-mtlab/meteor/blob/master/data/paraphrase-cz.gz}} file to the appropriate part of the package in order to use it on the Czech language. For embedding-based metrics, the original English GloVe vectors were replaced by the Czech word2vec vectors from \citet{grave2018learning}. The word2vec file had to be further changed to the format used by the package. All neccessary information on how to modify the package is described within the corresponding \textit{README} file.
+For the evaluation purposes, the NLG evaluation from \citet{sharma2017nlgeval} was utilized. Nevertheless, as some metrics are language specific, we needed to modify both the source code and data in order to use them. For the METEOR metric, we had to change the source code and download the Czech paraphrases\footnote[6]{\url{https://github.com/cmu-mtlab/meteor/blob/master/data/paraphrase-cz.gz}} file to the appropriate part of the package in order to use it on the Czech language. For embedding-based metrics, the original English GloVe vectors were replaced by the Czech word2vec vectors from \citet{grave2018learning}. The word2vec file had to be further changed to the format used by the package. All necessary information on how to modify the package is described within the corresponding \textit{README} file.

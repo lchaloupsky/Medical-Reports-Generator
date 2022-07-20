@@ -59,4 +59,4 @@
 \contentsline {chapter}{List of Abbreviations}{60}{chapter*.67}%
 \contentsline {chapter}{\numberline {A}Attachments}{61}{appendix.A}%
 \contentsline {section}{\numberline {A.1}Source code}{61}{section.A.1}%
-\contentsline {section}{\numberline {A.2}Experiments and evalutations outputs}{61}{section.A.2}%
+\contentsline {section}{\numberline {A.2}Experiments and evaluations outputs}{61}{section.A.2}%
