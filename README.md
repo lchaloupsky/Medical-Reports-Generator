@@ -4,6 +4,9 @@
 
 ## Trained Models
 All trained models are available [here](https://owncloud.cesnet.cz/index.php/s/14CyySiWDFPKyr8).
+GPT-2 models are now also available on [Hugging Face](https://huggingface.co/lchaloupsky):
+* [czech-gpt2-oscar](https://huggingface.co/lchaloupsky/czech-gpt2-oscar)
+* [czech-gpt2-medical](https://huggingface.co/lchaloupsky/czech-gpt2-medical)
 
 ## Repository layout
 The repository comprises of 4 parts:
